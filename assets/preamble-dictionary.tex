@@ -1,0 +1,68 @@
+% Preamble for two-column dictionary build.
+% Pruned variant of preamble.tex — drops the book-class chapter formatting
+% and the running-headers / titlepage setup, since the dictionary builds as
+% an article-class twocolumn doc.
+
+% --- Fonts ----------------------------------------------------------------
+\usepackage{fontspec}
+\setmainfont{Brill}[
+  Path           = assets/fonts/,
+  Extension      = .ttf,
+  UprightFont    = *-Roman,
+  ItalicFont     = *-Italic,
+  BoldFont       = *-Bold,
+  BoldItalicFont = *-BoldItalic,
+  Ligatures      = TeX
+]
+
+\setmonofont{DejaVuSansMono}[
+  Path           = assets/fonts/,
+  Extension      = .ttf,
+  UprightFont    = *,
+  ItalicFont     = *-Oblique,
+  BoldFont       = *-Bold,
+  BoldItalicFont = *-BoldOblique,
+  Scale          = 0.80
+]
+
+% Route all monospace (backtick spans) through Brill — no DejaVu in output.
+\let\ttfamily\rmfamily
+
+% --- Typography polish ----------------------------------------------------
+\usepackage{microtype}
+\usepackage{setspace}
+\setstretch{1.08}
+
+\setlength{\parskip}{0.35em plus 0.08em minus 0.04em}
+\setlength{\parindent}{0pt}
+
+% Tighter column gutter than the LaTeX default; reference columns read better
+% close-set when the line-length is short.
+\setlength{\columnsep}{1.4em}
+
+% --- Heading styles -------------------------------------------------------
+% Article class: no \chapter. Section/subsection/subsubsection only.
+\usepackage{titlesec}
+\titleformat{\section}
+  {\normalfont\large\bfseries}{\thesection}{0.6em}{}
+\titlespacing*{\section}{0pt}{1.0em}{0.4em}
+\titleformat{\subsection}
+  {\normalfont\normalsize\bfseries}{\thesubsection}{0.5em}{}
+\titlespacing*{\subsection}{0pt}{0.7em}{0.3em}
+\titleformat{\subsubsection}
+  {\normalfont\normalsize\bfseries\itshape}{\thesubsubsection}{0.5em}{}
+\titlespacing*{\subsubsection}{0pt}{0.6em}{0.2em}
+
+% Dictionary entries (### in the markdown) become \subsection. Make their
+% heading typography heavier so each entry reads as a clear visual unit
+% within the two-column flow.
+\titleformat{\subsection}
+  {\normalfont\large\bfseries\rmfamily}{}{0pt}{}
+\titlespacing*{\subsection}{0pt}{1.0em}{0.25em}
+
+% --- Tables ---------------------------------------------------------------
+\usepackage{booktabs}
+
+% Tables in the dictionary's schema/notes sections are mostly narrow enough
+% to fit in a single column. If a wide table needs to span both columns,
+% wrap it in a table* environment in the source (not the case currently).

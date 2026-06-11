@@ -1,0 +1,90 @@
+% Preamble for Reference Grammar PDF build (pandoc + tectonic).
+% Loaded via --include-in-header.
+
+% --- Fonts ----------------------------------------------------------------
+% Brill v4 (non-commercial license per assets/fonts/Brill_typeface_end_user_license_agreement.pdf).
+% Brill is a scholarly serif with comprehensive IPA, Greek, and combining-diacritical
+% coverage, designed for humanities use. It replaces the v1 setup of EB Garamond +
+% Charis SIL fallback chain.
+\usepackage{fontspec}
+\setmainfont{Brill}[
+  Path           = assets/fonts/,
+  Extension      = .ttf,
+  UprightFont    = *-Roman,
+  ItalicFont     = *-Italic,
+  BoldFont       = *-Bold,
+  BoldItalicFont = *-BoldItalic,
+  Ligatures      = TeX
+]
+
+% DejaVu Sans Mono as the monospace face. Latin Modern Mono (the default)
+% lacks Greek/IPA, which we need for the small ASCII metrical-tree code
+% block and a handful of inline backticked glyphs.
+\setmonofont{DejaVuSansMono}[
+  Path           = assets/fonts/,
+  Extension      = .ttf,
+  UprightFont    = *,
+  ItalicFont     = *-Oblique,
+  BoldFont       = *-Bold,
+  BoldItalicFont = *-BoldOblique,
+  Scale          = 0.85
+]
+
+% Note on IPA / combining-diacritical / Greek coverage: Brill provides these
+% natively, so the Charis SIL fallback chain (XeTeX intercharclass routing
+% IPA blocks to Charis) that the EB Garamond setup required has been removed.
+% The build pre-pass in build.ps1 still rewrites U+2208 (∈) to inline math,
+% kept defensively because longtable cell context interferes with font
+% selection for math-symbol blocks even when the main font has the glyph.
+
+% Route all monospace (backtick spans) through Brill — no DejaVu in output.
+\let\ttfamily\rmfamily
+
+% --- Typography polish ----------------------------------------------------
+\usepackage{microtype}
+\usepackage{setspace}
+\setstretch{1.14}
+
+\setlength{\parskip}{0.45em plus 0.1em minus 0.05em}
+\setlength{\parindent}{0pt}
+
+% --- Heading styles -------------------------------------------------------
+\usepackage{titlesec}
+
+\titleformat{\chapter}[display]
+  {\normalfont\sffamily\filright}
+  {\large\textsc{Chapter \thechapter}}
+  {0.5em}
+  {\Huge\bfseries\rmfamily}
+\titlespacing*{\chapter}{0pt}{-20pt}{24pt}
+
+\titleformat{\section}
+  {\normalfont\Large\bfseries}{\thesection}{0.7em}{}
+\titleformat{\subsection}
+  {\normalfont\large\bfseries}{\thesubsection}{0.6em}{}
+\titleformat{\subsubsection}
+  {\normalfont\normalsize\bfseries\itshape}{\thesubsubsection}{0.6em}{}
+
+% --- Headers & footers ----------------------------------------------------
+\usepackage{fancyhdr}
+\setlength{\headheight}{14pt}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\itshape\nouppercase{\leftmark}}
+\fancyhead[R]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+
+\fancypagestyle{plain}{%
+  \fancyhf{}%
+  \fancyfoot[C]{\thepage}%
+  \renewcommand{\headrulewidth}{0pt}%
+}
+
+% --- Tables ---------------------------------------------------------------
+\usepackage{booktabs}
+
+% Suppress pandoc's default \maketitle so the custom titlepage owns the cover.
+% (Hyperref colors are handled via -V flags in build.ps1, since pandoc loads
+% hyperref *after* this header-include block runs.)
+\let\oldmaketitle\maketitle
+\renewcommand{\maketitle}{}

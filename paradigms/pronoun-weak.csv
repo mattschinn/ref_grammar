@@ -1,0 +1,8 @@
+﻿person,animacy,bare_ga,bare_dl,impf_ga,impf_dl,would_ga,would_dl,could_ga,could_dl,neg_do_ga,neg_do_dl,neg_did_ga,neg_did_dl,,,notes
+1SG,animate,I,eu,I'm,eum,I'd,ew,I could,ekw,I don't quite,eonquii,I didn't quite,reunnquii,,,
+2SG,animate,you,rhi,you're,rhia,you'd,rhiw,you could,rhikw,you don't quite,rhionquii,you didn't quite,riennquii,,,
+3SG,animate,they (sg),ey,they're,eiia,they'd,eyt,they could,eykw,they don't quite,eonquii,they didn't quite,reunnquii,,,replaces he/she unconditionally; same GA source as 3PL — conlang forms may converge
+3SG,inanimate,it,e,it's,eś,it'd,ew,it could,ekw,it doesn't quite,reusnquii,it didn't quite,reunnquii,,,GA has does/does it (3sg agreement); dialect may level to do
+1PL,animate,we,rhii,we're,rhiia,we'd,rhiit,we could,rhiikw,we don't quite,rhiionquii,we didn't quite,rhiiennquii,,,
+2PL,animate,y'all,rhiau,y'all are,rhiauæ,y'all'd,rhiw,y'all could,rhikw,y'all don't quite,rhionquii,y'all didn't quite,riennquii,,,syncretic with 2SG for would/could/neg; GA source variable (y'all vs. you all)
+3PL,animate,they (pl),eiau,they all are,eiiauæ,they'd,eyt,they all could,eykw,they don't quite,eonquii,they didn't quite,reunnquii,,,syncretic with 3SG.ANIM for would/could/neg

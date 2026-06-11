@@ -1,0 +1,26 @@
+
+I want to update the dictionary with two more entries that are related. 
+béntsıìy. /bɛnts'i:/ Adverb, meaning "later". from GA "eventually", /ɪˈvɛn.t͡ʃə.li/ colloquially pronounced /vɛnt͡ʃ.li/. Lemma in question derives from latter. (1) /v/ fortifies to /b/ in onset position. (2) /l/ is surrounded by palatal environment - both /t͡ʃ/ and /i/ - so dark /l/ elides to /j/ then gets smoothed out. (3) after /t͡ʃ/ triggers palatalization of /l/, it itself depalatizes to /ts/, (4) nasalization of /e/ is blocked by /nt/ cluster. Link to nobêt (below)
+
+nobêt, /no'bɛʔ/, means "in a short while, later". from GA "(i)n a bit". where /ɪ/ in "in" is elided , leaving only /n/ in a liason manner(colloquial GA already has this). /ə/ goes rounding after /n/. /ɪ/ lowers to /ɛ/ after /b/. Glottal stop persists. Means "later, down the line". Link to béntsıìy (see above). 
+
+béntsıìy and nobêt have similar meanings but inherent flavors from GA. The latter is short while the former suggests longer duration. Similarly, their use follows GA use: "I'll call you in a bit" sounds good, but "I'll call you eventually" is less natural and would be apporpriate in a much narrow set of scenarios. Also notice that nobêt is absolute and fixed at the moment of discourse ("I'll call you in a bit" is again good here, but "I called you in a bit" is wrong. "He hung up. Then he called me in a bit" sounds still wierd), while  béntsıìy can play relative ("I called you eventually" is quite natural). Before we make entries, can you help me develop these nuances. 
+
+rhilþ from GA "wolf" /wʊɫf/ - means same thing. The sound changes involved are (1) GA initial /w/ becomes /ɻ/, (2) back vowels /ʌ, ʊ, ə/ undergo fronting and merge with /ɪ/, (3) /f/ becomes unconditionally /θ/. 
+
+The volitional-non-volitional paradigm consists of the GO-AHEAD form and GET-ONESELF form.
+There are two negative markers SKIP and NOT.QUITE. They interact with the vol-nonvol axis and also behave syntactically distinct. Consider the following examples:
+
+You know the trailers prior to the movie, 
+I go ahead and tune them out. (volitional)
+I get myself tuning out. (non-volitional, here lack of control or volition)
+I'll go ahead and SKIP(.ON) tuning them out. (vol. neg.; "refuse to skip the trailers, go out of the way to watch the trailers". A bit weird here I must say. feels more natural with other examples). 
+I do NOT.QUITE get myself tuning them out. (nonvol. neg.; "I could not pay attention, but I end up watching them anyway". has a 'frustrative' feel to it).
+I go ahead and NOT.QUITE tuning them out. (I intentionally watch the trailers but only a little bit) 
+I do NOT(QUITE) go ahead and SKIP.ON tuning them out. (???)
+
+Then, there are other uses for each of them. 
+On my way to the gym when its NOT.QUITE Thursday (before Thursday).
+I'm on my way to the bar NOT.QUITE the gym ("rather", less intentional, more a bit apologetic)
+I'm on my way to the bar SKIP the gym ("rather", more intentional, perhaps with mutual exclusivity flavor)
+Skip! (don't!)
