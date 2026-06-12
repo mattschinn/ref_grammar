@@ -17,6 +17,7 @@ Conventions used throughout this document and its siblings:
 - **Glossing** uses the compact tags registered in `terminology-registry.md` (VOL, NVOL, REC, ITER, VIS, NVIS, HAP, SELF.BEN, THRESH, BACK, …). Running prose spells terms out; each spelled-out term and its gloss tag are paired in the registry.
 - **Terminology** follows `terminology-registry.md`, the canonical registry of the conlang's descriptive terms, their shorthands, and their naming history. A term marked there as retired may appear in older versioning notes but not in current prose.
 - A **mora** — the unit of syllable weight, roughly one beat of vowel — appears throughout prosodic discussion: a short vowel is one mora, a long vowel two, a syllabic consonant one.
+- **Abstracts and stubs.** Each sibling deep-dive document opens with an architecture-level **Abstract**. Sections of this document whose topic has a sibling contain only an assembly directive and a copy of that Abstract (an *orientation abstract* — non-normative, regenerated from the sibling, never hand-edited). The full grammar PDF is assembled as Part-per-document concatenation; cross-references are filename-based and survive assembly.
 - **Analytical notes** (blockquotes beginning *Analytical note* or *Origin*) carry justification, history, and diachronic background. They are skippable: the body prose alone is a complete synchronic description.
 
 ---
@@ -34,52 +35,23 @@ The phonology is largely settled in its rule set, though some reanalyses are sti
 
 ---
 
-## 2. Phonology
+## 2. Phonology and Orthography
 
-This section is a high-level summary. The full phonological reference is `phonology.md`, the canonical source for inventory details, sound-change rules, the derivational cascade, and the metrical analysis.
+<!-- assemble: phonology.md -->
 
-### 2.1 Inventories at a glance
+> **Orientation abstract** — canonical content in `phonology.md`. This text is copied from that document's Abstract; edit it there, never here.
+>
+> The phonology derives from General American English through a designed cascade of regular sound changes, frozen at a synchronic stage. Its character: a small, reorganized consonant inventory; widespread vowel clusters and long vowels from intervocalic elision; permissive onsets against restricted codas; post-stress syllabic-consonant material housed in a prosodic appendix; and pitch dissociated from stress, analyzed as the residue of GA prominence after stress migrated to the word-final position. Suprasegmentals — pitch, length, nasalization, breathy voice — do as much expressive work as segments. This document is the canonical reference for the inventories, the syllable and metrical structure, the rule cascade with worked derivations, and the phonological open-questions backlog.
 
-**Vowels.** Short /i, ɪ~ɨ, ɛ, o, ɑ~ɔ/ plus diphthongs /ei, oe, ia/. Long vowels are bimoraic nuclei in two surface types: *monophthongal* /iː, ɛː, oː, aː, ɨː/ (with /iː/ established as a phoneme arising principally from /ɪji/-smoothing), and *diphthongal* /iɛ/ (the second mora supplies a distinct vowel quality rather than length). See `phonology.md` §2.2 and `orthography.md` §3.2–3.3.
+<!-- assemble: orthography.md -->
 
-Vowels also contrast in nasalization, breathy voice, and pitch in some environments. Nasalization, breathy voice, and (placement-of) pitch are robustly attested; their full phonemic status is still being analyzed.
-
-**Consonants.** A reduced inventory relative to GA, reorganized: stops /b, t, ʔ/ (no /k/ as phoneme — surface [k] is allophonic /h/ before glide); fricatives /θ, h, ts, s/; nasals /n, m/; liquids/tap /r, l, ɻ/; glides /w, j/ (also serving as syllabic consonants in appendix position). A geminate sub-inventory /sː, nː, pː/ is attested.
-
-Coda /ʔ/ is the most stable coda segment. /k/ and /l/ occur only in clusters. Voiceless sonorants /n̥, m̥, ɾ̥/ surface from elided coda obstruents and from the M1 / C-Coal mechanism.
-
-**Notable inversions relative to GA.** /s/ debuccalizes to /h/ in most positions — that is, the consonant loses its mouth posture and surfaces as a bare /h/; /d, dʒ, n, j, g, v/ all merge into the alveolar tap /ɾ/; /m, p/ merge with /b/ in onset; /f/ merges with /θ/; /w, j/ merge with /ɻ/; /ɻ/ then assimilates to /r/ near another /r/. Most of the remaining sounds occur in GA; the strangeness is in their patterning.
-
-### 2.2 Syllable structure, foot, stress, pitch
-
-The language permits both substantial vowel clusters (*hoiom* "salt") and substantial consonant clusters (*hoʔnʔnts* "face"; *ritsstw* "Rochester"). Vowel clusters arise from intervocalic consonant elision; consonant clusters from systematic schwa elision in unstressed positions.
-
-Syllabic consonants (/n, m, s, θ, ʔ, w, j/, possibly /r/) serve as syllable nuclei. They occur predominantly in **prosodic appendix position** — material adjoined to the prosodic word at a level above the foot, weight-bearing but stress-invisible. *countenance* /ˈhoʔn̩ʔn̩ts/ has up to four post-stress nuclei in this appendix zone. See `phonology.md` §3.5.
-
-**Stress** falls on the final vocalic position of a word, where "vocalic" includes syllabic consonants but not appendix material. Feet are trochaic (left-headed) and built right-to-left; the rightmost foot is the head foot and bears primary stress. **Light-monosyllabic feet are licensed** (cf. *ŕe* /ˈr̥ɛ/ "today").
-
-**Pitch** falls on the syllable that carried primary stress in the GA etymon, regardless of where conlang stress has migrated to. Pitch and stress are usually on **different** syllables — most multisyllabic GA etyma had initial stress, which has migrated rightward while pitch stayed put. This dissociation produces the characteristic prosodic shape: *Emma* /ɛma/ has pitch on /ɛ/, stress on /a/. The current analysis (per `phonology.md` §3.4) treats pitch as the **phonetic residue of GA-style prominence** after loudness and length transfer to the final vowel under the final-stress rule, rather than an independently assigned prosodic dimension. Placement is settled and etymologically determined, but it is not synchronically derivable from the surface form — the same epistemic status English lexical stress has. Whether placement is contrastive — whether minimal pairs distinguishable only by pitch placement actually exist — is **[Open]** pending audio-recorded verification; under the residue analysis, low minimal-pair density is structurally expected and not in itself evidence about contrastiveness.
-
-### 2.3 Orthography
-
-Latin script with diacritics, in the manner of Vietnamese — diacritics are load-bearing rather than decorative. They encode vowel length, vowel nasalization, breathy voice, consonant devoicing, consonant gemination, pitch (always written), stress (predictable, normally unwritten; marked in formal/pedagogical text), and pitch-stress coincidence. The full orthographic reference is `orthography.md`.
-
-A pedagogical implication: ignoring diacritics produces homophone collisions. The earliest learning materials are built around minimal pairs distinguished only by these marks.
-
-### 2.4 Open phonological questions
-
-A short list; the full list lives in `phonology.md` §5.
-
-- **Phonemic vs. allophonic status** of /ɪ~ɨ/, /ɑ~ɔ/, nasalization, breathy voice. (Pitch *placement* is settled; pitch *contrastiveness* remains open as a separate question.)
-- **Conditioning of /ai/**, now a three-way reflex /iː/ ~ /eː/ ~ /i/.
-- **Coda /l/ elision paths.** Multiple paths flagged; full description deferred.
-- **Appendix system details.** Licensing conditions, internal structure, interaction with pitch.
-
----
+> **Orientation abstract** — canonical content in `orthography.md`. This text is copied from that document's Abstract; edit it there, never here.
+>
+> The writing system is Latin script with load-bearing diacritics in the manner of Vietnamese: the marks are not decorative, and ignoring them collapses minimal pairs. Diacritics and digraphs encode vowel length, nasalization, consonant devoicing, gemination, pitch, stress, and pitch-stress coincidence. Several conventions deliberately invert what a GA-literate reader expects, including position-dependent letter values and doubled vowels marking hiatus rather than length. This document is the canonical reference for the grapheme inventory, the diacritic placement rules, and the open spelling questions.
 
 ## 3. Morphology
 
-This section is more provisional than the phonology, though several pieces are now settled enough to commit. The verb system is treated as a sibling document (`verbal-system.md`); §3.4 below summarizes and points there.
+This section is more provisional than the phonology, though several pieces are now settled enough to commit. The verb system is treated as a sibling document (`verbal-system.md`); §3.4 below is its orientation stub.
 
 The noun-side subsections (§3.2 Nouns, §3.3 Adjectives, §3.5 Pronouns, §3.6 Adpositions, §3.7 Demonstratives and topic particles) currently live in this document. If they reach maturity together — most are still light or open — they may spin out into a sibling `nominal-system.md` parallel to `verbal-system.md`. §3.7 is the most developed of the set and the natural anchor for that future grouping; pending the spin-out, §3.7 is the *canonical home* for the visibility-particle system and is therefore deeper than this document's usual summary altitude.
 
@@ -87,107 +59,74 @@ The noun-side subsections (§3.2 Nouns, §3.3 Adjectives, §3.5 Pronouns, §3.6 
 
 The major content classes — nouns, verbs, adjectives — are inherited from GA and largely intact, though boundaries blur where grammaticalization has fused phrases.
 
-A closed class of grammaticalized markers carries volition, aspect, polarity, and defective person/number agreement (agreement that is real but does not distinguish every person/number combination). These appear bound to verbs in the **frame** (technically, the light verb complex) and behave as inflection rather than as independent words. A second grammaticalized pair — the **recognitional marker** (from GA *the*) and the **iterative marker** (from GA plural *-s*) — operates on deverbal nominals. Both are described in `verbal-system.md`.
+A closed class of grammaticalized markers carries volition, aspect, polarity, and defective person/number agreement (agreement that is real but does not distinguish every person/number combination). These appear bound to verbs in the **frame** (technically, the light verb complex) and behave as inflection rather than as independent words. A second grammaticalized pair — the **recognitional marker** (from GA *the*) and the **iterative marker** (from GA plural *-s*) — operates on deverbal nominals: morphology in §3.2.1, the construction they build with the frames in `verbal-system.md` §7 and §12.
 
 ### 3.2 Nouns
 
 Noun morphology in the working draft is light. Number marking is consistent and largely transparent (deriving from GA *-s* and irregular plurals); irregular plurals tend to be preserved or have undergone independent sound changes that obscure the alternation. No derived plural forms have yet been entered in the dictionary to exemplify this. **[Open: example plural pairs pending dictionary work]**
 
-Possession, definiteness, and case-like marking are still under design. Likely candidates for grammaticalization:
+Possession and case-like marking are still under design. Likely candidates for grammaticalization:
 
-- A possessive marker from a fused GA *of*-construction.
+- A possessive marker from a fused GA *of*-construction. (Attested possession-adjacent items — *bauyǫ* "my own," *obii* "go by (a name)" — await dictionary entry. `[Lexicon: bauyǫ, obii pending]`)
 - Locative/directional case-like elements from prepositions that have phonologically fused with their nominal heads (especially likely given the heavy elision processes).
 
-These remain open pending further design work.
+These remain open pending further design work. A distributive element *-au* (from GA *all*) is attested fused onto object marking (*ŕeushiię·au* "cherishing it all"); its place in number marking is **[Open]**. `[Lexicon: -au pending]`
 
-A note on definiteness specifically: the GA definite article *the* has not survived as a definite article. It has grammaticalized into the recognitional marker on deverbal nominals (see `verbal-system.md` §7). Definite reference, where needed, is conveyed through other means: the visibility particles handle a substantial portion of the work (see §3.7), with possessives and context filling in elsewhere. A general definite-article system has not re-emerged and is not expected to.
+#### 3.2.1 The recognitional and iterative markers
+
+Two grammaticalized morphemes operate on **deverbal nominals** — a verb's action treated as a noun:
+
+- **Recognitional marker (REC)** — descended from GA *the*. Marks shared-knowledge type reference: "you know the kind." Not a definite article (`verbal-system.md` §7.3). Surface forms: *þ* before consonants, *y* /i/ before etymological vowels, inheriting the GA allomorphy.
+- **Iterative marker (ITER)** — descended from plural *-s*. Adds a repeated-instances reading on top of the type-marking. Surface form: *-ś*.
+
+They stack productively — REC alone gives shared-knowledge type reference; REC + ITER adds iterated instantiation — and are attested together in *þ rishś* "the dishes (you know the chore)." Glossing pattern: REC-stem-ITER. The construction they build with the verbal frames, and the helper-verb syntax it requires, are described at `verbal-system.md` §7 and §12; the etymological-doublet origin (GA *the* → referential *o*, recognitional *þ ~ y*) is at `verbal-system.md` §7.3.
+
+Open questions, scoped to the morphology:
+
+- **Does REC occur without ITER productively?** Bare REC (shared-knowledge type, non-iterative) is predicted licit; examples needed. **[Open]**
+- **Does ITER occur without REC?** Bears on whether the two morphemes are independent or whether ITER requires REC as a host. **[Open]**
+- **Scope of REC and ITER relative to other nominal morphology** (case-like marking, possession). **[Open]**
+
+#### 3.2.2 Definiteness
+
+The GA definite article *the* has not survived as a definite article, and no general definite article has re-emerged. Instead, definiteness is recapitulated across several smaller systems — syntax and pragmatics doing the work GA morphology did:
+
+- **The merged article *o*.** GA *the* (in its referential use) and *a* collapsed into a single article *o*, neutral for definiteness: *Ritm o rhémstwè* "(I) got them the book." Its recognitional sibling *þ ~ y* is the other half of the doublet (§3.2.1).
+- **The definite-object suffix *-et*** (from GA *it*), fused onto the verb, presupposing an already-established referent: *beųheun nou·et* "went ahead and committed it to memory." **[Provisional — distribution to be confirmed]** `[Lexicon: -et pending]`
+- **The visibility particles** (§3.7) carry referent-tracking and shared-reference signaling through a [±VIS] dimension rather than a [±DEFINITE] one.
+- **Dislocated topics are definite.** A topic postposed by right dislocation retains definite coloring even with its visibility particle stripped (§3.7.3).
+
+The result is a definiteness *ecology* rather than a definiteness *category*: no single morpheme answers GA *the*, and learners coming from GA must redistribute its functions across the article, the object suffix, the particles, and topic syntax. **[Provisional as a system statement]**
 
 ### 3.3 Adjectives and Descriptive Modification
 
 Adjective forms inherit largely from GA. Comparative and superlative formation is open. Adjective ordering and stacking conventions are open.
 
+**Adjectival predication** uses the "on the X side" pattern: *aų* X *hii* — attested in *piies aų nibii hii* "it appears on the nippy side." The pattern combines with both volition axes ("going ahead toward the sick side" vs. "got ourselves on the sick side" — deliberate decline vs. happenstance affliction). `[Placeholder: volition-axis examples pending conlang surface forms]` The closing element *hii* is plausibly the regular reflex of GA *side* (/s/ → /h/ debuccalization, /aɪ/ → *ii*, final /d/ elided), which would make it homophonous with the see-particle; an alternative reflex *sii* also appears in working notes. **[Open: analysis of predicative *hii/sii* and its homophony with the see-particle]** Because *hii* carries the phrase-final stress, the adjective itself escapes the usual final-stress pattern. `[New rule needed: adjective stress under the stress-bearing predicative element]`
+
 ### 3.4 Verbs
 
-Verbs carry the greater part of the language's grammatical innovation. The full reference is `verbal-system.md` (sibling document, parallel to `phonology.md` and `orthography.md`); this section is a high-level summary.
+<!-- assemble: verbal-system.md -->
 
-#### 3.4.1 Tense has largely become aspect
-
-The historic present, common in colloquial GA narration, has generalized. Combined with the loss of distinct past-tense morphology in many forms (through sound change collapsing distinctions), the system functions more as an aspectual one than a tense one.
-
-The frame's aspect cells cover habitual, progressive, past, and perfect, with the perfect cell structurally absent on the go-ahead side (see `verbal-system.md` §2.2). Time reference is conveyed lexically (adverbs, time phrases) or contextually rather than by inflection.
-
-#### 3.4.2 The volition system: go-ahead vs. get-oneself
-
-The most distinctive grammatical feature. Every framed verb commits to the subject's relationship to the event, on a contrast between two paradigm sides:
-
-- The **volitional go-ahead** (shorthand: *go-ahead*) — the subject deliberately undertook the event. Compact paradigm: three frame aspect cells, single concord shape. From GA *go ahead and-*.
-- The **non-volitional get-oneself** (shorthand: *get-oneself*) — the subject's relationship to the event is qualified in some way other than straightforward agency. Richer paradigm: four frame aspect cells × two concord shapes (six productive cells, two structurally blocked), hosting four readings — **happenstance** (it simply befell the subject), **effortful self-benefit** (brought about on the subject's own behalf, with effort), **threshold** (on the approach to a tipping point), and **backdrop** (the ongoing scene against which something else happens). From GA *get oneself-*.
-
-The asymmetry — go-ahead small, get-oneself structured — is principled: deliberateness is a single value, while non-straightforward agency fans out into several. The go-ahead frame is incompatible with stative verbs; the get-oneself frame restricts the self-benefit reading but admits the other three for statives.
-
-The contrast cuts the action space differently from GA:
-
-> *I went to bed* (go-ahead) vs. *I fell asleep* (get-oneself, happenstance)
-> *I deliberately bought myself a cake* (get-oneself, self-benefit) vs. *I happened to be eating cake when she walked in* (get-oneself, backdrop)
-
-GA can express all of these, but only by choosing different verbs or adding adverbial material. The conlang grammaticalizes the distinction directly.
-
-For the cell × reading grid, the four readings, the two structurally blocked cells, the three stative-domain strategies (activity-coercion, stimulus-promotion, causative) that handle territory the morphology cannot host, and the open questions about the system's structure, see `verbal-system.md`.
-
-#### 3.4.3 The frame and main-verb concord
-
-The grammaticalized auxiliary unit is the **frame** (technically the light verb complex, LVC), derived from fused GA periphrases and carrying volition, frame aspect, and defective person/number agreement. The main verb takes a **concord affix** showing concordance with the frame; in the get-oneself paradigm, the concord shape (infinitive-shaped vs. progressive-shaped) selects the reading.
-
-Worked example:
-
-> *eu oheun relaxin* — `[Placeholder: main-verb surface form pending]`
+> **Orientation abstract** — canonical content in `verbal-system.md`. This text is copied from that document's Abstract; edit it there, never here.
 >
-> 1SG    go.ahead.LVC.VOL.HAB    relax-CONCORD
-> "I deliberately relax (as a habit)"
-
-For frame morphological status, agreement features, argument structure, concord-affix questions, and fuller assembled clauses, see `verbal-system.md` §4 and §12.
-
-#### 3.4.4 Polarity
-
-A **polarity** dimension (positive vs. negative) operates alongside volition, with negative values grammaticalized from GA *pass on-* (go-ahead negative — declining) and *not quite-* (get-oneself negative — falling short). Productive **nested negation** stacks the markers to derive obligation: "cannot fail to do" → "must do." How polarity distributes over the full cell × reading paradigm is under reconciliation; the discussion lives in `verbal-system.md` §10.
-
-#### 3.4.5 The recognitional-iterative nominal construction
-
-A second grammaticalized construction — independent of the go-ahead/get-oneself paradigm — operates on **deverbal nominals** (a verb's action treated as a noun, GA's gerund territory). The **recognitional marker** (REC, from GA *the*) marks shared-knowledge type reference; the **iterative marker** (ITER, from plural *-s*) adds a repeated-instances reading.
-
-> *{went-ahead-with the-snooze-s}* — `[Placeholder: conlang surface forms pending]`
->
-> go.ahead-AGR=LVC.VOL.PST    with    REC-snooze-ITER
-> "(I) deliberately did the napping-thing (you know the kind, the recurring sort)"
-
-This sits alongside the volition category as one of the language's two flagship grammatical innovations. For full detail, see `verbal-system.md` §7.
+> The verbal system grammaticalizes the subject's relationship to the event: every framed verb commits to either the volitional go-ahead frame (the subject deliberately undertook the event) or the non-volitional get-oneself frame (the subject's relationship to the event is qualified in some other way). The go-ahead side is deliberately compact; the get-oneself side is richer, hosting four readings — happenstance, effortful self-benefit, threshold, and backdrop — selected jointly by frame aspect, concord shape, and the verb's own event structure. The frames do not stand alone: they combine with a pronominal system in which pronouns are aspect carriers, while the language's only tense lives in a small class of matrix particles that scaffold whole clauses with modal meaning. A possession construction derives having, getting, choosing, and giving from frame-plus-nominal combination, with the recognitional-iterative nominal as its deverbal special case; three stative-domain strategies carry the meanings the morphology cannot host. This document is the canonical reference for all of these systems; the verb-lexicon-building methodology lives in its Appendix A.
 
 ### 3.5 Pronouns
 
-The pronominal system is described in `verbal-system.md` §5. Key commitments:
-
-- Two paradigms: **weak (clitic)** pronouns (default subject expression) and **strong (tonic)** pronouns (emphatic, possessive, topic/frame functions).
-- **Pronouns are aspect carriers.** Weak pronouns fuse with aspect, modal, and polarity markers. A noun subject cannot carry these fusions directly — it requires a resumptive weak pronoun via left dislocation.
-- **Agreement asymmetry.** GO-AHEAD (the go-ahead frame) agrees for animacy only; GET-ONESELF (the get-oneself frame) agrees for full person and number.
-- **Weak pronoun fusions:** bare (habitual), imperfect (+be), prospective/conditional (would), ability modal (could), and not-quite negative (habitual and perfective cells). The modal fusions are restricted to pronouns — no nominal-subject modal construction without a resumptive pronoun.
-- **Defectiveness.** 2PL and 3PL are syncretic with their singular counterparts at the modal and negative cells.
-- **Strong pronouns** derive from GA *on [POSS] end* and carry three readings (emphatic, possessive, topic/frame) on a single form.
-- Interrogatives form by intonation; no do-inversion. Yes/no questions add the particle *ea* (from GA *at all*) at clause end. **[Provisional]**
-- Pro-drop conditions and the WERE-based irrealis particle are **[Open]**.
-
-Animacy distinctions are committed for the weak pronoun paradigm (animate vs. inanimate at 3SG, with inanimate restricted to 3SG.INANIM). Politeness distinctions are not yet committed.
+The pronominal system's canonical home is `verbal-system.md` §5: pronouns are aspect carriers — fusing aspect, modality, and negation — in weak (clitic) and strong (tonic) paradigms, with left dislocation and a resumptive pronoun as the route by which full noun phrases reach the system. No further content is held here; the §3.4 assembly directive covers the whole verbal-system document.
 
 ### 3.6 Adpositions and Spatial Language
 
 Many GA prepositions have phonologically fused with their hosts and are on a path toward case-like behavior. The full system remains open.
 
-A specific case worth flagging: *with* in the frame's complement structure (see §3.4.5's example) appears to have grammaticalized from a preposition into a verbal-complementizer-like role. Whether this generalizes to other prepositions, and whether a productive case-like system emerges, is **[Open]**.
+A specific case worth flagging: *with* in the frame's complement structure (see `verbal-system.md` §12) appears to have grammaticalized from a preposition into a verbal-complementizer-like role. Whether this generalizes to other prepositions, and whether a productive case-like system emerges, is **[Open]**.
 
 ### 3.7 Demonstratives and topic particles
 
 The conlang has a closed set of two **visibility particles**, grammaticalized from the imperatives of GA *see* and *know*: the **see-particle** and the **know-particle**. They mark a fronted topic constituent for a [±VIS] feature, where VIS encodes presence and perceptibility while NVIS covers absent, abstract, generic, and discourse-given referents.
 
-This is the second of the language's flagged grammatical innovations on the nominal/discourse side, alongside the recognitional-iterative nominal (§3.4.5). The two systems are orthogonal: REC/ITER is verbal-system morphology operating on deverbal nominals, while the visibility particles are pure information-structure marking on any topic constituent. They can co-occur on the same noun phrase without interaction.
+This is the second of the language's flagged grammatical innovations on the nominal/discourse side, alongside the recognitional-iterative nominal (`verbal-system.md` §7). The two systems are orthogonal: REC/ITER is verbal-system morphology operating on deverbal nominals, while the visibility particles are pure information-structure marking on any topic constituent. They can co-occur on the same noun phrase without interaction.
 
 #### 3.7.1 Inventory and forms
 
@@ -199,6 +138,8 @@ The particles are **fossilized**: not verbs, not imperatives, not inflecting. Th
 | **Know-particle** (absent, abstract, generic) | NVIS | *no* /no/ | *nou* /noː/ | *noho* /noho/ |
 
 The bare form occurs before article-less nominals (proper nouns, pronouns, bare nouns where no article would have been present). The article-incorporating form occurs before what was historically an article-bearing nominal. The clausal form introduces a clausal topic.
+
+The know-particle is homophonous with the **know-that matrix particle** (`verbal-system.md` §11) but syntactically distinct: matrix *no* takes a noun phrase or a full clause and yields a complete sentence, while topic *no/noho* raises a topic the listener expects elaborated. The two can co-occur — *No Báuyà, no Báuyà* "You know Báuyà? (Well,) I know Báuyà" — topic first, assertion second.
 
 > *Origin.* The GA article *the/a* reduced to schwa in pre-conlang colloquial speech and cliticized onto the preceding particle, where it was absorbed as length (and, for *hii*, as a quality-shifted second mora); the article did not survive as an independent morpheme, and this alternation is its only grammatical residue. The clausal forms arose from fusion with GA *how* (*know how Christmas is coming up*, *see how the americano is steaming*); the fused form is a single unit, unrelated to the article-incorporation pattern. Etymological notes on the individual forms: *no* /no/ < GA *know* /noʊ/ shows shortening below the regular /oʊ/ → /oː/ reflex, attributable to high-frequency function-word reduction (parallel to the reduction of GA *the* itself). *hii* /hi/ < GA *see* /siː/ shows regular /s/ → /h/ debuccalization (`phonology.md` §4.1) and the GA-/iː/-as-gliding-/i/ pattern (`orthography.md` §3.3). *hiie* /hiɛ/ shows /i/-fronting of the absorbed schwa to /ɛ/; the orthographic shape is the first attestation of a diphthongal long vowel (`orthography.md` §3.3). *noho* and *hiho* preserve the /h/ of GA *how*, which was a strong onset-/h/ of a stressed syllable at the time of fusion.
 
@@ -238,23 +179,25 @@ Pragmatic extensions of the know-particle toward "discourse-given" / "as-we've-b
 
 #### 3.7.3 Syntax and scope
 
-- **Position:** strictly clause-initial. The particle precedes the topic constituent, which precedes the comment.
+- **Position:** strictly clause-initial. The particle precedes the topic constituent, which precedes the comment — and the whole topic phrase precedes any matrix particle: **topic particle > matrix particle > clause** (`verbal-system.md` §11.3).
 - **Scope:** marks a single topic constituent — a noun phrase or a clause (the latter via the clausal forms *noho*/*hiho*).
 - **Stacking:** multiple topic-particle phrases in sequence are licensed, allowing chained topics with mixed visibility (*hiie* X, *no* Y, ...). Worked examples await further data.
 - **Negation, questioning, embedding:** the particles do not combine with negation, do not occur in questions, and do not embed under matrix predicates. They are root-clause information-structure marking.
+- **Right periphery:** the particles are **left-periphery-only**. A topic postposed after the clause (right dislocation) cannot carry a visibility particle; it is tagged instead with the strong-pronoun *on-X-end* phrase and retains definite coloring (`verbal-system.md` §5.4). **[Provisional — wants worked conlang examples]**
 - **Topic discontinuity:** whether the topic constituent can be discontinuous (split between particle and comment by intervening material) is **[Open]**.
 
 #### 3.7.4 Interaction with other systems
 
-- **Recognitional-iterative nominal (§3.4.5):** orthogonal. A topic constituent can independently bear REC and/or ITER on a deverbal nominal head. The particles do not select for or block them.
-- **Volition (§3.4.2):** orthogonal. Topic-particle marking is on the topic noun phrase or clause, not on the predicate; volition is on the predicate's frame. They co-occur freely.
-- **Definiteness:** the visibility particles handle a substantial portion of what GA conveys with the definite article — referent-tracking and shared-reference signaling — but through a [±VIS] dimension rather than a [±DEFINITE] one. The conlang has no definite article and is not expected to develop one.
+- **Recognitional-iterative nominal (`verbal-system.md` §7):** orthogonal. A topic constituent can independently bear REC and/or ITER on a deverbal nominal head. The particles do not select for or block them.
+- **Volition (`verbal-system.md` §2–3):** orthogonal. Topic-particle marking is on the topic noun phrase or clause, not on the predicate; volition is on the predicate's frame. They co-occur freely.
+- **Definiteness:** the visibility particles handle a substantial portion of what GA conveys with the definite article — referent-tracking and shared-reference signaling — but through a [±VIS] dimension rather than a [±DEFINITE] one. The conlang has no definite article and is not expected to develop one; the wider ecology is §3.2.2.
+- **Matrix particles (`verbal-system.md` §11):** the topic phrase precedes the matrix particle, and under the appears particle the choice of visibility particle carries an **evidential division of labor** — *hiie ossii, piies aų nibii hii* "look at the outside — it *looks* nippy" (perceptible evidence) versus *nou ossii, piies aų nibii hii* "you know the outside — it *seems* nippy" (non-perceptible evidence). The GA *look*/*seem* contrast survives as particle choice rather than as two verbs.
 
 #### 3.7.5 Origin
 
 The grammaticalization path *imperative-of-perception-verb → demonstrative / topic particle* is well-attested cross-linguistically (Latin *ecce*, French *voici/voilà*, similar uses in Mandarin and elsewhere). The visibility distinction is also typologically standard for demonstrative systems with deictic-perceptual marking.
 
-The recruitment of GA *know* into the particle system, rather than into the verbal lexicon, has a side effect on the verb side: the canonical GA stative *know* is not expected to survive as a lexical verb. The lexical-stative gap left behind will be filled by other strategies — most likely the activity-coercion or stimulus-promotion routes from `verbal-system.md` §6, or possibly a *rhiiynii*-class bare stative entry. The decision is deferred (§3.7.7).
+The recruitment of GA *know* into the particle system, rather than into the verbal lexicon, had a side effect on the verb side: the canonical GA stative *know* did not survive as a lexical verb. The gap is filled not by a stative strategy but by a **second, independent grammaticalization of the same etymon** — the know-that matrix particle (`verbal-system.md` §11), which covers both know-that (full clause) and know-person/thing (noun phrase) with one device. GA *know* thus grammaticalized twice, into the topic layer and the matrix layer, and survives as a verb in neither.
 
 #### 3.7.6 Glossing
 
@@ -270,9 +213,23 @@ A separate `TOP` gloss is not used: these particles are inherently topic-marking
 - **Pragmatic know-particle extensions.** Discourse-given vs. discourse-new readings, expected to develop but not yet committed.
 - **Stacking patterns.** Worked examples needed to determine whether mixed-visibility chained topics are pragmatically natural and what the ordering constraints are.
 - **Topic discontinuity.** Whether material can intervene between the particle-marked topic and the comment.
-- **The verb-side gap.** What strategy fills the *know*-as-stative gap on the verb side. Tied to the broader stative-domain recruitment plan in `verbal-system.md` §6 and §A.3.
 - **Phonemic status of medial /h/.** See `orthography.md` §6 history and `phonology.md` §2.3. Bears on whether *noho* / *hiho* need disambiguating notation.
 - **Clausal-form productivity.** Whether *noho* and *hiho* are the only fused-with-*how* clausal particles, or whether further fusions (with *what*, *that*, etc.) might exist or develop.
+
+### 3.8 Connective particles
+
+A small inventory of discourse connectives has grammaticalized from the perception/attention verbs of the *nouś/not* convergent pair fused with GA *though* and *how* — the same fusion pattern that produced the clausal topic forms *noho/hiho* (§3.7.1):
+
+| Particle | GA source | Function |
+|---|---|---|
+| *notto* | *note though* | adversative — "but, mind you" |
+| *nousso* | *notice though* | additive — "furthermore, and notice" |
+| *not·ho* | *note how* | presentative — "voilà, there you have it" |
+| *nousso* | *notice how* | presentative for new, small, or hard-to-perceive referents |
+
+The two *nousso* are homophones from distinct fusions; context and what follows (clause vs. referent) disambiguate. **[Provisional — inventory expected to grow]** `[Lexicon: notto, nousso (×2), not·ho pending]` `[New rule needed: intervocalic glottal stop in notto]`
+
+> *Origin.* The path parallels §3.7.5: high-frequency perception verbs grammaticalize into discourse particles. Where the visibility particles fossilized imperatives, the connectives fossilize whole hedging collocations (*note though …*), preserving the convergent pair's two stems in their frozen forms.
 
 ---
 
@@ -282,7 +239,8 @@ Largely deferred. Working assumptions:
 
 - Word order is broadly SVO, inherited from GA, but topic-prominent fronting may be more common than in GA.
 - Question formation beyond yes/no (see `verbal-system.md` §5.5), relative clauses, and complement clauses are open.
-- The interaction of volition marking with subordinate clauses is a question of particular interest — does an embedded verb inherit volition from the matrix, or carry its own? **[Open]**
+- The interaction of volition marking with subordinate clauses is a question of particular interest — does an embedded verb inherit volition from the matrix, or carry its own? **[Open]** First adjacent data: a clause scaffolded by the end-up matrix particle keeps its own frame but surrenders its **aspect** to the particle's government (`verbal-system.md` §11.3).
+- **Periphery asymmetry:** left dislocation is marked with a visibility particle; right dislocation strips it and is tagged with the strong-pronoun *on-X-end* phrase (§3.7.3; `verbal-system.md` §5.4). **[Provisional]**
 - The argument structure of the frame: bare-nominal complements vs. preposition-mediated complements. **[Open]** See `verbal-system.md` §4.1.
 
 ---
@@ -324,11 +282,11 @@ The conlang is spoken by anthropomorphic-animal residents of a planet. Their cul
 
 ## 6. Sample Forms
 
-A small handful of attested derivations to anchor the system. See `dictionary.md` for the full record and `phonology.md` §4.5 for the worked-derivation tables.
+A small handful of attested derivations to anchor the system — **illustrative only**: the canonical records are `dictionary.md` and the `phonology.md` §4.5 worked-derivation tables, and this table is regenerated from them rather than maintained independently.
 
 | GA etymon | Conlang | Gloss | Notes |
 |---|---|---|---|
-| *sodium* | *hoiom* | "salt" | /s/ → /h/; intervocalic /d/ elision; resulting hiatus |
+| *sodium* | *hoiiǫ* | "salt" | /s/ → /h/; intervocalic /d/ elision; labial /m/ colors schwa to /o/, then elides leaving nasalization |
 | *countenance* | *hoʔnʔnts* | "face" | Heavy schwa elision; prosodic appendix with multiple syllabic-consonant nuclei |
 | *Rochester* | *ritsstw* | (toponym) | /st/ → /ts/; vowel elision; appendix /w̩/ |
 | *carrot* | *ŕeut* | "carrot" | M1 rhotic metathesis; /h/ as devoicing feature on tap |
@@ -342,15 +300,15 @@ A small handful of attested derivations to anchor the system. See `dictionary.md
 
 Areas where the grammar is not yet committed:
 
-- **Phonemic vs. allophonic status** of /ɪ~ɨ/, /ɑ~ɔ/, nasalization, breathy voice; **pitch contrastiveness** (placement is settled).
+- **Pitch contrastiveness** (placement is settled); the `phonology.md` §5 backlog, including the /ai/ conditioning bucket and the compound-junction rules.
 - **Number marking** and basic noun morphology. **Politeness register** and greeting forms. **Numerals.**
 - **Adjective system**, ordering, and modification.
 - **Locative/directional case-like marking**; **motion verb morphology.**
-- **Imperatives** and sequential connectives.
-- **Possession**, **relative-clause-like constructions**, **descriptive extension.**
+- **Imperatives**; sequential connectives (a first connective inventory is at §3.8; sequencing/then-words remain open).
+- **Nominal possession marking** (predicative possession is settled — `verbal-system.md` §12), **relative-clause-like constructions**, **descriptive extension.**
 - **Aspect system** in extended discourse.
 - **Volition paradigm refinement** (reading-inventory unification, self-benefit billing, stative-strategy frequency); **polarity reconciliation** with the cell × reading structure; **concord affix inventory and surface forms**; **frame argument structure**; **nested negation glossing convention**. See `verbal-system.md` §9 and §10.
-- **Surface forms of REC and ITER**, and of the concord endings — the highest-priority example gaps (`verbal-system.md` §4.2, §7.1, §12).
+- **Surface forms of the concord endings** — the highest-priority example gap (`verbal-system.md` §4.2, §14).
 - **Written register**, formal vs. casual contrasts.
 
 Each commitment, once made, is recorded in the affected document's §"Versioning Notes" entry with date and reasoning, and its consequences are propagated through the lexicon engine.
@@ -363,10 +321,10 @@ This document is a living specification, refined as design proceeds and explicit
 
 The project's current document set:
 
-- **`language_reference.md`** (this document) — top-level descriptive grammar. Carries the design philosophy, a phonology summary, the morphology-and-syntax-and-lexicon framework, and high-level summaries pointing at sibling documents.
+- **`language_reference.md`** (this document) — top-level descriptive grammar. Carries the front matter, the design philosophy, orientation stubs for the sibling documents, and canonical content for topics without a sibling (nominal morphology, syntax, the lexicon framework, the visibility particles).
 - **`phonology.md`** — full phonological reference. Inventory, sound-change rules, derivational cascade, metrical analysis.
 - **`orthography.md`** — full orthographic reference. Diacritic conventions, length and gemination conventions, pitch and nasalization placement.
-- **`verbal-system.md`** — full reference for the verbal system. Go-ahead and get-oneself paradigms and frame forms (§2–§4); the pronominal system (§5); stative-domain strategies (§6); recognitional-iterative nominal (§7); verbs and the verbal system (§8); open questions (§9); polarity and negation (§10); mood (§11); assembled clauses (§12); verb-lexicon methodology (Appendix A).
+- **`verbal-system.md`** — full reference for the verbal system. Go-ahead and get-oneself paradigms and frame forms (§2–§4); the pronominal system (§5); stative-domain strategies (§6); recognitional-iterative nominal (§7); verbs and the verbal system (§8); open questions (§9); polarity and negation (§10); matrix particles (§11); possession construction (§12); mood (§13); assembled clauses (§14); verb-lexicon methodology (Appendix A).
 - **`terminology-registry.md`** — canonical registry of descriptive terminology: each term's shorthand, gloss tag, plain-language definition, status, and full naming history.
 - **`dictionary.md`** — the lexicon, with per-entry sound-change derivations and a running changelog.
 - **`skills/dictionary-updater.md`** — the procedure for adding dictionary entries. Invoked with "Let's update the dictionary"; see `CLAUDE.md` "Skills."
@@ -382,7 +340,18 @@ The project's current document set:
 
 ## 9. Versioning Notes
 
+### v3.2, June 2026 — nominal and discourse integration (Session L)
+
+**§3.2** gains §3.2.1 (REC/ITER morphology — canonical home migrated from `verbal-system.md` §7.1/§7.4 per the demotion decision; surface forms *þ ~ y*, *-ś*; the three morphology-scoped open questions travel with it) and §3.2.2 (the definiteness ecology: merged article *o*, definite-object suffix *-et* [Provisional], visibility-particle givenness, definite coloring of dislocated topics). Possession bullet gains attested-items flags; distributive *-au* flagged. **§3.3** gains the *aų* X *hii* adjectival-predication pattern with the *hii* < *side* analysis flagged [Open] and the adjective-stress rule flagged for phonology. **§3.7**: homophony note for the know-that matrix particle (3.7.1); topic > matrix particle ordering and the right-periphery restriction (3.7.3); matrix-particle interaction bullet with the evidential division of labor (3.7.4); the verb-side *know* gap **closed** in 3.7.5 (filled by the know-that matrix particle — GA *know* grammaticalized twice and survives as a verb in neither layer) and removed from 3.7.7. **New §3.8** connective particles (*notto*, *nousso* ×2, *not·ho*). **§4** gains the periphery asymmetry and the matrix-government data point. §3.1, §3.6 pointers updated; §7 list adjusted (connectives, possession). Spin-out to `nominal-system.md` deliberately **not** executed: §3's own trigger ("the noun-side subsections reach maturity together") is unmet — possession, case, and plurals remain open. Sources: 2026-06-10 translation exercise; `phase4-triage-2026-06.md` §3; verbal-system v2.1.
+
+### v3.1, June 2026 — cross-reference sweep for verbal-system v2.1
+
+Cross-references to `verbal-system.md` updated for its v2.1 renumbering (former §11–§14 → §13–§16, accommodating new §11 The matrix particles and §12 The possession construction): §7 open-questions list (REC/ITER surface-form gap removed — closed by verbal-system v2.1; concord-endings gap retained), §8 document list, §9 prior-note pointer (§14 → §16). The §3.4 stub regenerated by re-copying the revised verbal-system Abstract (which the source document had lost while the stub retained the v2 copy — drift incident recorded in verbal-system v2.1). The REC/ITER morphology migration remains with the nominal-side session.
+
+
 ### v3, June 2026 — conformance pass: house-style canon and terminology registry adopted
+
+**Stub-abstract model adopted (second pass on this draft, user decision June 2026).** §2 (retitled "Phonology and Orthography") and §3.4 converted from hand-maintained summaries to generated stubs — an assembly directive plus a copy of the sibling document's new Abstract; §3.5 converted to a plain pointer stub (the §3.4 directive covers `verbal-system.md` §5). Internal references into the removed §2.x/§3.4.x subsections retargeted at the siblings. §6 marked illustrative-only. The model is specified in skill v1.1 §1.5; the assembly script is pending.
 
 **Front matter added.** A new unnumbered "How to read this document set" section consolidates the reading apparatus (etymon convention, status tags, four-line example format, gloss-tag channel, registry pointer, mora paraphrase, analytical-note convention). Section numbering is unchanged.
 
@@ -395,6 +364,8 @@ The project's current document set:
 **Examples and flags.** GA-calque examples flagged `[Placeholder: …]` throughout (§3.4.3, §3.4.5, §3.7.2). New [Open] flags: example plural pairs (§3.2); REC/ITER and concord surface forms promoted into §7 as the highest-priority example gaps. §3.4.3's worked example upgraded to use the attested pronoun and frame forms.
 
 **§8 document set updated.** Added `terminology-registry.md` and `skills/reference-grammar-section-drafting-and-integration.md`; `verbal-system.md` entry updated to its v2 section layout; superseded-documents entry simplified to point at the registry.
+
+**Staleness repairs.** §2.1, §2.4, and §7 updated to reflect the `phonology.md` v2.3 closures (single phonemes /ɪ/ and /ɑ/ with [ɨ]/[ɔ] allophones; nasalization phonemic; breathy voice allophonic) that the v2.x summaries had not absorbed; the *sodium* headword updated from stale *hoiom* to the committed *hoiiǫ* /ˈhoiõ/ in §2.2 and §6.
 
 **Cross-references.** `verbal-system.md` §A.3 references updated to §6/§A.3 per that document's v2; §3.7.5's strategy pointer now cites §6. No section renumbering in either document.
 
@@ -452,7 +423,7 @@ The project's current document set:
 
 **§3.4 Verbs trimmed to high-level summary.** Five subsections (§3.4.1–§3.4.5): tense-as-aspect; the volition system; the LVC and concord; polarity (new flag); the recognitional-habitual nominal. The verb-volition typology, deverbal nominal layer, and mood subsection from v2 §3.4 moved to `verbal-system.md`.
 
-**Terminology shift: involitive → non-volitive.** The v2 document used *involitive* (sourced from Sinhala) as the marked term opposite *volitive*. The May 2026 verbal-system-description session worked with *modulated* as a positively-named alternative. v2.1 adopts *non-volitive* — privatively named for readability, with the principled-asymmetry argument preserved in prose framing rather than encoded in the term. See `verbal-system.md` §14 for the full terminology history.
+**Terminology shift: involitive → non-volitive.** The v2 document used *involitive* (sourced from Sinhala) as the marked term opposite *volitive*. The May 2026 verbal-system-description session worked with *modulated* as a positively-named alternative. v2.1 adopts *non-volitive* — privatively named for readability, with the principled-asymmetry argument preserved in prose framing rather than encoded in the term. See `verbal-system.md` §16 for the full terminology history.
 
 **Polarity preserved with reconciliation flag.** v2 §3.4.2 had a four-cell VOL/INVOL × POS/NEG grid as the central organizing structure. In v2.1, polarity is preserved as a separate grammatical dimension (§3.4.4) but flagged as needing reconciliation with the cell × sub-modality structure described in `verbal-system.md`. The polarity discussion proper lives in `verbal-system.md` §10.
 

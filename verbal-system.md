@@ -1,7 +1,9 @@
 # The Verbal System
 
-**Version:** v2 (June 2026)
-**Status:** Sibling reference document, parallel to `phonology.md` and `orthography.md`. The language reference's §3.4 is a high-level summary that points here. Supersession history: §14.
+**Version:** v2.1 (June 2026)
+**Status:** Sibling reference document, parallel to `phonology.md` and `orthography.md`. The language reference's §3.4 is a high-level summary that points here. Supersession history: §16.
+
+**Abstract.** The verbal system grammaticalizes the subject's relationship to the event: every framed verb commits to either the volitional go-ahead frame (the subject deliberately undertook the event) or the non-volitional get-oneself frame (the subject's relationship to the event is qualified in some other way). The go-ahead side is deliberately compact; the get-oneself side is richer, hosting four readings — happenstance, effortful self-benefit, threshold, and backdrop — selected jointly by frame aspect, concord shape, and the verb's own event structure. The frames do not stand alone: they combine with a pronominal system in which pronouns are aspect carriers, while the language's only tense lives in a small class of matrix particles that scaffold whole clauses with modal meaning. A possession construction derives having, getting, choosing, and giving from frame-plus-nominal combination, with the recognitional-iterative nominal as its deverbal special case; three stative-domain strategies carry the meanings the morphology cannot host. This document is the canonical reference for all of these systems; the verb-lexicon-building methodology lives in its Appendix A.
 
 This document describes the verbal system as it currently stands. Where a question is open, it is flagged; the document does not commit to interpretations the data has not yet supported.
 
@@ -20,7 +22,7 @@ The contrast cuts the action space differently from GA. The attested verb *beuss
 
 The two sides are asymmetric, and the asymmetry is principled rather than accidental. Deliberateness is a single semantic value, so the go-ahead side does one thing and has a compact paradigm: three frame aspect cells, one concord shape. Non-straightforward agency fans out into several distinct values, so the get-oneself side has a richer paradigm — four frame aspect cells crossed with two concord shapes, hosting four **readings**: **happenstance** (it simply befell the subject), **effortful self-benefit** (the subject brought it about on their own behalf, with effort), **threshold** (the subject is on the approach to a tipping point), and **backdrop** (the activity is the ongoing scene against which something else happens). A useful way to hold the whole system: the go-ahead is the unmarked default — "the subject just did it" — and the get-oneself paradigm carries everything else the language wants to say about how an event and its subject relate.
 
-Two further resources extend the system beyond the paradigm proper. When the meaning to be expressed is a state rather than an event, speakers reach for one of three **stative-domain strategies** (§6). And a separate grammaticalized construction — the **recognitional-iterative nominal** (§7) — operates not on verbs but on deverbal nominals, marking shared-knowledge type reference and iteration.
+Three further resources extend the system beyond the paradigm proper. When the meaning to be expressed is a state rather than an event, speakers reach for one of three **stative-domain strategies** (§6). The frames combine directly with nominals in the **possession construction** (§12), which covers having, getting, choosing, and giving; its deverbal special case is the **recognitional-iterative nominal** (§7), marking shared-knowledge type reference and iteration. And above the clause sits a small class of **matrix particles** (§11) — the only tense-bearing elements in the language — which scaffold the clause with modal meaning: that it merely ended up so, that the speaker knows it, needs it, or that it appears so.
 
 > *Analytical note.* The paradigm-side names, the reading names, and their full naming history (including the retired terms *volitive*, *involitive*, *modulated*, *non-volitive*, and the abbreviations PH/AB/INC/PS) are maintained in `terminology-registry.md`. Prose here uses the registry's canonical terms; interlinear glosses use its compact gloss tags.
 
@@ -55,9 +57,11 @@ The GO-AHEAD frame agrees for animacy at the habitual cell only; all other cells
 | Frame aspect | Animacy restriction | GA source | Conlang form |
 |---|---|---|---|
 | Habitual | Animate (all persons/numbers) | *go ahead and* | *oheun* |
-| Habitual | Inanimate (3SG.INANIM only) | *goes ahead and* | *ośeun* |
+| Habitual | Inanimate (3SG.INANIM only) | *goes ahead and* | *osoheun* |
 | Imperfect/progressive | — | *(I'm) going ahead and* | *ounoheun* |
 | Past | — | *went ahead and* | *beųheun* |
+
+**[Open: animate habitual form — the table's *oheun* parallels *osoheun* exactly (the *goes* sibilant infixed), but a 2026-06-10 correction note reads *ouhen*; confirm one spelling before the next paradigm sweep]**
 
 The habitual cell covers both habitual and timeless/general statements. The imperfect form *ounoheun* is the bare gerund shape of the frame; in this construction the pronoun carries the +be fusion (§5.2). The past cell is the preterite *went ahead and*, not a grammatical perfect (which is structurally absent — §2.2).
 
@@ -141,7 +145,7 @@ Open questions about the frame's grammar:
 
 - **Morphological status** — clitic, affix, separate word, compound element. The term is neutral on this; orthography and syntax decisions will force the question. **[Open]**
 - **Agreement features** — what exactly is agreed with: subject, event, both? "Defective person/number agreement" — agreement that is real but does not distinguish every person/number combination — is the working description; the locus needs analysis. **[Open]**
-- **Argument structure** — can the frame take nominal complements directly, or always mediated by a preposition? See §7.2 on the *with*-mediated complement pattern. **[Open]**
+- **Argument structure** — can the frame take nominal complements directly, or always mediated by a preposition? See §12 (The possession construction) for the *with*-mediation facts. **[Open]**
 
 ### 4.2 Concord
 
@@ -151,14 +155,45 @@ The surface forms of the concord endings have not yet been tabulated; the progre
 
 > *Analytical note.* The term *concord affix* commits only to the agreement function — the most stable of the three effects originally observed (agreement with the frame, interaction with the verb's event structure, pragmatic-salience effects). If the latter two prove to do independent grammatical work, the term may be revisited; candidate replacements and the noncommittal fallback *stem extensions* are held in `terminology-registry.md`.
 
+A third shape is attested: the **passive-shaped concord**, patterned on the GA passive participle.
+
+> *Rimmase spli·oþw.*
+> /—/ `[Placeholder: IPA pending phonology pass]`
+> 1SG.LVC.NVOL.PST split-CONCORD
+> "I drifted off / I got split off (from the group)."
+
+The passive shape fills a gap the other two cannot: it delivers a completed event under the get-oneself frame without the threshold coloring of the infinitive shape and without the imperfect aspect of the progressive shape. The same stem across all three shapes:
+
+- *Rimmase spli·oþw* — passive-shaped: completed, happenstance. The natural rendering of "I drifted off."
+- *Rimmase splitnoþw* — progressive-shaped: imperfect; wrong aspect for a completed departure.
+- *Rimmaseto splitoþw* — infinitive-shaped: right aspect, but threshold-colored — the splitting off took effort.
+
+> *Analytical note.* In the discovery example the passive shape is conflated with the separative satellite *oþw* (§12 Interactions; `terminology-registry.md`), because GA *split* has a zero-marked participle — all the visible material belongs to the satellite. Disambiguating the shape from the satellite needs a verb with overt participle morphology (a *got myself taken-* class form). **[Open: passive-shaped concord — confirm with an overt-participle stem]**
+
+**Readings are compositional.** Translation data show that the reading a clause receives is not a property of a paradigm cell alone: it is the joint product of **frame aspect × concord shape × the stem's own event structure**, with the matrix particles (§11) available as a further scaffolding layer when the bare frame under-delivers. Three regularities recur:
+
+1. The threshold reading tracks **prospectivity**, surfacing wherever the infinitive shape meets an effortful stem — including past cells (*Rimmaseto splitoþw* above).
+2. Beginning-readings ("first noticing," onsets) are intrinsically **imperfect**: available only where the frame aspect supplies ongoing time, never from a perfective cell.
+3. Stems whose GA source is lexically volitional resist the happenstance reading bare, and take the get-oneself frame only with scaffolding — a satellite supplying a befall-able event shape, or a matrix particle supplying the happenstance from above (*Enniip remmaseto split* "I ended up leaving").
+
+This is direct evidence on the concord term's standing question: the stem's event structure does grammatical work alongside the shape contrast. The term remains **[Provisional]** on exactly this point. **[Open: concord-affix surface inventory — unchanged; the compositional findings sharpen what the inventory must capture]**
+
+#### 4.2.1 Irregular concord
+
+A small set of verbs preserves GA irregular (strong-verb) morphology in the concord slot where the regular derivation predicts the *-t(t)-* infix: *meirtt* (from GA *made it*) where regular *meiktt* plus the infix is expected. Same stem, unexpected exponent — inherited irregularity, not suppletion (`terminology-registry.md`). `[Lexicon: meiktt / concord meirtt not yet entered]` **[Open: irregular-concord inventory — collect members as the dictionary grows]**
+
+#### 4.2.2 Concord under suffixation
+
+Concord and incorporated material interact morphophonologically: the *-t(t)-* infix surfaces inside particle-incorporating stems (*pikborrô* ~ *piknib·orrô* across frames), and coda material can resurface intervocalically under vowel-initial concord (*bemmorret* ~ *bemmorreųt*). The alternations are attested but not yet standardized. **[Open: concord-suffixation morphophonology]** `[New rule needed: coda-rhotic resurfacing under vowel-initial suffixation]`
+
 ### 4.3 Worked example
 
-> *eu oheun relaxin* — `[Placeholder: main-verb surface form pending dictionary derivation]`
+> *e oheun relaxin* — `[Placeholder: main-verb surface form pending dictionary derivation]`
 >
 > 1SG    go.ahead.LVC.VOL.HAB    relax-CONCORD
 > "I deliberately relax (as a habit)"
 
-The frame *oheun* carries the volition and the frame aspect (habitual); the main verb carries the progressive-shaped concord. The pronoun and frame forms are attested (§2.4, §5.2); the main verb is a placeholder. For fuller assembled clauses, see §12.
+The frame *oheun* carries the volition and the frame aspect (habitual); the main verb carries the progressive-shaped concord. The pronoun and frame forms are attested (§2.4, §5.2); the main verb is a placeholder. For fuller assembled clauses, see §14 (A clause, assembled).
 
 ---
 
@@ -185,18 +220,20 @@ Weak pronouns are the default subject expression. They are phonologically reduce
 
 | Person | Animate | Inanimate |
 |---|---|---|
-| 1SG | *eu* | — |
+| 1SG | *e* | — |
 | 2SG | *rhi* | — |
 | 3SG | *ey* | *e* |
 | 1PL | *rhii* | — |
 | 2PL | *rhiau* | — |
 | 3PL | *eiau* | — |
 
+1SG *e* is syncretic with inanimate 3SG *e* in the bare series — the same 1SG/3SG.INANIM syncretism the prospective and ability series already show (*ew*, *ekw*). The 1SG form is irregular for its GA source (weak pronouns are always unstressed). **[Settled]**
+
 **Imperfect/progressive (+be fusion):**
 
 | Person | Animate | Inanimate |
 |---|---|---|
-| 1SG | *eum* | — |
+| 1SG | *em* | — |
 | 2SG | *rhia* | — |
 | 3SG | *eiia* | *eś* |
 | 1PL | *rhiia* | — |
@@ -285,11 +322,13 @@ The GA source phrase had three pragmatic uses that survive as the strong pronoun
 
 The three readings are not homonymy: context selects the reading. Strong pronouns do not carry aspect fusions; they set a discourse frame that the clause's weak pronoun and frame fill in. 2PL and 3PL are syncretic with their singular counterparts, the plural reading supplied by context or an overt plural NP. **[Provisional — GA source for 2PL is variable (*y'all's end* vs. *your all's end*); confirm]**
 
+A fourth use is **antitopic tagging**: a strong pronoun tags a topic postposed after the clause (right dislocation — §5.4), and the same strong-pronoun phrases serve as boundary markers between layers in stacked matrix-particle constructions (§11). **[Provisional]**
+
 ### 5.4 Left dislocation and resumptive pronouns
 
 Full NPs **cannot** directly take the aspect, modal, or negation fusions that weak pronouns carry. When a full NP is the discourse subject, the construction uses **left dislocation with a resumptive weak pronoun** — the NP sits outside the clause as a topic, and a weak pronoun inside the clause refers back to it and carries the fusion:
 
-> *the coffee — eu oheun drinkin* — `[Placeholder: NP and main-verb surface forms pending]`
+> *the coffee — e oheun drinkin* — `[Placeholder: NP and main-verb surface forms pending]`
 >
 > coffee.TOP    1SG    go.ahead.LVC.VOL.HAB    drink-CONCORD
 > "the coffee — I go ahead and drink (it)"
@@ -300,17 +339,21 @@ A consequence for clause architecture: the pronominal paradigm is not peripheral
 
 Whether the weak pronoun can be omitted when its referent is inferrable is **[Open]** — see §5.6.
 
+**Right dislocation.** A topic can also be postposed after the clause, with definite coloring retained — but the two peripheries are asymmetrically marked. A left-dislocated topic carries a visibility particle; a right-dislocated topic strips it and is tagged instead with the strong-pronoun *on-X-end* phrase (§5.3). The visibility contrast is a left-periphery-only phenomenon. **[Provisional — wants worked conlang examples]** `[Placeholder: right-dislocation example pending — GA pattern: "they went ahead and split, Mark, on their end"]` The full information-structure description is the language reference's responsibility (`language_reference.md`, nominal and discourse sections).
+
 ### 5.5 Interrogative: intonation and *ea* **[Provisional]**
 
 Interrogative constructions use the **same pronominal form as the indicative**, distinguished by intonation. **There is no do-inversion.**
 
 Yes/no questions add the particle *ea* (from GA *at all*) at the end of the clause:
 
-> *eu oheun... ea?*
+> *e oheun... ea?*
 > 1SG go.ahead.LVC.VOL.HAB ... Q
 > "Am I going ahead and...?"
 
 *Ea* marks the proposition as presented for binary verification — *is it the case at all that X?* The "at all" source semantics are preserved: genuine yes/no verification, not rhetorical or presupposing framing.
+
+*Ea* also marks **conditionals** — "if … at all" — placing a clause under hypothetical rather than interrogative verification. `[Placeholder: conditional example pending]` It applies to matrix-scaffolded clauses as to any other (§11). **[Provisional]**
 
 Content questions (who, what, where, when, why) are formed differently and are not yet systematized. **[Open]**
 
@@ -362,7 +405,11 @@ The causative externalizes the trigger as an agent acting on the experiencer, wh
 
 The causative requires an action-host main verb, since *get X to V* selects for an action. It is therefore parasitic on activity-coercion at the verb-choice level: the speaker still has to pick an externalizable activity correlate of the internal state. The two strategies are often deployed together.
 
-### 6.4 Open structural questions about the strategies
+### 6.4 Idiom-level frame blocking
+
+At least one idiom blocks the volitional axis as a unit even though its parts do not. The negated-possession idiom *oo riuś* "out of juice" (≈ tired, depleted) accepts the get-oneself frame (*Rimmase oo riuś* "I got worn out"), the become-verb (*Beń oo riuś*), bare predication (*Au oo riuś a bauyen* "all out of juice, on my end"), and the imperfect (*Em oun oo riuś* "I'm running out of juice") — but not the go-ahead frame. Ordinary "on the X side" adjectival predication, by contrast, combines with both axes. Blocking at the idiom level rather than the verb level is a phenomenon class of its own. **[Open: collect further idiom-level blocks before generalizing]** `[Lexicon: riuś, oo not yet entered]`
+
+### 6.5 Open structural questions about the strategies
 
 - **Frequency.** How often each strategy surfaces in everyday discourse, and whether they collectively represent core grammar or peripheral resources. **[Open]**
 - **Inheritance of readings by the causative.** Whether the causative inherits the get-oneself paradigm's reading distinctions (e.g., *Emma gets me falling* vs. *Emma gets me to fall*) or collapses the cells. **[Open]**
@@ -372,25 +419,25 @@ The causative requires an action-host main verb, since *get X to V* selects for 
 
 ## 7. The recognitional-iterative nominal construction
 
-A second grammaticalized construction — independent of the go-ahead/get-oneself paradigm — operates on **deverbal nominals**: a verb's action treated as a noun, the territory GA covers with the gerund (*the running*, *the eating*). This construction is one of the conlang's two flagship grammatical innovations, alongside the volition contrast itself.
+A grammaticalized construction operating on **deverbal nominals** — a verb's action treated as a noun, the territory GA covers with the gerund (*the running*, *the eating*). It is one of the conlang's flagship grammatical innovations and is analyzed as the **deverbal special case of the possession construction** (§12): the frames engage the nominal exactly as they engage any noun, and what is special here is the nominal's own morphology and one piece of supporting syntax.
 
 ### 7.1 The two morphemes
 
-- **Recognitional marker (REC)** — descended from GA *the*. Marks shared-knowledge type reference: "you know the kind." It is no longer a definite article.
-- **Iterative marker (ITER)** — descended from plural *-s* on the deverbal nominal. Adds a repeated-instances reading on top of the recognitional type-marking.
+The construction stacks the **recognitional marker** (REC, *þ ~ y*, from GA *the*: shared-knowledge type reference) and optionally the **iterative marker** (ITER, *-ś*, from plural *-s*: repeated instances) on a deverbal nominal; attested together in *þ rishś* "the dishes (you know the chore)." Glossing pattern: REC-stem-ITER. The canonical morphological description — forms, stacking, and the morphology-scoped open questions — is `language_reference.md` §3.2.1; this document holds what the construction does with the frames.
 
-The two stack productively: REC alone gives shared-knowledge type reference; REC + ITER gives shared-knowledge type plus iterated instantiation. Glossing pattern: REC-stem-ITER.
+### 7.2 The frame meets the recognitional nominal
 
-The conlang surface forms of REC and ITER have not yet been committed in these documents. **[Open: REC and ITER surface forms — pending dictionary derivation]**
+> *Rimmase ię þ rishś, a bayen, een een.*
+> /—/ `[Placeholder: IPA pending phonology pass]`
+> 1SG.LVC.NVOL.PST do.CONCORD REC dish-ITER on 1SG.end again again
+> "I got (myself) doing the dishes, on my end, again and again."
 
-### 7.2 Worked example: the frame meets the recognitional nominal
+The frame combinatorics — which frame, which frame aspect, what the combination means — are the possession construction's (§12), and the habitual reading is compositional: recognitional type + iteration + frame engagement. Two features distinguish the deverbal case from a plain noun in the same construction:
 
-> *{went-ahead-with the-snooze-s}* — `[Placeholder: conlang surface forms pending]`
->
-> go.ahead-AGR=LVC.VOL.PST    with    REC-snooze-ITER
-> "(I) deliberately did the napping-thing (you know the kind, the recurring sort)"
+1. **The recognitional exponent.** The deverbal nominal takes *þ ~ y* where a plain noun takes the merged article *o*.
+2. **Helper-verb support.** On the get-oneself side the deverbal nominal requires a helper verb (*ię* above, from GA *doing*); on the go-ahead side, the grammaticalized *with*. A plain noun combines bare on the get-oneself side. The helper-verb system is deliberately open — see §12.
 
-This combines a go-ahead frame with a recognitional-iterative nominal complement. The *with* is a grammaticalized preposition mediating between the frame and the nominal — see §4.1's open question on frame argument structure.
+> *Analytical note.* This construction was previously analyzed as free-standing, with the *with*-mediation treated as its own complement pattern. The possession data reanalyzed it as a special case: the same frame-plus-nominal machinery covers plain nouns ("got myself a drink") and deverbal nominals ("got myself doing the dishes"), with the residue listed above blocking full reduction. The reasoning record lives in `phase4-triage-2026-06.md` §2.1 and the registry entry.
 
 ### 7.3 Not a definite article
 
@@ -398,13 +445,11 @@ Glossing the *the*-morpheme as DEF would be etymologically accurate but function
 
 A consequence for the noun system: GA's definite article has not survived as a definite article. Definite reference, where needed, is conveyed through other means (the visibility particles, possessives, context); that system is the responsibility of the language reference's nominal sections (`language_reference.md` §3.2, §3.7), not this document.
 
-> *Origin.* The grammaticalization path *definite article → recognitional marker* is well-attested cross-linguistically; the term *recognitional* is sourced from the determiner-typology literature (Himmelmann and others) for exactly this "you-know-the-one" function. Like the volition contrast, the construction grammaticalized from a high-frequency GA function word and restructures semantic territory GA does not grammaticalize.
+> *Origin.* The grammaticalization path *definite article → recognitional marker* is well-attested cross-linguistically; the term *recognitional* is sourced from the determiner-typology literature (Himmelmann and others) for exactly this "you-know-the-one" function. GA *the* is in fact an **etymological doublet** in the conlang: its referential use weakened and merged with *a* into the article *o*, while its recognitional use fused onto the nominal and kept its segmental integrity as *þ ~ y* — divergent reduction paths from one etymon, on the pattern of Latin *ille* yielding both the Romance articles and the third-person pronouns. Like the volition contrast, the construction grammaticalized from a high-frequency GA function word and restructures semantic territory GA does not grammaticalize.
 
 ### 7.4 Open questions
 
-- **Does REC occur without ITER productively?** The two-morpheme system predicts that bare REC (shared-knowledge type, non-iterative) should be a licensed reading. Examples needed. **[Open]**
-- **Does ITER occur without REC?** Is plural *-s* on a deverbal nominal licit without the *the*-morpheme, and if so what does it mean? Bears on whether the two morphemes are independent or whether ITER requires REC as a host. **[Open]**
-- **Scope of REC and ITER relative to other nominal morphology** (case-like marking, possession). **[Open]**
+The morphology-scoped questions (bare REC; ITER without REC; scope relative to other nominal morphology) live with the morphemes at `language_reference.md` §3.2.1. Construction-scoped questions are the possession construction's (§12.5).
 
 ---
 
@@ -517,43 +562,168 @@ Open questions:
 
 ---
 
-## 11. Mood
+## 11. The matrix particles
+
+A small class of particles places a whole clause inside a modal frame — that something merely *ended up* so, that the speaker *knows* it, *needs* it, or that it *appears* so. These are the **matrix particles** (informally, *scaffold particles*): each descends from a GA matrix clause, and each colors everything that follows it.
+
+> *Enniip ounoheun splitn.*
+> /—/ `[Placeholder: IPA pending phonology pass]`
+> MP.ENDUP.PST LVC.VOL.IPFV split-CONCORD
+> "It ended up that (they) went ahead and left."
+
+Two facts make the class architecturally important. The matrix particles are the only place in the language where **tense** survives: the verbal system runs on aspect, carried by the weak pronouns (§5.2), while the matrix particles carry a past/non-past contrast inherited from their source clauses. And they are unmarked for **person** — *enniip* reports an outcome without saying whose.
+
+### 11.1 Forms
+
+| Member | Non-past | Past | GA source | Meaning |
+|---|---|---|---|---|
+| end-up particle | *enp* | *enniip* | *(it) end(ed) up …* | happenstance outcome |
+| know-that particle | *no* | *nii* | *(I) know/knew (that) …* | knowledge, awareness |
+| really-need particle | *rhi·iiniies* | *rhi·iiniir·ros* | *what I need(ed) is …* | desire; weak obligation |
+| appears particle | *piies* | **[Open: past form unattested]** | *(it) appears (that) …* | appearance, seeming |
+
+The really-need particle has a reduplicated intensive, *rhi·ii·rhii·niies*, from GA *what I **really** need is …*. `[Lexicon: all four members pending dictionary entries]`
+
+### 11.2 Function
+
+The tense contrast is **privative**: the non-past member is unmarked and combines freely with habitual and future time adverbs, while the past member asserts a realized state of affairs. `[Placeholder: adverb-combination examples pending — "always end up …", "tomorrow, probably end up …" attested as judgments only]`
+
+The really-need particle codes want and, more weakly, must:
+
+> *Rhi·iiniies ounahen splitn.*
+> /—/ `[Placeholder: IPA pending phonology pass; frame form spelling pending the §2.4 paradigm question]`
+> MP.NEED LVC.VOL.HAB split-CONCORD
+> "What I need is to leave."
+
+### 11.3 Distribution
+
+- **Position.** The matrix particle precedes the clause it scaffolds; a topic precedes the matrix particle: **topic particle > matrix particle > clause**.
+- **Aspect government.** Each particle lexically specifies whether the scaffolded clause keeps its own aspect. The end-up particle forces the imperfect — the clause surrenders its aspect (*Beųheun split* "went ahead and left," but *Enniip **ounoheun** splitn*, with the imperfect frame). The know-that particle imposes nothing: *No ei beųheun split* "I know that they went ahead and left." **[Open: government class per particle — survey pending]**
+- **Person.** Unmarked throughout. Ambiguity is resolved, when needed, by a strong-pronoun *on-X-end* phrase (§5.3), with flexible placement.
+- **Stacking.** Matrix particles stack over each other and under topics, but parseability demands strong-pronoun buffering between the layers; speakers avoid depth beyond two. **[Provisional]**
+- **Questions.** The polarity-question particle *ea* applies to a scaffolded clause as to any other (§5.5). `[Placeholder: example pending]`
+- **Negation.** Interaction with the negators of §10 undecided. **[Open]**
+
+### 11.4 Interactions
+
+- **With the visibility particles.** The know-that particle is homophonous with the know-particle but syntactically distinct: matrix *no* takes a noun phrase or a full clause and yields a complete sentence; the topic particle's clausal form *noho* instead raises a topic the listener expects elaborated. The two can co-occur (*No Báuyà, no Báuyà* — topic, then assertion).
+- **With the frames.** The end-up particle supplies happenstance from above when the bare get-oneself frame under-delivers it (§4.2): *Enniip remmaseto split* "I ended up leaving."
+- **With the evidential division of labor.** Under the appears particle, the choice of visibility particle distinguishes perceptible from non-perceptible evidence: *Hiie ossii, piies aų nibii hii* "Look at the outside — it looks nippy" versus *Nou ossii, piies aų nibii hii* "You know the outside — it seems nippy."
+- **With mood.** The really-need particle carries the desiderative territory §13 anticipates; the appears and know-that particles carry evidential territory.
+
+### 11.5 Origin
+
+Each member fuses a GA matrix clause — finite verb included — into a particle; the membership criterion for the class is precisely that the etymon contains a finite verb, which is why the members can bear tense while etyma without one (*maybe*, *in my eyes*) yield plain adverbs instead. The path is well-attested cross-linguistically: Latin American Spanish *dizque* (from *dice que* "says that") is a matrix verb fused with its complementizer into a hearsay particle — the exact mirror of the know-that particle in the knowledge domain. The person syncretism follows from phonetic erosion at the pronominal slot: in *what I need is*, the GA pronouns */i, jɪ, ɛj, ɻi/* merge acoustically after /ɻ/ and before /iː/. The end-up particle's aspect government recalls the conjunct order of Algonquian languages such as Ojibwe, where subordinating elements select a dedicated dependent verb form.
+
+### 11.6 Glossing
+
+Composite tags: `MP.ENDUP`, `MP.KNOW`, `MP.NEED`, `MP.APPEAR`, with `.PST` on the past member (`MP.ENDUP.PST` = *enniip*).
+
+### 11.7 Open questions
+
+- *Piies* past form; membership confirmed if found. **[Open]**
+- Government class per particle. **[Open]**
+- Negation interaction. **[Open]**
+- Stacking depth and ordering constraints. **[Open]**
+- A predicted reportative member — a *they say / I heard* descendant. **[Open]**
+
+---
+
+## 12. The possession construction
+
+The language has no everyday verb *have*. Possession, acquisition, choosing, and giving are carried by the frames combining directly with a nominal — the **possession construction**. What GA spreads across *have*, *get*, *pick*, and *give*, the conlang derives from frame choice and frame aspect over a bare noun.
+
+> *Rimmaseu beikw.*
+> /—/ `[Placeholder: IPA pending phonology pass]`
+> 1SG.LVC.NVOL.PST=ART vehicle
+> "I have a vehicle." (lit. "got myself a vehicle")
+
+The final lengthened vowel of *rimmaseu* is the fused etymological article. `[Placeholder: gloss segmentation of the article fusion pending]`
+
+### 12.1 Forms and function
+
+- **get-oneself + nominal, perfect frame aspect** → possession ("have"): *Rimmaseu beikw*.
+- **get-oneself + nominal, imperfect frame aspect** → acquisition in progress ("getting"). `[Placeholder: example pending]`
+- **go-ahead (+ *with*) + nominal** → deliberate selection ("picking and choosing"). `[Placeholder: plain-noun example pending; the deverbal case is attested at §7.2]`
+- The frame choice carries the usual coloring: *Rimmaseu rhink* "got myself a drink" reads self-benefit; *Rimmaseu þlii* "got the flu" reads affliction — the same construction, with the nominal's semantics selecting the flavor.
+- **Lexical alternatives** modulate intentionality: *rib* "give" for explicit volition in transfer; *ǫıĩ* "own" for neutral mere-having. `[Lexicon: rib, ǫıĩ not yet entered]`
+
+### 12.2 The transfer extension
+
+With a recipient in the *get*-slot, the construction causativizes into giving, volition-neutral by default:
+
+> *Ritm o rhémstwè.*
+> /—/ `[Placeholder: IPA pending phonology pass]`
+> get.3PL ART book
+> "(I/they) gave them the book." (lit. "got them the book")
+
+The extension resists a topic-marked definite object; explicit-volition *rib* with the go-ahead frame is used instead. **[Open: transfer-extension object restrictions]**
+
+### 12.3 The deverbal special case and the helper-verb question
+
+A deverbal nominal in the construction is the recognitional-iterative nominal of §7, distinguished by the recognitional exponent (*þ ~ y* for merged *o*) and by **helper-verb support** on the get-oneself side (*Rimmase ię þ rishś* — §7.2).
+
+**The helper-verb question is deliberately open.** *Do* is the default helper, but GA's own collocations vary by lexical item (*do* the dishes, but *take out* the trash, *pull* the trigger, *push* the issue), and importing that variety wholesale would both drift toward relexification and nest light verbs inside the already-grammaticalized frames. The working disposition, **[Open]** in all four parts:
+
+1. A **small licensed set** of helper-verb pairings, admitted only where the lexical item earns it.
+2. **Default avoidance**: most such meanings are phrased another way — Latinate verbs in particular tend to supply frame-free lexical routes (*preb* "cook" rather than a do-the-cooking construction).
+3. A **tentative additional helper** under consideration (candidate source GA *bop*), unconfirmed.
+4. Some deverbal nominals may simply be **incompatible** with the get-oneself frame — a gap, not a workaround.
+
+> *Analytical note.* A related lexical decision is recorded here because it bears on the helper's eventual citation shape: GA *do* is assigned an **irregular** sound-change path, yielding *o* rather than the regular reflex in ⟨ii⟩ — merging with the descendant of GA *go*, which already covers "become" and is expected to extend to motion and speech senses. The default helper, the become-verb, and the merged article would then share the surface form *o*; the collision load on *o* is flagged for review, and the attested concord form *ię* (from GA *doing*) must be reconciled with the merger. `[New rule needed: irregular reflex of GA *do* → o (designed exception)]` `[Lexicon: o (do/go merger) pending — senses: do-helper, become, go]`
+
+### 12.4 Interactions
+
+- **With the recognitional-iterative nominal** (§7): the deverbal special case, above.
+- **With the frame's argument structure** (§4.1): the *with*-mediation facts live here; §4.1's open question is fed, not closed.
+- **With the separative satellite** *oþw* (§4.2): unrelated mechanisms — the satellite shapes the verb's event structure; the helper supports a nominal.
+
+### 12.5 Open questions
+
+- Helper-verb ecology — the four-part disposition of §12.3. **[Open]**
+- Transfer-extension object restrictions. **[Open]**
+- The *bop* helper candidate. **[Open]**
+- The imperfect-aspect acquisition reading — confirm with attested examples. **[Open]**
+
+---
+
+## 13. Mood
 
 Beyond the go-ahead/get-oneself contrast (which arguably is mood), the system likely includes:
 
 - **Imperative** — formation and inventory not yet committed. **[Open]**
-- **Optative / desiderative** — likely grammaticalized from GA *want to*. **[Open]**
-- **Possibly evidential distinctions** — not yet committed. **[Open]**
+- **Optative / desiderative** — the desiderative territory is carried by the really-need particle (§11); whether a separate *want to*-derived optative also exists is **[Open]**.
+- **Evidential distinctions** — partly carried at the matrix layer (the appears and know-that particles, with the visibility particles dividing perceptible from non-perceptible evidence — §11.4); whether further evidential machinery exists is **[Open]**.
 
 These are placeholders for sections that will be developed as design proceeds.
 
 ---
 
-## 12. A clause, assembled
+## 14. A clause, assembled
 
 The pieces described above combine as: (optional dislocated NP topic) + weak pronoun (carrying any fusion) + frame + main verb with concord. This section assembles them. Frame and pronoun forms below are attested (§2.4, §3.7, §5.2); **all main-verb and NP surface forms are placeholders** pending dictionary derivation, and pitch diacritics are omitted because the pitch of the frame forms has not yet been recorded. `[Open: pitch marking on frame and pronoun forms]`
 
 **Go-ahead, habitual:**
 
-> *eu oheun drinkin* — `[Placeholder: drinkin]`
+> *e oheun drinkin* — `[Placeholder: drinkin]`
 > 1SG    go.ahead.LVC.VOL.HAB    drink-CONCORD
 > "I go ahead and drink (it)" — habitual, deliberate
 
 **Go-ahead, imperfect (pronoun carries the +be fusion; frame in bare gerund shape):**
 
-> *eum ounoheun drinkin* — `[Placeholder: drinkin]`
+> *em ounoheun drinkin* — `[Placeholder: drinkin]`
 > 1SG.be    go.ahead.LVC.VOL.IPFV    drink-CONCORD
 > "I'm going ahead and drinking (it)" — ongoing, deliberate
 
 **Get-oneself, past, happenstance (progressive-shaped concord):**
 
-> *eu rimase beussourin* — `[Placeholder: concord shape on beussou unverified]`
+> *e rimase beussourin* — `[Placeholder: concord shape on beussou unverified]`
 > 1SG    get.oneself.LVC.NVOL.PST.1SG    fall.asleep-CONCORD
 > "I got myself falling asleep" = "I fell asleep" — it befell me
 
 **With a dislocated NP topic and resumptive pronoun (§5.4):**
 
-> *the coffee — eu oheun drinkin* — `[Placeholder: NP and main verb]`
+> *the coffee — e oheun drinkin* — `[Placeholder: NP and main verb]`
 > coffee.TOP    1SG    go.ahead.LVC.VOL.HAB    drink-CONCORD
 > "the coffee — I go ahead and drink (it)"
 
@@ -561,7 +731,7 @@ Negated clauses replace the bare pronoun with a not-quite fusion (§5.2.1); the 
 
 ---
 
-## 13. Cross-references
+## 15. Cross-references
 
 - `terminology-registry.md` — canonical terminology, gloss tags, and naming history.
 - `verb-paradigm-verdict.md` — full cell-by-cell predictions, the three live questions on self-benefit selectivity / threshold-for-statives / habitual-plus-infinitive reading, and the analytical history behind this consolidation.
@@ -767,7 +937,28 @@ This is more apparatus than current dictionary entries carry, and most of it can
 
 ---
 
-## 14. Versioning notes
+## 16. Versioning notes
+
+### v2.2, June 2026 — §7 migration executed (Session L)
+
+§7.1 and §7.4 reduced to pointers: REC/ITER morphological description and its open questions migrated to `language_reference.md` §3.2.1 (langref v3.2), completing the relocation the v2.1 note anticipated. §7 now holds the special-case statement, the worked example, and the Origin material (REC ≠ DEF; the *þ/o* etymological doublet), per the one-home rule.
+
+### v2.1, June 2026 — translation-exercise integration (Session V)
+
+**New sections.** §11 The matrix particles (class, four members, privative tense, aspect government, person syncretism, stacking, evidential division of labor; the language's split TAM stated: aspect on the weak pronouns, tense on the matrix particles). §12 The possession construction (have/get/choose from frame + nominal; the transfer extension; the deverbal special case; the helper-verb question left open by user decision — four-part disposition recorded with the relexification/nesting rationale; the designed *do* → *o* irregular merger flagged for phonology and lexicon). Former §11–§14 renumbered §13–§16; live cross-references updated in-document and in `language_reference.md`; historical versioning notes left as written.
+
+**§4.2.** Passive-shaped concord added with the *spli·oþw* paradigm and the satellite-conflation caveat; compositional-readings statement (frame aspect × concord shape × stem event structure, plus matrix scaffolding); new §4.2.1 irregular concord (*meirtt*); new §4.2.2 concord under suffixation (stub).
+
+**Paradigm corrections (user, 2026-06-10/11).** 1SG weak pronoun *e* (bare) and *em* (+be), replacing *eu*/*eum* — creating a 1SG/3SG.INANIM syncretism in the bare series parallel to the existing prospective and ability syncretisms; inanimate habitual go-ahead *osoheun*, replacing *ośeun*; progressive *ounoheun* confirmed canonical (*ounahen*, *ounohen* are errors). Animate habitual flagged **[Open]**: table *oheun* vs. a 2026-06-10 note reading *ouhen*; the *osoheun* parallel favors *oheun*. Examples swept in §4.3, §5.4, §5.5, §14.
+
+**§5.** §5.3: antitopic tagging added as a fourth strong-pronoun use. §5.4: right-dislocation asymmetry added (visibility contrast is left-periphery-only) **[Provisional]**. §5.5: *ea* conditional use added.
+
+**§6.** New §6.4 idiom-level frame blocking (*oo riuś*); former §6.4 renumbered §6.5.
+
+**§7.** Surface forms closed (REC *þ ~ y*, ITER *-ś*; attested *þ rishś*), removing the v2 [Open] flag. Rewritten as the deverbal special case of the possession construction (demotion decision, 2026-06-11), with the prior free-standing analysis and reasoning quarantined; the *þ/o* etymological-doublet origin added to §7.3. §7.4 questions marked as migrating to the language reference's nominal sections.
+
+**Abstract** restored and revised in the front matter: the v2 Abstract survived only as the copy in `language_reference.md` §3.4's stub (the source document had lost it — drift incident); the restored text merges the v2 claims with the new architecture, and the §3.4 stub was regenerated from it. Source decisions: 2026-06-10 translation exercise; `phase4-triage-2026-06.md`; registry Batch II (accepted 2026-06-11, with *need particle* renamed *really-need particle* by user decision).
+
 
 ### v2, June 2026 — conformance pass: terminology registry adopted; structure and voice revised
 
