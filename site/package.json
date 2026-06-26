@@ -1,0 +1,24 @@
+{
+  "name": "site",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "content": "node scripts/build-content.mjs",
+    "check": "node scripts/build-content.mjs && node scripts/link-check.mjs",
+    "predev": "node scripts/build-content.mjs",
+    "dev": "astro dev",
+    "start": "astro dev",
+    "prebuild": "node scripts/build-content.mjs",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/starlight": "^0.40.0",
+    "astro": "^6.4.5",
+    "github-slugger": "^2.0.0",
+    "mdast-util-find-and-replace": "^3.0.2",
+    "sharp": "^0.34.5",
+    "unist-util-visit": "^5.1.0"
+  }
+}

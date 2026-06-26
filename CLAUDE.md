@@ -4,7 +4,24 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this repository is
 
-A working specification for an a priori conlang derived from General American English (GA) through a designed cascade of regular sound changes and grammaticalizations. Pure Markdown — no code, build system, tests, or tooling. The deliverable is the documents themselves; "work" here means careful editing, cross-document reconciliation, and version-noting.
+A working specification for an a priori conlang derived from General American English (GA) through a designed cascade of regular sound changes and grammaticalizations. The canonical deliverable is the Markdown documents themselves; "work" here means careful editing, cross-document reconciliation, and version-noting. Two build pipelines consume the docs as read-only input: a pandoc→tectonic PDF build (`pdf/`) and an Astro + Starlight interactive HTML site (`site/`). Neither pipeline edits the docs.
+
+## Repository layout
+
+The canonical documents live under `docs/`; everything else is tooling or assets that consume them.
+
+- **`docs/reference/`** — the grammar backbone (`language_reference.md`) and its sibling deep-dives (`phonology.md`, `orthography.md`, `verbal-system.md`, `ideophones.md`, `examples.md`, `terminology-registry.md`).
+- **`docs/dictionary/`** — `dictionary.md` (the lexicon).
+- **`docs/quickref/`** — generated snapshots (`phonology-quickref.md`, `orthography-quickref.md`, `dictionary-index.md`); rebuilt by the quickref-updater skill, never hand-authored.
+- **`data/paradigms/`** — paradigm tables as CSV.
+- **`pdf/`** — the PDF pipeline: `build.ps1` / `build-dictionary.ps1` (+ `.cmd` wrappers), `assets/` (fonts, LaTeX preambles, title page), `out/` (built PDFs), `build_tmp/` (scratch, gitignored).
+- **`site/`** — the Astro + Starlight HTML site (the deterministic Markdown→HTML compiler).
+- **`tools/`** — standalone author tools (`diacritic-typer/diacritic_typer.html`).
+- **`drafts/`**, **`skills/`** — unchanged (proposal inbox/archive; formalized procedures).
+
+**Cross-references between docs are filename-based** (`phonology.md §4.1`, `examples.md §E001`), not path-based, and remain valid regardless of which folder a doc sits in. Do not rewrite them to include paths.
+
+`language_reference.md` is being refactored into an **assembler**: a section whose topic has a sibling holds a `<!-- assemble: sibling.md -->` directive plus a non-normative *orientation abstract* (a regenerated copy of the sibling's opening **Abstract** — never hand-edited). Both the PDF build (Part-per-document concatenation) and the site compiler honor this model.
 
 ## Document hierarchy
 
@@ -14,6 +31,7 @@ The documents are not peers — they have a defined parent/sibling relationship.
 - **`phonology.md`** — canonical source for inventories, sound-change rules (§4), the derivational cascade, and metrical analysis. Status tags `[Settled] / [Provisional] / [Open]` are used throughout and load-bearing.
 - **`orthography.md`** — canonical source for the writing system. Diacritics are load-bearing (Vietnamese-style), not decorative.
 - **`verbal-system.md`** — sibling reference for the verbal system. Supersedes the retired `verb-terminology.md`. Hosts the volitive / non-volitive paradigm, the four sub-modalities, the recognitional-habitual nominal, and the polarity reconciliation flag.
+- **`ideophones.md`** — sibling reference for the expressive layer: the ideophone word class, its phonotactic marginality, the multimodal **χ** gesture convention, and its interfaces with the quotative construction (`verbal-system.md` §12). Spun out June 2026 (the SAYING translation round); the youngest sibling.
 - **`dictionary.md`** — the lexicon, in conlang collation order (§2). Each entry's **Sound changes** field cites rules from `phonology.md` §4 by reference; new derivations may surface phonology gaps that need propagating upward.
 
 Several documents reference siblings that are not in this directory: `verb-paradigm-verdict.md`, `translation-frequency-task.md`. Treat as out-of-tree (held elsewhere or planned). `verb-terminology.md` is **retired** — do not edit it; route changes to `verbal-system.md` and consult its §13 for supersession history. `verb-recipe.md` (formerly out-of-tree) has been folded in as Appendix A of `verbal-system.md` (see `drafts/integrated/2026-05-05-verb-recipe-v2.md` for the original draft). `dictionary-updater.md` (formerly out-of-tree) is now in-tree as a skill — see "Skills" below.
@@ -42,7 +60,7 @@ Integration procedure: read the draft, apply the edits to the named target docum
 Edits routinely require coordinated changes across documents. Before considering an edit complete, check downstream:
 
 - **A new sound rule discovered while writing a dictionary entry** → propose the rule in the entry's Notes, then propagate to `phonology.md` §4 and (if it changes inventories or summaries) to `language_reference.md` §2. Examples already in-flight: geminate /sː/ at stressed-syllable boundary; initial unstressed /ə/ → /ɛ/; lexical /ʔ/-drop in grammaticalized particles. See `dictionary.md` entries *beussou* and *epplii*.
-- **A new orthographic convention** → confirm in the entry, then propagate to `orthography.md`. Example: doubled-consonant-as-geminate (`ss`, `nn`, `pp`) is currently dictionary-internal pending propagation (see `dictionary.md` §3).
+- **A new orthographic convention** → confirm in the entry, then propagate to `orthography.md`. Example: doubled-consonant-as-geminate (`ss`, `nn`, `pp`) began dictionary-internal and has since been propagated to `orthography.md` §2.4.
 - **A grammar commitment** → update both `verbal-system.md` (or the relevant sibling) and the matching summary in `language_reference.md` §3. Keep the summary high-level; do not duplicate the sibling's detail.
 - **Terminology shifts** must be applied consistently across all documents and noted in the affected files' §"Versioning Notes". The most recent example: *involitive* → *non-volitive* (May 2026).
 

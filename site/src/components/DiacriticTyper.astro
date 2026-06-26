@@ -1,0 +1,406 @@
+---
+// In-site diacritic typer. UI ported from tools/diacritic-typer/diacritic_typer.html,
+// rewired to the shared engine (window.Diacritics from src/scripts/diacritics.js,
+// inlined in <head> via astro.config.mjs). Styles live in the global stylesheet
+// src/styles/diacritic-typer.css (registered as customCss) so the spans this
+// script creates dynamically pick them up and the whole widget tracks Starlight's
+// light/dark theme.
+---
+
+<div class="dt-typer">
+  <div class="dt-main-layout">
+    <div class="dt-left-col">
+      <div class="dt-io">
+        <div class="dt-box">
+          <div class="dt-box-label">Input — type postfix triggers (see cheat sheet)</div>
+          <div
+            id="dt-input"
+            class="dt-input-editable"
+            contenteditable="true"
+            spellcheck="false"
+            data-placeholder="Try: cancio`n, ni~ra, zaJb, a3, tQ, bi4t, a:, o:"
+          ></div>
+        </div>
+        <div class="dt-box">
+          <div class="dt-box-label">Output</div>
+          <button class="dt-copy-btn" id="dt-copy-btn">Copy</button>
+          <div class="dt-output" id="dt-output"></div>
+        </div>
+      </div>
+
+      <details class="dt-details">
+        <summary>Settings</summary>
+        <div class="dt-settings">
+          <div class="dt-settings-row">
+            <span class="dt-settings-label">Font</span>
+            <div class="dt-settings-controls">
+              <select id="dt-font-select" aria-label="Font">
+                <option value="dt-font-garamond">EB Garamond</option>
+                <option value="dt-font-brill">Brill</option>
+                <option value="dt-font-mono">Monospace</option>
+              </select>
+              <button id="dt-bold-btn" class="dt-style-btn dt-bold" aria-label="Bold" aria-pressed="false">B</button>
+              <button id="dt-italic-btn" class="dt-style-btn dt-italic" aria-label="Italic" aria-pressed="false">I</button>
+            </div>
+          </div>
+          <div class="dt-settings-row">
+            <span class="dt-settings-label">Size</span>
+            <div class="dt-settings-controls dt-size-control">
+              <input type="range" id="dt-size-slider" min="12" max="64" step="1" value="32" />
+              <span class="dt-size-value" id="dt-size-value">32px</span>
+            </div>
+          </div>
+          <div class="dt-settings-row">
+            <span class="dt-settings-label">Rules</span>
+            <div class="dt-settings-controls dt-settings-checks">
+              <label><input type="checkbox" id="dt-strict-toggle" /> Strict mode</label>
+              <label><input type="checkbox" id="dt-stack-toggle" /> Stack diacritics</label>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <details class="dt-details">
+        <summary>Rules cheat sheet</summary>
+        <div class="dt-cheat">
+          <table>
+            <thead>
+              <tr><th style="width: 70px">Trigger</th><th>Diacritic</th><th>Applies to</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><code>`</code></td><td>acute accent</td><td><code>s r n m a e i o u y w x</code></td></tr>
+              <tr><td><code>4</code></td><td>grave accent</td><td><code>a e i o u y w</code></td></tr>
+              <tr><td><code>~</code></td><td>tilde</td><td><code>i y w</code></td></tr>
+              <tr><td><code>J</code></td><td>ogonek</td><td><code>a e o u</code></td></tr>
+              <tr><td><code>V</code></td><td>háček</td><td><code>s r n</code></td></tr>
+              <tr><td><code>^</code></td><td>circumflex</td><td><code>a e i o u w y</code></td></tr>
+              <tr><td><code>:</code></td><td>diaeresis</td><td><code>a e i o u y</code></td></tr>
+              <tr><td><code>Q</code></td><td>thorn / eth</td><td><code>t</code> → þ, <code>d</code> → ð</td></tr>
+              <tr><td><code>3</code></td><td>ligature</td><td><code>a</code> → æ; <code>e</code>, <code>o</code> → œ</td></tr>
+              <tr><td><code>7</code> or <code>.</code></td><td>interpunct</td><td>any letter <small>(<code>.</code> must be between two letters)</small></td></tr>
+            </tbody>
+          </table>
+          <p class="dt-note">
+            Triggers are postfix — type the base letter first, then the trigger. Capitalization of the
+            base letter is preserved. When one element of an <code>ii</code> digraph takes a diacritic, the
+            other automatically becomes dotless (<code>ı</code>). Capital triggers <code>J V Q</code> act as
+            diacritics only in non-word-initial position. Toggle <em>Stack diacritics</em> to combine marks
+            on one letter; <em>Strict mode</em> drops combinations with no precomposed Unicode form.
+          </p>
+        </div>
+      </details>
+    </div>
+
+    <aside class="dt-ipa-aside">
+      <div class="dt-ipa-aside-label">IPA keys</div>
+      <div class="dt-ipa-pad" id="dt-ipa-pad">
+        <div class="dt-ipa-group">
+          <span class="dt-ipa-group-label">Vowels</span>
+          <div class="dt-ipa-keys">
+            <button class="dt-ipa-key" data-insert="ɪ" title="near-close near-front unrounded — KIT">ɪ</button>
+            <button class="dt-ipa-key" data-insert="ɨ" title="close central unrounded">ɨ</button>
+            <button class="dt-ipa-key" data-insert="ɛ" title="open-mid front unrounded — DRESS">ɛ</button>
+            <button class="dt-ipa-key" data-insert="æ" title="near-open front unrounded — TRAP">æ</button>
+            <button class="dt-ipa-key" data-insert="ə" title="schwa — about">ə</button>
+            <button class="dt-ipa-key" data-insert="ʌ" title="open-mid back unrounded — STRUT">ʌ</button>
+            <button class="dt-ipa-key" data-insert="ɚ" title="r-coloured schwa — letter">ɚ</button>
+            <button class="dt-ipa-key" data-insert="ɝ" title="r-coloured open-mid central — NURSE">ɝ</button>
+            <button class="dt-ipa-key" data-insert="ɑ" title="open back unrounded — LOT/PALM">ɑ</button>
+            <button class="dt-ipa-key" data-insert="ɔ" title="open-mid back rounded — THOUGHT">ɔ</button>
+            <button class="dt-ipa-key" data-insert="ʊ" title="near-close near-back rounded — FOOT">ʊ</button>
+            <button class="dt-ipa-key" data-insert="ı" title="dotless i — ii-digraph element">ı</button>
+          </div>
+        </div>
+        <div class="dt-ipa-group">
+          <span class="dt-ipa-group-label">Consonants</span>
+          <div class="dt-ipa-keys">
+            <button class="dt-ipa-key" data-insert="ʃ" title="voiceless postalveolar fricative — SH">ʃ</button>
+            <button class="dt-ipa-key" data-insert="ʒ" title="voiced postalveolar fricative — measure">ʒ</button>
+            <button class="dt-ipa-key" data-insert="tʃ" title="voiceless postalveolar affricate — CH">tʃ</button>
+            <button class="dt-ipa-key" data-insert="dʒ" title="voiced postalveolar affricate — J">dʒ</button>
+            <button class="dt-ipa-key" data-insert="θ" title="voiceless dental fricative — thin">θ</button>
+            <button class="dt-ipa-key" data-insert="ð" title="voiced dental fricative — this">ð</button>
+            <button class="dt-ipa-key" data-insert="ŋ" title="velar nasal — NG">ŋ</button>
+            <button class="dt-ipa-key" data-insert="ɻ" title="retroflex approximant">ɻ</button>
+            <button class="dt-ipa-key" data-insert="ʔ" title="glottal stop — uh-oh">ʔ</button>
+            <button class="dt-ipa-key" data-insert="ɾ" title="alveolar tap — butter">ɾ</button>
+            <button class="dt-ipa-key" data-insert="ɫ" title="velarized alveolar lateral — dark L">ɫ</button>
+            <button class="dt-ipa-key" data-insert="kʷ" title="labialized velar stop">kʷ</button>
+            <button class="dt-ipa-key" data-insert="ʷ" title="labialization superscript">ʷ</button>
+          </div>
+        </div>
+        <div class="dt-ipa-group">
+          <span class="dt-ipa-group-label">Voiceless sonorants</span>
+          <div class="dt-ipa-keys">
+            <button class="dt-ipa-key" data-insert="n̥" title="voiceless n">n̥</button>
+            <button class="dt-ipa-key" data-insert="m̥" title="voiceless m">m̥</button>
+            <button class="dt-ipa-key" data-insert="ɾ̥" title="voiceless tap">ɾ̥</button>
+          </div>
+        </div>
+        <div class="dt-ipa-group">
+          <span class="dt-ipa-group-label">Syllabic consonants</span>
+          <div class="dt-ipa-keys">
+            <button class="dt-ipa-key" data-insert="n̩" title="syllabic n">n̩</button>
+            <button class="dt-ipa-key" data-insert="m̩" title="syllabic m">m̩</button>
+            <button class="dt-ipa-key" data-insert="s̩" title="syllabic s">s̩</button>
+            <button class="dt-ipa-key" data-insert="θ̩" title="syllabic θ">θ̩</button>
+            <button class="dt-ipa-key" data-insert="ʔ̩" title="syllabic glottal stop">ʔ̩</button>
+            <button class="dt-ipa-key" data-insert="w̩" title="syllabic w">w̩</button>
+            <button class="dt-ipa-key" data-insert="j̩" title="syllabic j">j̩</button>
+            <button class="dt-ipa-key" data-insert="ɾ̩" title="syllabic tap">ɾ̩</button>
+          </div>
+        </div>
+        <div class="dt-ipa-group">
+          <span class="dt-ipa-group-label">Suprasegmentals &amp; diacritics</span>
+          <div class="dt-ipa-keys">
+            <button class="dt-ipa-key" data-insert="ˈ" title="primary stress (precedes syllable)">ˈ</button>
+            <button class="dt-ipa-key" data-insert="ˌ" title="secondary stress (precedes syllable)">ˌ</button>
+            <button class="dt-ipa-key" data-insert="ː" title="long">ː</button>
+            <button class="dt-ipa-key" data-insert="̃" title="nasalized (combines with previous vowel)">◌̃</button>
+            <button class="dt-ipa-key" data-insert="̥" title="voiceless (combines with previous segment)">◌̥</button>
+            <button class="dt-ipa-key" data-insert="̬" title="voiced (combines with previous segment)">◌̬</button>
+            <button class="dt-ipa-key" data-insert="̤" title="breathy voice (combines with previous segment)">◌̤</button>
+            <button class="dt-ipa-key" data-insert="ʰ" title="aspirated">ʰ</button>
+            <button class="dt-ipa-key" data-insert="." title="syllable break">.</button>
+          </div>
+        </div>
+        <p class="dt-ipa-note">
+          Click any symbol to insert at the cursor in the input box. Hover for the symbol name.
+          <code>◌̃</code>-style buttons are combining diacritics — they attach to the preceding character.
+        </p>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<script>
+  function initDiacriticTyper() {
+    const root = document.querySelector('.dt-typer');
+    if (!root || root.dataset.wired === '1') return;
+    const D = window.Diacritics;
+    if (!D) return; // engine not loaded yet
+    root.dataset.wired = '1';
+
+    const $ = (id) => document.getElementById(id);
+    const input = $('dt-input');
+    const output = $('dt-output');
+    const strictToggle = $('dt-strict-toggle');
+    const stackToggle = $('dt-stack-toggle');
+    const fontSelect = $('dt-font-select');
+    const copyBtn = $('dt-copy-btn');
+    const sizeSlider = $('dt-size-slider');
+    const sizeValue = $('dt-size-value');
+    const boldBtn = $('dt-bold-btn');
+    const italicBtn = $('dt-italic-btn');
+
+    function update() {
+      output.textContent = D.convert(input.textContent, {
+        strict: strictToggle.checked,
+        stack: stackToggle.checked,
+      });
+      highlightInput();
+    }
+
+    function getCaretOffset(el) {
+      const sel = window.getSelection();
+      if (!sel.rangeCount) return 0;
+      const range = sel.getRangeAt(0);
+      const pre = range.cloneRange();
+      pre.selectNodeContents(el);
+      pre.setEnd(range.endContainer, range.endOffset);
+      return pre.toString().length;
+    }
+
+    function setCaretOffset(el, offset) {
+      const range = document.createRange();
+      const sel = window.getSelection();
+      let remaining = offset;
+      let found = false;
+      function walk(node) {
+        if (found) return;
+        if (node.nodeType === Node.TEXT_NODE) {
+          const len = node.textContent.length;
+          if (remaining <= len) {
+            range.setStart(node, remaining);
+            range.collapse(true);
+            found = true;
+            return;
+          }
+          remaining -= len;
+        } else {
+          for (const child of node.childNodes) {
+            walk(child);
+            if (found) return;
+          }
+        }
+      }
+      walk(el);
+      if (!found) {
+        range.selectNodeContents(el);
+        range.collapse(false);
+      }
+      sel.removeAllRanges();
+      sel.addRange(range);
+    }
+
+    function escapeHtml(s) {
+      return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    }
+
+    function highlightInput() {
+      const text = input.textContent;
+      if (!text) {
+        if (input.innerHTML !== '') input.innerHTML = '';
+        return;
+      }
+      const offset = getCaretOffset(input);
+      const chars = Array.from(text);
+      const mask = D.computeTriggerMask(text, stackToggle.checked);
+      const triggers = mask.triggers;
+      const receivers = mask.receivers;
+      function classFor(i) {
+        if (triggers[i]) return 'dt-trigger';
+        if (receivers[i]) return 'dt-receiver';
+        return '';
+      }
+      let html = '';
+      let i = 0;
+      while (i < chars.length) {
+        const cls = classFor(i);
+        let run = '';
+        while (i < chars.length && classFor(i) === cls) {
+          run += chars[i];
+          i++;
+        }
+        html += cls ? '<span class="' + cls + '">' + escapeHtml(run) + '</span>' : escapeHtml(run);
+      }
+      if (input.innerHTML !== html) {
+        input.innerHTML = html;
+        setCaretOffset(input, offset);
+      }
+    }
+
+    input.addEventListener('input', update);
+
+    const LS = (k) => 'dt_' + k;
+    strictToggle.addEventListener('change', () => {
+      localStorage.setItem(LS('strict'), strictToggle.checked ? '1' : '0');
+      update();
+    });
+    strictToggle.checked = localStorage.getItem(LS('strict')) === '1';
+    stackToggle.addEventListener('change', () => {
+      localStorage.setItem(LS('stack'), stackToggle.checked ? '1' : '0');
+      update();
+    });
+    stackToggle.checked = localStorage.getItem(LS('stack')) === '1';
+
+    input.addEventListener('paste', (e) => {
+      e.preventDefault();
+      const text = (e.clipboardData || window.clipboardData).getData('text');
+      document.execCommand('insertText', false, text);
+    });
+
+    const FONT_CLASSES = ['dt-font-garamond', 'dt-font-brill', 'dt-font-mono'];
+    function applyFont(cls) {
+      FONT_CLASSES.forEach((c) => output.classList.remove(c));
+      output.classList.add(cls);
+      localStorage.setItem(LS('font'), cls);
+    }
+    fontSelect.addEventListener('change', (e) => applyFont(e.target.value));
+    const savedFont = localStorage.getItem(LS('font')) || 'dt-font-garamond';
+    fontSelect.value = savedFont;
+    applyFont(savedFont);
+
+    function applySize(px) {
+      output.style.fontSize = px + 'px';
+      sizeValue.textContent = px + 'px';
+      localStorage.setItem(LS('size'), String(px));
+    }
+    sizeSlider.addEventListener('input', (e) => applySize(parseInt(e.target.value, 10)));
+    const savedSize = parseInt(localStorage.getItem(LS('size')) || '32', 10);
+    sizeSlider.value = savedSize;
+    applySize(savedSize);
+
+    function applyStyle(kind, active) {
+      const btn = kind === 'bold' ? boldBtn : italicBtn;
+      btn.classList.toggle('active', active);
+      btn.setAttribute('aria-pressed', String(active));
+      if (kind === 'bold') output.style.fontWeight = active ? '600' : '400';
+      else output.style.fontStyle = active ? 'italic' : 'normal';
+      localStorage.setItem(LS(kind), active ? '1' : '0');
+    }
+    boldBtn.addEventListener('click', () => applyStyle('bold', !boldBtn.classList.contains('active')));
+    italicBtn.addEventListener('click', () => applyStyle('italic', !italicBtn.classList.contains('active')));
+    applyStyle('bold', localStorage.getItem(LS('bold')) === '1');
+    applyStyle('italic', localStorage.getItem(LS('italic')) === '1');
+
+    copyBtn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(output.textContent);
+        const orig = copyBtn.textContent;
+        copyBtn.textContent = 'Copied';
+        setTimeout(() => {
+          copyBtn.textContent = orig;
+        }, 1200);
+      } catch (e) {}
+    });
+
+    // IPA keypad — insert at saved caret position inside input.
+    let savedRange = null;
+    function saveSelection() {
+      const sel = window.getSelection();
+      if (!sel.rangeCount) return;
+      const range = sel.getRangeAt(0);
+      if (input.contains(range.commonAncestorContainer)) savedRange = range.cloneRange();
+    }
+    input.addEventListener('keyup', saveSelection);
+    input.addEventListener('mouseup', saveSelection);
+    input.addEventListener('focus', saveSelection);
+
+    function insertAtCaret(text) {
+      input.focus();
+      const sel = window.getSelection();
+      let range;
+      if (savedRange && input.contains(savedRange.startContainer)) {
+        range = savedRange;
+        sel.removeAllRanges();
+        sel.addRange(range);
+      } else if (sel.rangeCount && input.contains(sel.getRangeAt(0).commonAncestorContainer)) {
+        range = sel.getRangeAt(0);
+      } else {
+        range = document.createRange();
+        range.selectNodeContents(input);
+        range.collapse(false);
+        sel.removeAllRanges();
+        sel.addRange(range);
+      }
+      range.deleteContents();
+      const node = document.createTextNode(text);
+      range.insertNode(node);
+      range.setStartAfter(node);
+      range.setEndAfter(node);
+      sel.removeAllRanges();
+      sel.addRange(range);
+      savedRange = range.cloneRange();
+      update();
+    }
+
+    document.querySelectorAll('.dt-ipa-key').forEach((btn) => {
+      btn.addEventListener('mousedown', (e) => {
+        e.preventDefault();
+        const ch = btn.getAttribute('data-insert');
+        if (ch != null) insertAtCaret(ch);
+      });
+    });
+
+    update();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initDiacriticTyper);
+  } else {
+    initDiacriticTyper();
+  }
+  // Re-init after Starlight client-side navigation (if view transitions are on).
+  document.addEventListener('astro:page-load', initDiacriticTyper);
+</script>
