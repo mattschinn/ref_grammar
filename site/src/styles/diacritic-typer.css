@@ -1,0 +1,293 @@
+/* In-site diacritic typer (src/components/DiacriticTyper.astro). Adapted from the
+   standalone tool, rewired to Starlight theme variables so it tracks light/dark.
+   Global (not component-scoped) because the highlight spans are created at runtime
+   via innerHTML and would not receive a scoped-style attribute. */
+
+.dt-typer {
+  --dt-border: var(--sl-color-gray-5);
+  --dt-surface: var(--sl-color-bg-nav, var(--sl-color-bg));
+  --dt-muted: var(--sl-color-gray-3);
+  --dt-code-bg: var(--sl-color-gray-6);
+  margin-top: 1.5rem;
+}
+.dt-typer * {
+  box-sizing: border-box;
+}
+
+.dt-main-layout {
+  display: grid;
+  grid-template-columns: 1fr 272px;
+  gap: 32px;
+  align-items: start;
+}
+@media (max-width: 800px) {
+  .dt-main-layout {
+    grid-template-columns: 1fr;
+  }
+  .dt-ipa-aside {
+    position: static;
+  }
+}
+.dt-left-col {
+  min-width: 0;
+}
+.dt-ipa-aside {
+  position: sticky;
+  top: 5rem;
+}
+.dt-ipa-aside-label,
+.dt-box-label,
+.dt-ipa-group-label,
+.dt-settings-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--dt-muted);
+}
+.dt-ipa-aside-label {
+  margin-bottom: 12px;
+}
+
+.dt-io {
+  display: grid;
+  gap: 16px;
+}
+.dt-box {
+  border: 1px solid var(--dt-border);
+  border-radius: 6px;
+  background: var(--dt-surface);
+  position: relative;
+}
+.dt-box-label {
+  padding: 10px 14px 0;
+}
+.dt-input-editable,
+.dt-output {
+  width: 100%;
+  min-height: 160px;
+  padding: 10px 14px 14px;
+  border: none;
+  background: transparent;
+  color: var(--sl-color-text);
+  font-size: 16px;
+  line-height: 1.4;
+  outline: none;
+}
+.dt-input-editable {
+  font-family: var(--sl-font-mono);
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-y: auto;
+  resize: vertical;
+  caret-color: var(--sl-color-text-accent, var(--sl-color-accent));
+}
+.dt-input-editable:empty::before {
+  content: attr(data-placeholder);
+  color: var(--dt-muted);
+  opacity: 0.7;
+}
+.dt-output {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  font-family: 'EB Garamond', 'Brill', serif;
+}
+.dt-output.dt-font-garamond {
+  font-family: 'EB Garamond', 'Brill', serif;
+}
+.dt-output.dt-font-brill {
+  font-family: 'Brill', 'EB Garamond', serif;
+}
+.dt-output.dt-font-mono {
+  font-family: var(--sl-font-mono);
+}
+
+.dt-trigger {
+  color: #d96bb0;
+}
+:root[data-theme='light'] .dt-trigger {
+  color: #b14d86;
+}
+.dt-receiver {
+  color: #6aa5d9;
+}
+:root:not([data-theme='light']) .dt-receiver {
+  color: #8cc0ea;
+}
+
+.dt-copy-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  font-size: 11px;
+  padding: 4px 8px;
+  opacity: 0.75;
+}
+.dt-copy-btn:hover {
+  opacity: 1;
+}
+
+.dt-details {
+  margin-top: 24px;
+  border-top: 1px solid var(--dt-border);
+  padding-top: 16px;
+}
+.dt-details summary {
+  cursor: pointer;
+  font-size: 13px;
+  color: var(--dt-muted);
+  user-select: none;
+  padding: 4px 0;
+}
+.dt-details summary:hover {
+  color: var(--sl-color-text);
+}
+
+.dt-settings {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.dt-settings-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 13px;
+}
+.dt-settings-label {
+  width: 56px;
+  flex-shrink: 0;
+}
+.dt-settings-controls {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.dt-settings-checks {
+  gap: 18px;
+  color: var(--dt-muted);
+}
+.dt-settings-checks label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.dt-typer select,
+.dt-typer button {
+  font-family: inherit;
+  font-size: 13px;
+  padding: 6px 10px;
+  border: 1px solid var(--dt-border);
+  background: var(--dt-surface);
+  color: var(--sl-color-text);
+  border-radius: 4px;
+  cursor: pointer;
+}
+.dt-typer select:hover,
+.dt-typer button:hover {
+  border-color: var(--sl-color-text);
+}
+.dt-style-btn {
+  width: 28px;
+  height: 28px;
+  padding: 0;
+}
+.dt-style-btn.dt-bold {
+  font-weight: 600;
+}
+.dt-style-btn.dt-italic {
+  font-style: italic;
+}
+.dt-style-btn.active {
+  background: var(--sl-color-text);
+  color: var(--sl-color-bg);
+  border-color: var(--sl-color-text);
+}
+.dt-size-control input[type='range'] {
+  width: 110px;
+  accent-color: var(--sl-color-accent);
+}
+.dt-size-value {
+  font-variant-numeric: tabular-nums;
+  min-width: 36px;
+  font-size: 12px;
+}
+
+.dt-cheat {
+  margin-top: 12px;
+  font-size: 13px;
+}
+.dt-cheat table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 8px;
+}
+.dt-cheat th,
+.dt-cheat td {
+  text-align: left;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--dt-border);
+  vertical-align: top;
+}
+.dt-cheat th {
+  font-weight: 600;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--dt-muted);
+}
+.dt-cheat code,
+.dt-ipa-note code,
+.dt-note code {
+  background: var(--dt-code-bg);
+  padding: 1px 5px;
+  border-radius: 3px;
+  font-family: var(--sl-font-mono);
+  font-size: 12px;
+}
+.dt-note,
+.dt-ipa-note {
+  margin-top: 12px;
+  padding: 10px 12px;
+  background: var(--dt-code-bg);
+  border-radius: 4px;
+  font-size: 12px;
+  color: var(--dt-muted);
+}
+
+.dt-ipa-pad {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.dt-ipa-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.dt-ipa-keys {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.dt-ipa-key {
+  font-family: 'Brill', 'EB Garamond', serif;
+  font-size: 18px;
+  line-height: 1;
+  min-width: 36px;
+  height: 36px;
+  padding: 0 8px !important;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.dt-ipa-key:hover {
+  background: var(--dt-code-bg);
+}
+.dt-ipa-key:active {
+  background: var(--sl-color-text);
+  color: var(--sl-color-bg);
+}

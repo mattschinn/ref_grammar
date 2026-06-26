@@ -1,0 +1,51 @@
+lemma,GA coda,GA source,conlang coda,inflected - progressive,inflected - preterite,coda shape class category
+o,∅ (vowel-final /oʊ/),go,oral vowel,onn (pred.),ot (pred.),V — true vowel
+epplii,∅ (vowel-final /aɪ/),apply,oral vowel,epplinni (pred.),eppliit (pred.),V — true vowel
+spyi,∅ (vowel-final /uː/),spew,oral vowel,spinni ~ spyinni (pred.),spyit (pred.),V — true vowel
+noë,∅ (vowel-final /ɔɪ/),annoy,oral vowel,noenn (pred.),noët (pred.),V — true vowel
+ospii,/k/ (→∅),speak,oral vowel,ospikm (pred.),ospikt (pred.),V — masks GA stop
+kli,/k/ (→∅),click,oral vowel,klikm (pred.),klikt (pred.),V — masks GA stop
+rékriiyä,/k/ (→∅),yakitty-yak,oral vowel,rékriiyäkm (pred.),rékriiyäkt (pred.),V — masks GA stop
+piquô,/t/ (→∅),pick out,oral vowel,piquotm (pred.),piquott (pred.),V — masks GA stop
+piiquóä,/t/ (→∅),peek over at,oral vowel,piiquóätm (pred.),piiquóätt (pred.),V — masks GA stop
+rhiitsô,/t/ (→∅),reach out,oral vowel,rhiitsotm (pred.),rhiitsott (pred.),V — masks GA stop
+rhiiysseunnou,/t/ (→∅),really stand out,oral vowel,rhiiysseunnoutm (pred.),rhiiysseunnoutt (pred.),V — masks GA stop
+reuto,/t/ (→∅),get it,oral vowel,reutotm (pred.),reutott (pred.),V — masks GA stop
+beusso/beussou,/t/ (→∅),pass out,oral vowel,beussno (attested),beussot (pred.),V — masks GA stop
+rhikriu,/t/ (→∅),recruit,oral vowel,rhikriutm (attested),rhikriutt (pred.),V — masks GA stop
+rhiiynii,/d/ (→∅),really need,oral vowel,rhiiyniitm (pred.),rhiiyniitt (pred.),V — masks GA stop
+rheĩ,/n/,rain,nasal vowel /ĩ/,rheinn (attested),rheĩt (pred.),Ṽ — nasal-vowel
+rhıĩ,/ŋ/,ring,nasal vowel,rhıĩnn (pred.),rhıĩt (pred.),Ṽ — nasal-vowel
+ǫ,/n/,own,nasal vowel,onn (pred.),ǫt (pred.),Ṽ — nasal-vowel
+bényǫ,/n/,opinion,nasal vowel,bényonn (pred.),bényǫt (pred.),Ṽ — nasal-vowel
+baurzıĩ,/n/,barge in,nasal vowel,baurzıĩnn (pred.),baurzıĩt (pred.),Ṽ — nasal-vowel
+rhiib,/v/ (→/b/),drive,voiced stop /b/,rhiimm (attested),rhiipt (pred.),Db — voiced-stop
+rib,/v/ (→/b/),give,voiced stop /b/,rimm (pred.),ript (pred.),Db — voiced-stop
+preb,/p/,prep,voiced stop /b/,premm (pred.),prept (pred.),Db — voiced-stop
+split,/t/,split,voiceless stop /t/,splitm (attested),splitt ~ spliʔ (pred.),Tp — voiceless-stop
+pot,/t/,pout,voiceless stop /t/,potm (pred.),pott (pred.),Tp — voiceless-stop
+reut,/t/,get it,voiceless stop /t/,reutm (pred.),reutt (pred.),Tp — voiceless-stop
+rérèyt,/t/,narrate,voiceless stop /t/,rérèytm (pred.),rérèytt (pred.),Tp — voiceless-stop
+bęiink,/k/,panic,voiceless stop /k/,bęiinkm (pred.),bęiinkt (pred.),Tp — voiceless-stop
+nott,/t/ (→/ʔ/),note,glottal stop /ʔ/,notm (pred.),nott / agglut. /‑tm/ (pred.),Glt — glottal-stop
+meiktt,/t/ (→/kʔ/),make it,glottal stop /kʔ/,meiktm (pred.),meirtt (attested; irreg.),Glt — glottal-stop
+nouś,/s/,notice,/s/,nouśn (pred.),nouśt (pred.),S — sibilant /s sː/
+rhemmêś,/s/,reminisce,/s/,rhemmêśn (pred.),rhemmêśt (pred.),S — sibilant /s sː/
+pauyiis,/z/ (→/s/),apologize,/s/,pauyiisn (pred.),pauyiist (attested),S — sibilant /s sː/
+baurrâuss,/s/,process,geminate /sː/,baurrâussn (pred.),baurrâusst (pred.),S — sibilant /s sː/
+beŕaumss,/s/,promise,geminate /sː/,beŕaumssn (pred.),beŕaumsst (pred.),S — sibilant /s sː/
+þokss,/ksː/,focus,cluster /ksː/,þokssn (pred.),þoksst (pred.),S — sibilant /s sː/
+ŕeush,/ʃ/,cherish,/ʃ/,ŕeushn (pred.),ŕeusht (pred.),Sh — /ʃ/
+rhiiyshêush,/ʃ/,really cherish,/ʃ/,rhiiyshêushn (pred.),rhiiyshêusht (pred.),Sh — /ʃ/
+bemmw,/r/ (-er),remember,syllabic /w̩/,bemrrıĩ (pred.),bemmorret (attested),W — syllabic /w̩/ (-er)
+bekw,/r/ (-er),bicker,syllabic /w̩/,bekrrıĩ (attested),bekorret (pred.),W — syllabic /w̩/ (-er)
+rhinnw,/r/ (-er),wonder,syllabic /w̩/,rhinrrıĩ (pred.),rhinorret (pred.),W — syllabic /w̩/ (-er)
+baunnw,/r/ (-er),ponder,syllabic /w̩/,baunrrıĩ (pred.),baunorret (pred.),W — syllabic /w̩/ (-er)
+barnkw,/l/ (-le),barnacle,syllabic /w̩/,barnklı̃ ? ~ barnkrrıĩ ? (open),open,W — syllabic /w̩/ (-le)
+toutw,/l/ (-le),total to,syllabic /w̩/,open,open,W — syllabic /w̩/ (-le)
+ŕequôþw,/r/ (-er),check off,syllabic /w̩/,ŕequôþrrıĩ ? (open),ŕequôþorret ? (open),W — syllabic /w̩/ (other)
+þilnn,/n/,fill in,syllabic geminate nasal /nː/,þilnn (absorbed; pred.),þiltm (attested; agglut.),N — syllabic geminate nasal
+pikkp,/p/,pick up,stop appendix /p/,pikkpm (pred.),pikkpt (pred.),App / Clu — stop appendix / cluster
+rhiušp,/ʃp/,worship,cluster /ʃp/,rhiušpm (pred.),open,App / Clu — stop appendix / cluster
+bessts,/sːts/,message,cluster /sːts/,open,open,App / Clu — stop appendix / cluster
+ospokwþ,/kwθ/,speak with,cluster /kwθ/,open,open,App / Clu — stop appendix / cluster

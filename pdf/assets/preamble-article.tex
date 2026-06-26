@@ -1,0 +1,20 @@
+% Minimal preamble for one-off article-class builds (pandoc + tectonic).
+% Reuses the Brill IPA-capable main font from the main build; drops the
+% book-class chapter/fancyhdr machinery.
+\usepackage{fontspec}
+\setmainfont{Brill}[
+  Path           = assets/fonts/,
+  Extension      = .ttf,
+  UprightFont    = *-Roman,
+  ItalicFont     = *-Italic,
+  BoldFont       = *-Bold,
+  BoldItalicFont = *-BoldItalic,
+  Ligatures      = TeX
+]
+% Route backtick/monospace spans through Brill so IPA in code spans renders.
+\let\ttfamily\rmfamily
+
+\usepackage{microtype}
+\setlength{\parskip}{0.45em plus 0.1em minus 0.05em}
+\setlength{\parindent}{0pt}
+\usepackage{booktabs}

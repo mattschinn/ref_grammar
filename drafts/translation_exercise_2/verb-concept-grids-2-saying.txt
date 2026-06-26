@@ -1,0 +1,391 @@
+Round-2 instrument, built to the revised method of phase4-triage-2026-06.md §7.2. Single
+concept, sub-divided; predictions range over the compositional machinery (frame ×
+concord shape × aspect × stem lexical aspect, plus the matrix-particle layer), not over
+reading-cells. Phase 3 remains Mat's solo translation session; each sub-category closes with
+the five-line block before moving on. A MOTION make-up batch rides along at the end.
+
+                                                                       It was deferred because
+
+it "adds no column the six don't already test." That was true of the cell grid. Under the
+
+revised machinery view, SAYING is the natural stress test for three of the June discoveries
+
+at once: it is the predicted home of a     (the dizque slot), the
+
+predicted home of a                        (GA be like / go / be all are exactly the kind
+
+of high-frequency colloquial matrix material the language has been recruiting), and a rich
+
+supply of deverbal nominals (the chats, the gossip) that lets battery  run
+
+inside the session instead of separately.
+
+. Work the sub-categories                  (Core before Optional). The MOTION skip
+
+happened because everything was nominally equal priority; this document ranks
+
+instead.
+
+. For each sub-category: read the prediction table, translate the pairs, then
+                        fill the closing block before starting the next sub-category (discoveries
+
+    cascade; capture them in order).
+
+. Prediction tables are claims to test, not commitments. Mark  /  / ~ against each row
+    inline.
+
+. Phonological or orthographic discoveries: flag with [New rule needed: ...] and
+    move on.
+
+. Embedded batteries (B1, B3, B5-partial, B6-partial) are marked  -- these double as
+    triage-doc deliverables.
+
+                         (copy under each sub-category):
+
+                   concept-cohesive / splinters by verb / absorbed by grammar
+          keep cognate / merge / split / coin / interjection-ize / grammar-only
+
+                        which frame×shape×aspect predictions held, failed, reframed
+SAYING decomposes into seven territories with different predicted fates:
+
+A Bare utterance    say, tell, talk, speak, blurt, let slip
+
+B Reportative edge  they say, I heard, word is, sounds like,
+                    supposedly
+
+C Quotation         be like, go, be all; direct vs indirect speech
+
+G Interactive /     chat, discuss, argue, gossip                    (hosts B1)
+     durative
+
+E Speech acts       ask, answer, promise, warn, thank,              Optional
+                    apologize, greet
+
+F Channel           call, text, write, message, reach out, hit      Optional (extends existing
+                    up, drop a line                                 rhiitso, rhi)
+
+D Manner of         whisper, shout, yell, mumble, mutter            Optional
+     speaking
+
+Saying as such; speech directed at a recipient; speech as activity.
+Frame default   Volitive -- speech is canonically deliberate; go-ahead is the unmarked frame for
+                say.
+
+get-oneself +                                                                                 Predict the frame
+utterance verb  absorbs that lexicon: blurt out, let slip, it slipped out do not survive as verbs; "got
+                myself saying it" carries the meaning. The sharpest lexical-absorption prediction
+                of the session.
+
+Concord shapes  Infinitive-shaped = threshold ("finally got myself to say it" -- effortful
+                confession); progressive-shaped = caught-mid-speech; passive-shaped (-oþw-
+                class) = ? -- first test of the passive shape outside MOTION.  feeds §4.2
+                drafting.
+
+tell                       Tell her the news = give-extension with
+
+                an information possessum (the ritm pattern). Test whether the topic-marked-
+
+                definite-object restriction (triage §2.4, B7) recurs with abstract objects. B7-
+
+                adjacent.
+
+talk/speak      Durative activities: imperfect-natural, PS-rich, REC-nominal-capable (the talks).
+
+Lexical fates   say survives as the core verb; tell grammar-absorbed (prediction above); speak/
+                talk merge or register-split.
+
+  . (a) "I said it." (b) "It slipped out / I blurted it out." Tests the blurt-absorption prediction:
+       does (b) need any lexical verb beyond say under get-oneself?
+
+  . (a) "I finally said it." (b) "I was saying it when she walked in." Tests infinitive-shaped
+       (threshold confession) vs progressive-shaped concord on one stem.
+
+  . (a) "I told her the news." (b) "You know the news -- I told her." Tests tell-as-
+       possession-causative, and the definite-object restriction with an abstract possessum.
+
+  . (a) "We talked for hours." (b) "I spoke with the manager." Tests talk/speak: one verb
+       register-split, or two? Reciprocity flag -- see G.
+
+               If (1b) works frame-only, record which GA blurt-class verbs die; that is a settled-
+dust finding of the same type as PERCEPTION-PH.
+
+                     _______________
+
+                                         
+Hearsay and secondhand information. The headline prediction: a
+            -- the conlang's dizque.
+
+                (apply the membership criterion: finite verb in the etymon  tense-
+
+capable):
+
+they say (that) yes       Generic 3PL -- person syncretism comes pre-installed, the best-
+I heard (that) yes        formed candidate.
+
+(it) sounds like yes      Source is already past-tense -- does the particle lexicalize the past
+                          form, and what is its non-past partner (I hear...)? Interesting tense-
+word is (that)  yes       pair asymmetry vs enp/enniip.
+                (copula)
+supposedly,               Auditory-inferential rather than pure hearsay -- may pair with
+apparently                piies (visual-inferential) rather than with the reportatives.
+
+                          Marginal finite verb; good edge-test of the membership criterion
+                          itself.
+
+                          No finite verb  modal adverbs (the meiyi/bauyiis layer), not
+                          matrix particles. Confirm they pattern as adverbs.
+Tense          Each surviving particle shows the privative non-past/past pair (cf. enp/enniip, no/
+               nii); test with "always" / "tomorrow, probably" adverbs per the settled enp method.
+               B3 method also applies to piies here -- close that battery.
+
+Government     Unknown -- assign each new particle a government class (imperfect-forcing like
+               enp, or free like no). B5.
+
+Ordering &     topic particle > matrix particle > clause; test reportative stacking over enp ("I heard
+stacking       it ended up...") and under matrix no ("I know they say..."). Pronominal buffering
+               expected at depth 2+. B6-partial.
+
+Evidential                                                                                        no (knowledge), piies
+system         (appearance/inference), reportative (hearsay). If sounds like survives separately,
+               the appearance leg splits by modality (visual piies vs auditory), with the hiie/nou
+               topic-particle choice doing further evidential work underneath -- extend the
+               seem/look finding.
+
+Lexical fates  GA hear the perception verb is already covered by nou/not; the reportative heard
+               (that) is predicted to split off into the particle, mirroring the no(topic)/no(matrix)
+               homophone pattern.
+
+  . (a) "They say the bridge is out." (b) "I heard the bridge is out." Two reportative sources,
+       one proposition: do both survive, and do they contrast (general hearsay vs personal
+       source)?
+
+  . (a) "Apparently she left." (b) "I heard she ended up leaving." *Adverb-layer vs particle-
+       layer; and reportative-over-*enniip stacking.
+
+  . (a) "It sounds like rain." (b) "It looks like rain." Auditory vs visual inference: does
+       sounds-like join piies as a modal-of-evidence pair, and which topic particle does each
+       select?
+
+  . (a) "Word is they're hiring." -- edge-test of the membership criterion.
+
+               Whether reportatives embed the clause's aspect freely or govern it; and whether
+the personal-source reportative (I heard) resists person syncretism (its etymon is 1SG-
+specific -- does a "you heard / she heard" reading survive anywhere?).
+
+                     _______________
+        Framing reported speech and thought. Second headline prediction: a
+                                                 from GA colloquial be like / go / be all.
+
+Source        be like is the highest-frequency GA colloquial quotative and the predicted winner;
+selection     go and be all may leave register-marked or fossilized residue.
+
+Architecture  Since aspect lives on weak pronouns, the quotative is predicted to be an
+                                hosted by the pronoun: roughly e [QUOT] "..." -- with the pronoun's
+
+              aspect fusion supplying was-like vs is-like. Clean test of the split-TAM architecture
+              in new territory.
+
+Coverage      GA be like quotes speech stance/internal reaction. Predict the quotative
+              inherits both -- overlapping COGNITION residue (a quotable-thought strategy
+              alongside þau, klik).
+
+Direct vs     Predict direct quotation = quotative particle; indirect = matrix no / reportative layer.
+indirect      If so, the direct/indirect distinction is carried entirely by particle choice -- no
+              complementizer needed.
+
+Syntax        Where does quoted material sit relative to topic structure? Can a quote be
+              topicalized ("...," -- that's what she was like)? Expect right-periphery behavior;
+              check against the antitopic on-X-end pattern.
+
+  . (a) "She was like, 'no way.'" (b) "She said no." Quotative vs plain say*: register,
+       directness, or both?*
+
+. (a) "I was like, finally!" (internal reaction, nothing uttered) (b) "I said 'finally.'" Tests
+       stance-quotation inheritance.
+
+. (a) "He goes, 'who, me?'" (b) "He was all, 'who, me?'" Do go and be all survive at all, and
+       with what register color?
+
+. (a) She said (that) she'd come. (b) She was like, "I'll come." Indirect vs direct: particle
+       choice as the whole distinction?
+
+               The quotative's tense/aspect locus. If the pronoun carries it, that is strong
+confirmation of split-TAM; if the quotative itself inflects, it may be a matrix particle instead
+(etymon was like contains a finite verb -- the membership criterion cuts both ways here,
+and the outcome decides the analysis).
+
+                     _______________
+                                               
+
+          Two-or-more-party speech activities: chat, discuss, argue, gossip. Chosen Core
+because it hosts the do-support battery on home turf.
+
+Aspect profile  Activities: imperfect-natural; perfect get-oneself = "ended up in an argument"
+                (PH-flavored).
+
+REC-ITER        Rich: the chats, the gossip(ings), the arguments.       get-oneself +
+nominals
+                deverbal REC-nominal with and without i; go-ahead + nominal with and
+
+                without with. Four-cell battery, two nominals minimum.
+
+Possession      "We had a chat / got ourselves a chat" -- does the possession construction host
+construction    speech-event nominals as plain possessa (bare nominal, no i)? If yes, the i
+                requirement may track activity-engagement vs event-possession, which would
+                sharpen the triage §2.1 residue spec considerably.
+
+Reciprocity                   how is mutual action marked? GA each other fate unknown; we-subject
+                may carry reciprocity unmarked; or a comitative strategy (with-phrase) emerges.
+                First data point for a reciprocal section.
+
+Stimulus-       "It got us arguing" -- strategy reuse outside the stative domain; checks whether
+promotion       the strategies are stative-only or general.
+
+Lexical fates   gossip likely survives (salient nominal + activity); discuss may lose to talk-about;
+                argue survives.
+
+. (a) "We were chatting all evening." (b) "We got to chatting." (c) "the chats" (shared-
+       knowledge routine). Aspect spread on one stem, then the REC nominal -- then run
+       B1 on (c)'s nominal in all four cells.
+
+. (a) "We argued about money." (b) "Money got us arguing." Reciprocal expression +
+       stimulus-promotion outside statives.
+
+. (a) "They gossip about everyone." (b) "the gossip(ings)." Habitual frame + REC-ITER;
+       second B1 nominal.
+
+               Any reciprocal marking at all; and whether B1 splits i-requiring activity-
+nominals from bare event-possessa.
+
+                     _______________
+          Performatives and conventionalized acts: ask, answer, promise, warn, thank,
+apologize, greet.
+
+Frame      Strongly volitive -- performatives are the most deliberate speech there is. The get-
+affinity
+           oneself frame on a performative is predicted                                          :
+
+           "ended up promising / got myself promising" = the commitment-trap reading
+
+           (reluctance, social pressure). Attitudinal gold; the DOING attitudinal finding should
+
+           recur sharpened.
+
+ask        Interacts with the open content-question system and with ea. Embedding a polar
+
+           question under ask ("asked whether...") may surface the first complementizer data --
+
+           or ea may simply ride along into the embedded clause. High-information test.
+
+Formulaic  thank, apologize, greet predicted to          , not survive as verbs: GA thanks,
+acts
+           my bad, sorry, hey are the high-frequency colloquial sources (cf. existing ohô, nóeiìe
+
+           interjection entries). Verbal uses ("I apologized") then route through quotative or
+
+           activity strategies ("I was like, my bad").
+
+warn       Candidate for matrix-particle periphery (heads up (that)...? -- no finite verb; predict
+           adverb/interjection instead).
+
+. (a) "I promised." (b) "I ended up promising." The commitment trap.
+. (a) "She asked if I was coming." (b) "She asked, 'coming at all?'" Indirect vs direct
+
+      question embedding; ea behavior under ask*.*
+. (a) "I apologized to her." (b) "I was like, my bad." Interjection-ization and the quotative
+
+      workaround.
+
+                    _______________
+
+          Medium-specific contact verbs. Extends existing entries rhiitso (< *reach out) and
+rhi (< *ring).
+Source      GA colloquial idioms dominate: hit (someone) up, shoot a text, drop a line. Predict
+register    fused survivals like pikkp -- and a test of whether *up is a productive satellite (an
+            up-counterpart to oþw) or fuses only.  extends B2's satellite question to a second
+            particle.
+
+Frame       Volitive default; get-oneself = "ended up on the phone for an hour" (PH duration);
+spread      possession construction for received messages ("got myself a text" -- possession of a
+            message-object, bare nominal predicted).
+
+Lexical fates call territory: rhi vs rhiitso division of labor to settle (medium-specific vs medium-
+                     neutral).
+
+. (a) "I'll hit her up." (b) "She hit me up out of nowhere." Volitive vs PH on a fused idiom;
+      watch the up element.
+
+. (a) "I got a text." (b) "I got myself texting all night." Possession (bare nominal) vs
+      activity engagement (concord) -- a B1-adjacent contrast with a non-deverbal nominal.
+
+                    _______________
+
+          whisper, shout, yell, mumble, mutter. Lexical-aspect playground; lowest priority
+because it mostly re-tests known machinery -- but the cleanest place to watch
+
+                                                     , which the §4.2 rewrite needs examples of.
+
+Semelfactive vs  shout/yell (semelfactive-capable) vs mumble/mutter (activity-only): predict the
+activity         infinitive-shaped concord is natural on semelfactives and coerced on pure
+                 activities, and vice versa for the progressive shape. A two-by-two with named
+                 stems = the worked example §4.2 wants.
+
+Stative          "Pain made me scream" -- activity-coercion output for internal states; checks
+interface        strategy reuse alongside G's stimulus-promotion test.
+
+Aesthetics       Manner verbs are sound-symbolism carriers; flag any derivations with strong
+                 phonaesthetic results for poetics.md .
+. (a) "She shouted once." (b) "She was shouting for hours."
+. (a) "He muttered something." (b) "He got himself muttering again."
+
+                    _______________
+
+Translate the four skipped pairs; same protocol, one closing block for the lot.
+
+M2. (a) "Come here." (b) "Go there." -- deixis: lexical or speaker-anchored grammar? M3.
+(a) "We were driving for hours." (b) "We set off at dawn." -- durative vs onset; onset now
+predicted = imperfect-tied inchoative machinery, re-test under the new analysis. M4. (a)
+"Bring it to me." (b) "Take it there." -- caused-motion deixis; also a possession-causative
+candidate (bring = cause-to-have-here?). M5. (a) "I take that walk every morning." (b) "the
+walks." -- third B1 nominal, from the original star example.
+
+                     _______________
+
+.                                (B) -- confirms the class is productive, not a
+    three-member relic.
+
+.                                (C) -- the decisive split-
+    TAM test.
+
+.              (A) -- the PERCEPTION-PH pattern recurring in SAYING.
+
+.                                (A) -- if yes, the possession construction's reach extends
+
+   to abstract transfer and the §2.4 section grows a subsection.
+
+.              (G, + F20, M5) -- i as activity-engagement marker vs event-possession?
+
+   Finalizes the REC-demotion residue spec before Session V drafting.
+
+.              (G) -- first data for an undescribed system.
+
+.                                (E) -- feeds the dictionary's interjection layer.
+
+.              (B + round-1 piies findings) -- if it holds, a new unified subsection:
+
+   the matrix evidential layer.
+   · Read closing blocks against the watch list; settle B1, B3, B5 (new-particle government
+       classes), B6-partial, B7-adjacent.
+
+   · Carve decisions  recipe building-order entries; dictionary batch D4 (SAYING)
+       scoped.
+
+   · Decide: does the matrix-particle section get drafted with three members + criteria, or
+       wait for the reportative results? (Recommendation: draft after this session either way
+       -- the section's claims are testable-by-design.)
+
+   · Route new flags; update phase4-triage-2026-06.md §6 battery statuses; strike
+       graduated items.
+
+Versioning: 2026-06-11 -- v1, drafted as the round-2 instrument per triage §7.2 revisions.
+

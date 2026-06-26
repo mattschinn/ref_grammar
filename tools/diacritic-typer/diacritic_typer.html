@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diacritic Converter</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=EB+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Google+Sans+Code:ital,wght@0,400;0,600;1,400;1,600&family=IBM+Plex+Mono:ital,wght@0,400;0,600;1,400;1,600&family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #fafaf8;
+    --surface: #ffffff;
+    --border: #e5e3de;
+    --text: #1a1a1a;
+    --muted: #666;
+    --accent: #1a1a1a;
+    --code-bg: #f3f1ec;
+  }
+  [data-theme="dark"] {
+    --bg: #1a1a1a;
+    --surface: #242422;
+    --border: #3a3a37;
+    --text: #f0efe9;
+    --muted: #9a9a95;
+    --accent: #f0efe9;
+    --code-bg: #2d2d2a;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: 'IBM Plex Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.5;
+    transition: background 0.2s, color 0.2s;
+  }
+  .container {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 48px 24px 80px;
+  }
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 32px;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  h1 {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0;
+    letter-spacing: -0.01em;
+  }
+  .controls {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+  select, button {
+    font-family: inherit;
+    font-size: 13px;
+    padding: 6px 10px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: border-color 0.15s;
+  }
+  select:hover, button:hover { border-color: var(--text); }
+  .style-btn {
+    font-family: 'IBM Plex Sans', sans-serif;
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    font-size: 13px;
+  }
+  .style-btn.active {
+    background: var(--text);
+    color: var(--bg);
+    border-color: var(--text);
+  }
+  .style-btn.bold { font-weight: 600; }
+  .style-btn.italic { font-style: italic; }
+  .size-control {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .size-control input[type="range"] {
+    width: 100px;
+    accent-color: var(--text);
+  }
+  .size-value {
+    font-variant-numeric: tabular-nums;
+    min-width: 32px;
+    font-size: 12px;
+  }
+
+  /* Two-column layout: left = I/O + settings, right = IPA pad */
+  .main-layout {
+    display: grid;
+    grid-template-columns: 1fr 272px;
+    gap: 32px;
+    align-items: start;
+  }
+  @media (max-width: 720px) {
+    .main-layout { grid-template-columns: 1fr; }
+    .ipa-aside { position: static; }
+  }
+  .left-col { min-width: 0; }
+  .ipa-aside {
+    position: sticky;
+    top: 24px;
+  }
+  .ipa-aside-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    margin-bottom: 12px;
+  }
+
+  .io {
+    display: grid;
+    gap: 16px;
+  }
+  .box {
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--surface);
+    position: relative;
+  }
+  .box-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    padding: 10px 14px 0;
+    font-family: 'IBM Plex Sans', sans-serif;
+  }
+  textarea, .output, .input-editable {
+    width: 100%;
+    min-height: 140px;
+    padding: 10px 14px 14px;
+    border: none;
+    background: transparent;
+    color: var(--text);
+    font-size: 16px;
+    font-family: inherit;
+    resize: vertical;
+    outline: none;
+    line-height: 1.4;
+  }
+  .output {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    min-height: 140px;
+  }
+  .input-editable {
+    font-family: 'Google Sans Code', monospace !important;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    overflow-y: auto;
+    resize: vertical;
+    caret-color: var(--text);
+  }
+  .input-editable:empty::before {
+    content: attr(data-placeholder);
+    color: var(--muted);
+    opacity: 0.6;
+  }
+  .trigger { color: #d96bb0; }
+  [data-theme="dark"] .trigger { color: #e98dc3; }
+  .copy-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    font-size: 11px;
+    padding: 4px 8px;
+    opacity: 0.7;
+  }
+  .copy-btn:hover { opacity: 1; }
+  details {
+    margin-top: 32px;
+    border-top: 1px solid var(--border);
+    padding-top: 20px;
+  }
+  summary {
+    cursor: pointer;
+    font-size: 13px;
+    color: var(--muted);
+    user-select: none;
+    padding: 4px 0;
+  }
+  summary:hover { color: var(--text); }
+  .settings {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .settings-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 13px;
+  }
+  .settings-label {
+    width: 60px;
+    flex-shrink: 0;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+  }
+  .settings-controls {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .settings-checks {
+    gap: 18px;
+    color: var(--muted);
+  }
+  .settings-checks label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+  }
+  .cheat {
+    margin-top: 16px;
+    font-size: 13px;
+    color: var(--text);
+  }
+  .cheat table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 8px;
+  }
+  .cheat th, .cheat td {
+    text-align: left;
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  .cheat th {
+    font-weight: 600;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+  }
+  .cheat code {
+    background: var(--code-bg);
+    padding: 1px 5px;
+    border-radius: 3px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+  }
+  .cheat .note {
+    margin-top: 12px;
+    padding: 10px 12px;
+    background: var(--code-bg);
+    border-radius: 4px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .font-cardo { font-family: 'Cardo', serif; }
+  .output.font-cormorant { font-family: 'Cormorant Garamond', serif; }
+  .font-cormorant { font-family: 'Cormorant Garamond', serif; }
+  .font-garamond { font-family: 'EB Garamond', serif; }
+  .font-plexsans { font-family: 'IBM Plex Sans', sans-serif; }
+  .font-plex { font-family: 'IBM Plex Mono', monospace; }
+  .font-gsans { font-family: 'Google Sans Code', monospace; }
+  .receiver { color: #6aa5d9; }
+  [data-theme="dark"] .receiver { color: #8cc0ea; }
+  .ipa-pad {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .ipa-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .ipa-group-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+  }
+  .ipa-keys {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .ipa-key {
+    font-family: 'Cardo', 'Cormorant Garamond', serif;
+    font-size: 18px;
+    line-height: 1;
+    min-width: 36px;
+    height: 36px;
+    padding: 0 8px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: border-color 0.15s, background 0.15s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .ipa-key:hover {
+    border-color: var(--text);
+    background: var(--code-bg);
+  }
+  .ipa-key:active {
+    background: var(--text);
+    color: var(--bg);
+  }
+  .ipa-key .gloss {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 10px;
+    color: var(--muted);
+    margin-left: 6px;
+  }
+  .ipa-key:hover .gloss { color: var(--text); }
+  .ipa-note {
+    margin-top: 4px;
+    padding: 10px 12px;
+    background: var(--code-bg);
+    border-radius: 4px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>Diacritic Converter</h1>
+  </header>
+
+  <div class="main-layout">
+    <div class="left-col">
+
+      <div class="io">
+        <div class="box">
+          <div class="box-label">Input</div>
+          <div id="input" class="input-editable" contenteditable="true" spellcheck="false" data-placeholder="Try: cancio`n, ni~ra, zaJb, a3, tQ, bi4t, a:"></div>
+        </div>
+        <div class="box">
+          <div class="box-label">Output</div>
+          <button class="copy-btn" id="copy-btn">Copy</button>
+          <div class="output" id="output"></div>
+        </div>
+      </div>
+
+      <details>
+        <summary>Settings</summary>
+        <div class="settings">
+          <div class="settings-row">
+            <span class="settings-label">Font</span>
+            <div class="settings-controls">
+              <select id="font-select" aria-label="Font">
+                <option value="font-cormorant">Cormorant Garamond</option>
+                <option value="font-garamond">EB Garamond</option>
+                <option value="font-cardo">Cardo</option>
+                <option value="font-plexsans">IBM Plex Sans</option>
+                <option value="font-plex">IBM Plex Mono</option>
+                <option value="font-gsans">Google Sans Code</option>
+              </select>
+              <button id="bold-btn" class="style-btn bold" aria-label="Bold" aria-pressed="false">B</button>
+              <button id="italic-btn" class="style-btn italic" aria-label="Italic" aria-pressed="false">I</button>
+            </div>
+          </div>
+          <div class="settings-row">
+            <span class="settings-label">Size</span>
+            <div class="settings-controls size-control">
+              <input type="range" id="size-slider" min="12" max="64" step="1" value="32">
+              <span class="size-value" id="size-value">32px</span>
+            </div>
+          </div>
+          <div class="settings-row">
+            <span class="settings-label">Theme</span>
+            <div class="settings-controls">
+              <button id="theme-toggle" aria-label="Toggle theme">◐</button>
+            </div>
+          </div>
+          <div class="settings-row">
+            <span class="settings-label">Rules</span>
+            <div class="settings-controls settings-checks">
+              <label>
+                <input type="checkbox" id="strict-toggle">
+                Strict mode
+              </label>
+              <label>
+                <input type="checkbox" id="stack-toggle">
+                Stack diacritics
+              </label>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <details>
+        <summary>Rules cheat sheet</summary>
+        <div class="cheat">
+          <table>
+            <thead>
+              <tr><th style="width: 60px">Trigger</th><th>Diacritic</th><th>Applies to</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><code>`</code></td><td>acute accent</td><td><code>s r n m a e i o u y w x</code></td></tr>
+              <tr><td><code>4</code></td><td>grave accent</td><td><code>a e i o u y w</code></td></tr>
+              <tr><td><code>~</code></td><td>tilde</td><td><code>i y w</code></td></tr>
+              <tr><td><code>J</code></td><td>ogonek</td><td><code>a e o u</code></td></tr>
+              <tr><td><code>V</code></td><td>háček</td><td><code>s r n</code></td></tr>
+              <tr><td><code>^</code></td><td>circumflex</td><td><code>a e i o u w y</code></td></tr>
+              <tr><td><code>:</code></td><td>diaeresis</td><td><code>a e i o u y</code></td></tr>
+              <tr><td><code>Q</code></td><td>thorn / eth</td><td><code>t</code> → þ, <code>d</code> → ð</td></tr>
+              <tr><td><code>3</code></td><td>ligature</td><td><code>a</code> → æ; <code>e</code>, <code>o</code> → œ</td></tr>
+              <tr><td><code>7</code> or <code>.</code></td><td>interpunct</td><td>any letter<br><small>(<code>.</code> must be between two letters)</small></td></tr>
+            </tbody>
+          </table>
+          <div class="note">
+            Triggers are postfix — type the base letter first, then the trigger. Invalid combinations silently fail (the trigger is dropped). Capitalization of the base letter is preserved. When one element of an <code>ii</code> digraph takes any diacritic, the other automatically becomes dotless (<code>ı</code>) — e.g. <code>ii~</code> → <code>ıĩ</code>, <code>ii4</code> → <code>ıì</code>, <code>ii`</code> → <code>ıí</code>.
+          </div>
+          <div class="note">
+            <strong>Capital-letter triggers <code>J</code>, <code>V</code>, <code>Q</code>:</strong> these are consumed as diacritic markers <em>only in non-word-initial position</em> — at the start of a word they render as literal letters. Lowercase <code>j</code>, <code>v</code>, <code>q</code> are always literal letters.
+          </div>
+          <div class="note">
+            <strong>Stack diacritics toggle:</strong> when ON, multiple triggers on the same letter stack (e.g. acute on a nasalized vowel). Stacked rules are checked against the original base letter. Ligatures can also stack (<code>a3`</code> → <code>ǽ</code>). With strict mode ON, stacks that have no precomposed Unicode form are silently skipped. When OFF (default), only the first diacritic on each letter is applied.
+          </div>
+          <div class="note">
+            <strong>Strict mode:</strong> Some combinations (like <code>x</code> with most diacritics) have no precomposed Unicode form and render as two code points (base + combining mark). With strict mode on, these are skipped. Affected combinations: <code>x</code> with acute; <code>w</code> with tilde.
+          </div>
+        </div>
+      </details>
+
+    </div><!-- /.left-col -->
+
+    <aside class="ipa-aside">
+      <div class="ipa-aside-label">IPA keys</div>
+      <div class="ipa-pad" id="ipa-pad">
+
+        <div class="ipa-group">
+          <span class="ipa-group-label">Vowels</span>
+          <div class="ipa-keys">
+            <button class="ipa-key" data-insert="ɪ" title="near-close near-front unrounded — KIT">ɪ</button>
+            <button class="ipa-key" data-insert="ɨ" title="close central unrounded">ɨ</button>
+            <button class="ipa-key" data-insert="ɛ" title="open-mid front unrounded — DRESS">ɛ</button>
+            <button class="ipa-key" data-insert="æ" title="near-open front unrounded — TRAP">æ</button>
+            <button class="ipa-key" data-insert="ə" title="schwa — about">ə</button>
+            <button class="ipa-key" data-insert="ʌ" title="open-mid back unrounded — STRUT">ʌ</button>
+            <button class="ipa-key" data-insert="ɚ" title="r-coloured schwa — letter">ɚ</button>
+            <button class="ipa-key" data-insert="ɝ" title="r-coloured open-mid central — NURSE">ɝ</button>
+            <button class="ipa-key" data-insert="ɑ" title="open back unrounded — LOT/PALM">ɑ</button>
+            <button class="ipa-key" data-insert="ɔ" title="open-mid back rounded — THOUGHT">ɔ</button>
+            <button class="ipa-key" data-insert="ʊ" title="near-close near-back rounded — FOOT">ʊ</button>
+            <button class="ipa-key" data-insert="ı" title="dotless i — ii-digraph element">ı</button>
+          </div>
+        </div>
+
+        <div class="ipa-group">
+          <span class="ipa-group-label">Consonants</span>
+          <div class="ipa-keys">
+            <button class="ipa-key" data-insert="ʃ" title="voiceless postalveolar fricative — SH">ʃ</button>
+            <button class="ipa-key" data-insert="ʒ" title="voiced postalveolar fricative — measure">ʒ</button>
+            <button class="ipa-key" data-insert="tʃ" title="voiceless postalveolar affricate — CH">tʃ</button>
+            <button class="ipa-key" data-insert="dʒ" title="voiced postalveolar affricate — J">dʒ</button>
+            <button class="ipa-key" data-insert="θ" title="voiceless dental fricative — thin">θ</button>
+            <button class="ipa-key" data-insert="ð" title="voiced dental fricative — this">ð</button>
+            <button class="ipa-key" data-insert="ŋ" title="velar nasal — NG">ŋ</button>
+            <button class="ipa-key" data-insert="ɻ" title="retroflex approximant">ɻ</button>
+            <button class="ipa-key" data-insert="ʔ" title="glottal stop — uh-oh">ʔ</button>
+            <button class="ipa-key" data-insert="ɾ" title="alveolar tap — butter">ɾ</button>
+            <button class="ipa-key" data-insert="ɫ" title="velarized alveolar lateral — dark L">ɫ</button>
+            <button class="ipa-key" data-insert="kʷ" title="labialized velar stop">kʷ</button>
+            <button class="ipa-key" data-insert="ʷ" title="labialization superscript">ʷ</button>
+          </div>
+        </div>
+
+        <div class="ipa-group">
+          <span class="ipa-group-label">Voiceless sonorants</span>
+          <div class="ipa-keys">
+            <button class="ipa-key" data-insert="n̥" title="voiceless n">n̥</button>
+            <button class="ipa-key" data-insert="m̥" title="voiceless m">m̥</button>
+            <button class="ipa-key" data-insert="ɾ̥" title="voiceless tap">ɾ̥</button>
+          </div>
+        </div>
+
+        <div class="ipa-group">
+          <span class="ipa-group-label">Syllabic consonants</span>
+          <div class="ipa-keys">
+            <button class="ipa-key" data-insert="n̩" title="syllabic n">n̩</button>
+            <button class="ipa-key" data-insert="m̩" title="syllabic m">m̩</button>
+            <button class="ipa-key" data-insert="s̩" title="syllabic s">s̩</button>
+            <button class="ipa-key" data-insert="θ̩" title="syllabic θ">θ̩</button>
+            <button class="ipa-key" data-insert="ʔ̩" title="syllabic glottal stop">ʔ̩</button>
+            <button class="ipa-key" data-insert="w̩" title="syllabic w">w̩</button>
+            <button class="ipa-key" data-insert="j̩" title="syllabic j">j̩</button>
+            <button class="ipa-key" data-insert="ɾ̩" title="syllabic tap">ɾ̩</button>
+          </div>
+        </div>
+
+        <div class="ipa-group">
+          <span class="ipa-group-label">Suprasegmentals &amp; diacritics</span>
+          <div class="ipa-keys">
+            <button class="ipa-key" data-insert="ˈ" title="primary stress (precedes syllable)">ˈ</button>
+            <button class="ipa-key" data-insert="ˌ" title="secondary stress (precedes syllable)">ˌ</button>
+            <button class="ipa-key" data-insert="ː" title="long">ː</button>
+            <button class="ipa-key" data-insert="̃" title="nasalized (combines with previous vowel)">◌̃</button>
+            <button class="ipa-key" data-insert="̥" title="voiceless (combines with previous segment)">◌̥</button>
+            <button class="ipa-key" data-insert="̬" title="voiced (combines with previous segment)">◌̬</button>
+            <button class="ipa-key" data-insert="̤" title="breathy voice (combines with previous segment)">◌̤</button>
+            <button class="ipa-key" data-insert="ʰ" title="aspirated">ʰ</button>
+            <button class="ipa-key" data-insert="." title="syllable break">.</button>
+          </div>
+        </div>
+
+        <div class="ipa-note">
+          Click any symbol to insert at the cursor in the input box. Hover for the symbol name. <code>◌̃</code>-style buttons are combining diacritics — they attach to the preceding character.
+        </div>
+
+      </div>
+    </aside>
+
+  </div><!-- /.main-layout -->
+</div>
+
+<script>
+const COMBINING = {
+  acute:     '́',
+  grave:     '̀',
+  ogonek:    '̨',
+  tilde:     '̃',
+  caron:     '̌',
+  circumflex:'̂',
+  diaeresis: '̈',
+};
+
+const RULES = {};
+
+function addRule(num, letters, mark, precomposedSet) {
+  for (const letter of letters) {
+    const hasPrecomposed = precomposedSet ? precomposedSet.has(letter) : true;
+    RULES[`${num}:${letter}`] = { mark, precomposed: hasPrecomposed };
+  }
+}
+
+// 1 = acute: á é í ó ú ý ẃ ś ŕ ń ḿ all precomposed; x-acute is not
+addRule(1, 'srnmaeiouyw', COMBINING.acute, new Set('srnmaeiouyw'));
+addRule(1, 'x', COMBINING.acute, new Set());
+
+// 4 = grave: à è ì ò ù ỳ ẁ all precomposed
+addRule(4, 'aeiouyw', COMBINING.grave, new Set('aeiouyw'));
+
+// 2 = nasalization
+// ogonek on aeou: ą ę ǫ ų all precomposed
+addRule(2, 'aeou', COMBINING.ogonek, new Set('aeou'));
+// tilde on iyw: ĩ ỹ precomposed; w-tilde not precomposed
+addRule(2, 'i', COMBINING.tilde, new Set('i'));
+addRule(2, 'y', COMBINING.tilde, new Set('y'));
+addRule(2, 'w', COMBINING.tilde, new Set());
+
+// 3 = ligatures
+RULES['3:a'] = { replacement: 'æ', upperReplacement: 'Æ', precomposed: true };
+RULES['3:e'] = { replacement: 'œ', upperReplacement: 'Œ', precomposed: true };
+RULES['3:o'] = { replacement: 'œ', upperReplacement: 'Œ', precomposed: true };
+
+// 5 = háček on s r n: š ř ň all precomposed
+addRule(5, 'srn', COMBINING.caron, new Set('srn'));
+
+// 9 = thorn/eth
+RULES['9:t'] = { replacement: 'þ', upperReplacement: 'Þ', precomposed: true };
+RULES['9:d'] = { replacement: 'ð', upperReplacement: 'Ð', precomposed: true };
+
+// c = circumflex on vowels+w/y: â ê î ô û ŵ ŷ all precomposed
+addRule('c', 'aeiouwy', COMBINING.circumflex, new Set('aeiouwy'));
+
+// d = diaeresis on vowels: ä ë ï ö ü ÿ all precomposed (Ÿ = U+0178)
+addRule('d', 'aeiouy', COMBINING.diaeresis, new Set('aeiouy'));
+
+// Ligatures as stacking bases
+RULES['1:æ'] = { mark: COMBINING.acute, precomposed: true };
+RULES['1:œ'] = { mark: COMBINING.acute, precomposed: false };
+
+function computeTriggerMask(text, stack) {
+  const chars = Array.from(text);
+  const triggers = new Array(chars.length).fill(false);
+  const receivers = new Array(chars.length).fill(false);
+  let prevLetterIdx = -1;
+  let prevLetterChar = '';
+  let prevHasDiacritic = false;
+
+  function markReceiver() {
+    if (prevLetterIdx >= 0) receivers[prevLetterIdx] = true;
+  }
+
+  for (let i = 0; i < chars.length; i++) {
+    const ch = chars[i];
+
+    function canTrigger(sym, prevLower) {
+      switch (sym) {
+        case '`': return 'srnmaeiouywx'.includes(prevLower);
+        case '4': return 'aeiouyw'.includes(prevLower);
+        case '~': return 'iyw'.includes(prevLower);
+        case '^': return 'aeiouwy'.includes(prevLower);
+        case ':': return 'aeiouy'.includes(prevLower);
+        case 'V': return 'srn'.includes(prevLower);
+        case 'J': return 'aeou'.includes(prevLower);
+        case 'Q': return prevLower === 't' || prevLower === 'd';
+        case '3': return prevLower === 'a' || prevLower === 'e' || prevLower === 'o';
+        case '7': return /\p{L}/u.test(prevLower);
+        default:  return false;
+      }
+    }
+
+    const isInterpunct = (s) => s === '7' || s === '.';
+    const stackBlocked = (sym) => !stack && prevHasDiacritic && !isInterpunct(sym);
+    const prevLower = prevLetterChar.toLowerCase();
+
+    if (/[0-9]/.test(ch)) {
+      if (prevLetterIdx >= 0 && canTrigger(ch, prevLower) && !stackBlocked(ch)) {
+        triggers[i] = true;
+        if (!isInterpunct(ch)) {
+          markReceiver();
+          prevHasDiacritic = true;
+        }
+      }
+    } else if (ch === '`' || ch === '~' || ch === '^' || ch === ':') {
+      if (prevLetterIdx >= 0 && canTrigger(ch, prevLower) && !stackBlocked(ch)) {
+        triggers[i] = true;
+        markReceiver();
+        prevHasDiacritic = true;
+      }
+    } else if (ch === 'V' || ch === 'J' || ch === 'Q') {
+      if (prevLetterIdx >= 0 && /\p{L}/u.test(prevLetterChar) && canTrigger(ch, prevLower) && !stackBlocked(ch)) {
+        triggers[i] = true;
+        markReceiver();
+        prevHasDiacritic = true;
+      } else {
+        prevLetterIdx = i;
+        prevLetterChar = ch;
+        prevHasDiacritic = false;
+      }
+    } else if (ch === '.') {
+      const nextCh = chars[i + 1];
+      if (prevLetterIdx >= 0 && /\p{L}/u.test(prevLetterChar) && nextCh && /\p{L}/u.test(nextCh)) {
+        triggers[i] = true;
+      }
+    } else if (/\p{L}/u.test(ch)) {
+      prevLetterIdx = i;
+      prevLetterChar = ch;
+      prevHasDiacritic = false;
+    } else {
+      prevLetterIdx = -1;
+      prevLetterChar = '';
+      prevHasDiacritic = false;
+    }
+  }
+  return { triggers, receivers };
+}
+
+function convert(text, strict, stack) {
+  const chars = Array.from(text);
+  const result = [];
+  const baseLetters = [];
+
+  function pushResult(entry, base) {
+    result.push(entry);
+    baseLetters.push(base !== undefined ? base : entry);
+  }
+  function replaceLast(entry, base) {
+    result[result.length - 1] = entry;
+    if (base !== undefined) baseLetters[baseLetters.length - 1] = base;
+  }
+
+  function symbolToNumber(sym, prevLower) {
+    switch (sym) {
+      case '`': return '1';
+      case '~': return 'iyw'.includes(prevLower) ? '2' : null;
+      case '^': return 'aeiouwy'.includes(prevLower) ? 'c' : null;
+      case ':': return 'aeiouy'.includes(prevLower) ? 'd' : null;
+      case 'V': return 'srn'.includes(prevLower) ? '5' : null;
+      case 'J': return 'aeou'.includes(prevLower) ? '2' : null;
+      case 'Q': return (prevLower === 't' || prevLower === 'd') ? '9' : null;
+      default:  return null;
+    }
+  }
+
+  for (let i = 0; i < chars.length; i++) {
+    const ch = chars[i];
+    let numericTrigger = null;
+
+    if (result.length > 0) {
+      const prevBaseForCheck = baseLetters[baseLetters.length - 1].charAt(0);
+      const prevLowerForCheck = prevBaseForCheck.toLowerCase();
+
+      if (/[0-9]/.test(ch)) {
+        if (ch === '3' || ch === '4' || ch === '7') {
+          numericTrigger = ch;
+        } else {
+          pushResult(ch);
+          continue;
+        }
+      } else if (ch === '`' || ch === '~' || ch === '^' || ch === ':') {
+        numericTrigger = symbolToNumber(ch, prevLowerForCheck);
+        if (numericTrigger === null) {
+          if (ch === ':') pushResult(ch);
+          continue;
+        }
+      } else if (ch === 'V' || ch === 'J' || ch === 'Q') {
+        const lastBase = baseLetters[baseLetters.length - 1].charAt(0);
+        if (/\p{L}/u.test(lastBase)) {
+          numericTrigger = symbolToNumber(ch, prevLowerForCheck);
+          if (numericTrigger === null) { pushResult(ch); continue; }
+        } else {
+          pushResult(ch);
+          continue;
+        }
+      } else if (ch === '.') {
+        const nextCh = chars[i + 1];
+        if (/\p{L}/u.test(prevBaseForCheck) && nextCh && /\p{L}/u.test(nextCh)) {
+          pushResult('·');
+        } else {
+          pushResult(ch);
+        }
+        continue;
+      }
+    } else if (/[0-9]/.test(ch)) {
+      if (ch === '3' || ch === '4' || ch === '7') { continue; }
+      pushResult(ch);
+      continue;
+    } else if (ch === '`' || ch === '~' || ch === '^') {
+      continue;
+    } else if (ch === ':') {
+      pushResult(ch);
+      continue;
+    }
+
+    if (numericTrigger !== null) {
+      const num = numericTrigger;
+      const prev = result[result.length - 1];
+      const prevBase = baseLetters[baseLetters.length - 1].charAt(0);
+      const prevLower = prevBase.toLowerCase();
+      const isUpper = prevBase !== prevLower;
+
+      if (!stack && prev !== prevBase) { continue; }
+
+      if (num === '7') {
+        if (/\p{L}/u.test(prevBase)) { pushResult('·'); }
+        continue;
+      }
+
+      const rule = RULES[`${num}:${prevLower}`];
+      if (!rule) continue;
+      if (strict && !rule.precomposed) continue;
+
+      if (rule.replacement) {
+        const newVal = isUpper ? rule.upperReplacement : rule.replacement;
+        replaceLast(newVal, newVal);
+      } else {
+        // When any diacritic lands on the second i of an ii digraph,
+        // make the first i dotless automatically.
+        if (prevLower === 'i' && result.length >= 2) {
+          const beforePrevBase = baseLetters[baseLetters.length - 2].charAt(0);
+          if (beforePrevBase.toLowerCase() === 'i') {
+            const dotless = beforePrevBase !== beforePrevBase.toLowerCase() ? 'I' : 'ı';
+            result[result.length - 2] = dotless;
+            baseLetters[baseLetters.length - 2] = dotless;
+            result[result.length - 1] = (prev + rule.mark).normalize('NFC');
+            continue;
+          }
+        }
+        const composed = (prev + rule.mark).normalize('NFC');
+        if (strict && Array.from(composed).length > 1) { continue; }
+        result[result.length - 1] = composed;
+      }
+    } else {
+      pushResult(ch);
+    }
+  }
+
+  // Post-process: if a diacritic ended up on the first i of an ii pair
+  // (e.g. from pasted text), move it to the second and make first dotless.
+  let out = result.join('');
+  out = out
+    .replace(/íi/g, 'ıí').replace(/Íi/g, 'Íı')
+    .replace(/ìi/g, 'ıì').replace(/Ìi/g, 'Ìı')
+    .replace(/îi/g, 'ıî').replace(/Îi/g, 'Îı')
+    .replace(/ïi/g, 'ıï').replace(/Ïi/g, 'Ïı')
+    .replace(/ĩi/g, 'ıĩ').replace(/Ĩi/g, 'Iĩ')
+    .replace(/ĩI/g, 'ıĨ').replace(/ĨI/g, 'IĨ');
+  return out;
+}
+
+// — UI wiring —
+
+const input       = document.getElementById('input');
+const output      = document.getElementById('output');
+const strictToggle= document.getElementById('strict-toggle');
+const stackToggle = document.getElementById('stack-toggle');
+const fontSelect  = document.getElementById('font-select');
+const themeToggle = document.getElementById('theme-toggle');
+const copyBtn     = document.getElementById('copy-btn');
+const sizeSlider  = document.getElementById('size-slider');
+const sizeValue   = document.getElementById('size-value');
+const boldBtn     = document.getElementById('bold-btn');
+const italicBtn   = document.getElementById('italic-btn');
+
+function update() {
+  output.textContent = convert(input.textContent, strictToggle.checked, stackToggle.checked);
+  highlightInput();
+}
+
+function getCaretOffset(el) {
+  const sel = window.getSelection();
+  if (!sel.rangeCount) return 0;
+  const range = sel.getRangeAt(0);
+  const pre = range.cloneRange();
+  pre.selectNodeContents(el);
+  pre.setEnd(range.endContainer, range.endOffset);
+  return pre.toString().length;
+}
+
+function setCaretOffset(el, offset) {
+  const range = document.createRange();
+  const sel = window.getSelection();
+  let remaining = offset;
+  let found = false;
+  function walk(node) {
+    if (found) return;
+    if (node.nodeType === Node.TEXT_NODE) {
+      const len = node.textContent.length;
+      if (remaining <= len) {
+        range.setStart(node, remaining);
+        range.collapse(true);
+        found = true;
+        return;
+      }
+      remaining -= len;
+    } else {
+      for (const child of node.childNodes) { walk(child); if (found) return; }
+    }
+  }
+  walk(el);
+  if (!found) { range.selectNodeContents(el); range.collapse(false); }
+  sel.removeAllRanges();
+  sel.addRange(range);
+}
+
+function escapeHtml(s) {
+  return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+function highlightInput() {
+  const text = input.textContent;
+  if (!text) { if (input.innerHTML !== '') input.innerHTML = ''; return; }
+  const offset = getCaretOffset(input);
+  const chars = Array.from(text);
+  const { triggers, receivers } = computeTriggerMask(text, stackToggle.checked);
+
+  function classFor(i) {
+    if (triggers[i]) return 'trigger';
+    if (receivers[i]) return 'receiver';
+    return '';
+  }
+  let html = '', i = 0;
+  while (i < chars.length) {
+    const cls = classFor(i);
+    let run = '';
+    while (i < chars.length && classFor(i) === cls) { run += chars[i]; i++; }
+    html += cls ? `<span class="${cls}">${escapeHtml(run)}</span>` : escapeHtml(run);
+  }
+  if (input.innerHTML !== html) { input.innerHTML = html; setCaretOffset(input, offset); }
+}
+
+input.addEventListener('input', update);
+
+strictToggle.addEventListener('change', () => {
+  localStorage.setItem('strict', strictToggle.checked ? '1' : '0');
+  update();
+});
+strictToggle.checked = localStorage.getItem('strict') === '1';
+
+stackToggle.addEventListener('change', () => {
+  localStorage.setItem('stack', stackToggle.checked ? '1' : '0');
+  update();
+});
+stackToggle.checked = localStorage.getItem('stack') === '1';
+
+input.addEventListener('paste', (e) => {
+  e.preventDefault();
+  const text = (e.clipboardData || window.clipboardData).getData('text');
+  document.execCommand('insertText', false, text);
+});
+
+const FONT_CLASSES = ['font-cormorant','font-garamond','font-cardo','font-plexsans','font-plex','font-gsans'];
+function applyFont(cls) {
+  FONT_CLASSES.forEach(c => output.classList.remove(c));
+  output.classList.add(cls);
+  localStorage.setItem('font_v2', cls);
+}
+fontSelect.addEventListener('change', (e) => applyFont(e.target.value));
+const savedFont = localStorage.getItem('font_v2') || 'font-cormorant';
+fontSelect.value = savedFont;
+applyFont(savedFont);
+
+function applySize(px) {
+  output.style.fontSize = `${px}px`;
+  sizeValue.textContent = `${px}px`;
+  localStorage.setItem('size', String(px));
+}
+sizeSlider.addEventListener('input', (e) => applySize(parseInt(e.target.value, 10)));
+const savedSize = parseInt(localStorage.getItem('size') || '32', 10);
+sizeSlider.value = savedSize;
+applySize(savedSize);
+
+function applyStyle(kind, active) {
+  const btn = kind === 'bold' ? boldBtn : italicBtn;
+  btn.classList.toggle('active', active);
+  btn.setAttribute('aria-pressed', String(active));
+  output.style[kind === 'bold' ? 'fontWeight' : 'fontStyle'] = active ? (kind === 'bold' ? '600' : 'italic') : (kind === 'bold' ? '400' : 'normal');
+  localStorage.setItem(kind, active ? '1' : '0');
+}
+boldBtn.addEventListener('click',   () => applyStyle('bold',   !boldBtn.classList.contains('active')));
+italicBtn.addEventListener('click', () => applyStyle('italic', !italicBtn.classList.contains('active')));
+applyStyle('bold',   localStorage.getItem('bold')   === '1');
+applyStyle('italic', localStorage.getItem('italic') === '1');
+
+function applyTheme(theme) {
+  document.documentElement.setAttribute('data-theme', theme);
+  localStorage.setItem('theme', theme);
+  themeToggle.textContent = theme === 'dark' ? '◑' : '◐';
+}
+themeToggle.addEventListener('click', () => {
+  const current = document.documentElement.getAttribute('data-theme') || 'light';
+  applyTheme(current === 'dark' ? 'light' : 'dark');
+});
+applyTheme(localStorage.getItem('theme') || 'dark');
+
+copyBtn.addEventListener('click', async () => {
+  try {
+    await navigator.clipboard.writeText(output.textContent);
+    const orig = copyBtn.textContent;
+    copyBtn.textContent = 'Copied';
+    setTimeout(() => { copyBtn.textContent = orig; }, 1200);
+  } catch (e) {}
+});
+
+// IPA keypad — insert at saved caret position inside input
+let savedRange = null;
+function saveSelection() {
+  const sel = window.getSelection();
+  if (!sel.rangeCount) return;
+  const range = sel.getRangeAt(0);
+  if (input.contains(range.commonAncestorContainer)) savedRange = range.cloneRange();
+}
+input.addEventListener('keyup',   saveSelection);
+input.addEventListener('mouseup', saveSelection);
+input.addEventListener('focus',   saveSelection);
+
+function insertAtCaret(text) {
+  input.focus();
+  const sel = window.getSelection();
+  let range;
+  if (savedRange && input.contains(savedRange.startContainer)) {
+    range = savedRange;
+    sel.removeAllRanges();
+    sel.addRange(range);
+  } else if (sel.rangeCount && input.contains(sel.getRangeAt(0).commonAncestorContainer)) {
+    range = sel.getRangeAt(0);
+  } else {
+    range = document.createRange();
+    range.selectNodeContents(input);
+    range.collapse(false);
+    sel.removeAllRanges();
+    sel.addRange(range);
+  }
+  range.deleteContents();
+  const node = document.createTextNode(text);
+  range.insertNode(node);
+  range.setStartAfter(node);
+  range.setEndAfter(node);
+  sel.removeAllRanges();
+  sel.addRange(range);
+  savedRange = range.cloneRange();
+  update();
+}
+
+document.querySelectorAll('.ipa-key').forEach(btn => {
+  btn.addEventListener('mousedown', (e) => {
+    e.preventDefault();
+    const ch = btn.getAttribute('data-insert');
+    if (ch != null) insertAtCaret(ch);
+  });
+});
+
+update();
+</script>
+</body>
+</html>

@@ -31,6 +31,8 @@ Before doing anything else, read these files in the project:
 
 If any of these files have changed since the last invocation, the changes take precedence over anything in this skill file.
 
+**Available tool — `spell2ipa`.** A deterministic spelling→IPA drafter (`skills/spell2ipa.py`, documented in `spell2ipa-skill.md`, pinned to `orthography.md` v3). Importable: `from spell2ipa import convert; convert("rhiiynii")`. Use it to *accelerate* IPA drafting and as a forward sanity-check in Step 4 — it is a **drafter, not an oracle**. It never consults the lexicon, which is fine: duplication/homophone checks are this skill's own job (Steps 2–3), not the converter's. Treat its output as a draft a human confirms, and discount its documented divergences (Step 4) before flagging a mismatch.
+
 ---
 
 ## Step 1: Confirm minimum required info
@@ -73,6 +75,7 @@ If similar definitions exist, show them to the user briefly and ask whether the 
 
 If the user provided an IPA form:
 
+0. **Forward check first:** run `convert(headword)` (the `spell2ipa` converter) to get a predicted IPA, and compare it to the user's IPA. This is the fast pass. Before treating any difference as a real discrepancy, discount the converter's **documented, non-error divergences**: pitch is *added* from the acute (not matched); primary stress is always emitted on the final syllable; final-stop glottalization (`t` → [ʔ], e.g. *nobêt* /noˈbɛʔ/) is not modelled; `iu` = /ɪː/; a bare word-final `s` is rendered /z/ (per `orthography.md` §2.2 — no word-final devoicing); `ŕ` = /ɾ̥/ and `ę` = /ɛ̃/. A residue after discounting these is a genuine discrepancy — carry it into the reverse-walk below.
 1. Walk the IPA back through the rules in `orthography.md` to predict what the headword *should* spell as.
 2. Compare against the headword the user gave.
 3. If they match: proceed.
@@ -83,7 +86,7 @@ If the user provided an IPA form:
 
 If the cause is a new orthographic convention or an ambiguity, **do not edit `orthography.md`**. Instead, note the issue in the entry's `Notes` field and add a line to the changelog (Step 7) flagging the open orthographic question.
 
-If the user did not provide IPA, offer to derive it from the headword and the orthography rules. The user may accept, decline, or ask to leave it `[Open]`.
+If the user did not provide IPA, offer to derive it from the headword and the orthography rules — seed the draft with `convert(headword)` and present it as a *draft for confirmation*, not a final value (correcting the documented divergences above). The user may accept, decline, or ask to leave it `[Open]`.
 
 ---
 
