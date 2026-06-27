@@ -14,6 +14,9 @@ site/src/content/docs/dictionary/
 site/src/content/docs/quickref/
 site/src/generated/
 
+# Writing-style exemplar PDFs (local reference only; copyrighted third-party papers)
+data/writing-style-references/
+
 # OS / editor cruft
 Thumbs.db
 .DS_Store

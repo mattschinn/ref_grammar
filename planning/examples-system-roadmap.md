@@ -1,0 +1,100 @@
+# Roadmap: Centralized Examples System
+
+**Status:** active · **Opened:** 2026-06-26 · **Owner:** author (Matt) + Claude
+
+A multi-session plan to turn `examples.md` from a one-entry scaffold into the single source of truth for glossed example sentences — authored once, transcluded into the dictionary and reference grammar at build time, and grown over time with richer assets. Check tasks off as they land; the **Current focus** pointer says what's next.
+
+How to use: tasks are `- [ ]` (todo) / `- [x]` (done). Keep the **Decisions locked** section authoritative so later sessions don't relitigate settled calls. When a milestone closes, note the date next to its heading.
+
+---
+
+## Why centralize (the load-bearing reasons)
+
+Settled after weighing inline-vs-central. Inline authoring cannot give these; a central corpus can:
+
+1. **Update propagation.** The conlang shifts constantly. Inline examples rot and must be hunted across docs; a central source re-propagates every citation on the next build from one edit.
+2. **Amortizing expensive per-example assets.** Audio recordings, deep annotations, and footnotes are costly to produce once and worthless to duplicate. Created against an E-ID, every transcluding surface inherits them.
+3. **Corpus-level operations.** Tag-and-enumerate all examples to audit which grammatical functions are under-demonstrated and drive a backlog (Milestones C–D).
+
+The cost worry is real but mis-aimed: **centralization is cheap; the rich rendering is the expensive part, and they're separable.** Milestone A delivers the benefits above with minimal machinery; the fancy rendering (G) and rich assets (H) are deferred and incremental.
+
+---
+
+## Decisions locked
+
+- **Centralize** examples in `examples.md` as the single source of truth. ✔
+- **Alignment:** conlang ↔ pseudo-etymological lines are chunked and aligned (interactive on the site); the GA translation stays a **free line** (not chunked). No traditional Leipzig line yet (labels unsettled).
+- **Chunk delimiter:** `|`. Aligned lines must have **equal chunk counts**; the parser errors loudly on mismatch.
+- **`examples.md` is backend-only.** Not published as an HTML page, not a PDF chapter — it exists solely as the transclusion source.
+- **`§E001` inline mentions** become **hovercard-only** (no link target, since there's no examples page). The block token `<!-- example: E001 -->` is what renders an example in place.
+- **Open-schema record.** The per-example JSON record is extensible from day one, so `audio:`, `notes:`, `footnotes:` slot in later with zero migration.
+- **Draft-import bar (for Milestone B2):** import each `/drafts` sentence as `[Provisional]` with a pointer to its source draft; reconcile spelling/IPA against current `phonology.md`/`orthography.md`; stub-check words against `dictionary.md`; never let a draft's old form overwrite current canon (flag conflicts, don't resolve); author reviews each before it lands.
+
+Maps to the author's original nine items: #1→A1 · #4→A2+G · #2→B1 · #3→B2 · #5→C · #6→D1 · #7→D2 · #8→E · #9→F.
+
+---
+
+## Current focus
+
+➡ **A2 — Plain transclusion.** Define the `<!-- example: EID -->` token, expand it in both pipelines (basic block), stop publishing `examples.md` as a site page, make `§EID` hover-card only. (A1 done.)
+
+---
+
+## Milestone A — Centralization core (Slice 1) — the cheap, high-value foundation
+
+Delivers propagation + reuse. Everything below A depends on A1.
+
+- [x] **A1. Data model.** ✓ 2026-06-26. `examples.md` §2/§6 rewritten to the `|`-chunked, open-schema, build-time-source format; `parseExamples` now emits `{conlang, segments[], ipa, translation, tags, slug}` with a loud equal-count guard (verified to throw); E001 re-encoded to 8 aligned segments; `examples.json` shape confirmed.
+- [ ] **A2. Plain transclusion.** Define the `<!-- example: EID -->` block token; expand it in the site compiler (`build-content.mjs`, basic block) and the PDF pre-pass (`pdf/build.ps1`, basic block). Dictionary style = inline `*conlang* "translation"`; grammar style = stacked conlang/etym + free translation. Stop publishing `examples.md` as a site page; make `§EID` hovercard-only.
+- [ ] **A3. Enforce SSOT.** Rewrite the `example-adder` skill (Step 5) to insert tokens instead of hand-copying examples into `dictionary.md`. Migrate E001's existing inline copy in the *ŕe* entry to a token.
+- [ ] **A4. Register the change.** Update `CLAUDE.md` (examples.md is now backend-only source, not a published sibling) and the affected docs' Versioning Notes.
+
+## Milestone B — Corpus population (needs A1)
+
+- [ ] **B1. Port existing grammar examples.** Sweep the reference docs for inline glossed examples already in prose; move each into `examples.md`, replace with tokens.
+- [ ] **B2. Import draft translations.** Carefully promote `/drafts` translation-exercise sentences into `examples.md` per the locked draft-import bar. Author reviews each before it lands.
+
+## Milestone C — Editorial standard (needs `data/writing-style-references`)
+
+- [ ] **C1. Codify examples pacing.** Mine the reference papers for how strong linguistics writing paces examples against argument; write the principle into the `writing-style` skill (fits its register-caveat / Part-5 structure).
+
+## Milestone D — Coverage audit & worklist (needs B + C)
+
+- [ ] **D1. Audit.** Walk the grammar with the C1 principle; mark where arguments are under-exemplified.
+- [ ] **D2. Worklist.** Produce a structured list of needed example/gloss sentences, each keyed to the grammatical function it must demonstrate. Author takes this **offline** to write.
+
+## Milestone E — Coordinated-ingestion skill (needs A)
+
+- [ ] **E1. Orchestrator skill.** Formalize the multi-doc fan-out: a new sentence may carry new grammar (→ reference docs), new words (→ `dictionary-updater` stub), new sound rules (→ flag for phonology), plus the example (→ `examples.md`) and its tokens. Build over `example-adder` / `dictionary-updater` with propagation rules baked in.
+
+## Milestone F — Run the loop (needs E + author's offline work)
+
+- [ ] **F1. Ingest.** Feed the author's offline-written examples through the E1 skill, coordinated across docs.
+
+## Milestone G — Rendering polish (Slice 2) — deferred, presentation-only
+
+- [ ] **G1. HTML interactive gloss.** Color-coded, hover-linked chunk alignment (extend `hovercard.js` + a transform). Conlang ↔ etym highlight on hover, distinct color per chunk.
+- [ ] **G2. PDF grammar gloss.** Deterministic monospace column padding (measure *display* width, not codepoint count — diacritics/IPA misalign on naïve length).
+
+## Milestone H — Rich assets (Slice 3) — future
+
+- [ ] **H1. Audio.** Add an `audio:` field + asset pipeline; renderers opt in.
+- [ ] **H2. Annotations.** Add `notes:` / `footnotes:` fields; renderers opt in.
+
+---
+
+## Dependency map
+
+```
+A1 ─┬─ A2 ─ A3 ─ A4        (core; do first)
+    ├─ B1, B2              (population; parallel after A1)
+    ├─ E1 ─ F1             (skill, then loop)
+    └─ G1, G2              (polish; deferred)
+C1 ─ D1 ─ D2               (editorial; D needs B + C)
+H1, H2                     (future; need A1's open schema)
+```
+
+## Session log
+
+- 2026-06-26 — Roadmap opened. Decisions locked (centralize; conlang↔etym interactive + free translation; `|` delimiter; backend-only; open schema; draft-import bar). Phase-0 format + `examples.json` shape specced and agreed.
+- 2026-06-26 — **A1 done.** `examples.md` v0.2 (chunk-aligned, open-schema, build-time-source), `parseExamples` rewritten + equal-count guard, E001 re-encoded. Parser verified against the live doc (8 segments) and the guard verified to throw on mismatch. Touched: `docs/reference/examples.md`, `site/scripts/parse.mjs`. Next: A2.

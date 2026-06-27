@@ -18,6 +18,7 @@ The canonical documents live under `docs/`; everything else is tooling or assets
 - **`site/`** — the Astro + Starlight HTML site (the deterministic Markdown→HTML compiler).
 - **`tools/`** — standalone author tools (`diacritic-typer/diacritic_typer.html`).
 - **`drafts/`** — proposal inbox/archive (see Drafts workflow).
+- **`planning/`** — living multi-session roadmaps with checkable tasks (distinct from `drafts/`: a roadmap is an ongoing checklist, not a one-shot proposal to integrate and archive).
 - **`.claude/skills/`** — formalized procedures as Claude Code skills (see Skills).
 
 **Cross-references between docs are filename-based** (`phonology.md §4.1`, `examples.md §E001`), not path-based, and remain valid regardless of which folder a doc sits in. Do not rewrite them to include paths.
