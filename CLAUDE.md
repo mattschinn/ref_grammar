@@ -17,7 +17,8 @@ The canonical documents live under `docs/`; everything else is tooling or assets
 - **`pdf/`** — the PDF pipeline: `build.ps1` / `build-dictionary.ps1` (+ `.cmd` wrappers), `assets/` (fonts, LaTeX preambles, title page), `out/` (built PDFs), `build_tmp/` (scratch, gitignored).
 - **`site/`** — the Astro + Starlight HTML site (the deterministic Markdown→HTML compiler).
 - **`tools/`** — standalone author tools (`diacritic-typer/diacritic_typer.html`).
-- **`drafts/`**, **`skills/`** — unchanged (proposal inbox/archive; formalized procedures).
+- **`drafts/`** — proposal inbox/archive (see Drafts workflow).
+- **`.claude/skills/`** — formalized procedures as Claude Code skills (see Skills).
 
 **Cross-references between docs are filename-based** (`phonology.md §4.1`, `examples.md §E001`), not path-based, and remain valid regardless of which folder a doc sits in. Do not rewrite them to include paths.
 
@@ -34,17 +35,20 @@ The documents are not peers — they have a defined parent/sibling relationship.
 - **`ideophones.md`** — sibling reference for the expressive layer: the ideophone word class, its phonotactic marginality, the multimodal **χ** gesture convention, and its interfaces with the quotative construction (`verbal-system.md` §12). Spun out June 2026 (the SAYING translation round); the youngest sibling.
 - **`dictionary.md`** — the lexicon, in conlang collation order (§2). Each entry's **Sound changes** field cites rules from `phonology.md` §4 by reference; new derivations may surface phonology gaps that need propagating upward.
 
-Several documents reference siblings that are not in this directory: `verb-paradigm-verdict.md`, `translation-frequency-task.md`. Treat as out-of-tree (held elsewhere or planned). `verb-terminology.md` is **retired** — do not edit it; route changes to `verbal-system.md` and consult its §13 for supersession history. `verb-recipe.md` (formerly out-of-tree) has been folded in as Appendix A of `verbal-system.md` (see `drafts/integrated/2026-05-05-verb-recipe-v2.md` for the original draft). `dictionary-updater.md` (formerly out-of-tree) is now in-tree as a skill — see "Skills" below.
+Several documents reference siblings that are not in this directory: `verb-paradigm-verdict.md`, `translation-frequency-task.md`. Treat as out-of-tree (held elsewhere or planned). `verb-terminology.md` is **retired** — do not edit it; route changes to `verbal-system.md` and consult its §13 for supersession history. `verb-recipe.md` (formerly out-of-tree) has been folded in as Appendix A of `verbal-system.md` (see `drafts/integrated/2026-05-05-verb-recipe-v2.md` for the original draft). `dictionary-updater` (formerly out-of-tree) is now an in-tree skill — see "Skills" below.
 
 ## Skills
 
-Procedural workflows the author has formalized as standalone skill files live in `skills/`. Treat them as authoritative procedures: when a user invocation matches a skill's trigger, follow the skill's steps in order rather than improvising.
+Procedural workflows the author has formalized live as Claude Code skills under `.claude/skills/<name>/SKILL.md`. Each skill's YAML frontmatter carries its own `description` (including the trigger phrases) — that frontmatter is the source of truth, and the harness surfaces and invokes these skills automatically. Treat them as authoritative procedures: when a user invocation matches a skill's trigger, follow that skill's steps in order rather than improvising. The index below is a convenience map, not a second copy of the triggers.
 
-- **`skills/dictionary-updater.md`** — procedure for adding entries to `dictionary.md`. **Trigger:** the user says "Let's update the dictionary" or a close variant ("let's add a word," "I want to add an entry"). The skill walks through required reading, headword-collision checks, IPA/orthography sanity-checking against `orthography.md`, sound-change sanity-checking against `phonology.md`, and writing the entry plus a changelog line. Also has a **stub mode** (invoked from `example-adder.md`, not directly by the user) that writes a minimal flagged entry when a word surfaces in a gloss without a dictionary entry. The skill explicitly **does not** edit `phonology.md`, `orthography.md`, or `language_reference.md` — phonological or orthographic gaps surfaced during entry-building are flagged in the entry's Notes and the dictionary changelog, then resolved in separate sessions.
-
-- **`skills/example-adder.md`** — procedure for adding glossed example sentences to `examples.md`. **Trigger:** the user says "Let's add an example" or a close variant ("let's gloss X," "I want to add a gloss," "let's add a sentence"). The skill confirms the minimum required gloss fields (Conlang, Etymological, Translation), assigns the next E-ID, writes the entry, then checks each content word against `dictionary.md`: adding inline examples to existing entries, and handing off to `dictionary-updater.md` stub mode for words not yet in the dictionary. Functional/grammatical words and words with 2+ existing examples are skipped. The skill explicitly **does not** edit `phonology.md`, `orthography.md`, or `language_reference.md`.
-
-- **`skills/quickref-updater.md`** — procedure for rebuilding the three companion quick-reference files from the canonical reference documents. **Trigger:** the user says "Let's update the quickrefs" or a close variant ("rebuild the quickrefs," "refresh the quickrefs"). Also appropriate to invoke after any session that meaningfully updates `phonology.md §4`, `orthography.md §2–4`, or `dictionary.md §4`. Produces: `phonology-quickref.md` (§4.4 rule tables only), `orthography-quickref.md` (§2–4 grapheme tables only), `dictionary-index.md` (flat headword index in collation order). These files are snapshots — they do not replace the canonical documents; rebuild them when a source changes.
+| Skill | What it does |
+|---|---|
+| `dictionary-updater` | Add (or stub) entries in `dictionary.md`, sanity-checked against `phonology.md`/`orthography.md`. Has a stub mode called by `example-adder`. Does not edit the reference docs — gaps are flagged and deferred. |
+| `example-adder` | Add glossed example sentences to `examples.md` and link them into dictionary entries; hands off to `dictionary-updater` stub mode for missing words. |
+| `quickref-updater` | Rebuild the three `docs/quickref/` snapshots from the canonical docs. Snapshots, not canon — rebuild when a source changes. |
+| `ref-grammar-section-draft-and-integrate` | Draft and/or integrate sections of the descriptive reference docs. Owns altitude and placement; pairs with `writing-style`. Does not govern `dictionary.md`. |
+| `writing-style` | The prose canon — sentence/paragraph-level discipline for the reference docs. Owns *how sentences read*; flags structural/altitude issues and routes them. |
+| `spell2ipa` | Deterministic spelling→IPA drafter (`spell2ipa.py`). A drafter, not an oracle; also called from the dictionary workflow. |
 
 ## Drafts workflow
 

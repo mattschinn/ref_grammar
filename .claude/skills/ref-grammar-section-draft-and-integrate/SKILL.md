@@ -1,11 +1,16 @@
+---
+name: ref-grammar-section-draft-and-integrate
+description: Draft new sections for the descriptive reference grammar (language_reference.md, phonology.md, orthography.md, verbal-system.md, ideophones.md) or integrate an approved draft into them. Use when the user says "let's draft a section," "let's write up X for the grammar," "let's integrate this," or "fold this into the reference."
+---
+
 # Reference Grammar: Section Drafting and Integration
 
 **Version:** v1 (June 2026)
-**Status:** Skill file. Lives in `skills/` alongside `dictionary-updater.md`. Invoked by the user; see Trigger.
+**Status:** Skill file. Lives in `.claude/skills/ref-grammar-section-draft-and-integrate/`. Invoked by the user; see Trigger.
 
 A single skill with two workflows — **Workflow A: Draft a section** and **Workflow B: Integrate a section** — sharing one house-style canon. The two workflows share the canon deliberately: drafting must anticipate integration (where the text will live, what terminology it uses, what depth it is written at), and integration must verify the same standards drafting wrote to. Splitting them into two skills would duplicate the canon and let the copies drift.
 
-This skill governs the descriptive reference documents: `language_reference.md`, `verbal-system.md`, `phonology.md`, `orthography.md`, and any future siblings (e.g., `nominal-system.md`). It does **not** govern `dictionary.md` (see `skills/dictionary-updater.md`).
+This skill governs the descriptive reference documents: `language_reference.md`, `verbal-system.md`, `phonology.md`, `orthography.md`, and any future siblings (e.g., `nominal-system.md`). It does **not** govern `dictionary.md` (see the `dictionary-updater` skill).
 
 ---
 
@@ -26,7 +31,7 @@ Before either workflow:
 1. `terminology-registry.md` — the canonical registry of terms. **Every term used in new prose must match its registry entry.**
 2. The destination document's table of contents and §Versioning Notes (to know its current state and numbering).
 3. The neighboring sections of the destination location (the section before and after where the new text will sit).
-4. Any sibling-document sections the new text will summarize, point at, or be summarized by. Use `project_knowledge_search` to find them; do not rely on memory of the documents.
+4. Any sibling-document sections the new text will summarize, point at, or be summarized by. Use Grep/Glob over `docs/` to find them; do not rely on memory of the documents.
 
 If any project file has changed since this skill was last edited, the file takes precedence over this skill's description of it.
 
@@ -35,6 +40,8 @@ If any project file has changed since this skill was last edited, the file takes
 # Part 1 — House-style canon
 
 Both workflows write and check against the following standards. They apply to all new prose; existing text is brought into conformance opportunistically (when a section is touched, fix it), not by mass rewrite.
+
+This canon governs **altitude and placement** — audience, voice, what belongs where, and how much. **Sentence- and paragraph-level prose discipline** (concision, thesis-first ordering, strong verbs, calibrated hedging, the anti-patterns that bloat drafted text) lives in the separate prose canon, `writing-style.md`. When drafting or integrating, write to both: this skill decides *whether a sentence belongs and at what depth*; `writing-style.md` decides *how it reads*. The two are kept separate so neither restates the other.
 
 ## 1.1 Audience contract
 
@@ -136,7 +143,7 @@ Confirm before drafting:
 
 ## A.2 Do the required reading
 
-Per the Required-reading list: registry, destination neighbors, related sibling sections. Additionally search the project knowledge for the topic itself — earlier sessions often left partial treatments, open-question flags, or `[New rule needed: …]` markers that the draft must honor or close.
+Per the Required-reading list: registry, destination neighbors, related sibling sections. Additionally Grep `docs/` for the topic itself — earlier sessions often left partial treatments, open-question flags, or `[New rule needed: …]` markers that the draft must honor or close.
 
 Report briefly what was found before drafting ("the topic is touched in `verbal-system.md` §X and flagged Open in §Y; the draft will…").
 
@@ -204,7 +211,7 @@ Present the full set of proposed changes — new/changed sections, converted poi
 
 ## B.6 Write
 
-On approval, write to the project files. Use the project's reliable write pattern: write to `/mnt/project/<file>` and mirror to `/mnt/user-data/outputs/<file>` as fallback; present the output files. Verify the written state matches the approved diff.
+On approval, write the changes directly to the canonical files under `docs/` with the Edit/Write tools. Verify the written state matches the approved diff.
 
 ## B.7 Versioning notes and propagation checklist
 

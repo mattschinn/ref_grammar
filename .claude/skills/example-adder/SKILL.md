@@ -1,3 +1,8 @@
+---
+name: example-adder
+description: Add glossed example sentences to examples.md and link them to dictionary entries. Use when the user says "let's add an example," "let's gloss X," "let's add a sentence," or "let's add a gloss."
+---
+
 # Example Adder
 
 A procedure for adding glossed example sentences to `examples.md`. Invoked explicitly by the user with "Let's add an example" or close variants ("let's gloss X," "I want to add a sentence," "let's add a gloss").
@@ -14,10 +19,10 @@ This skill walks through a fixed sequence of steps: confirming the gloss fields,
 
 ## Required Reading Before Acting
 
-Before doing anything else, read:
+Before doing anything else, read (canonical docs live under `docs/`):
 
-1. `examples.md` — to know the current highest E-ID (§5), the entry format (§2), the etymological-gloss conventions (§3), and the tag registry (§4).
-2. `dictionary.md` — to look up content words (§4 Entries) and to know the collation order (§2) for any stub insertions.
+1. `docs/reference/examples.md` — to know the current highest E-ID (§5), the entry format (§2), the etymological-gloss conventions (§3), and the tag registry (§4).
+2. `docs/dictionary/dictionary.md` — to look up content words (§4 Entries) and to know the collation order (§2) for any stub insertions.
 
 ---
 
