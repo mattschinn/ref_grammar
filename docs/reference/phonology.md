@@ -1,11 +1,11 @@
 # Phonology Reference
 
-**Version:** v4.7 (June 2026)
+**Version:** v4.8 (June 2026)
 **Predecessor:** v3 and earlier — see §7 (Versioning Notes).
 
 **Abstract.** The phonology derives from General American English through a designed cascade of regular sound changes, frozen at a synchronic stage. Its character: a small, reorganized consonant inventory; widespread vowel clusters and long vowels from intervocalic elision; permissive onsets against restricted codas; post-stress syllabic-consonant material housed in a prosodic appendix; and pitch dissociated from stress, analyzed as the residue of GA prominence after stress migrated to the word-final position. Suprasegmentals — pitch, length, nasalization, breathy voice — do as much expressive work as segments. This document is the canonical reference for the inventories, the syllable and metrical structure, the rule cascade with worked derivations, and the phonological open-questions backlog.
 
-The full phonological reference for the conlang: inventories, syllable and metrical structure, the diachronic cascade, and the open questions. `language_reference.md` §2 carries this document's orientation abstract.
+`language_reference.md` §2 carries this document's orientation abstract.
 
 Status tags — **[Settled]** committed; **[Provisional]** current best analysis, expected to hold; **[Open]** explicitly undecided — and the reading conventions (asterisked GA etyma, slashes for phonemes, italics for working orthography) are explained in `language_reference.md`, "How to read this document set." Terminology follows `terminology-registry.md`.
 
@@ -950,6 +950,10 @@ Technical vocabulary used throughout. Inline short definitions appear in earlier
 ---
 
 ## 7. Versioning notes
+
+### v4.8, June 2026 — writing-style pass (front matter)
+
+Line-editing pass applying the writing-style prose canon. Removed the redundant sentence "The full phonological reference for the conlang: inventories, syllable and metrical structure, the diachronic cascade, and the open questions" after the Abstract (V4 restatement of the Abstract's closing sentence); the orientation-abstract pointer that followed it is kept. No inventory, rule, derivation, or status-tag content changed; §1–§6 reviewed and found conformant (the §4 registry and §4.5–§4.6 tables are structured reference data, not running prose).
 
 ### v4.7, June 2026 — §1.3 design context relocated to language_reference Appendix A.3
 

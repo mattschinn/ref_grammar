@@ -1,9 +1,9 @@
 # The Verbal System
 
-**Version:** v2.10 (June 2026)
+**Version:** v2.12 (June 2026)
 **Status:** Sibling reference document, parallel to `phonology.md` and `orthography.md`. The language reference's §3.4 is a high-level summary that points here. Supersession history: §17.
 
-**Abstract.** The verbal system grammaticalizes the subject's relationship to the event: every framed verb commits to either the volitional go-ahead frame (the subject deliberately undertook the event) or the non-volitional get-oneself frame (the subject's relationship to the event is qualified in some other way). The go-ahead side is deliberately compact; the get-oneself side is richer, hosting four readings — happenstance, effortful self-benefit, threshold, and backdrop — selected jointly by frame aspect, concord shape, and the verb's own event structure. The frames do not stand alone: they combine with a pronominal system in which pronouns are aspect carriers, while the language's only tense lives in a small class of matrix particles that scaffold whole clauses with modal meaning. A possession construction derives having, getting, choosing, and giving from frame-plus-nominal combination, with the recognitional-iterative nominal as its deverbal special case; three stative-domain strategies carry the meanings the morphology cannot host. This document is the canonical reference for all of these systems; the verb-lexicon-building methodology lives in its Appendix A.
+**Abstract.** The verbal system grammaticalizes the subject's relationship to the event: every framed verb commits to either the volitional go-ahead frame (the subject deliberately undertook the event) or the non-volitional get-oneself frame (the subject's relationship to the event is qualified in some other way). The go-ahead side is deliberately compact; the get-oneself side is richer, hosting four readings — happenstance, effortful self-benefit, threshold, and backdrop — selected jointly by frame aspect, concord shape, and the verb's own event structure. The frames do not stand alone: they combine with a pronominal system in which pronouns are aspect carriers, while the language's only tense lives in a small class of matrix particles that scaffold whole clauses with modal meaning. A possession construction derives having, getting, choosing, and giving from frame-plus-nominal combination, with the recognitional-iterative nominal as its deverbal special case; three stative-domain strategies carry the meanings the morphology cannot host. This document is the canonical reference for all of these systems; the verb-lexicon-building methodology lives in `language_reference.md` Appendix B.
 
 This document describes the verbal system as it currently stands. Where a question is open, it is flagged; the document does not commit to interpretations the data has not yet supported.
 
@@ -20,9 +20,9 @@ The verbal system grammaticalizes the subject's relationship to the event. Every
 
 The contrast cuts the action space differently from GA. The attested verb *beussou* (< GA *pass out*) shows it at full power: in the go-ahead frame it means going to bed — a deliberate act — while in the get-oneself frame, on its happenstance reading, it means falling asleep — something that befell the subject. GA needs two different expressions for these; the conlang needs one verb and a choice of frame.
 
-The two sides are asymmetric, and the asymmetry is principled rather than accidental. Deliberateness is a single semantic value, so the go-ahead side does one thing and has a compact paradigm: three frame aspect cells, one concord shape. Non-straightforward agency fans out into several distinct values, so the get-oneself side has a richer paradigm — four frame aspect cells crossed with two concord shapes, hosting four **readings**: **happenstance** (it simply befell the subject), **effortful self-benefit** (the subject brought it about on their own behalf, with effort), **threshold** (the subject is on the approach to a tipping point), and **backdrop** (the activity is the ongoing scene against which something else happens). A useful way to hold the whole system: the go-ahead is the unmarked default — "the subject just did it" — and the get-oneself paradigm carries everything else the language wants to say about how an event and its subject relate.
+The two sides are asymmetric, and the asymmetry is principled. Deliberateness is a single semantic value, so the go-ahead side does one thing and has a compact paradigm: three frame aspect cells, one concord shape. Non-straightforward agency fans out into several distinct values, so the get-oneself side has a richer paradigm — four frame aspect cells crossed with two concord shapes, hosting four **readings**: **happenstance** (it simply befell the subject), **effortful self-benefit** (the subject brought it about on their own behalf, with effort), **threshold** (the subject is on the approach to a tipping point), and **backdrop** (the activity is the ongoing scene against which something else happens). The go-ahead is the unmarked default — "the subject just did it" — and the get-oneself paradigm carries everything else the language wants to say about how an event and its subject relate.
 
-Three further resources extend the system beyond the paradigm proper. When the meaning to be expressed is a state rather than an event, speakers reach for one of three **stative-domain strategies** (§6). The frames combine directly with nominals in the **possession construction** (§13), which covers having, getting, choosing, and giving; its deverbal special case is the **recognitional-iterative nominal** (§7), marking shared-knowledge type reference and iteration. And above the clause sits a small class of **matrix particles** (§11) — the home of the language's only surviving tense — which scaffold the clause with modal and evidential meaning: that it merely ended up so, that the speaker knows it, needs it, gathers it to be so, or, in sum, that *in short* it is so.
+Three further resources extend the system beyond the paradigm proper. When the meaning is a state rather than an event, speakers reach for one of three **stative-domain strategies** (§6). The frames combine directly with nominals in the **possession construction** (§13), which covers having, getting, choosing, and giving; its deverbal special case is the **recognitional-iterative nominal** (§7), marking shared-knowledge type reference and iteration. And above the clause sits a small class of **matrix particles** (§11) — the home of the language's only surviving tense — which scaffold the clause with modal and evidential meaning: that it merely ended up so, that the speaker knows it, needs it, gathers it to be so, or, in sum, that *in short* it is so.
 
 > *Analytical note.* The paradigm-side names, the reading names, and their full naming history (including the retired terms *volitive*, *involitive*, *modulated*, *non-volitive*, and the abbreviations PH/AB/INC/PS) are maintained in `terminology-registry.md`. Prose here uses the registry's canonical terms; interlinear glosses use its compact gloss tags.
 
@@ -263,7 +263,7 @@ The frame *oheun* carries the volition and the frame aspect (habitual); the main
 
 The conlang's pronominal system is not a list of stand-alone word-forms. Pronouns are **aspect carriers** — they fuse with aspect, modal, and polarity markers to form the grammatically complex units that clause structure depends on. A clause does not have a subject pronoun and a separate aspect marker; it has a pronominal-aspect complex that does both jobs in one phonological unit.
 
-The practical consequence: the frame paradigms in §2 and §3 do not stand alone. They combine with pronouns, and the combination is what appears in speech. This section describes the combinatorial system.
+The practical consequence: the frame paradigms in §2 and §3 do not stand alone. They combine with pronouns, and the combination is what appears in speech.
 
 ### 5.1 Overview and asymmetry
 
@@ -440,13 +440,13 @@ A WERE-based irrealis particle is hypothesized on the basis of GA *if I were, as
 
 ## 6. Stative-domain strategies
 
-When the meaning to be expressed is a state — feelings, attitudes, internal conditions — the go-ahead frame is unavailable, and the get-oneself frame is available only in restricted form (§3.6). Speakers reach for one of three constructional strategies. They are described here as a unified set of resources, without yet committing to whether they are part of the same broader system as the morphological paradigm (§9.2).
+When the meaning is a state — feelings, attitudes, internal conditions — the go-ahead frame is unavailable, and the get-oneself frame is available only in restricted form (§3.6). Speakers reach for one of three constructional strategies. This section treats them as a unified set of resources, without yet committing to whether they are part of the same broader system as the morphological paradigm (§9.2).
 
 All examples in this section are GA-calque placeholders; conlang surface forms await lexicon derivation. `[Placeholder: all §6 example sentences]`
 
 ### 6.1 Activity-coercion
 
-A lexical strategy. The speaker selects an activity verb that correlates with the desired stative meaning, then frames the activity verb.
+A lexical strategy. The speaker selects an activity verb that correlates with the desired stative meaning, then frames it.
 
 > *they are going ahead and smiling for the photo* — used where GA might say *they are happy*.
 
@@ -456,7 +456,7 @@ Activity-coercion requires no new grammatical machinery; it is a lexicon-level c
 
 ### 6.2 Stimulus-promotion
 
-A constructional strategy. The argument structure is rearranged so that the stimulus becomes the grammatical subject and the experiencer becomes the object; the go-ahead frame is then applied to the stimulus.
+A constructional strategy. Stimulus-promotion rearranges the argument structure so that the stimulus becomes the grammatical subject and the experiencer the object, then applies the go-ahead frame to the stimulus.
 
 > *Emma, they going ahead and charming me* — used where GA might say *I like Emma* or *Emma is charming*.
 > *it goes ahead and calls me, a nice warm bath* — non-human stimulus with personification flavor.
@@ -467,7 +467,7 @@ A pragmatic question the construction has to handle: whether the promoted stimul
 
 ### 6.3 Causative
 
-A periphrastic strategy. The get-oneself paradigm's *get X to V* shape is reused with a third-party causer in the *get*-slot.
+A periphrastic strategy. The causative reuses the get-oneself paradigm's *get X to V* shape with a third-party causer in the *get*-slot.
 
 > *the math professor, they get me to pass out all the time* — the auto-causative *I get myself to pass out* with an external subject.
 > *Emma, they get me to smile all the time* — used where GA might say *I like Emma*.
@@ -648,7 +648,7 @@ A small class of particles places a whole clause inside a modal or evidential fr
 
 The class is defined **syntactically**, by two diagnostics: a matrix particle takes **clause scope** (it colors a whole clause, not one constituent) and a **fixed clause-initial position**. Membership does not turn on what the particle is made of — most members are eroded GA matrix clauses (*it ended up…, I know that…, what I need is…*), but at least one, the summary particle, descends from an adverbial phrase with no verb in it at all (§11.5).
 
-Two further facts are worth holding onto. First, the class is the **home of the language's only surviving tense**: the verbal system otherwise runs on aspect, carried by the weak pronouns (§5.2), and the members descended from a finite GA clause carry a past/non-past contrast inherited from it — though, as the syntactic criterion implies, not every member does (the guess and summary particles are tenseless). Second, the particles are unmarked for **person** — *enniip* reports an outcome without saying whose.
+Two further facts matter. First, the class is the **home of the language's only surviving tense**: the verbal system otherwise runs on aspect, carried by the weak pronouns (§5.2), and the members descended from a finite GA clause carry a past/non-past contrast inherited from it — though, as the syntactic criterion implies, not every member does (the guess and summary particles are tenseless). Second, the particles are unmarked for **person** — *enniip* reports an outcome without saying whose.
 
 ### 11.1 Forms
 
@@ -937,6 +937,14 @@ Negated clauses replace the bare pronoun with a not-quite fusion (§5.2.1); the 
 ---
 
 ## 17. Versioning notes
+
+### v2.12, June 2026 — Abstract cross-reference corrected
+
+The Abstract's closing sentence still read "the verb-lexicon-building methodology lives in its **Appendix A**" — stale since v2.10, which folded that methodology out to `language_reference.md` **Appendix B**. Corrected to point there. The §16 cross-reference and the v2.10 note were already correct; only the Abstract lagged. The matching orientation-abstract copy in `language_reference.md` §3.4 was regenerated to match (its v3.10).
+
+### v2.11, June 2026 — writing-style pass (§1, §5, §6, §11)
+
+Line-editing pass applying the writing-style prose canon; no content, claims, or status tags changed. §1: cut "rather than accidental" (V10 emphasis filler) and the "A useful way to hold the whole system" preamble (V2/V4), and trimmed "the meaning to be expressed" → "the meaning is" (V5). §5: dropped the meta-sentence "This section describes the combinatorial system" (V4). §6: the three stative-domain strategies now narrate their mechanism in parallel active voice — §6.2/§6.3 were agentless-passive against §6.1's active (V5/V8) — plus minor economy in §6.1. §11: "Two further facts are worth holding onto" → "Two further facts matter" (V2). All `[Settled]/[Provisional]/[Open]` tags, paradigm tables, and glosses unchanged.
 
 ### v2.10, June 2026 — Appendix A (verb-lexicon methodology) folded out to language_reference Appendix B
 
