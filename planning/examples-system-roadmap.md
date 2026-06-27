@@ -36,7 +36,7 @@ Maps to the author's original nine items: #1→A1 · #4→A2+G · #2→B1 · #3�
 
 ## Current focus
 
-➡ **A2 — Plain transclusion.** Define the `<!-- example: EID -->` token, expand it in both pipelines (basic block), stop publishing `examples.md` as a site page, make `§EID` hover-card only. (A1 done.)
+➡ **A3 — Enforce SSOT.** Rewrite `example-adder` Step 5 to insert `<!-- example: EID -->` tokens instead of hand-copying examples into `dictionary.md`; migrate E001's existing inline copy in the *ŕe* entry to a token. (A1, A2 done.)
 
 ---
 
@@ -45,7 +45,7 @@ Maps to the author's original nine items: #1→A1 · #4→A2+G · #2→B1 · #3�
 Delivers propagation + reuse. Everything below A depends on A1.
 
 - [x] **A1. Data model.** ✓ 2026-06-26. `examples.md` §2/§6 rewritten to the `|`-chunked, open-schema, build-time-source format; `parseExamples` now emits `{conlang, segments[], ipa, translation, tags, slug}` with a loud equal-count guard (verified to throw); E001 re-encoded to 8 aligned segments; `examples.json` shape confirmed.
-- [ ] **A2. Plain transclusion.** Define the `<!-- example: EID -->` block token; expand it in the site compiler (`build-content.mjs`, basic block) and the PDF pre-pass (`pdf/build.ps1`, basic block). Dictionary style = inline `*conlang* "translation"`; grammar style = stacked conlang/etym + free translation. Stop publishing `examples.md` as a site page; make `§EID` hovercard-only.
+- [x] **A2. Plain transclusion.** ✓ 2026-06-26. `<!-- example: EID -->` token (style auto-resolves by host doc, overridable as `| dictionary`) expanded in all three render paths: site (`build-content.mjs` `expandExamples`), grammar PDF (`build.ps1`), dictionary PDF (`build-dictionary.ps1`). Dictionary = inline `*conlang* "translation"`; grammar = stacked blockquote. `examples.md` page removed (compiler `SKIP_PAGE`; 7→6 pages); `§EID` now a hover-card span (`remark-conlang.mjs` `cardSpan`). Site verified by running the compiler; PDF verified at the logic level (parse+expand), not a full pandoc/tectonic run. Known minor edge: the dead `DOC_URL['examples.md']` entry would dead-link if a doc ever cross-refs an `examples.md §<number>` section (none do today).
 - [ ] **A3. Enforce SSOT.** Rewrite the `example-adder` skill (Step 5) to insert tokens instead of hand-copying examples into `dictionary.md`. Migrate E001's existing inline copy in the *ŕe* entry to a token.
 - [ ] **A4. Register the change.** Update `CLAUDE.md` (examples.md is now backend-only source, not a published sibling) and the affected docs' Versioning Notes.
 
@@ -97,4 +97,5 @@ H1, H2                     (future; need A1's open schema)
 ## Session log
 
 - 2026-06-26 — Roadmap opened. Decisions locked (centralize; conlang↔etym interactive + free translation; `|` delimiter; backend-only; open schema; draft-import bar). Phase-0 format + `examples.json` shape specced and agreed.
-- 2026-06-26 — **A1 done.** `examples.md` v0.2 (chunk-aligned, open-schema, build-time-source), `parseExamples` rewritten + equal-count guard, E001 re-encoded. Parser verified against the live doc (8 segments) and the guard verified to throw on mismatch. Touched: `docs/reference/examples.md`, `site/scripts/parse.mjs`. Next: A2.
+- 2026-06-26 — **A1 done.** `examples.md` v0.2 (chunk-aligned, open-schema, build-time-source), `parseExamples` rewritten + equal-count guard, E001 re-encoded. Parser verified against the live doc (8 segments) and the guard verified to throw on mismatch. Touched: `docs/reference/examples.md`, `site/scripts/parse.mjs`. Committed (ded5e50). Next: A2.
+- 2026-06-26 — **A2 done.** `<!-- example: EID -->` transclusion live in all three render paths (site + both PDF builds), `examples.md` page removed, `§EID` → hover-card span. Expansion verified in JS and PowerShell; both PDF scripts syntax-checked; site compiler re-run clean (6 pages). Touched: `site/scripts/build-content.mjs`, `site/src/plugins/remark-conlang.mjs`, `pdf/build.ps1`, `pdf/build-dictionary.ps1`. Next: A3 (SSOT flip + migrate E001 to a token).

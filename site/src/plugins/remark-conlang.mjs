@@ -77,6 +77,18 @@ function linkNode(href, children, className, card) {
 
 const textRun = (value) => ({ type: 'text', value });
 
+// A non-link inline span carrying hover-card data — for references whose target
+// has no page (examples.md is build-time source only). Rendered as <span> via the
+// mdast hName escape hatch; hovercard.js binds to `.cl-ref[data-card-title]`.
+function cardSpan(children, className, card) {
+  const hProperties = { className, tabindex: '0' };
+  if (card) {
+    hProperties['data-card-title'] = card.title;
+    hProperties['data-card-body'] = card.body;
+  }
+  return { type: 'emphasis', data: { hName: 'span', hProperties }, children };
+}
+
 function emphasisText(node) {
   let s = '';
   visit(node, 'text', (t) => {
@@ -151,7 +163,8 @@ export default function remarkConlang() {
             return [textRun(`${fileRef} `), linkNode(url(fileRef, slug), [textRun(`§${num}`)], ['cl-ref', 'cl-section'])];
           },
         ],
-        // Example reference: `§E001`
+        // Example reference: `§E001`. examples.md has no page (build-time source
+        // only), so this is a hover-card span, not a link.
         [
           /§\s?(E\d{3})/g,
           (whole, eid) => {
@@ -164,7 +177,7 @@ export default function remarkConlang() {
               title: eid,
               body: `${ex.conlang} ${ex.translation}`.trim(),
             };
-            return linkNode(url('examples.md', ex.slug), [textRun(`§${eid}`)], ['cl-ref', 'cl-example'], card);
+            return cardSpan([textRun(`§${eid}`)], ['cl-ref', 'cl-example'], card);
           },
         ],
         // Registered gloss tags (composite split on `.`).

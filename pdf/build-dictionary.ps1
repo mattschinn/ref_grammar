@@ -48,10 +48,39 @@ New-Item -ItemType Directory -Force -Path (Join-Path $root 'out') | Out-Null
 $mathSubs = @{
     [char]0x2208 = '$\in$'
 }
+
+# Parse examples.md so `<!-- example: EID -->` tokens in the dictionary expand in
+# place (same logic as build.ps1). examples.md is source only, never a chapter.
+$script:examples = @{}
+$examplesPath = Join-Path $root '..\docs\reference\examples.md'
+if (Test-Path $examplesPath) {
+    $curId = $null
+    foreach ($line in [IO.File]::ReadAllLines($examplesPath, [Text.Encoding]::UTF8)) {
+        $h = [regex]::Match($line, '^###\s+(E\d{3})\b')
+        if ($h.Success) { $curId = $h.Groups[1].Value; $script:examples[$curId] = @{ conlang=''; etym=''; translation='' }; continue }
+        if (-not $curId) { continue }
+        $m = [regex]::Match($line, '^- \*\*Conlang:\*\*\s*(.+?)\s*$');      if ($m.Success) { $script:examples[$curId].conlang = ($m.Groups[1].Value -replace '\s*\|\s*',' ').Trim(); continue }
+        $m = [regex]::Match($line, '^- \*\*Etymological:\*\*\s*(.+?)\s*$'); if ($m.Success) { $script:examples[$curId].etym = ($m.Groups[1].Value -replace '\s*\|\s*',' ').Trim(); continue }
+        $m = [regex]::Match($line, '^- \*\*Translation:\*\*\s*(.+?)\s*$');  if ($m.Success) { $script:examples[$curId].translation = $m.Groups[1].Value.Trim().Trim('"'); continue }
+    }
+}
+
+# The dictionary always uses the inline style: `*conlang* "translation"`.
+function Expand-Examples([string]$text) {
+    [regex]::Replace($text, '<!--\s*example:\s*(E\d{3})\s*(?:\|\s*([A-Za-z]+)\s*)?-->', {
+        param($mm)
+        $eid = $mm.Groups[1].Value
+        if (-not $script:examples.ContainsKey($eid)) { return "**[missing example $eid]**" }
+        $ex = $script:examples[$eid]
+        ('*{0}* "{1}"' -f $ex.conlang, $ex.translation)
+    })
+}
+
 $text = [IO.File]::ReadAllText($dictSrc, [Text.Encoding]::UTF8)
 foreach ($k in $mathSubs.Keys) {
     $text = $text.Replace([string]$k, $mathSubs[$k])
 }
+$text = Expand-Examples $text
 $dst = Join-Path $tmpDir 'dictionary.md'
 [IO.File]::WriteAllText($dst, $text, (New-Object Text.UTF8Encoding $false))
 

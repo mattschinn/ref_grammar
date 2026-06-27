@@ -62,6 +62,41 @@ New-Item -ItemType Directory -Force -Path (Join-Path $root 'out') | Out-Null
 $mathSubs = @{
     [char]0x2208 = '$\in$'        # element of
 }
+
+# Parse examples.md into EID -> { conlang; etym; translation } so the
+# `<!-- example: EID -->` transclusion tokens can be expanded in place (the PDF
+# counterpart to the site compiler's expandExamples). examples.md is source only
+# — never a chapter — so it is parsed here but absent from $sources.
+$script:examples = @{}
+$examplesPath = Join-Path $docsRoot 'reference\examples.md'
+if (Test-Path $examplesPath) {
+    $curId = $null
+    foreach ($line in [IO.File]::ReadAllLines($examplesPath, [Text.Encoding]::UTF8)) {
+        $h = [regex]::Match($line, '^###\s+(E\d{3})\b')
+        if ($h.Success) { $curId = $h.Groups[1].Value; $script:examples[$curId] = @{ conlang=''; etym=''; translation='' }; continue }
+        if (-not $curId) { continue }
+        $m = [regex]::Match($line, '^- \*\*Conlang:\*\*\s*(.+?)\s*$');      if ($m.Success) { $script:examples[$curId].conlang = ($m.Groups[1].Value -replace '\s*\|\s*',' ').Trim(); continue }
+        $m = [regex]::Match($line, '^- \*\*Etymological:\*\*\s*(.+?)\s*$'); if ($m.Success) { $script:examples[$curId].etym = ($m.Groups[1].Value -replace '\s*\|\s*',' ').Trim(); continue }
+        $m = [regex]::Match($line, '^- \*\*Translation:\*\*\s*(.+?)\s*$');  if ($m.Success) { $script:examples[$curId].translation = $m.Groups[1].Value.Trim().Trim('"'); continue }
+    }
+}
+
+# Expand `<!-- example: EID -->` in $text. dictionary.md host -> inline
+# `*conlang* "translation"`; other hosts -> a simple stacked blockquote. (The
+# deterministic monospace-aligned PDF gloss is roadmap G2.)
+function Expand-Examples([string]$text, [bool]$isDict) {
+    $script:exIsDict = $isDict
+    [regex]::Replace($text, '<!--\s*example:\s*(E\d{3})\s*(?:\|\s*([A-Za-z]+)\s*)?-->', {
+        param($mm)
+        $eid = $mm.Groups[1].Value; $style = $mm.Groups[2].Value
+        if (-not $script:examples.ContainsKey($eid)) { return "**[missing example $eid]**" }
+        $ex = $script:examples[$eid]
+        if ([string]::IsNullOrEmpty($style)) { $style = if ($script:exIsDict) { 'dictionary' } else { 'grammar' } }
+        if ($style.ToLower() -eq 'dictionary') { return ('*{0}* "{1}"' -f $ex.conlang, $ex.translation) }
+        return ("`n> *{0}*  `n> {1}  `n> ""{2}""`n" -f $ex.conlang, $ex.etym, $ex.translation)
+    })
+}
+
 $inputs = @()
 foreach ($f in $sources) {
     $text = [IO.File]::ReadAllText((Join-Path $docsRoot $f), [Text.Encoding]::UTF8)
@@ -69,6 +104,7 @@ foreach ($f in $sources) {
         $text = $text.Replace([string]$k, $mathSubs[$k])
     }
     $base = Split-Path -Leaf $f
+    $text = Expand-Examples $text ($base -eq 'dictionary.md')
     $dst = Join-Path $tmpDir $base
     [IO.File]::WriteAllText($dst, $text, (New-Object Text.UTF8Encoding $false))
     $inputs += "build_tmp/$base"

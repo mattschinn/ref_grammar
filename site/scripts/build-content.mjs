@@ -5,7 +5,7 @@
 
 import { readFile, writeFile, mkdir, rm, readdir } from 'node:fs/promises';
 import path from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 import {
   parseHeadings,
   parseDictionary,
@@ -33,10 +33,13 @@ const ORDER = {
   'reference/phonology.md': 2,
   'reference/orthography.md': 3,
   'reference/verbal-system.md': 4,
-  'reference/examples.md': 5,
   'reference/terminology-registry.md': 6,
 };
 const LABEL = { 'reference/terminology-registry.md': 'Glossary' };
+
+// Docs parsed for their artifacts (examples.json) but NOT written as pages.
+// examples.md is build-time transclusion source only — never its own page.
+const SKIP_PAGE = new Set(['examples.md']);
 
 const yamlStr = (s) => JSON.stringify(s);
 
@@ -48,6 +51,10 @@ function extractTitle(md, fallback) {
 const FENCE_RE = /^\s*```/;
 const ASSEMBLE_RE = /^<!--\s*assemble:\s*([A-Za-z0-9_.-]+)\s*-->\s*$/;
 const HEADING_RE = /^(#{1,6})\s+(.*?)\s*$/;
+// `<!-- example: E001 -->` or `<!-- example: E001 | dictionary -->` — transcludes
+// an examples.md record. Style defaults from the host doc (dictionary vs grammar),
+// overridable after `|`.
+const EXAMPLE_TOKEN_RE = /<!--\s*example:\s*(E\d{3})\s*(?:\|\s*([A-Za-z]+)\s*)?-->/g;
 
 // Strip the single leading H1 (Starlight renders the frontmatter title as the
 // page heading) and any trailing `{#id}` on remaining heading lines (so anchors
@@ -126,6 +133,22 @@ function assembleParent(parentBase, parentMd, rawByBase) {
   return { body: out.join('\n'), headingStream };
 }
 
+// Expand `<!-- example: EID -->` tokens in a doc body against the examples map.
+// Dictionary host -> inline `*conlang* "translation"`; grammar host -> a simple
+// stacked blockquote (conlang / etym / translation). The rich interactive gloss
+// (HTML) is a later milestone (roadmap G1); this is the plain transclusion.
+export function expandExamples(body, hostRel, examples) {
+  const dictionary = hostRel.replace(/\\/g, '/').startsWith('dictionary/');
+  return body.replace(EXAMPLE_TOKEN_RE, (_m, eid, style) => {
+    const ex = examples[eid];
+    if (!ex) return `**[missing example ${eid}]**`;
+    const s = (style || (dictionary ? 'dictionary' : 'grammar')).toLowerCase();
+    if (s === 'dictionary') return `*${ex.conlang}* "${ex.translation}"`;
+    const etym = ex.segments.map((seg) => seg.etym).join(' ');
+    return `\n> *${ex.conlang}*  \n> ${etym}  \n> "${ex.translation}"\n`;
+  });
+}
+
 function buildFrontmatter(relPath, title) {
   const lines = ['---', `title: ${yamlStr(title)}`];
   const order = ORDER[relPath];
@@ -175,6 +198,10 @@ async function run() {
     }
   }
 
+  // Examples corpus (chunk-aligned records), needed to expand `<!-- example: -->`
+  // transclusion tokens during Pass 2. Parsed once from the raw body.
+  const examplesMap = parseExamples(rawByBase['examples.md'] || '');
+
   // Identify the assembler parent (the doc carrying `<!-- assemble: -->`
   // directives) and the siblings it inlines. Inlined siblings are NOT written as
   // standalone pages — they live inside the parent's single page.
@@ -192,7 +219,7 @@ async function run() {
   // docs are stripped as-is; inlined siblings are skipped.
   let pages = 0;
   for (const { rel, base, md, title } of files) {
-    if (inlined.has(base)) continue;
+    if (inlined.has(base) || SKIP_PAGE.has(base)) continue;
 
     let body;
     if (rel === parentRel) {
@@ -212,6 +239,8 @@ async function run() {
       body = stripDoc(md);
     }
 
+    body = expandExamples(body, rel, examplesMap);
+
     const out = buildFrontmatter(rel, title) + body;
     const destAbs = path.join(outRoot, rel);
     await mkdir(path.dirname(destAbs), { recursive: true });
@@ -222,7 +251,7 @@ async function run() {
   const read = (rel) => readFile(path.join(docsRoot, rel), 'utf8');
   const entries = parseDictionary(await read('dictionary/dictionary.md'));
   const glosses = parseGlosses(await read('reference/terminology-registry.md'));
-  const examples = parseExamples(await read('reference/examples.md'));
+  const examples = examplesMap;
 
   // entries-by-headword for O(1) lookup in the plugin.
   const entryMap = {};
@@ -244,7 +273,10 @@ async function run() {
   );
 }
 
-run().catch((err) => {
-  console.error('[build-content] failed:', err);
-  process.exit(1);
-});
+// Run only when invoked directly (so the module can be imported for unit tests).
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+  run().catch((err) => {
+    console.error('[build-content] failed:', err);
+    process.exit(1);
+  });
+}
