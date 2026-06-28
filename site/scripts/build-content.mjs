@@ -14,6 +14,8 @@ import {
   headingKey,
   slugHeadingStream,
 } from './parse.mjs';
+import { stripExamples } from './examples-render.mjs';
+import { syncPreviews } from './sync-previews.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const siteRoot = path.resolve(__dirname, '..');
@@ -51,12 +53,6 @@ function extractTitle(md, fallback) {
 const FENCE_RE = /^\s*```/;
 const ASSEMBLE_RE = /^<!--\s*assemble:\s*([A-Za-z0-9_.-]+)\s*-->\s*$/;
 const HEADING_RE = /^(#{1,6})\s+(.*?)\s*$/;
-// `<!-- example: E001 -->` transcludes an examples.md record. An optional `| spec`
-// after the id selects layers: a preset (`dictionary`/`grammar`), a whitelist of
-// layer names (`| conlang leipzig translation`), or a blacklist (`| -ipa`). The
-// spec defaults from the host doc (dictionary vs grammar). The capture grabs
-// everything between `|` and `-->`; `resolveExampleSpec` parses it.
-const EXAMPLE_TOKEN_RE = /<!--\s*example:\s*(E\d{3})\s*(?:\|\s*([^>]*?)\s*)?-->/g;
 
 // Strip the single leading H1 (Starlight renders the frontmatter title as the
 // page heading) and any trailing `{#id}` on remaining heading lines (so anchors
@@ -135,113 +131,6 @@ function assembleParent(parentBase, parentMd, rawByBase) {
   return { body: out.join('\n'), headingStream };
 }
 
-// --- Greedy-but-blockable example rendering (roadmap G0a) -------------------
-// A token renders *whatever layers a record has*: Conlang is the floor (always
-// shown); etym/ipa/leipzig/gesture each render iff present; translation when
-// present. A `| spec` restricts: preset (`dictionary`/`grammar`), whitelist
-// (`conlang leipzig`), or blacklist (`-ipa`). The dictionary's conlang+translation
-// default is just the `dictionary` preset. Display order is fixed below.
-
-const EX_LAYERS = ['conlang', 'etym', 'ipa', 'leipzig', 'gesture', 'translation'];
-const EX_PRESETS = new Set(['dictionary', 'grammar']);
-
-// A field counts as absent if empty, a dash/slash placeholder (`/—/`, `—`), or a
-// "pending …" note — so a not-yet-filled IPA/etym never renders.
-const isPlaceholderVal = (s) => !s || /pending/i.test(s) || /^[\s/—–-]*$/.test(s);
-
-const exEtym = (ex) => (ex.segments || []).map((s) => s.etym).join(' ').trim();
-
-// Layers a record actually has content for, in canonical order.
-function presentLayers(ex) {
-  const has = {
-    conlang: !!(ex.conlang && ex.conlang.trim()),
-    etym: !!exEtym(ex),
-    ipa: !isPlaceholderVal(ex.ipa),
-    leipzig: !!(ex.leipzig && ex.leipzig.trim()),
-    gesture: !!(ex.gesture && ex.gesture.trim()),
-    translation: !!(ex.translation && ex.translation.trim()),
-  };
-  return EX_LAYERS.filter((l) => has[l]);
-}
-
-// Resolve a token's `| spec` against host + present layers → { layers, inline }.
-export function resolveExampleSpec(spec, host, present) {
-  const tokens = (spec || '').trim().split(/\s+/).filter(Boolean);
-  const presets = tokens.filter((t) => EX_PRESETS.has(t));
-  const bare = tokens.filter((t) => EX_LAYERS.includes(t));
-  const neg = tokens.filter((t) => t.startsWith('-') && EX_LAYERS.includes(t.slice(1))).map((t) => t.slice(1));
-  const preset = presets[0] || (host === 'dictionary' ? 'dictionary' : 'grammar');
-
-  let layers;
-  if (bare.length) {
-    layers = EX_LAYERS.filter((l) => bare.includes(l) && present.includes(l));
-    if (!layers.includes('conlang') && present.includes('conlang')) layers = ['conlang', ...layers];
-  } else if (preset === 'dictionary') {
-    layers = ['conlang', 'translation'].filter((l) => present.includes(l));
-  } else {
-    layers = present.slice();
-  }
-  if (neg.length) layers = layers.filter((l) => l === 'conlang' || !neg.includes(l));
-
-  // Inline form when the dictionary preset is in force, or only conlang/translation survive.
-  const inline = preset === 'dictionary' || layers.every((l) => l === 'conlang' || l === 'translation');
-  return { layers, inline };
-}
-
-function renderExampleLayer(ex, layer) {
-  switch (layer) {
-    case 'conlang': return `*${ex.conlang}*`;
-    case 'etym': return exEtym(ex);
-    case 'ipa': return ex.ipa;
-    case 'leipzig': return ex.leipzig;
-    case 'gesture': return `χ ${ex.gesture}`;
-    case 'translation': return `"${ex.translation}"`;
-    default: return '';
-  }
-}
-
-// Render an example record for transclusion. host = 'dictionary' | 'grammar'.
-// Inline → `*conlang* "translation"` (flows in prose); block → a stacked blockquote.
-export function renderExample(ex, spec, host) {
-  if (!ex) return null;
-  const { layers, inline } = resolveExampleSpec(spec, host, presentLayers(ex));
-  if (!layers.length) return `*${ex.conlang || ''}*`;
-  if (inline) {
-    const out = [];
-    if (layers.includes('conlang')) out.push(`*${ex.conlang}*`);
-    if (layers.includes('translation')) out.push(`"${ex.translation}"`);
-    return out.join(' ');
-  }
-  return `\n${layers.map((l) => `> ${renderExampleLayer(ex, l)}  `).join('\n')}\n`;
-}
-
-// Expand `<!-- example: EID | spec -->` tokens in a doc body against the examples
-// map, skipping fenced code blocks and inline code spans so prose can mention a
-// token literally without it being expanded.
-export function expandExamples(body, hostRel, examples) {
-  const host = hostRel.replace(/\\/g, '/').startsWith('dictionary/') ? 'dictionary' : 'grammar';
-  const out = [];
-  let inFence = false;
-  for (const line of body.split('\n')) {
-    if (FENCE_RE.test(line)) { inFence = !inFence; out.push(line); continue; }
-    if (inFence) { out.push(line); continue; }
-    out.push(
-      line
-        .split(/(`[^`]*`)/)
-        .map((part) =>
-          part.startsWith('`')
-            ? part
-            : part.replace(EXAMPLE_TOKEN_RE, (_m, eid, spec) => {
-                const ex = examples[eid];
-                return ex ? renderExample(ex, spec, host) : `**[missing example ${eid}]**`;
-              })
-        )
-        .join('')
-    );
-  }
-  return out.join('\n');
-}
-
 function buildFrontmatter(relPath, title) {
   const lines = ['---', `title: ${yamlStr(title)}`];
   const order = ORDER[relPath];
@@ -275,6 +164,13 @@ async function run() {
   for (const s of SECTIONS) await rm(path.join(outRoot, s), { recursive: true, force: true });
   await mkdir(genRoot, { recursive: true });
 
+  // Refresh on-disk example previews from examples.md BEFORE reading the docs, so
+  // the canonical sources, the site pages, and the PDF build all see the same
+  // rendered previews (roadmap G0b — auto-regenerate in build). The build then only
+  // strips token+preview markers; the sole renderer is the preview step.
+  const synced = await syncPreviews();
+  if (synced) console.log(`[build-content] refreshed example previews in ${synced} file(s)`);
+
   const headings = {}; // docFilename -> { sectionNumber|EID: slug }
 
   // Pass 1: read every doc, capture title + heading map + raw body.
@@ -291,8 +187,9 @@ async function run() {
     }
   }
 
-  // Examples corpus (chunk-aligned records), needed to expand `<!-- example: -->`
-  // transclusion tokens during Pass 2. Parsed once from the raw body.
+  // Examples corpus (chunk-aligned records), emitted as the examples.json artifact.
+  // Token expansion no longer needs it here: previews were already rendered into the
+  // docs by syncPreviews() above, so Pass 2 just strips the token+preview markers.
   const examplesMap = parseExamples(rawByBase['examples.md'] || '');
 
   // Identify the assembler parent (the doc carrying `<!-- assemble: -->`
@@ -332,7 +229,9 @@ async function run() {
       body = stripDoc(md);
     }
 
-    body = expandExamples(body, rel, examplesMap);
+    // Previews were rendered into the docs by syncPreviews(); collapse each
+    // token+preview pair to just the rendered content for the page.
+    body = stripExamples(body);
 
     const out = buildFrontmatter(rel, title) + body;
     const destAbs = path.join(outRoot, rel);

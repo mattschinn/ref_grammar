@@ -2255,7 +2255,7 @@ Cross-refs: *ŕeut* (parallel /ɾ̥/ onset, from M1 metathesis rather than coale
 
 #### Definition
 
-1. *(adv.)* today. — <!-- example: E001 -->
+1. *(adv.)* today. — <!-- example: E001 --><!-- preview E001 · auto-generated from examples.md · do not edit -->*Ŕeus bémmo oų rĩbii·hii. Oų riis·hii o noê.* "It's a little more chillier today, in a pleasant kind of way."<!-- /preview -->
 2. *(interj.)* hurry!; right now!; immediately!
 
 #### Notes

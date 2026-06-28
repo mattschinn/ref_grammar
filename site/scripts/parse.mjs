@@ -124,9 +124,13 @@ export function parseDictionary(md) {
       if (foot) cur.foot = stripInline(foot[1]);
     }
     if (!cur.shortDef) {
-      // Drop an example transclusion token (and its trailing " — " separator / any
-      // HTML comment) so the short def is the gloss, not the token.
-      const line = raw.replace(/<!--[\s\S]*?-->/g, '').replace(/\s*—\s*$/, '');
+      // Drop a transcluded example (token + its rendered preview region, or a bare
+      // token), any stray HTML comment, and the trailing " — " separator, so the
+      // short def is the gloss rather than the example.
+      const line = raw
+        .replace(/<!--\s*example:[^>]*-->(?:[ \t]*\n?<!--\s*preview\b[^>]*-->[\s\S]*?<!--\s*\/preview\s*-->)?/g, '')
+        .replace(/<!--[\s\S]*?-->/g, '')
+        .replace(/\s*—\s*$/, '');
       const d = line.match(/^\s*1\.\s+(.+?)\s*$/);
       if (d) cur.shortDef = stripInline(d[1]);
     }

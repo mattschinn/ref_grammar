@@ -49,52 +49,44 @@ $mathSubs = @{
     [char]0x2208 = '$\in$'
 }
 
-# Parse examples.md so `<!-- example: EID -->` tokens in the dictionary expand in
-# place (same logic as build.ps1). examples.md is source only, never a chapter.
-$script:examples = @{}
-$examplesPath = Join-Path $root '..\docs\reference\examples.md'
-if (Test-Path $examplesPath) {
-    $curId = $null
-    foreach ($line in [IO.File]::ReadAllLines($examplesPath, [Text.Encoding]::UTF8)) {
-        $h = [regex]::Match($line, '^###\s+(E\d{3})\b')
-        if ($h.Success) { $curId = $h.Groups[1].Value; $script:examples[$curId] = @{ conlang=''; etym=''; translation='' }; continue }
-        if (-not $curId) { continue }
-        $m = [regex]::Match($line, '^- \*\*Conlang:\*\*\s*(.+?)\s*$');      if ($m.Success) { $script:examples[$curId].conlang = ($m.Groups[1].Value -replace '\s*\|\s*',' ').Trim(); continue }
-        $m = [regex]::Match($line, '^- \*\*Etymological:\*\*\s*(.+?)\s*$'); if ($m.Success) { $script:examples[$curId].etym = ($m.Groups[1].Value -replace '\s*\|\s*',' ').Trim(); continue }
-        $m = [regex]::Match($line, '^- \*\*Translation:\*\*\s*(.+?)\s*$');  if ($m.Success) { $script:examples[$curId].translation = $m.Groups[1].Value.Trim().Trim('"'); continue }
-    }
+# Refresh on-disk example previews from examples.md before reading the dictionary
+# (roadmap G0b — auto-regenerate in build). The Node preview-sync step is the single
+# renderer; this build only strips token+preview markers below.
+$syncScript = Join-Path $root '..\site\scripts\sync-previews.mjs'
+if (Get-Command node -ErrorAction SilentlyContinue) {
+    & node $syncScript
+    if ($LASTEXITCODE -ne 0) { throw "sync-previews.mjs failed (exit $LASTEXITCODE)" }
+} else {
+    Write-Warning "node not found; example previews not refreshed (PDF may use stale previews). Run 'npm run content' in site/ first."
 }
 
-# The dictionary always uses the inline style: `*conlang* "translation"`.
-function Expand-Examples([string]$text) {
-    $pattern = '<!--\s*example:\s*(E\d{3})\s*(?:\|\s*([A-Za-z]+)\s*)?-->'
-    $eval = {
-        param($mm)
-        $eid = $mm.Groups[1].Value
-        if (-not $script:examples.ContainsKey($eid)) { return "**[missing example $eid]**" }
-        $ex = $script:examples[$eid]
-        ('*{0}* "{1}"' -f $ex.conlang, $ex.translation)
-    }
-    # Skip fenced code blocks and inline code spans (a token can be mentioned in prose).
-    $inFence = $false
+# Collapse `<!-- example: EID --> <!-- preview -->…<!-- /preview -->` to just the
+# rendered preview content. The preview was rendered into the doc by the Node sync
+# step above, so this side needs no renderer — only marker stripping. Mirrors
+# `site/scripts/examples-render.mjs` stripExamples.
+function Strip-Examples([string]$text) {
+    $pattern = '<!--\s*example:[^>]*-->[ \t]*\r?\n?<!--\s*preview\b[^>]*-->([\s\S]*?)<!--\s*/preview\s*-->'
     $lines = $text -split "`n", 0
-    for ($i = 0; $i -lt $lines.Count; $i++) {
-        if ($lines[$i] -match '^\s*```') { $inFence = -not $inFence; continue }
-        if ($inFence) { continue }
-        $parts = [regex]::Split($lines[$i], '(`[^`]*`)')
-        for ($j = 0; $j -lt $parts.Count; $j++) {
-            if (-not $parts[$j].StartsWith('`')) { $parts[$j] = [regex]::Replace($parts[$j], $pattern, $eval) }
+    $result = New-Object System.Collections.Generic.List[string]
+    $buf = New-Object System.Collections.Generic.List[string]
+    $inFence = $false
+    foreach ($line in $lines) {
+        if ($line -match '^\s*```') {
+            if ($buf.Count) { $result.Add([regex]::Replace([string]::Join("`n", $buf), $pattern, '$1')); $buf.Clear() }
+            $result.Add($line); $inFence = -not $inFence; continue
         }
-        $lines[$i] = ($parts -join '')
+        if ($inFence) { $result.Add($line); continue }
+        $buf.Add($line)
     }
-    $lines -join "`n"
+    if ($buf.Count) { $result.Add([regex]::Replace([string]::Join("`n", $buf), $pattern, '$1')) }
+    [string]::Join("`n", $result)
 }
 
 $text = [IO.File]::ReadAllText($dictSrc, [Text.Encoding]::UTF8)
 foreach ($k in $mathSubs.Keys) {
     $text = $text.Replace([string]$k, $mathSubs[$k])
 }
-$text = Expand-Examples $text
+$text = Strip-Examples $text
 $dst = Join-Path $tmpDir 'dictionary.md'
 [IO.File]::WriteAllText($dst, $text, (New-Object Text.UTF8Encoding $false))
 

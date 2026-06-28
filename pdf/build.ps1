@@ -63,53 +63,39 @@ $mathSubs = @{
     [char]0x2208 = '$\in$'        # element of
 }
 
-# Parse examples.md into EID -> { conlang; etym; translation } so the
-# `<!-- example: EID -->` transclusion tokens can be expanded in place (the PDF
-# counterpart to the site compiler's expandExamples). examples.md is source only
-# — never a chapter — so it is parsed here but absent from $sources.
-$script:examples = @{}
-$examplesPath = Join-Path $docsRoot 'reference\examples.md'
-if (Test-Path $examplesPath) {
-    $curId = $null
-    foreach ($line in [IO.File]::ReadAllLines($examplesPath, [Text.Encoding]::UTF8)) {
-        $h = [regex]::Match($line, '^###\s+(E\d{3})\b')
-        if ($h.Success) { $curId = $h.Groups[1].Value; $script:examples[$curId] = @{ conlang=''; etym=''; translation='' }; continue }
-        if (-not $curId) { continue }
-        $m = [regex]::Match($line, '^- \*\*Conlang:\*\*\s*(.+?)\s*$');      if ($m.Success) { $script:examples[$curId].conlang = ($m.Groups[1].Value -replace '\s*\|\s*',' ').Trim(); continue }
-        $m = [regex]::Match($line, '^- \*\*Etymological:\*\*\s*(.+?)\s*$'); if ($m.Success) { $script:examples[$curId].etym = ($m.Groups[1].Value -replace '\s*\|\s*',' ').Trim(); continue }
-        $m = [regex]::Match($line, '^- \*\*Translation:\*\*\s*(.+?)\s*$');  if ($m.Success) { $script:examples[$curId].translation = $m.Groups[1].Value.Trim().Trim('"'); continue }
-    }
+# Refresh the on-disk example previews from examples.md before reading the docs
+# (roadmap G0b — auto-regenerate in build). The single renderer is the Node
+# preview-sync step; this build only strips token+preview markers below. examples.md
+# is source only and is never a chapter.
+$syncScript = Join-Path $root '..\site\scripts\sync-previews.mjs'
+if (Get-Command node -ErrorAction SilentlyContinue) {
+    & node $syncScript
+    if ($LASTEXITCODE -ne 0) { throw "sync-previews.mjs failed (exit $LASTEXITCODE)" }
+} else {
+    Write-Warning "node not found; example previews not refreshed (PDF may use stale previews). Run 'npm run content' in site/ first."
 }
 
-# Expand `<!-- example: EID -->` in $text. dictionary.md host -> inline
-# `*conlang* "translation"`; other hosts -> a simple stacked blockquote. (The
-# deterministic monospace-aligned PDF gloss is roadmap G2.)
-function Expand-Examples([string]$text, [bool]$isDict) {
-    $script:exIsDict = $isDict
-    $pattern = '<!--\s*example:\s*(E\d{3})\s*(?:\|\s*([A-Za-z]+)\s*)?-->'
-    $eval = {
-        param($mm)
-        $eid = $mm.Groups[1].Value; $style = $mm.Groups[2].Value
-        if (-not $script:examples.ContainsKey($eid)) { return "**[missing example $eid]**" }
-        $ex = $script:examples[$eid]
-        if ([string]::IsNullOrEmpty($style)) { $style = if ($script:exIsDict) { 'dictionary' } else { 'grammar' } }
-        if ($style.ToLower() -eq 'dictionary') { return ('*{0}* "{1}"' -f $ex.conlang, $ex.translation) }
-        return ("`n> *{0}*  `n> {1}  `n> ""{2}""`n" -f $ex.conlang, $ex.etym, $ex.translation)
-    }
-    # Skip fenced code blocks and inline code spans so a token can be mentioned
-    # literally in prose without expanding.
-    $inFence = $false
+# Collapse `<!-- example: EID --> <!-- preview -->…<!-- /preview -->` to just the
+# rendered preview content (what the PDF emits). The preview was rendered into the
+# doc by the Node sync step above, so this side needs no renderer — only marker
+# stripping. Fenced code is skipped so a documented token survives. Mirrors
+# `site/scripts/examples-render.mjs` stripExamples.
+function Strip-Examples([string]$text) {
+    $pattern = '<!--\s*example:[^>]*-->[ \t]*\r?\n?<!--\s*preview\b[^>]*-->([\s\S]*?)<!--\s*/preview\s*-->'
     $lines = $text -split "`n", 0
-    for ($i = 0; $i -lt $lines.Count; $i++) {
-        if ($lines[$i] -match '^\s*```') { $inFence = -not $inFence; continue }
-        if ($inFence) { continue }
-        $parts = [regex]::Split($lines[$i], '(`[^`]*`)')
-        for ($j = 0; $j -lt $parts.Count; $j++) {
-            if (-not $parts[$j].StartsWith('`')) { $parts[$j] = [regex]::Replace($parts[$j], $pattern, $eval) }
+    $result = New-Object System.Collections.Generic.List[string]
+    $buf = New-Object System.Collections.Generic.List[string]
+    $inFence = $false
+    foreach ($line in $lines) {
+        if ($line -match '^\s*```') {
+            if ($buf.Count) { $result.Add([regex]::Replace([string]::Join("`n", $buf), $pattern, '$1')); $buf.Clear() }
+            $result.Add($line); $inFence = -not $inFence; continue
         }
-        $lines[$i] = ($parts -join '')
+        if ($inFence) { $result.Add($line); continue }
+        $buf.Add($line)
     }
-    $lines -join "`n"
+    if ($buf.Count) { $result.Add([regex]::Replace([string]::Join("`n", $buf), $pattern, '$1')) }
+    [string]::Join("`n", $result)
 }
 
 $inputs = @()
@@ -119,7 +105,7 @@ foreach ($f in $sources) {
         $text = $text.Replace([string]$k, $mathSubs[$k])
     }
     $base = Split-Path -Leaf $f
-    $text = Expand-Examples $text ($base -eq 'dictionary.md')
+    $text = Strip-Examples $text
     $dst = Join-Path $tmpDir $base
     [IO.File]::WriteAllText($dst, $text, (New-Object Text.UTF8Encoding $false))
     $inputs += "build_tmp/$base"
