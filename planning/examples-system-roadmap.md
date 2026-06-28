@@ -29,6 +29,7 @@ The cost worry is real but mis-aimed: **centralization is cheap; the rich render
 - **`§E001` inline mentions** become **hovercard-only** (no link target, since there's no examples page). The block token `<!-- example: E001 -->` is what renders an example in place.
 - **Open-schema record.** The per-example JSON record is extensible from day one, so `audio:`, `notes:`, `footnotes:` slot in later with zero migration.
 - **Draft-import bar (for Milestone B2):** import each `/drafts` sentence as `[Provisional]` with a pointer to its source draft; reconcile spelling/IPA against current `phonology.md`/`orthography.md`; stub-check words against `dictionary.md`; never let a draft's old form overwrite current canon (flag conflicts, don't resolve); author reviews each before it lands.
+- **Grammar-example tokenization is deferred (decided 2026-06-28, B1, "Option A").** The grammar examples' visible payload is the Leipzig interlinear (which the format defers from display), and their primary Etymological gloss line cannot be authored until the source words land (dictionary batch D4). So B1 **centralizes the data now** but **leaves the inline prose copies in place**; the `<!-- example: -->` token swap waits on D4 (to author Etymological lines) and/or a grammar renderer that emits the preserved interlinear (Milestone G). Tokenizing earlier would replace rich interlinears with thinner conlang+translation blocks.
 
 Maps to the author's original nine items: #1→A1 · #4→A2+G · #2→B1 · #3→B2 · #5→C · #6→D1 · #7→D2 · #8→E · #9→F.
 
@@ -36,7 +37,7 @@ Maps to the author's original nine items: #1→A1 · #4→A2+G · #2→B1 · #3�
 
 ## Current focus
 
-➡ **Milestone A (centralization core) COMPLETE.** Next: **B1** — port the examples already written inline in the grammar prose into `examples.md` + replace with tokens. (Content-heavy; B2's draft import and D2's worklist involve the author directly.)
+➡ **Milestone A COMPLETE. B1 data-port COMPLETE (2026-06-28); B1 tokenization deferred (Option A).** The 16 grammar examples are centralized in `examples.md` (E002–E017), two cross-doc duplicates collapsed, inline prose copies retained. The token swap (B1b) is parked behind the D4 dictionary batch. Next live task: **B2** (import `/drafts` translation exercises per the draft-import bar) or **C1** (codify examples pacing) — both author-facing.
 
 ---
 
@@ -51,7 +52,8 @@ Delivers propagation + reuse. Everything below A depends on A1.
 
 ## Milestone B — Corpus population (needs A1)
 
-- [ ] **B1. Port existing grammar examples.** Sweep the reference docs for inline glossed examples already in prose; move each into `examples.md`, replace with tokens.
+- [x] **B1a. Port existing grammar examples (data).** ✓ 2026-06-28. Swept `verbal-system.md` + `ideophones.md` for standalone glossed blocks; ported 16 as **E002–E017** preserving Conlang (chunked), IPA, Leipzig, χ gesture, Translation, and `[Placeholder]` caveats (→ Notes). Collapsed the two cross-doc duplicates (E003, E010) to single records. GA-English paraphrases and all-placeholder skeletons (§4.3, §15) excluded. Etymological lines deferred (D4). `examples.md` v0.3; parser + site compiler verified (17 examples, no guard trip). Inline prose copies **retained**.
+- [ ] **B1b. Tokenize grammar examples (prose).** Deferred (Option A). Replace the retained inline blocks with `<!-- example: EXXX -->` tokens once the Etymological lines can be authored (D4) and/or the grammar renderer emits the preserved interlinear (G). Until then the inline copies stand and `examples.md` is the flagged single source.
 - [ ] **B2. Import draft translations.** Carefully promote `/drafts` translation-exercise sentences into `examples.md` per the locked draft-import bar. Author reviews each before it lands.
 
 ## Milestone C — Editorial standard (needs `data/writing-style-references`)
@@ -100,4 +102,5 @@ H1, H2                     (future; need A1's open schema)
 - 2026-06-26 — **A1 done.** `examples.md` v0.2 (chunk-aligned, open-schema, build-time-source), `parseExamples` rewritten + equal-count guard, E001 re-encoded. Parser verified against the live doc (8 segments) and the guard verified to throw on mismatch. Touched: `docs/reference/examples.md`, `site/scripts/parse.mjs`. Committed (ded5e50). Next: A2.
 - 2026-06-26 — **A2 done.** `<!-- example: EID -->` transclusion live in all three render paths (site + both PDF builds), `examples.md` page removed, `§EID` → hover-card span. Expansion verified in JS and PowerShell; both PDF scripts syntax-checked; site compiler re-run clean (6 pages). Touched: `site/scripts/build-content.mjs`, `site/src/plugins/remark-conlang.mjs`, `pdf/build.ps1`, `pdf/build-dictionary.ps1`. Committed (ce34165). Next: A3.
 - 2026-06-26 — **A3 done.** SSOT enforced: `example-adder` emits tokens; E001's *ŕe* inline copy migrated to a token; `parseDictionary` strips the token from short-defs. Fixed an A2 code-span bug (all three expanders now skip code fences/spans). Verified by rebuild ("chillier" appears once; changelog token stays literal) + PS behavior test. Touched: `site/scripts/parse.mjs`, `site/scripts/build-content.mjs`, `pdf/build.ps1`, `pdf/build-dictionary.ps1`, `docs/dictionary/dictionary.md`, `.claude/skills/example-adder/SKILL.md`. Committed (d0f0ad8).
+- 2026-06-28 — **B1a done (data port); B1b deferred (Option A).** Swept the reference docs: 16 standalone glossed blocks ported into `examples.md` as E002–E017 (v0.3), two cross-doc duplicates (E003, E010) collapsed, Gesture (χ) + deferred-Etymological conventions + 9 tags added. Decision recorded: tokenizing now would drop the visible Leipzig interlinear and the etym line can't be authored pre-D4, so inline prose copies are retained and the token swap waits (Decisions-locked + B1b). Verified: parseExamples ingests 17 with no equal-chunk trip; site compiler clean (6 pages, 17 examples). Touched: `docs/reference/examples.md`. Docs unchanged. Next: B2 or C1.
 - 2026-06-26 — **A4 done. MILESTONE A COMPLETE.** `CLAUDE.md` records examples.md as backend-only transclusion source + the token mechanism in the skill table. The centralized-examples infrastructure (data model → transclusion → SSOT enforcement) is fully in place. Remaining: content/editorial milestones B–F and deferred rendering G/H. PDF expansion still unverified by a real pandoc/tectonic run (logic-verified only).

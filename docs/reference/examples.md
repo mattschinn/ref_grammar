@@ -1,6 +1,6 @@
 # Examples
 
-**Version:** v0.2 (June 2026)
+**Version:** v0.3 (June 2026)
 **Status:** Sibling reference document, parallel to `phonology.md`, `orthography.md`, `verbal-system.md`, and `dictionary.md`. Holds a single source of truth for glossed example sentences; other reference documents and dictionary entries cite by ID rather than reproducing glosses inline.
 
 A working corpus of glossed example sentences in the conlang. Each entry is a numbered, dated block with five gloss layers (Conlang, IPA, Etymological, Leipzig, Translation) plus metadata. The corpus is not a translation set or a teaching grammar — it is a record of material that surfaced something interesting about phonology, morphology, syntax, or pragmatics, retained so the observation is recoverable later.
@@ -36,7 +36,11 @@ IDs are assigned sequentially and zero-padded to three digits (`E001`, `E002`, �
 
 **Chunk alignment.** The Conlang and Etymological lines are split on `|` into aligned chunks — chunk *i* of one corresponds to chunk *i* of the other. A chunk is the unit a renderer highlights (HTML hover) or pads into a column (PDF). The build **requires equal chunk counts** on the two lines and fails the build loudly on a mismatch. Keep chunks at a sensible grain — usually one conlang word and its etymological gloss — and let punctuation ride with its chunk (`noê.`). The Translation and IPA lines are free; they are never chunked.
 
+- **Gesture (χ)** — optional. For multimodal entries (ideophones), the conventionalized co-speech gesture, in the **χ** notation of `ideophones.md` §6. A free line; not chunked. Renderers opt in.
+
 **Open schema.** The fields above are the current set, but a record is **extensible**: later milestones may add fields (e.g. `Audio`, per-chunk `Notes`/`Footnotes`) without changing existing entries. Parsers ignore fields they don't recognize.
+
+**Deferred Etymological line.** An entry may omit the Etymological line when its GA derivation is not yet recoverable (e.g. source words still pending in the dictionary). The Conlang line is still chunked — the chunk grain is set now so the aligned Etymological line can be slotted in later at equal count. Until then the entry carries no alignment partner, and renderers that need the pseudo-etym row fall back to Conlang + Translation. (This is why the equal-chunk guard fires only when *both* lines are present.)
 
 **This document is build-time source only.** It is not published as an HTML page or a PDF chapter. Citing documents pull examples in at compile time via the `<!-- example: EXXX -->` transclusion token; an inline `§EXXX` mention resolves to a hover-card on the site. See §6.
 
@@ -63,6 +67,15 @@ Tags are open-class and added as needed. Maintain the flat list here when introd
 - `#comparative` — comparative and superlative constructions
 - `#hedging` — epistemic / pragmatic hedging
 - `#recognitional-habitual` — uses of the recognitional-habitual nominal (see `verbal-system.md` §6)
+- `#concord` — concord-affix / stem-extension shapes (`verbal-system.md` §4.2)
+- `#frame` — light-verb frame constructions (go-ahead / get-oneself)
+- `#frame-aspect` — frame-aspect contrasts (habitual / imperfect / perfect)
+- `#ideophone` — ideophones, as predicate or after the quotative (`ideophones.md`)
+- `#quotative` — the quotative verb *o* and its markers (`verbal-system.md` §12)
+- `#matrix-particle` — clause-scoping matrix / scaffold particles (`verbal-system.md` §11)
+- `#evidential` — evidential / hearsay / inference marking
+- `#possession` — the possession construction (`verbal-system.md` §13)
+- `#transfer` — the transfer extension of the possession construction
 
 ---
 
@@ -81,6 +94,202 @@ Tags are open-class and added as needed. Maintain the flat list here when introd
 - **Revised:**
   - 2026-06-26: Re-encoded the Conlang and Etymological lines into `|`-aligned chunks (v0.2 format). Content, IPA, and analysis unchanged.
 - **Notes:** Seed entry for the corpus. The IPA and Leipzig layers are first-pass and pending author review. Specific items flagged: (a) the realization of `Ŕ` (acute over r) is transcribed as voiceless /r̥/ on placeholder grounds and needs reconciliation with `phonology.md`; (b) the nasalization marked by `ų` is transcribed as a coda /ŋ/ rather than vowel nasalization — also pending reconciliation with `phonology.md` §4; (c) the morpheme-boundary middle dot in `rĩbii·hii` and `riis·hii` is treated as orthographic-only and is not reflected in the IPA; (d) the Leipzig glosses `NMLZ` for `-hii` and the analysis of `o noê` as `in-DEF-way` are tentative and will firm up as the recognitional-habitual and adverbial constructions are committed.
+
+---
+
+### E002 {#E002}
+
+- **Conlang:** Rimmase | spli·oþw.
+- **IPA:** /—/ — pending phonology pass
+- **Leipzig:** 1SG.LVC.NVOL.PST split-CONCORD
+- **Translation:** "I drifted off / I got split off (from the group)."
+- **Tags:** #concord #frame
+- **Cited from:** `verbal-system.md` §4.2
+- **Added:** 2026-06-28
+- **Revised:** —
+- **Notes:** Ported from the inline glossed block in `verbal-system.md` §4.2 (passive-shaped concord); inline copy retained pending tokenization (roadmap B1). Etymological line deferred — source words un-entered (dictionary batch D4). The passive shape is conflated here with the separative satellite *oþw*; disambiguating shape from satellite needs an overt-participle stem. **[Open]**
+
+### E003 {#E003}
+
+- **Conlang:** Rhii | riauset | rekriiâkm | nopiiem.
+- **IPA:** /—/ — pending phonology pass
+- **Leipzig:** 1PL get.oneself.IPFV chat.IDEO-CONCORD evening
+- **Gesture (χ):** wrist rotation, "and so on"
+- **Translation:** "We were chatting in the evening."
+- **Tags:** #ideophone #concord #frame
+- **Cited from:** `verbal-system.md` §4.2.3; `ideophones.md` §4
+- **Added:** 2026-06-28
+- **Revised:** —
+- **Notes:** Ported from inline blocks that appeared in **two** documents — `verbal-system.md` §4.2.3 (ideophone-as-predicate) and `ideophones.md` §4 (the gesture-bearing copy) — now collapsed to one record (the dedup case that motivates centralization). Both inline copies retained pending tokenization. Etymological line deferred — *rekriiâ*, *nopiiem* pending (dictionary batch D4). `nopiiem` < *on the P.M.* "(in the) evening."
+
+### E004 {#E004}
+
+- **Conlang:** Rimmase | ię | þ | rishś, | a | bayen, | een | een.
+- **IPA:** /—/ — pending phonology pass
+- **Leipzig:** 1SG.LVC.NVOL.PST do.CONCORD REC dish-ITER on 1SG.end again again
+- **Translation:** "I got (myself) doing the dishes, on my end, again and again."
+- **Tags:** #recognitional-habitual #possession #frame
+- **Cited from:** `verbal-system.md` §7.2
+- **Added:** 2026-06-28
+- **Revised:** —
+- **Notes:** Ported from the inline glossed block in `verbal-system.md` §7.2 (frame meets the recognitional nominal); inline copy retained pending tokenization. Etymological line deferred. The deverbal nominal *þ rishś* takes the recognitional exponent *þ* (not the merged article *o*) and the helper verb *ię* (< GA *doing*) on the get-oneself side.
+
+### E005 {#E005}
+
+- **Conlang:** Enniip | ounoheun | splitn.
+- **IPA:** /—/ — pending phonology pass
+- **Leipzig:** MP.ENDUP.PST LVC.VOL.IPFV split-CONCORD
+- **Translation:** "It ended up that (they) went ahead and left."
+- **Tags:** #matrix-particle #frame-aspect
+- **Cited from:** `verbal-system.md` §11
+- **Added:** 2026-06-28
+- **Revised:** —
+- **Notes:** Ported from the inline glossed block in `verbal-system.md` §11 (matrix particles); inline copy retained pending tokenization. Etymological line deferred (particle members pending dictionary entries). The end-up particle forces the imperfect: the clause surrenders its own aspect to the imperfect frame *ounoheun*.
+
+### E006 {#E006}
+
+- **Conlang:** Rhi·iiniies | ounahen | splitn.
+- **IPA:** /—/ — pending phonology pass
+- **Leipzig:** MP.NEED LVC.VOL.HAB split-CONCORD
+- **Translation:** "What I need is to leave."
+- **Tags:** #matrix-particle
+- **Cited from:** `verbal-system.md` §11.2
+- **Added:** 2026-06-28
+- **Revised:** —
+- **Notes:** Ported from the inline glossed block in `verbal-system.md` §11.2 (really-need particle); inline copy retained pending tokenization. Etymological line deferred. Frame-form spelling *ounahen* pending the §2.4 paradigm question. **[Provisional]**
+
+### E007 {#E007}
+
+- **Conlang:** Reś | beųheun | split.
+- **IPA:** /—/ — pending phonology pass
+- **Leipzig:** MP.GUESS LVC.VOL split
+- **Translation:** "Apparently (they) left."
+- **Tags:** #matrix-particle #evidential
+- **Cited from:** `verbal-system.md` §11.2
+- **Added:** 2026-06-28
+- **Revised:** —
+- **Notes:** Ported from the inline glossed block in `verbal-system.md` §11.2 (guess particle); inline copy retained pending tokenization. Etymological line deferred. *Reś* (< GA *I guess*) marks the clause as held at one remove — hearsay or inference, with no commitment to which.
+
+### E008 {#E008}
+
+- **Conlang:** Nóuśshè | beųheun | split.
+- **IPA:** /—/ — pending phonology pass
+- **Leipzig:** MP.SUMM LVC.VOL split
+- **Translation:** "Long story short, (they) left."
+- **Tags:** #matrix-particle
+- **Cited from:** `verbal-system.md` §11.2
+- **Added:** 2026-06-28
+- **Revised:** —
+- **Notes:** Ported from the inline glossed block in `verbal-system.md` §11.2 (summary particle); inline copy retained pending tokenization. Etymological line deferred. **Constructed example:** *nóuśshè* is attested as a member (Translation Exercise #2), but this particular clause has not been elicited and awaits confirmation. **[Provisional]**
+
+### E009 {#E009}
+
+- **Conlang:** Ei | o | nóè.
+- **IPA:** /—/ — pending phonology pass
+- **Leipzig:** 3SG QUOT "no.way"
+- **Translation:** "She was like, 'No way.'"
+- **Tags:** #quotative
+- **Cited from:** `verbal-system.md` §12
+- **Added:** 2026-06-28
+- **Revised:** —
+- **Notes:** Ported from the inline glossed block in `verbal-system.md` §12 (quotation); inline copy retained pending tokenization. Etymological line deferred. The quotative verb *o* (< GA *go*) takes its content after it.
+
+### E010 {#E010}
+
+- **Conlang:** Beunheumm | rhentt, | rhemmemmêm.
+- **IPA:** /—/ — pending phonology pass
+- **Leipzig:** 1SG.VOL say.PRF, IDEO
+- **Gesture (χ):** back-of-hand rhythmic clap
+- **Translation:** "I said it — boom, boom, boom."
+- **Tags:** #quotative #ideophone
+- **Cited from:** `verbal-system.md` §12.1; `ideophones.md` §1
+- **Added:** 2026-06-28
+- **Revised:** —
+- **Notes:** Ported from inline blocks in **two** documents — `verbal-system.md` §12.1 and `ideophones.md` §1 (the gesture-bearing copy) — collapsed to one record (a dedup case). Both inline copies retained pending tokenization; the verbal-system copy glossed the ideophone slot as "[boom-boom-boom]," the ideophones copy as "boom, boom, boom" (the latter taken as canonical). Etymological line deferred; the *an'+went* → *-mm* gemination in *beunheumm* is a pending phonology item.
+
+### E011 {#E011}
+
+- **Conlang:** Eia | quo | ounoheun | meiknet.
+- **IPA:** /—/ — pending phonology pass
+- **Leipzig:** 3SG QUO LVC.VOL.IPFV come-CONCORD
+- **Translation:** "She said she'd come."
+- **Tags:** #quotative
+- **Cited from:** `verbal-system.md` §12.2
+- **Added:** 2026-06-28
+- **Revised:** —
+- **Notes:** Ported from the inline glossed block in `verbal-system.md` §12.2 (indirect report); inline copy retained pending tokenization. Etymological line deferred. An indirect report needs only the source marker *quo*; the embedded clause keeps its own shape, with no quote boundary.
+
+### E012 {#E012}
+
+- **Conlang:** Bentt | oðerren | quo, | o | mau | ouhen | meiktt.
+- **IPA:** /—/ — pending phonology pass
+- **Leipzig:** say.PST 3SG.STR QUO, Q.OPEN 1SG LVC.VOL.HAB come-CONCORD
+- **Translation:** "She was like, 'I'll come.'"
+- **Tags:** #quotative
+- **Cited from:** `verbal-system.md` §12.2
+- **Added:** 2026-06-28
+- **Revised:** —
+- **Notes:** Ported from the inline glossed block in `verbal-system.md` §12.2 (direct quote); inline copy retained pending tokenization. Etymological line deferred; *bentt* frame morphology pending. A direct quote is set off by clause-initial *quo* plus the opener *o*, and reproduces the quoted material verbatim — including its own first person (*mau*).
+
+### E013 {#E013}
+
+- **Conlang:** Bauyen, | e | o | quo | "þiiaii".
+- **IPA:** /—/ — pending phonology pass
+- **Leipzig:** 1SG.STR, 1SG QUOT QUO "finally"
+- **Translation:** "Me, I was like, 'Finally!'"
+- **Tags:** #quotative
+- **Cited from:** `verbal-system.md` §12.2
+- **Added:** 2026-06-28
+- **Revised:** —
+- **Notes:** Ported from the inline glossed block in `verbal-system.md` §12.2 (quote-oneself); inline copy retained pending tokenization. Etymological line deferred. Turning *quo* on one's own thought reports an internal reaction never spoken aloud; the left-dislocated strong pronoun *bauyen* reads as taking a conversational turn. Works cleanly only in the first person. **[Provisional]**
+
+### E014 {#E014}
+
+- **Conlang:** Ei | o, | ohei | meikntt | ea.
+- **IPA:** /—/ — pending phonology pass
+- **Leipzig:** 3SG QUOT, Q.DIR come-CONCORD Q
+- **Translation:** "She went, 'Coming?'"
+- **Tags:** #quotative
+- **Cited from:** `verbal-system.md` §12.3
+- **Added:** 2026-06-28
+- **Revised:** —
+- **Notes:** Ported from the inline glossed block in `verbal-system.md` §12.3 (clipped quoted question); inline copy retained pending tokenization. Etymological line deferred. The quoted question is clipped (subjectless), licensed by the interrogative and marked by *ohei* (< GA *oh hey*).
+
+### E015 {#E015}
+
+- **Conlang:** Rimmaseu | beikw.
+- **IPA:** /—/ — pending phonology pass
+- **Leipzig:** 1SG.LVC.NVOL.PST=ART vehicle
+- **Translation:** "I have a vehicle."
+- **Tags:** #possession #frame
+- **Cited from:** `verbal-system.md` §13
+- **Added:** 2026-06-28
+- **Revised:** —
+- **Notes:** Ported from the inline glossed block in `verbal-system.md` §13 (possession construction); inline copy retained pending tokenization. Literally "got myself a vehicle." Etymological line deferred; the final lengthened vowel of *rimmaseu* is the fused etymological article, and its gloss segmentation is pending.
+
+### E016 {#E016}
+
+- **Conlang:** Ritm | o | rhémstwè.
+- **IPA:** /—/ — pending phonology pass
+- **Leipzig:** get.3PL ART book
+- **Translation:** "(I/they) gave them the book."
+- **Tags:** #possession #transfer
+- **Cited from:** `verbal-system.md` §13.2
+- **Added:** 2026-06-28
+- **Revised:** —
+- **Notes:** Ported from the inline glossed block in `verbal-system.md` §13.2 (transfer extension); inline copy retained pending tokenization. Literally "got them the book." Etymological line deferred. With a recipient in the *get*-slot the possession construction causativizes into giving, volition-neutral by default.
+
+### E017 {#E017}
+
+- **Conlang:** Beunheun | þil·tm·ę·aų·et, | o | riųś.
+- **IPA:** /—/ — pending phonology pass
+- **Leipzig:** LVC.VOL fill.in-PFV-3PL-on-3SG, ART news
+- **Translation:** "I told her the news."
+- **Tags:** #possession #transfer
+- **Cited from:** `verbal-system.md` §13.2
+- **Added:** 2026-06-28
+- **Revised:** —
+- **Notes:** Ported from the inline glossed block in `verbal-system.md` §13.2 (abstract-possessum transfer / informing); inline copy retained pending tokenization. Literally "went ahead and filled 'em in on it — the news." Etymological line deferred; fine segmentation of *þil·tm·ę·aų·et* — *þil* fill, *-tm* perfective, *-ę* recipient ('em), *-aų* "on," *-et* theme ('it') — pending confirmation. Definite *riųś* "the news" does not occupy the theme slot (filled by clitic *-et*) and is supplied separately as an appended clarification. **[Open]**
 
 ---
 
@@ -108,6 +317,18 @@ An inline `§E001` *mention* (as opposed to the transclusion token) resolves to 
 ---
 
 ## Versioning notes
+
+### v0.3, June 2026 — grammar examples ported (roadmap B1)
+
+Corpus grew from one entry to seventeen: the standalone glossed example blocks in `verbal-system.md` and `ideophones.md` were swept in as **E002–E017** (roadmap Milestone B1). What changed:
+
+- **Sixteen examples ported.** Each entry preserves the source block's layers — Conlang (now `|`-chunked, grain set by the Leipzig units), IPA (placeholders carried verbatim), Leipzig (preserved, not displayed), Translation — plus the analytical `[Placeholder]` caveats moved into Notes. GA-English paraphrases (e.g. `verbal-system.md` §6.2/§6.3) and all-placeholder paradigm skeletons (§4.3, §15) were **not** ported — they are illustrations, not attested corpus material.
+- **Two cross-doc duplicates collapsed.** *Beunheumm rhentt, rhemmemmêm* (E010) and *Rhii riauset rekriiâkm nopiiem* (E003) each appeared in two documents; each is now one record, with both sites listed under *Cited from*. This is the dedup case that motivates centralization.
+- **Gesture (χ) field (§2).** Added to the open schema for the multimodal (ideophone) entries that carried a χ gesture line in `ideophones.md`.
+- **Deferred Etymological line (§2).** New convention: an entry may omit the Etymological line while its GA derivation is unrecoverable (source words pending dictionary batch D4). The Conlang line is chunked regardless, so the aligned row slots in later at equal count; the equal-chunk guard fires only when both lines are present. All sixteen new entries use this — none has an Etymological line yet.
+- **Tag registry (§4).** Added `#concord`, `#frame`, `#frame-aspect`, `#ideophone`, `#quotative`, `#matrix-particle`, `#evidential`, `#possession`, `#transfer`.
+
+**In-prose tokenization deferred.** The inline copies in `verbal-system.md`/`ideophones.md` are **retained**, not yet replaced with `<!-- example: EXXX -->` tokens. Flipping them waits on either the D4 dictionary batch (to author the Etymological lines) or a grammar renderer that emits the preserved interlinear — otherwise tokenizing now would drop the visible Leipzig gloss for a thinner block. Tracked in `planning/examples-system-roadmap.md` (B1). The corpus is the single source from this point; the inline copies are a temporary, flagged overlap.
 
 ### v0.2, June 2026 — chunk-aligned, open-schema, build-time source
 
