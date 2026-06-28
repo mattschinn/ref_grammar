@@ -1,6 +1,6 @@
 # Examples
 
-**Version:** v0.5 (June 2026)
+**Version:** v0.6 (June 2026)
 **Status:** Sibling reference document, parallel to `phonology.md`, `orthography.md`, `verbal-system.md`, and `dictionary.md`. Holds a single source of truth for glossed example sentences; other reference documents and dictionary entries cite by ID rather than reproducing glosses inline.
 
 A working corpus of glossed example sentences in the conlang. Each entry is a numbered, dated block with five gloss layers (Conlang, IPA, Etymological, Leipzig, Translation) plus metadata. The corpus is not a translation set or a teaching grammar — it is a record of material that surfaced something interesting about phonology, morphology, syntax, or pragmatics, retained so the observation is recoverable later.
@@ -81,6 +81,12 @@ Tags are open-class and added as needed. Maintain the flat list here when introd
 - `#existential` — existential / presentational clauses (`language_reference.md` §4)
 - `#speech` — talk / speak verbs and the register contrast (`verbal-system.md` §12.7)
 - `#duration` — durative / "for a long time" adverbials
+- `#speech-act` — performative speech acts (promise, apologize)
+- `#reciprocal` — reciprocal / mutual readings
+- `#motion` — motion and directional expressions
+- `#onomatopoeia` — onomatopoeic ideophones introduced by *-ðs*
+- `#information-structure` — topic / backgrounding / given-new packaging
+- `#clause-linking` — inter-clause linkers (*rhishisben*, *kyii*)
 
 ---
 
@@ -352,6 +358,346 @@ Tags are open-class and added as needed. Maintain the flat list here when introd
 - **Revised:** —
 - **Notes:** **[Provisional — author review pending]** Imported from Translation Exercise #2. An **attested** use of the summary particle *nóuśshè* "in short" (< GA *in a nutshell*) — complements E008, whose *nóuśshè* clause was constructed/unconfirmed. Etymological line deferred (the draft gave no word-for-word gloss). **Reconciled to canon (flag for review):** the draft wrote *rhikriitm* → canon *rhikriutt* "hire / recruit" (dictionary), and *ounohen* → canon *ounoheun* (go-ahead imperfect frame). Demonstrates the matrix particle's clause-initial scope over a framed clause.
 
+### E023 {#E023}
+
+- **Conlang:** Beunheumm | rhentt, | rekriiâ.
+- **Translation:** "I said it — yakitty-yak."
+- **Tags:** #quotative #ideophone
+- **Cited from:** `drafts/translation_exercise_2/0615_transl_activity.converted.md` (§A.1.a)
+- **Added:** 2026-06-28
+- **Revised:** —
+- **Notes:** **[Provisional — author review pending]** TX#2 import. Draft gloss: {I went, yakitty-yak}. Variant of E010 with the dialect-speech ideophone *rekriiâ* (rambling / speaking in dialect) in the manner slot instead of *rhemmemmêm*.
+
+### E024 {#E024}
+
+- **Conlang:** Rimmaśe | oę, | rekriiâ.
+- **Translation:** "It slipped out / I blurted it out."
+- **Tags:** #quotative #ideophone #frame
+- **Cited from:** `drafts/translation_exercise_2/0615_transl_activity.converted.md` (§A.1.b)
+- **Added:** 2026-06-28
+- **Revised:** —
+- **Notes:** **[Provisional — author review pending]** TX#2 import. Draft gloss: {Got myself going, yakitty-yak}. The non-volitional get-oneself frame on the quotative *o* reads as involuntary blurting.
+
+### E025 {#E025}
+
+- **Conlang:** Rimmaśeto | o, | rhemmemmêm.
+- **Translation:** "I finally said it."
+- **Tags:** #quotative #frame #frame-aspect
+- **Cited from:** `drafts/translation_exercise_2/0615_transl_activity.converted.md` (§A.2.a)
+- **Added:** 2026-06-28
+- **Revised:** —
+- **Notes:** **[Provisional — author review pending]** TX#2 import. Draft gloss: {Got myself to go, boom-boom-boom}. Infinitive-shaped concord gives the effortful "finally" reading (the word "finally" is omitted). Reconciled *rhémmen·bèm* → canon *rhemmemmêm*.
+
+### E026 {#E026}
+
+- **Conlang:** Rimmaśe | oę | rhemmemmêm, | rhishisben | ei | retmseto | baurzıĩ.
+- **Translation:** "I was saying it when she walked in."
+- **Tags:** #quotative #frame #clause-linking
+- **Cited from:** `drafts/translation_exercise_2/0615_transl_activity.converted.md` (§A.2.b)
+- **Added:** 2026-06-28
+- **Revised:** —
+- **Notes:** **[Provisional — author review pending]** TX#2 import. Draft gloss: {Got myself going boom-boom-boom, which is when they go ahead barge in}. The clause linker *rhishisben* (< "which is when" / "which has been") marks simultaneity/background; the non-volitional frame on *baurzıĩ* "barge in" gives a mild malefactive reading (her walking in then is inconvenient). Reconciled *rhémmen·bèm* → *rhemmemmêm*; the frame form *retmseto* needs verification.
+
+### E027 {#E027}
+
+- **Conlang:** beunheun | þiltm·ę·ą | o | riųś.
+- **Translation:** "I filled them in on some news."
+- **Tags:** #possession #transfer #information-structure
+- **Cited from:** `drafts/translation_exercise_2/0615_transl_activity.converted.md` (§A.3.a)
+- **Added:** 2026-06-28
+- **Revised:** —
+- **Notes:** **[Provisional — author review pending]** TX#2 import. Draft gloss: {went ahead and filled them in on a news}. Indefinite-possessum variant of E017 (definite): the "a news" form (ungrammatical in GA) signals new information the speaker will then explain.
+
+### E028 {#E028}
+
+- **Conlang:** Riųś·wiis, | beunheun | þiltm·en.
+- **Translation:** "News-wise, I filled them in."
+- **Tags:** #possession #information-structure
+- **Cited from:** `drafts/translation_exercise_2/0615_transl_activity.converted.md` (§A.3.a)
+- **Added:** 2026-06-28
+- **Revised:** —
+- **Notes:** **[Provisional — author review pending]** TX#2 import. Draft gloss: {News-wise, went ahead and filled them in}. The backgrounding marker *wiis* (< GA *-wise*; cf. "regarding," "when it comes to") frames a known object; the order *beunheun þiltm·en, riųś·wiis* is also valid.
+
+### E029 {#E029}
+
+- **Conlang:** Nou | riųś, | beunheun | þiltm·en.
+- **Translation:** "You know the news — I told her."
+- **Tags:** #possession #information-structure
+- **Cited from:** `drafts/translation_exercise_2/0615_transl_activity.converted.md` (§A.3.b)
+- **Added:** 2026-06-28
+- **Revised:** —
+- **Notes:** **[Provisional — author review pending]** TX#2 import. Draft gloss: {(you) know the news, went ahead and filled them in}. The know-topic *Nou riųś* must stay clause-initial (order **not** reversible here); it directs the listener to a topic the speaker is familiar with.
+
+### E030 {#E030}
+
+- **Conlang:** Reś | eia | ounoheun | quo | beussno.
+- **Translation:** "They say they'll be passing out (but who knows)."
+- **Tags:** #matrix-particle #evidential #quotative
+- **Cited from:** `drafts/translation_exercise_2/0615_transl_activity.converted.md` (§B.5)
+- **Added:** 2026-06-28
+- **Revised:** —
+- **Notes:** **[Provisional — author review pending]** TX#2 import. Draft gloss: {Guess they are going ahead and, quote, passing out}. *quo* placed mid-clause colors the report with speaker doubt. Reconciled *ounaheun* → *ounoheun*.
+
+### E031 {#E031}
+
+- **Conlang:** Resquo | enniip | ounoheun | splitm | oðerren.
+- **Translation:** "I heard she ended up leaving."
+- **Tags:** #matrix-particle #evidential #quotative
+- **Cited from:** `drafts/translation_exercise_2/0615_transl_activity.converted.md` (§B.6.b)
+- **Added:** 2026-06-28
+- **Revised:** —
+- **Notes:** **[Provisional — author review pending]** TX#2 import. Draft gloss: {Guess quote, they ended up going ahead and splitting}. Depth-2 matrix stacking: the guess particle merged with *quo* (*resquo*) scaffolds over the end-up particle *enniip*, with the strong pronoun *oðerren* buffering the join (`verbal-system.md` §11.3). Reconciled *ounohen* → *ounoheun*.
+
+### E032 {#E032}
+
+- **Conlang:** Reś | ets | ounoheun | rheinn.
+- **Translation:** "I guess it's raining."
+- **Tags:** #matrix-particle #evidential #weather
+- **Cited from:** `drafts/translation_exercise_2/0615_transl_activity.converted.md` (§B.7)
+- **Added:** 2026-06-28
+- **Revised:** —
+- **Notes:** **[Provisional — author review pending]** TX#2 import. Draft gloss: {(I) guess it's going ahead and raining}. Renders both "it sounds like rain" and "it looks like rain" — the evidence source (auditory vs visual) is left ambiguous, mirroring GA "I see/hear rain." Reconciled *ounohen* → *ounoheun*; *rheinn* (rain, verb) pending a dictionary entry.
+
+### E033 {#E033}
+
+- **Conlang:** rimmase | nouśę | o | rheĩ.
+- **Translation:** "I notice the rain."
+- **Tags:** #frame #weather
+- **Cited from:** `drafts/translation_exercise_2/0615_transl_activity.converted.md` (§B.7)
+- **Added:** 2026-06-28
+- **Revised:** —
+- **Notes:** **[Provisional — author review pending]** TX#2 import. Draft gloss: {Got myself noticing the rain}. Active-voice perception paraphrase, also evidence-ambiguous; *nouśę* "notice" pending a dictionary entry.
+
+### E034 {#E034}
+
+- **Conlang:** rimmase | nouśnðs | riprprp.
+- **Translation:** "...noticing the drip-drip-drip."
+- **Tags:** #ideophone #onomatopoeia
+- **Cited from:** `drafts/translation_exercise_2/0615_transl_activity.converted.md` (§B.7)
+- **Added:** 2026-06-28
+- **Revised:** —
+- **Notes:** **[Provisional — author review pending]** TX#2 import. Draft gloss: {got myself noticing-this drip-drip-drip}. The onomatopoeia *riprprp* "drip" enters as an object via *-ðs* (< GA *this*); segmentation of *nouśnðs* pending (`ideophones.md` §4).
+
+### E035 {#E035}
+
+- **Conlang:** rimmase | nouśnðs | bet bät bet bät.
+- **Translation:** "...noticing the pitter-patter."
+- **Tags:** #ideophone #onomatopoeia
+- **Cited from:** `drafts/translation_exercise_2/0615_transl_activity.converted.md` (§B.7)
+- **Added:** 2026-06-28
+- **Revised:** —
+- **Notes:** **[Provisional — author review pending]** TX#2 import. Draft gloss: {got myself noticing-this pitter-patter pitter-patter}. Reduplicated onomatopoeia *bet bät* (< GA *pitter-patter*) via *-ðs*.
+
+### E036 {#E036}
+
+- **Conlang:** hii | ossii, | pons | rheĩ.
+- **Translation:** "Look outside — there's rain."
+- **Tags:** #existential #weather
+- **Cited from:** `drafts/translation_exercise_2/0615_transl_activity.converted.md` (§B.7)
+- **Added:** 2026-06-28
+- **Revised:** —
+- **Notes:** **[Provisional — author review pending]** TX#2 import. Draft gloss: {see outside, rain (is) upon-us}. Visibility (see) topic + existential *pons* (cf. E019) — perceptible-evidence framing, contrasting E037's know-topic.
+
+### E037 {#E037}
+
+- **Conlang:** no | ossii, | pons | rheĩ.
+- **Translation:** "You know outside — there's rain."
+- **Tags:** #existential #weather
+- **Cited from:** `drafts/translation_exercise_2/0615_transl_activity.converted.md` (§B.7)
+- **Added:** 2026-06-28
+- **Revised:** —
+- **Notes:** **[Provisional — author review pending]** TX#2 import. Draft gloss: {(you) know outside, rain (is) upon-us}. Know topic (non-perceptible source) + existential *pons*; minimal pair with E036.
+
+### E038 {#E038}
+
+- **Conlang:** meiyi | ei | beunheun | split.
+- **Translation:** "Word is, she left."
+- **Tags:** #evidential
+- **Cited from:** `drafts/translation_exercise_2/0615_transl_activity.converted.md` (§B.8.a)
+- **Added:** 2026-06-28
+- **Revised:** —
+- **Notes:** **[Provisional — author review pending]** TX#2 import. Draft gloss: {word is, they went ahead and split}. *meiyi* "word is" colors the whole clause clause-initially but, unlike a true matrix particle, can also move to modify a part (*ei beunheun meiyi split*) — a membership-criterion edge case (`verbal-system.md` §11).
+
+### E039 {#E039}
+
+- **Conlang:** ei | o | quo | o | noê.
+- **Translation:** "She was like, quote, 'oh, no way.'"
+- **Tags:** #quotative
+- **Cited from:** `drafts/translation_exercise_2/0615_transl_activity.converted.md` (§C.9.a)
+- **Added:** 2026-06-28
+- **Revised:** —
+- **Notes:** **[Provisional — author review pending]** TX#2 import. Draft gloss: {they go, quote, "oh, no way"}. Fuller variant of E009 showing all three optional markers — quotative *o* (< *go*), source *quo* (< *quote*), opener *o* (< *oh*). Spelling *noê* (draft) vs canon *nóè* (E009) — flag for review.
+
+### E040 {#E040}
+
+- **Conlang:** ei | o, | riiy.
+- **Translation:** "She said no."
+- **Tags:** #quotative
+- **Cited from:** `drafts/translation_exercise_2/0615_transl_activity.converted.md` (§C.9.b)
+- **Added:** 2026-06-28
+- **Revised:** —
+- **Notes:** **[Provisional — author review pending]** TX#2 import. Draft gloss: {they go, (not) really}. "Said no" via *riiy* "really" (or *noriiy* "not really"); a fuller form *ei o quo o noriiy* is also given. The *noriiy* variant touches the (unsettled) negation system — flag.
+
+### E041 {#E041}
+
+- **Conlang:** ei | o, | rhitmmtm.
+- **Translation:** "She said no (dismissively)."
+- **Tags:** #quotative #ideophone
+- **Cited from:** `drafts/translation_exercise_2/0615_transl_activity.converted.md` (§C.9.b)
+- **Added:** 2026-06-28
+- **Revised:** —
+- **Notes:** **[Provisional — author review pending]** TX#2 import. Draft gloss: {they go, [nuh-uh]}. The refusal/negation ideophone *rhitmmtm* (< GA *nuh-uh*; both *t* → glottal stop, stress on syllabic *m*) fills the manner slot.
+
+### E042 {#E042}
+
+- **Conlang:** E | o, | þiiaii.
+- **Translation:** "I said, 'finally.'"
+- **Tags:** #quotative
+- **Cited from:** `drafts/translation_exercise_2/0615_transl_activity.converted.md` (§C.10.b)
+- **Added:** 2026-06-28
+- **Revised:** —
+- **Notes:** **[Provisional — author review pending]** TX#2 import. Draft gloss: {I go, 'finally'}. Plain first-person quotative — contrast with E013's quote-oneself (*Bauyen … quo*), which marks an unspoken internal reaction.
+
+### E043 {#E043}
+
+- **Conlang:** rhii | riauseto | rekriiâ.
+- **Translation:** "We got to chatting."
+- **Tags:** #frame #frame-aspect #ideophone
+- **Cited from:** `drafts/translation_exercise_2/0615_transl_activity.converted.md` (§G.13.b)
+- **Added:** 2026-06-28
+- **Revised:** —
+- **Notes:** **[Provisional — author review pending]** TX#2 import. Draft gloss: {We got-ourselves-to yakitty-yack}. Inceptive "got to V" via get-oneself + infinitive shape — contrast E021 (completed) and E003 (imperfect, "were chatting").
+
+### E044 {#E044}
+
+- **Conlang:** riauseto | bekw | noqoų | ba'ųıì.
+- **Translation:** "We argued about money."
+- **Tags:** #frame #reciprocal
+- **Cited from:** `drafts/translation_exercise_2/0615_transl_activity.converted.md` (§G.14.a)
+- **Added:** 2026-06-28
+- **Revised:** —
+- **Notes:** **[Provisional — author review pending]** TX#2 import. Draft gloss: {Got ourselves bickering on account of money}. The reciprocal reading is carried by the get-oneself frame on a we-subject (cf. `language_reference.md` §3); *bekw* "bicker," *noqoų* "on account of."
+
+### E045 {#E045}
+
+- **Conlang:** riusto | bekw, | o | ba'ųıì.
+- **Translation:** "Money got us arguing."
+- **Tags:** #frame #reciprocal
+- **Cited from:** `drafts/translation_exercise_2/0615_transl_activity.converted.md` (§G.14.b)
+- **Added:** 2026-06-28
+- **Revised:** —
+- **Notes:** **[Provisional — author review pending]** TX#2 import. Draft gloss: {Got us to bicker, the money}. Stimulus (money) as causer in the *get*-slot, with the dislocated *o ba'ųıì* "the money" appended.
+
+### E046 {#E046}
+
+- **Conlang:** beunheun | beŕaumss.
+- **Translation:** "I promised."
+- **Tags:** #frame #speech-act
+- **Cited from:** `drafts/translation_exercise_2/0615_transl_activity.converted.md` (§E.16.a)
+- **Added:** 2026-06-28
+- **Revised:** —
+- **Notes:** **[Provisional — author review pending]** TX#2 import. Draft gloss: {Went ahead and promised}. Go-ahead frame + *beŕaumss* "promise."
+
+### E047 {#E047}
+
+- **Conlang:** enniip | ounoheun | beŕaumssm | ą | bauyen.
+- **Translation:** "I ended up promising, on my end."
+- **Tags:** #matrix-particle #speech-act
+- **Cited from:** `drafts/translation_exercise_2/0615_transl_activity.converted.md` (§E.16.b)
+- **Added:** 2026-06-28
+- **Revised:** —
+- **Notes:** **[Provisional — author review pending]** TX#2 import. Draft gloss: {Ended up going ahead and promising on my end}. End-up particle *enniip* + the *on-X-end* phrase *ą bauyen* for person disambiguation. Reconciled *ounohen* → *ounoheun*.
+
+### E048 {#E048}
+
+- **Conlang:** ritmseto | rhinnw, | ebıĩ | ounoheun | meiknet | ea.
+- **Translation:** "She asked if I was coming."
+- **Tags:** #interrogative #conditional #frame
+- **Cited from:** `drafts/translation_exercise_2/0615_transl_activity.converted.md` (§E.17.a)
+- **Added:** 2026-06-28
+- **Revised:** —
+- **Notes:** **[Provisional — author review pending]** TX#2 import. Draft gloss: {Got themselves to wonder, am-I going ahead and making it at all}. Full "asked if" — *rhinnw* "ask / wonder" under the get-oneself frame (= ask) plus the embedded conditional; E018 is just the embedded fragment. Reconciled *emii* → canon *ebıĩ* and *ounohen* → *ounoheun*; the frame form *ritmseto* needs verification.
+
+### E049 {#E049}
+
+- **Conlang:** beunheun | pauyiist·wm.
+- **Translation:** "I apologized to her."
+- **Tags:** #frame #speech-act
+- **Cited from:** `drafts/translation_exercise_2/0615_transl_activity.converted.md` (§E.18.a)
+- **Added:** 2026-06-28
+- **Revised:** —
+- **Notes:** **[Provisional — author review pending]** TX#2 import. Draft gloss: {Went ahead and apologized to them}. Go-ahead frame + *pauyiist* "apologize" with indirect-object *-wm*.
+
+### E050 {#E050}
+
+- **Conlang:** ei | o | quo | pauyiiś.
+- **Translation:** "I was like, 'my bad.'"
+- **Tags:** #quotative #speech-act
+- **Cited from:** `drafts/translation_exercise_2/0615_transl_activity.converted.md` (§E.18.b)
+- **Added:** 2026-06-28
+- **Revised:** —
+- **Notes:** **[Provisional — author review pending]** TX#2 import. Draft gloss: {I go, quote, apologies}. A quotative work-around for apologizing — *pauyiiś* "apologies" (interjection) under *quo*.
+
+### E051 {#E051}
+
+- **Conlang:** reshiseto | rheiiem | rhilqui.
+- **Translation:** "Come here."
+- **Tags:** #frame #motion
+- **Cited from:** `drafts/translation_exercise_2/0615_transl_activity.converted.md` (Motion)
+- **Added:** 2026-06-28
+- **Revised:** —
+- **Notes:** **[Provisional — author review pending]** TX#2 import. Draft gloss: {Get yourself to where I am real quick}. Get-oneself frame for movement; *rheiiem* "here" (< *where I am*), *rhilqui* "real quick" as a command softener. (Alt: the interjection *meirei* < *M'aidez*.)
+
+### E052 {#E052}
+
+- **Conlang:** reshise | ouðeu.
+- **Translation:** "Go there."
+- **Tags:** #frame #motion
+- **Cited from:** `drafts/translation_exercise_2/0615_transl_activity.converted.md` (Motion)
+- **Added:** 2026-06-28
+- **Revised:** —
+- **Notes:** **[Provisional — author review pending]** TX#2 import. Draft gloss: {Get yourself over-there}. Get-oneself frame + *ouðeu* "over there."
+
+### E053 {#E053}
+
+- **Conlang:** riausse | rhiimm | þri·ei·iiǫ.
+- **Translation:** "We're driving for hours."
+- **Tags:** #frame #motion #duration
+- **Cited from:** `drafts/translation_exercise_2/0615_transl_activity.converted.md` (Motion)
+- **Added:** 2026-06-28
+- **Revised:** —
+- **Notes:** **[Provisional — author review pending]** TX#2 import. Draft gloss: {Got ourselves driving for a eon}. Get-oneself frame + *rhiimm* "drive" + the duration adverb *þri·ei·iiǫ* (cf. E021).
+
+### E054 {#E054}
+
+- **Conlang:** rennausseto | split | him | eiem.
+- **Translation:** "We set off at dawn."
+- **Tags:** #frame #motion
+- **Cited from:** `drafts/translation_exercise_2/0615_transl_activity.converted.md` (Motion)
+- **Added:** 2026-06-28
+- **Revised:** —
+- **Notes:** **[Provisional — author review pending]** TX#2 import. Draft gloss: {Getting ourselves to split come A.M.}. *split* "leave / set off"; *him eiem* "come A.M. / at dawn." The frame form *rennausseto* needs verification.
+
+### E055 {#E055}
+
+- **Conlang:** reuto | mii.
+- **Translation:** "Bring it to me."
+- **Tags:** #possession #transfer #motion
+- **Cited from:** `drafts/translation_exercise_2/0615_transl_activity.converted.md` (Motion)
+- **Added:** 2026-06-28
+- **Revised:** —
+- **Notes:** **[Provisional — author review pending]** TX#2 import. Draft gloss: {Get it to me}. The get-it-to-me transfer (*reuto* < *get it*); cf. the transfer extension E016/E017.
+
+### E056 {#E056}
+
+- **Conlang:** reut | ouðeu.
+- **Translation:** "Take it there."
+- **Tags:** #possession #transfer #motion
+- **Cited from:** `drafts/translation_exercise_2/0615_transl_activity.converted.md` (Motion)
+- **Added:** 2026-06-28
+- **Revised:** —
+- **Notes:** **[Provisional — author review pending]** TX#2 import. Draft gloss: {Get it over-there}. *reut* "get it" + *ouðeu* "over there."
+
 ---
 
 ## 6. Display conventions
@@ -378,6 +724,10 @@ An inline `§E001` *mention* (as opposed to the transclusion token) resolves to 
 ---
 
 ## Versioning notes
+
+### v0.6, June 2026 — Translation Exercise #2 imported in full (roadmap B2)
+
+The rest of Translation Exercise #2 imported — **E023–E056** (34 entries) — completing the TX#2 sweep (its ~12 already-integrated sentences are E001–E019). All **[Provisional — author review pending]**, **corpus-only** (transcluded nowhere until reviewed), each with a source pointer and reconciliation/conflict flags. Decisions applied (author-confirmed): **batch all of TX#2**, **reconcile spelling to canon and flag** (e.g. *ounohen*→*ounoheun*, *emii*→*ebıĩ*, *rhémmen·bèm*→*rhemmemmêm*; uncertain frame forms *retmseto*/*ritmseto*/*rennausseto* flagged for verification). **Etymological deferred for the batch:** each draft brace-gloss is captured in Notes (`Draft gloss: {…}`) rather than force-aligned, so no entry risks the equal-chunk guard; the author promotes brace→aligned Etymological on review. **Deferred (not imported):** the three negation-bearing hearsay sentences (TX#2 §B.5, *noquii*/*nokw*) — the draft itself flags them as clashing with the unsettled negation system; they wait on `drafts/negative-*`. New tags: `#speech-act`, `#reciprocal`, `#motion`, `#onomatopoeia`, `#information-structure`, `#clause-linking`. Notable: E022 (TX#2 §B.8) is an **attested** *nóuśshè* clause complementing the constructed E008. Other draft sources (`translation_exercise_1/`, `poetics.md`, `verb-concept-grids`) remain unsurveyed.
 
 ### v0.5, June 2026 — draft-translation import begun (roadmap B2, pilot)
 
