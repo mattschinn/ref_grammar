@@ -1,6 +1,6 @@
 # Ideophones and the Expressive Layer
 
-**Version:** v1.1 (June 2026)
+**Version:** v1.2 (June 2026)
 **Status:** Sibling reference document, parallel to `phonology.md`, `orthography.md`, and `verbal-system.md`. The language reference's §3.9 is an orientation stub pointing here. Terminology follows `terminology-registry.md`.
 
 **Abstract.** Ideophones are a productive expressive word class that depicts the manner of an event — paradigmatically a speech act — in vivid, often sound-symbolic form. The class is phonotactically marginal, able to break constraints binding on the core lexicon; verbalizable, its members taking a frame and concord to serve as predicates; and multimodal, its members pairing with conventionalized co-speech gesture. An ideophone is obligatory after the quotative verb when no words are quoted, and supplies onomatopoeia elsewhere. This document is the canonical reference for the class — its inventory, phonotactics, gesture notation, and grammatical interfaces; the quotative construction that hosts it is in `verbal-system.md` §12.
@@ -15,11 +15,13 @@ Status tags — **[Settled]** committed; **[Provisional]** current best analysis
 
 An **ideophone** is a vivid, often sound-symbolic word that *depicts* rather than *describes* — it performs the manner of an event instead of naming it. The conlang's ideophones cluster around **speech acts**: where GA would reach for a manner-of-speaking verb (*snap*, *drone*, *mutter*), the conlang pairs the quotative verb *o* (`verbal-system.md` §12) with an ideophone that enacts the manner.
 
-> *Beunheumm rhentt, rhemmemmêm.*
-> /—/ `[Placeholder: IPA pending phonology pass]`
-> 1SG.VOL say.PRF, IDEO
-> χ back-of-hand rhythmic clap
-> "I said it — boom, boom, boom."
+<!-- example: E010 -->
+<!-- preview E010 · auto-generated from examples.md · do not edit -->
+> *Beunheumm rhentt, rhemmemmêm.*  
+> 1SG.VOL say.PRF, IDEO  
+> χ back-of-hand rhythmic clap  
+> "I said it — boom, boom, boom."  
+<!-- /preview -->
 
 Three properties set the class apart from the core lexicon and organize this document: it is **phonotactically marginal** (§5), **verbalizable** — a member can take a frame and concord and head its own clause (§4) — and **multimodal**, its members pairing with conventionalized co-speech gesture (§6).
 
@@ -53,11 +55,13 @@ A defining trait is **obligatoriness**: when the quotative verb *o* introduces n
 - **After the quotative verb.** The core position: *o* + ideophone (`verbal-system.md` §12), obligatory when nothing is quoted (§3).
 - **As a predicate.** An ideophone can verbalize — take a frame and concord and head its own clause (`verbal-system.md` §4.2.3): *rekriiâ* → *rekriiâkm* "chatting."
 
-> *Rhii riauset rekriiâkm nopiiem.*
-> /—/ `[Placeholder: IPA pending phonology pass]`
-> 1PL get.oneself.IPFV chat.IDEO-CONCORD evening
-> χ wrist rotation, "and so on"
-> "We were chatting in the evening."
+<!-- example: E003 -->
+<!-- preview E003 · auto-generated from examples.md · do not edit -->
+> *Rhii riauset rekriiâkm nopiiem.*  
+> 1PL get.oneself.IPFV chat.IDEO-CONCORD evening  
+> χ wrist rotation, "and so on"  
+> "We were chatting in the evening."  
+<!-- /preview -->
 
 - **As an onomatopoeia-object.** The marker *-ðs* (< GA *this*) introduces a sound-word into a clause, presenting it as the thing perceived: *rimmase nouśnðs riprprp* "noticing the drip-drip-drip." `[Placeholder: segmentation of *nouśnðs* pending]`
 - Whether ideophones can be modified, negated, or take their own arguments beyond these positions is **[Open]** (§10).
@@ -123,6 +127,10 @@ The internal morphology of an ideophone is generally **not** segmented in the gl
 ---
 
 ## Versioning notes
+
+### v1.2, June 2026 — examples migrated to the centralized corpus (roadmap B1b)
+
+The two glossed example blocks (§1 *rhemmemmêm*, §4 *rekriiâkm*) were replaced with `<!-- example: E010 -->` / `<!-- example: E003 -->` transclusion tokens, sourced from `examples.md` and rendered at build time. Both examples are shared with `verbal-system.md`; here the greedy render keeps the **χ gesture line** (it is suppressed in `verbal-system.md`, since the χ convention is defined in this document, §6). No example content changed; the placeholder IPA line drops from display. The schematic χ-format illustration in §6 is not a corpus example and was left inline. See `examples.md` v0.4.
 
 ### v1.1, June 2026 — *rhemmemmêm* (form rename + interpunct-beat retraction)
 

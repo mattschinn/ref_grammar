@@ -1,6 +1,6 @@
 # Examples
 
-**Version:** v0.3 (June 2026)
+**Version:** v0.4 (June 2026)
 **Status:** Sibling reference document, parallel to `phonology.md`, `orthography.md`, `verbal-system.md`, and `dictionary.md`. Holds a single source of truth for glossed example sentences; other reference documents and dictionary entries cite by ID rather than reproducing glosses inline.
 
 A working corpus of glossed example sentences in the conlang. Each entry is a numbered, dated block with five gloss layers (Conlang, IPA, Etymological, Leipzig, Translation) plus metadata. The corpus is not a translation set or a teaching grammar — it is a record of material that surfaced something interesting about phonology, morphology, syntax, or pragmatics, retained so the observation is recoverable later.
@@ -76,6 +76,9 @@ Tags are open-class and added as needed. Maintain the flat list here when introd
 - `#evidential` — evidential / hearsay / inference marking
 - `#possession` — the possession construction (`verbal-system.md` §13)
 - `#transfer` — the transfer extension of the possession construction
+- `#interrogative` — questions and the polarity particle *ea* (`verbal-system.md` §5.5)
+- `#conditional` — conditional clauses
+- `#existential` — existential / presentational clauses (`language_reference.md` §4)
 
 ---
 
@@ -107,7 +110,7 @@ Tags are open-class and added as needed. Maintain the flat list here when introd
 - **Cited from:** `verbal-system.md` §4.2
 - **Added:** 2026-06-28
 - **Revised:** —
-- **Notes:** Ported from the inline glossed block in `verbal-system.md` §4.2 (passive-shaped concord); inline copy retained pending tokenization (roadmap B1). Etymological line deferred — source words un-entered (dictionary batch D4). The passive shape is conflated here with the separative satellite *oþw*; disambiguating shape from satellite needs an overt-participle stem. **[Open]**
+- **Notes:** Ported from the inline glossed block in `verbal-system.md` §4.2 (passive-shaped concord); now transcluded via token (roadmap B1b). Etymological line deferred — source words un-entered (dictionary batch D4). The passive shape is conflated here with the separative satellite *oþw*; disambiguating shape from satellite needs an overt-participle stem. **[Open]**
 
 ### E003 {#E003}
 
@@ -120,7 +123,7 @@ Tags are open-class and added as needed. Maintain the flat list here when introd
 - **Cited from:** `verbal-system.md` §4.2.3; `ideophones.md` §4
 - **Added:** 2026-06-28
 - **Revised:** —
-- **Notes:** Ported from inline blocks that appeared in **two** documents — `verbal-system.md` §4.2.3 (ideophone-as-predicate) and `ideophones.md` §4 (the gesture-bearing copy) — now collapsed to one record (the dedup case that motivates centralization). Both inline copies retained pending tokenization. Etymological line deferred — *rekriiâ*, *nopiiem* pending (dictionary batch D4). `nopiiem` < *on the P.M.* "(in the) evening."
+- **Notes:** Ported from inline blocks that appeared in **two** documents — `verbal-system.md` §4.2.3 (ideophone-as-predicate) and `ideophones.md` §4 (the gesture-bearing copy) — now collapsed to one record (the dedup case that motivates centralization). Both sites now transclude via token. Etymological line deferred — *rekriiâ*, *nopiiem* pending (dictionary batch D4). `nopiiem` < *on the P.M.* "(in the) evening."
 
 ### E004 {#E004}
 
@@ -132,7 +135,7 @@ Tags are open-class and added as needed. Maintain the flat list here when introd
 - **Cited from:** `verbal-system.md` §7.2
 - **Added:** 2026-06-28
 - **Revised:** —
-- **Notes:** Ported from the inline glossed block in `verbal-system.md` §7.2 (frame meets the recognitional nominal); inline copy retained pending tokenization. Etymological line deferred. The deverbal nominal *þ rishś* takes the recognitional exponent *þ* (not the merged article *o*) and the helper verb *ię* (< GA *doing*) on the get-oneself side.
+- **Notes:** Ported from the inline glossed block in `verbal-system.md` §7.2 (frame meets the recognitional nominal); now transcluded via token. Etymological line deferred. The deverbal nominal *þ rishś* takes the recognitional exponent *þ* (not the merged article *o*) and the helper verb *ię* (< GA *doing*) on the get-oneself side.
 
 ### E005 {#E005}
 
@@ -144,7 +147,7 @@ Tags are open-class and added as needed. Maintain the flat list here when introd
 - **Cited from:** `verbal-system.md` §11
 - **Added:** 2026-06-28
 - **Revised:** —
-- **Notes:** Ported from the inline glossed block in `verbal-system.md` §11 (matrix particles); inline copy retained pending tokenization. Etymological line deferred (particle members pending dictionary entries). The end-up particle forces the imperfect: the clause surrenders its own aspect to the imperfect frame *ounoheun*.
+- **Notes:** Ported from the inline glossed block in `verbal-system.md` §11 (matrix particles); now transcluded via token. Etymological line deferred (particle members pending dictionary entries). The end-up particle forces the imperfect: the clause surrenders its own aspect to the imperfect frame *ounoheun*.
 
 ### E006 {#E006}
 
@@ -156,7 +159,7 @@ Tags are open-class and added as needed. Maintain the flat list here when introd
 - **Cited from:** `verbal-system.md` §11.2
 - **Added:** 2026-06-28
 - **Revised:** —
-- **Notes:** Ported from the inline glossed block in `verbal-system.md` §11.2 (really-need particle); inline copy retained pending tokenization. Etymological line deferred. Frame-form spelling *ounahen* pending the §2.4 paradigm question. **[Provisional]**
+- **Notes:** Ported from the inline glossed block in `verbal-system.md` §11.2 (really-need particle); now transcluded via token. Etymological line deferred. Frame-form spelling *ounahen* pending the §2.4 paradigm question. **[Provisional]**
 
 ### E007 {#E007}
 
@@ -168,7 +171,7 @@ Tags are open-class and added as needed. Maintain the flat list here when introd
 - **Cited from:** `verbal-system.md` §11.2
 - **Added:** 2026-06-28
 - **Revised:** —
-- **Notes:** Ported from the inline glossed block in `verbal-system.md` §11.2 (guess particle); inline copy retained pending tokenization. Etymological line deferred. *Reś* (< GA *I guess*) marks the clause as held at one remove — hearsay or inference, with no commitment to which.
+- **Notes:** Ported from the inline glossed block in `verbal-system.md` §11.2 (guess particle); now transcluded via token. Etymological line deferred. *Reś* (< GA *I guess*) marks the clause as held at one remove — hearsay or inference, with no commitment to which.
 
 ### E008 {#E008}
 
@@ -180,7 +183,7 @@ Tags are open-class and added as needed. Maintain the flat list here when introd
 - **Cited from:** `verbal-system.md` §11.2
 - **Added:** 2026-06-28
 - **Revised:** —
-- **Notes:** Ported from the inline glossed block in `verbal-system.md` §11.2 (summary particle); inline copy retained pending tokenization. Etymological line deferred. **Constructed example:** *nóuśshè* is attested as a member (Translation Exercise #2), but this particular clause has not been elicited and awaits confirmation. **[Provisional]**
+- **Notes:** Ported from the inline glossed block in `verbal-system.md` §11.2 (summary particle); now transcluded via token. Etymological line deferred. **Constructed example:** *nóuśshè* is attested as a member (Translation Exercise #2), but this particular clause has not been elicited and awaits confirmation. **[Provisional]**
 
 ### E009 {#E009}
 
@@ -192,7 +195,7 @@ Tags are open-class and added as needed. Maintain the flat list here when introd
 - **Cited from:** `verbal-system.md` §12
 - **Added:** 2026-06-28
 - **Revised:** —
-- **Notes:** Ported from the inline glossed block in `verbal-system.md` §12 (quotation); inline copy retained pending tokenization. Etymological line deferred. The quotative verb *o* (< GA *go*) takes its content after it.
+- **Notes:** Ported from the inline glossed block in `verbal-system.md` §12 (quotation); now transcluded via token. Etymological line deferred. The quotative verb *o* (< GA *go*) takes its content after it.
 
 ### E010 {#E010}
 
@@ -205,7 +208,7 @@ Tags are open-class and added as needed. Maintain the flat list here when introd
 - **Cited from:** `verbal-system.md` §12.1; `ideophones.md` §1
 - **Added:** 2026-06-28
 - **Revised:** —
-- **Notes:** Ported from inline blocks in **two** documents — `verbal-system.md` §12.1 and `ideophones.md` §1 (the gesture-bearing copy) — collapsed to one record (a dedup case). Both inline copies retained pending tokenization; the verbal-system copy glossed the ideophone slot as "[boom-boom-boom]," the ideophones copy as "boom, boom, boom" (the latter taken as canonical). Etymological line deferred; the *an'+went* → *-mm* gemination in *beunheumm* is a pending phonology item.
+- **Notes:** Ported from inline blocks in **two** documents — `verbal-system.md` §12.1 and `ideophones.md` §1 (the gesture-bearing copy) — collapsed to one record (a dedup case). Both sites now transclude via token; the verbal-system copy glossed the ideophone slot as "[boom-boom-boom]," the ideophones copy as "boom, boom, boom" (the latter taken as canonical). Etymological line deferred; the *an'+went* → *-mm* gemination in *beunheumm* is a pending phonology item.
 
 ### E011 {#E011}
 
@@ -217,7 +220,7 @@ Tags are open-class and added as needed. Maintain the flat list here when introd
 - **Cited from:** `verbal-system.md` §12.2
 - **Added:** 2026-06-28
 - **Revised:** —
-- **Notes:** Ported from the inline glossed block in `verbal-system.md` §12.2 (indirect report); inline copy retained pending tokenization. Etymological line deferred. An indirect report needs only the source marker *quo*; the embedded clause keeps its own shape, with no quote boundary.
+- **Notes:** Ported from the inline glossed block in `verbal-system.md` §12.2 (indirect report); now transcluded via token. Etymological line deferred. An indirect report needs only the source marker *quo*; the embedded clause keeps its own shape, with no quote boundary.
 
 ### E012 {#E012}
 
@@ -229,7 +232,7 @@ Tags are open-class and added as needed. Maintain the flat list here when introd
 - **Cited from:** `verbal-system.md` §12.2
 - **Added:** 2026-06-28
 - **Revised:** —
-- **Notes:** Ported from the inline glossed block in `verbal-system.md` §12.2 (direct quote); inline copy retained pending tokenization. Etymological line deferred; *bentt* frame morphology pending. A direct quote is set off by clause-initial *quo* plus the opener *o*, and reproduces the quoted material verbatim — including its own first person (*mau*).
+- **Notes:** Ported from the inline glossed block in `verbal-system.md` §12.2 (direct quote); now transcluded via token. Etymological line deferred; *bentt* frame morphology pending. A direct quote is set off by clause-initial *quo* plus the opener *o*, and reproduces the quoted material verbatim — including its own first person (*mau*).
 
 ### E013 {#E013}
 
@@ -241,7 +244,7 @@ Tags are open-class and added as needed. Maintain the flat list here when introd
 - **Cited from:** `verbal-system.md` §12.2
 - **Added:** 2026-06-28
 - **Revised:** —
-- **Notes:** Ported from the inline glossed block in `verbal-system.md` §12.2 (quote-oneself); inline copy retained pending tokenization. Etymological line deferred. Turning *quo* on one's own thought reports an internal reaction never spoken aloud; the left-dislocated strong pronoun *bauyen* reads as taking a conversational turn. Works cleanly only in the first person. **[Provisional]**
+- **Notes:** Ported from the inline glossed block in `verbal-system.md` §12.2 (quote-oneself); now transcluded via token. Etymological line deferred. Turning *quo* on one's own thought reports an internal reaction never spoken aloud; the left-dislocated strong pronoun *bauyen* reads as taking a conversational turn. Works cleanly only in the first person. **[Provisional]**
 
 ### E014 {#E014}
 
@@ -253,7 +256,7 @@ Tags are open-class and added as needed. Maintain the flat list here when introd
 - **Cited from:** `verbal-system.md` §12.3
 - **Added:** 2026-06-28
 - **Revised:** —
-- **Notes:** Ported from the inline glossed block in `verbal-system.md` §12.3 (clipped quoted question); inline copy retained pending tokenization. Etymological line deferred. The quoted question is clipped (subjectless), licensed by the interrogative and marked by *ohei* (< GA *oh hey*).
+- **Notes:** Ported from the inline glossed block in `verbal-system.md` §12.3 (clipped quoted question); now transcluded via token. Etymological line deferred. The quoted question is clipped (subjectless), licensed by the interrogative and marked by *ohei* (< GA *oh hey*).
 
 ### E015 {#E015}
 
@@ -265,7 +268,7 @@ Tags are open-class and added as needed. Maintain the flat list here when introd
 - **Cited from:** `verbal-system.md` §13
 - **Added:** 2026-06-28
 - **Revised:** —
-- **Notes:** Ported from the inline glossed block in `verbal-system.md` §13 (possession construction); inline copy retained pending tokenization. Literally "got myself a vehicle." Etymological line deferred; the final lengthened vowel of *rimmaseu* is the fused etymological article, and its gloss segmentation is pending.
+- **Notes:** Ported from the inline glossed block in `verbal-system.md` §13 (possession construction); now transcluded via token. Literally "got myself a vehicle." Etymological line deferred; the final lengthened vowel of *rimmaseu* is the fused etymological article, and its gloss segmentation is pending.
 
 ### E016 {#E016}
 
@@ -277,7 +280,7 @@ Tags are open-class and added as needed. Maintain the flat list here when introd
 - **Cited from:** `verbal-system.md` §13.2
 - **Added:** 2026-06-28
 - **Revised:** —
-- **Notes:** Ported from the inline glossed block in `verbal-system.md` §13.2 (transfer extension); inline copy retained pending tokenization. Literally "got them the book." Etymological line deferred. With a recipient in the *get*-slot the possession construction causativizes into giving, volition-neutral by default.
+- **Notes:** Ported from the inline glossed block in `verbal-system.md` §13.2 (transfer extension); now transcluded via token. Literally "got them the book." Etymological line deferred. With a recipient in the *get*-slot the possession construction causativizes into giving, volition-neutral by default.
 
 ### E017 {#E017}
 
@@ -289,7 +292,31 @@ Tags are open-class and added as needed. Maintain the flat list here when introd
 - **Cited from:** `verbal-system.md` §13.2
 - **Added:** 2026-06-28
 - **Revised:** —
-- **Notes:** Ported from the inline glossed block in `verbal-system.md` §13.2 (abstract-possessum transfer / informing); inline copy retained pending tokenization. Literally "went ahead and filled 'em in on it — the news." Etymological line deferred; fine segmentation of *þil·tm·ę·aų·et* — *þil* fill, *-tm* perfective, *-ę* recipient ('em), *-aų* "on," *-et* theme ('it') — pending confirmation. Definite *riųś* "the news" does not occupy the theme slot (filled by clitic *-et*) and is supplied separately as an appended clarification. **[Open]**
+- **Notes:** Ported from the inline glossed block in `verbal-system.md` §13.2 (abstract-possessum transfer / informing); now transcluded via token. Literally "went ahead and filled 'em in on it — the news." Etymological line deferred; fine segmentation of *þil·tm·ę·aų·et* — *þil* fill, *-tm* perfective, *-ę* recipient ('em), *-aų* "on," *-et* theme ('it') — pending confirmation. Definite *riųś* "the news" does not occupy the theme slot (filled by clitic *-et*) and is supplied separately as an appended clarification. **[Open]**
+
+### E018 {#E018}
+
+- **Conlang:** …ebıĩ | ounoheun | meiknet | ea.
+- **IPA:** /—/ — pending phonology pass
+- **Leipzig:** be.1SG LVC.VOL.IPFV come-CONCORD Q
+- **Translation:** "…whether (I) was coming."
+- **Tags:** #interrogative #conditional
+- **Cited from:** `verbal-system.md` §5.5
+- **Added:** 2026-06-28
+- **Revised:** —
+- **Notes:** Ported from the inline glossed block in `verbal-system.md` §5.5 (transcluded via token). Etymological line deferred. The conditional brackets the clause with a fronted *ebıĩ* (the inverted "am I") and a clause-final *ea*; it is formally identical to a yes/no question, distinguished only by intonation. The leading `…` marks the embedded fragment. **[Provisional]**
+
+### E019 {#E019}
+
+- **Conlang:** pons | rheĩ.
+- **IPA:** /—/ — pending phonology pass
+- **Leipzig:** EXIST rain
+- **Translation:** "There is rain."
+- **Tags:** #existential
+- **Cited from:** `language_reference.md` §4
+- **Added:** 2026-06-28
+- **Revised:** —
+- **Notes:** Ported from the inline glossed block in `language_reference.md` §4 (transcluded via token). Etymological line deferred; the existential particle *pons* (< GA *(there is) upon us*) is pending a dictionary entry. The unmarked way to predicate of an inanimate or weather subject.
 
 ---
 
@@ -317,6 +344,14 @@ An inline `§E001` *mention* (as opposed to the transclusion token) resolves to 
 ---
 
 ## Versioning notes
+
+### v0.4, June 2026 — grammar examples tokenized; corpus to E019 (roadmap B1b)
+
+Tokenization of the ported grammar examples (B1b), unblocked by the greedy renderer (which shows the present Leipzig line and skips the absent etym / placeholder IPA) and the auto-regenerated previews (G0a/G0b). Changes:
+
+- **Inline grammar blocks replaced with tokens.** `verbal-system.md` (E002–E018), `ideophones.md` (E003, E010), and `language_reference.md` (E019) now transclude their examples at build time; the corpus is the single source in fact, not only in principle. Each ported entry's Notes updated from "retained pending tokenization" to "transcluded via token."
+- **Two further examples swept in (E018, E019).** The first-pass survey missed the conditional *…ebıĩ ounoheun meiknet ea* (`verbal-system.md` §5.5) and the existential *pons rheĩ* (`language_reference.md` §4) — the survey regex required a capitalized first word and did not cover `language_reference.md`. Both added; tags `#interrogative`, `#conditional`, `#existential` registered.
+- **Per-call layer suppression in use.** The two cross-doc duplicates (E003, E010) render greedily in `ideophones.md` (χ gesture shown) but with `| -gesture` in `verbal-system.md`, keeping the χ convention scoped to the document that defines it — the first real use of the blockable-layer feature.
 
 ### v0.3, June 2026 — grammar examples ported (roadmap B1)
 

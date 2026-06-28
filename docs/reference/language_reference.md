@@ -1,6 +1,6 @@
 # Language Reference: Working Sketch
 
-**Version:** v3.10 (June 2026)
+**Version:** v3.11 (June 2026)
 **Predecessor:** v2.7 and earlier — see §9 (Versioning Notes).
 
 A starting-point descriptive grammar for the conlang, an a priori language derived from General American English (GA) through a designed cascade of regular sound changes and grammaticalizations. Many features are still under analysis; this document captures current commitments and flags open questions. It is the top-level document of a set — see §8 for the full document hierarchy.
@@ -267,10 +267,12 @@ Two constructions are settled enough to commit:
 
 **Existential and presentational clauses.** The language has a dedicated **existential particle** *pons* (< GA *(there is) upon us*) for "there is / there are," presenting a referent or asserting existence without an agent — comparable to French *il y a*, Spanish *hay*:
 
-> *pons rheĩ.*
-> /—/ `[Placeholder: IPA pending phonology pass]`
-> EXIST rain
-> "There is rain."
+<!-- example: E019 -->
+<!-- preview E019 · auto-generated from examples.md · do not edit -->
+> *pons rheĩ.*  
+> EXIST rain  
+> "There is rain."  
+<!-- /preview -->
 
 This is the **unmarked** way to predicate of an inanimate or weather subject; casting such a subject as an active framed verb instead is never neutral, coloring the event with inconvenience, fate, or unexpectedness (`verbal-system.md` §4.1). `[Lexicon: pons pending]` `[New rule needed: irregular development of *pons* < *upon us* — grammatical-word quirk, phonology session]`
 
@@ -617,6 +619,10 @@ This is more apparatus than current dictionary entries carry, and most of it can
 ---
 
 ## 9. Versioning Notes
+
+### v3.11, June 2026 — existential example migrated to the centralized corpus (roadmap B1b)
+
+The §4 existential example *pons rheĩ* "there is rain" was replaced with a `<!-- example: E019 -->` transclusion token, now sourced from `examples.md` and rendered at build time. No content change; the placeholder IPA line drops from display (greedy render). E019 was added to the corpus in the same B1b pass (a first-pass survey had missed it). See `examples.md` v0.4.
 
 ### v3.10, June 2026 — §3.4 orientation abstract regenerated; §8 skill bullets removed
 

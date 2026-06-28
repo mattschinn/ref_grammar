@@ -1,6 +1,6 @@
 # The Verbal System
 
-**Version:** v2.12 (June 2026)
+**Version:** v2.13 (June 2026)
 **Status:** Sibling reference document, parallel to `phonology.md` and `orthography.md`. The language reference's §3.4 is a high-level summary that points here. Supersession history: §17.
 
 **Abstract.** The verbal system grammaticalizes the subject's relationship to the event: every framed verb commits to either the volitional go-ahead frame (the subject deliberately undertook the event) or the non-volitional get-oneself frame (the subject's relationship to the event is qualified in some other way). The go-ahead side is deliberately compact; the get-oneself side is richer, hosting four readings — happenstance, effortful self-benefit, threshold, and backdrop — selected jointly by frame aspect, concord shape, and the verb's own event structure. The frames do not stand alone: they combine with a pronominal system in which pronouns are aspect carriers, while the language's only tense lives in a small class of matrix particles that scaffold whole clauses with modal meaning. A possession construction derives having, getting, choosing, and giving from frame-plus-nominal combination, with the recognitional-iterative nominal as its deverbal special case; three stative-domain strategies carry the meanings the morphology cannot host. This document is the canonical reference for all of these systems; the verb-lexicon-building methodology lives in `language_reference.md` Appendix B.
@@ -161,10 +161,12 @@ The surface forms of the two principal endings are now tabulated by coda class i
 
 A third shape is attested: the **passive-shaped concord**, patterned on the GA passive participle.
 
-> *Rimmase spli·oþw.*
-> /—/ `[Placeholder: IPA pending phonology pass]`
-> 1SG.LVC.NVOL.PST split-CONCORD
-> "I drifted off / I got split off (from the group)."
+<!-- example: E002 -->
+<!-- preview E002 · auto-generated from examples.md · do not edit -->
+> *Rimmase spli·oþw.*  
+> 1SG.LVC.NVOL.PST split-CONCORD  
+> "I drifted off / I got split off (from the group)."  
+<!-- /preview -->
 
 The passive shape fills a gap the other two cannot: it delivers a completed event under the get-oneself frame without the threshold coloring of the infinitive shape and without the imperfect aspect of the progressive shape. The same stem across all three shapes:
 
@@ -241,10 +243,12 @@ The object pronoun *it* hosts the infix exactly as an incorporated particle does
 
 An ideophone (§12; `ideophones.md`) is not confined to following the quotative verb — it can serve as the main predicate itself, taking a frame and concord exactly as a verb stem does. The dialect-speech ideophone *rekriiâ* verbalizes with concord *-km*:
 
-> *Rhii riauset rekriiâkm nopiiem.*
-> /—/ `[Placeholder: IPA pending phonology pass]`
-> 1PL get.oneself.IPFV chat.IDEO-CONCORD evening
-> "We were chatting in the evening."
+<!-- example: E003 | -gesture -->
+<!-- preview E003 · auto-generated from examples.md · do not edit -->
+> *Rhii riauset rekriiâkm nopiiem.*  
+> 1PL get.oneself.IPFV chat.IDEO-CONCORD evening  
+> "We were chatting in the evening."  
+<!-- /preview -->
 
 This is the productive bridge between the expressive layer and the verbal system; the class itself is described in `ideophones.md`. `[Lexicon: rekriiâ (ideophone), nopiiem "(in the) evening" (< *on the P.M.*) pending — dictionary batch D4]`
 
@@ -417,10 +421,12 @@ Yes/no questions add the particle *ea* (from GA *at all*) at the end of the clau
 
 *Ea* also marks **conditionals** — "if/whether … at all." The conditional brackets the clause with a fronted *ebıĩ* — the inverted "am I," the same subject-auxiliary inversion that forms a question — and a clause-final *ea*:
 
-> *…ebıĩ ounoheun meiknet ea.*
-> /—/ `[Placeholder: IPA pending phonology pass]`
-> be.1SG LVC.VOL.IPFV come-CONCORD Q
-> "…whether (I) was coming."
+<!-- example: E018 -->
+<!-- preview E018 · auto-generated from examples.md · do not edit -->
+> *…ebıĩ ounoheun meiknet ea.*  
+> be.1SG LVC.VOL.IPFV come-CONCORD Q  
+> "…whether (I) was coming."  
+<!-- /preview -->
 
 This is **formally identical to a yes/no question** (*ebıĩ ounoheun meiknet ea* "am I going to make it at all?"), distinguished only by intonation — the interrogative carries the rising contour, the conditional does not. It applies to matrix-scaffolded clauses as to any other (§11). **[Provisional]**
 
@@ -500,10 +506,12 @@ The construction stacks the **recognitional marker** (REC, *þ ~ y*, from GA *th
 
 ### 7.2 The frame meets the recognitional nominal
 
-> *Rimmase ię þ rishś, a bayen, een een.*
-> /—/ `[Placeholder: IPA pending phonology pass]`
-> 1SG.LVC.NVOL.PST do.CONCORD REC dish-ITER on 1SG.end again again
-> "I got (myself) doing the dishes, on my end, again and again."
+<!-- example: E004 -->
+<!-- preview E004 · auto-generated from examples.md · do not edit -->
+> *Rimmase ię þ rishś, a bayen, een een.*  
+> 1SG.LVC.NVOL.PST do.CONCORD REC dish-ITER on 1SG.end again again  
+> "I got (myself) doing the dishes, on my end, again and again."  
+<!-- /preview -->
 
 The frame combinatorics — which frame, which frame aspect, what the combination means — are the possession construction's (§13), and the habitual reading is compositional: recognitional type + iteration + frame engagement. Two features distinguish the deverbal case from a plain noun in the same construction:
 
@@ -641,10 +649,12 @@ Open questions:
 
 A small class of particles places a whole clause inside a modal or evidential frame — that something merely *ended up* so, that the speaker *knows* it, *needs* it, *gathers* it to be so, or, summing up, that *in short* it is so. These are the **matrix particles** (informally, *scaffold particles*): each colors everything that follows it, and each sits at the front of its clause.
 
-> *Enniip ounoheun splitn.*
-> /—/ `[Placeholder: IPA pending phonology pass]`
-> MP.ENDUP.PST LVC.VOL.IPFV split-CONCORD
-> "It ended up that (they) went ahead and left."
+<!-- example: E005 -->
+<!-- preview E005 · auto-generated from examples.md · do not edit -->
+> *Enniip ounoheun splitn.*  
+> MP.ENDUP.PST LVC.VOL.IPFV split-CONCORD  
+> "It ended up that (they) went ahead and left."  
+<!-- /preview -->
 
 The class is defined **syntactically**, by two diagnostics: a matrix particle takes **clause scope** (it colors a whole clause, not one constituent) and a **fixed clause-initial position**. Membership does not turn on what the particle is made of — most members are eroded GA matrix clauses (*it ended up…, I know that…, what I need is…*), but at least one, the summary particle, descends from an adverbial phrase with no verb in it at all (§11.5).
 
@@ -668,26 +678,32 @@ Among the three members that carry tense, the contrast is **privative**: the non
 
 The really-need particle codes want and, more weakly, must:
 
-> *Rhi·iiniies ounahen splitn.*
-> /—/ `[Placeholder: IPA pending phonology pass; frame form spelling pending the §2.4 paradigm question]`
-> MP.NEED LVC.VOL.HAB split-CONCORD
-> "What I need is to leave."
+<!-- example: E006 -->
+<!-- preview E006 · auto-generated from examples.md · do not edit -->
+> *Rhi·iiniies ounahen splitn.*  
+> MP.NEED LVC.VOL.HAB split-CONCORD  
+> "What I need is to leave."  
+<!-- /preview -->
 
 The **guess particle** *reś* marks the clause as something the speaker holds at one remove — by hearsay or by inference, with no commitment to which (the source phrase *I guess* spans both, and so does the particle):
 
-> *Reś beųheun split.*
-> /—/ `[Placeholder: IPA pending phonology pass]`
-> MP.GUESS LVC.VOL split
-> "Apparently (they) left."
+<!-- example: E007 -->
+<!-- preview E007 · auto-generated from examples.md · do not edit -->
+> *Reś beųheun split.*  
+> MP.GUESS LVC.VOL split  
+> "Apparently (they) left."  
+<!-- /preview -->
 
 The **summary particle** *nóuśshè* caps a clause as a summation — "in short," the conversational *insomma*:
 
-> *Nóuśshè beųheun split.*
-> /—/ `[Placeholder: IPA pending phonology pass]`
-> MP.SUMM LVC.VOL split
-> "Long story short, (they) left."
->
-> `[Placeholder: constructed example — *nóuśshè* is attested as a member (Translation Exercise #2); this particular clause has not been elicited and awaits confirmation.]`
+<!-- example: E008 -->
+<!-- preview E008 · auto-generated from examples.md · do not edit -->
+> *Nóuśshè beųheun split.*  
+> MP.SUMM LVC.VOL split  
+> "Long story short, (they) left."  
+<!-- /preview -->
+
+`[Placeholder: constructed example — *nóuśshè* is attested as a member (Translation Exercise #2); this particular clause has not been elicited and awaits confirmation.]` **[Provisional]**
 
 ### 11.3 Distribution
 
@@ -730,10 +746,12 @@ Each probe below is a **designed test item, not attested data** — a sentence w
 
 The language has no lexical verb "say." Reported speech, thought, and stance all run on a single quotative verb, *o* (< GA *go*), which takes its content after it — either the quoted material itself or, when nothing is quoted, an obligatory ideophone that carries the manner. Whether a quote is **direct** or **indirect** is signalled by particle choice, not by a complementizer.
 
-> *Ei o nóè.*
-> /—/ `[Placeholder: IPA pending phonology pass]`
-> 3SG QUOT "no.way"
-> "She was like, 'No way.'"
+<!-- example: E009 -->
+<!-- preview E009 · auto-generated from examples.md · do not edit -->
+> *Ei o nóè.*  
+> 3SG QUOT "no.way"  
+> "She was like, 'No way.'"  
+<!-- /preview -->
 
 ### 12.1 Forms
 
@@ -748,33 +766,41 @@ The construction has one verb and three optional markers:
 
 The perfect of the verb is suppletive-looking *rhentt* (< GA *went*), used for completed speech acts. `[Lexicon: o, quo, ohei, rhentt pending dictionary entries — batch D4]`
 
-> *Beunheumm rhentt, rhemmemmêm.*
-> /—/ `[Placeholder: IPA pending phonology pass; the *an'+went* → *-mm* gemination in *beunheumm* is a pending phonology item]`
-> 1SG.VOL say.PRF, IDEO
-> "I said it — [boom-boom-boom]."
+<!-- example: E010 | -gesture -->
+<!-- preview E010 · auto-generated from examples.md · do not edit -->
+> *Beunheumm rhentt, rhemmemmêm.*  
+> 1SG.VOL say.PRF, IDEO  
+> "I said it — boom, boom, boom."  
+<!-- /preview -->
 
 ### 12.2 Function
 
 **Direct vs indirect is carried by the particles.** An indirect report needs nothing but the source marker *quo*; the embedded clause keeps its own shape and there is no quote boundary:
 
-> *Eia quo ounoheun meiknet.*
-> /—/ `[Placeholder: IPA pending phonology pass]`
-> 3SG QUO LVC.VOL.IPFV come-CONCORD
-> "She said she'd come."
+<!-- example: E011 -->
+<!-- preview E011 · auto-generated from examples.md · do not edit -->
+> *Eia quo ounoheun meiknet.*  
+> 3SG QUO LVC.VOL.IPFV come-CONCORD  
+> "She said she'd come."  
+<!-- /preview -->
 
 A **direct** quote is set off by a clause-initial *quo* plus the opener *o*, and the quoted material is reproduced verbatim — including its own first person:
 
-> *Bentt oðerren quo, o mau ouhen meiktt.*
-> /—/ `[Placeholder: IPA pending phonology pass; *bentt* frame morphology pending]`
-> say.PST 3SG.STR QUO, Q.OPEN 1SG LVC.VOL.HAB come-CONCORD
-> "She was like, 'I'll come.'"
+<!-- example: E012 -->
+<!-- preview E012 · auto-generated from examples.md · do not edit -->
+> *Bentt oðerren quo, o mau ouhen meiktt.*  
+> say.PST 3SG.STR QUO, Q.OPEN 1SG LVC.VOL.HAB come-CONCORD  
+> "She was like, 'I'll come.'"  
+<!-- /preview -->
 
 **Quote-oneself: stance with nothing uttered.** Turning *quo* on one's own thought reports an internal reaction that was never spoken aloud. The left-dislocated strong pronoun reads as taking a conversational turn:
 
-> *Bauyen, e o quo "þiiaii".*
-> /—/ `[Placeholder: IPA pending phonology pass]`
-> 1SG.STR, 1SG QUOT QUO "finally"
-> "Me, I was like, 'Finally!'"
+<!-- example: E013 -->
+<!-- preview E013 · auto-generated from examples.md · do not edit -->
+> *Bauyen, e o quo "þiiaii".*  
+> 1SG.STR, 1SG QUOT QUO "finally"  
+> "Me, I was like, 'Finally!'"  
+<!-- /preview -->
 
 This works cleanly only in the **first person**: a speaker can quote their own unspoken thought, but reporting someone *else's* unspoken reaction this way fails, and the adverbs *eńhii* "internally" and *rhiþoupii* (< GA *without a peep*) step in instead. **[Provisional]** *(The internal-thought use overlaps the quotable-thought territory of cognition verbs — to be treated when that domain is worked.)*
 
@@ -783,10 +809,12 @@ This works cleanly only in the **first person**: a speaker can quote their own u
 - **Position of *quo*.** *quo* precedes the salient part of the quote, and its placement is meaningful — moved earlier or later it shifts which span is foregrounded and can color the report with speaker doubt. **[Provisional — fine semantics want more data]**
 - **Clipped questions.** A quoted question may be clipped (subjectless), licensed by the interrogative just as elsewhere (§5.5), and marked by *ohei*:
 
-> *Ei o, ohei meikntt ea.*
-> /—/ `[Placeholder: IPA pending phonology pass]`
-> 3SG QUOT, Q.DIR come-CONCORD Q
-> "She went, 'Coming?'"
+<!-- example: E014 -->
+<!-- preview E014 · auto-generated from examples.md · do not edit -->
+> *Ei o, ohei meikntt ea.*  
+> 3SG QUOT, Q.DIR come-CONCORD Q  
+> "She went, 'Coming?'"  
+<!-- /preview -->
 
 ### 12.4 Interactions
 
@@ -816,10 +844,12 @@ Tags: `QUOT` (the verb *o*; perfect `QUOT.PRF` ~ *say.PRF*), `QUO` (*quo*), `Q.O
 
 The language has no everyday verb *have*. Possession, acquisition, choosing, and giving are carried by the frames combining directly with a nominal — the **possession construction**. What GA spreads across *have*, *get*, *pick*, and *give*, the conlang derives from frame choice and frame aspect over a bare noun.
 
-> *Rimmaseu beikw.*
-> /—/ `[Placeholder: IPA pending phonology pass]`
-> 1SG.LVC.NVOL.PST=ART vehicle
-> "I have a vehicle." (lit. "got myself a vehicle")
+<!-- example: E015 -->
+<!-- preview E015 · auto-generated from examples.md · do not edit -->
+> *Rimmaseu beikw.*  
+> 1SG.LVC.NVOL.PST=ART vehicle  
+> "I have a vehicle."  
+<!-- /preview -->
 
 The final lengthened vowel of *rimmaseu* is the fused etymological article. `[Placeholder: gloss segmentation of the article fusion pending]`
 
@@ -835,21 +865,25 @@ The final lengthened vowel of *rimmaseu* is the fused etymological article. `[Pl
 
 With a recipient in the *get*-slot, the construction causativizes into giving, volition-neutral by default:
 
-> *Ritm o rhémstwè.*
-> /—/ `[Placeholder: IPA pending phonology pass]`
-> get.3PL ART book
-> "(I/they) gave them the book." (lit. "got them the book")
+<!-- example: E016 -->
+<!-- preview E016 · auto-generated from examples.md · do not edit -->
+> *Ritm o rhémstwè.*  
+> get.3PL ART book  
+> "(I/they) gave them the book."  
+<!-- /preview -->
 
 The extension resists a topic-marked definite object; explicit-volition *rib* with the go-ahead frame is used instead. **[Open: transfer-extension object restrictions]**
 
 **Abstract possessa: informing.** The transfer pattern reaches beyond handing over objects to causing someone to come to possess *information*. The verb *þilnn* (< GA *fill in*) "fill (someone) in, inform" instantiates it with an abstract possessum: the recipient and the thing told agglutinate in sequence onto the perfective stem.
 
-> *Beunheun þil·tm·ę·aų·et, o riųś.*
-> /—/ `[Placeholder: IPA pending phonology pass]`
-> LVC.VOL fill.in-PFV-3PL-on-3SG, ART news
-> "I told her the news." (lit. "went ahead and filled 'em in on it — the news")
->
-> `[Placeholder: fine segmentation of *þil·tm·ę·aų·et* — *þil* fill, *-tm* perfective, *-ę* recipient ('em), *-aų* "on," *-et* theme ('it') — pending confirmation]`
+<!-- example: E017 -->
+<!-- preview E017 · auto-generated from examples.md · do not edit -->
+> *Beunheun þil·tm·ę·aų·et, o riųś.*  
+> LVC.VOL fill.in-PFV-3PL-on-3SG, ART news  
+> "I told her the news."  
+<!-- /preview -->
+
+`[Placeholder: fine segmentation of *þil·tm·ę·aų·et* — *þil* fill, *-tm* perfective, *-ę* recipient ('em), *-aų* "on," *-et* theme ('it') — pending confirmation]`
 
 The go-ahead frame matches the deliberateness of informing. The same **definite-object restriction** seen above recurs on the abstract possessum: definite *riųś* "the news" does not occupy the theme slot — that is filled by the clitic *-et* "it" — and the possessum is supplied separately, as an appended clarification. A second attestation of the constraint, now on an abstract possessum, strengthens it. **[Open]** `[Lexicon: þilnn pending — senses: inform / replace-substitute / intransitive "read the room"; dictionary batch D4]`
 
@@ -937,6 +971,10 @@ Negated clauses replace the bare pronoun with a not-quite fusion (§5.2.1); the 
 ---
 
 ## 17. Versioning notes
+
+### v2.13, June 2026 — inline examples migrated to the centralized corpus (roadmap B1b)
+
+The 17 standalone glossed example blocks were replaced with `<!-- example: EXXX -->` transclusion tokens (E002–E018); the examples are now sourced from `examples.md` and rendered into the doc at build time by the preview-sync step. No example content changed. The placeholder IPA lines (`/—/ … pending`) drop from display — the greedy renderer omits absent/placeholder layers. The two examples shared with `ideophones.md` (E003 *rekriiâkm*, E010 *rhemmemmêm*) are now single records cited from both; their χ gesture line is suppressed here via `| -gesture` and shown in `ideophones.md`, where the χ convention is defined (§6 there). The two analytical caveats that rode inside a block — the E008 constructed-clause flag and the E017 segmentation note — are retained as following notes, not dropped. See `planning/examples-system-roadmap.md` (B1b) and `examples.md` v0.4.
 
 ### v2.12, June 2026 — Abstract cross-reference corrected
 
