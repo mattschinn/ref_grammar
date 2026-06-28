@@ -1,6 +1,6 @@
 # Examples
 
-**Version:** v0.4 (June 2026)
+**Version:** v0.5 (June 2026)
 **Status:** Sibling reference document, parallel to `phonology.md`, `orthography.md`, `verbal-system.md`, and `dictionary.md`. Holds a single source of truth for glossed example sentences; other reference documents and dictionary entries cite by ID rather than reproducing glosses inline.
 
 A working corpus of glossed example sentences in the conlang. Each entry is a numbered, dated block with five gloss layers (Conlang, IPA, Etymological, Leipzig, Translation) plus metadata. The corpus is not a translation set or a teaching grammar — it is a record of material that surfaced something interesting about phonology, morphology, syntax, or pragmatics, retained so the observation is recoverable later.
@@ -79,6 +79,8 @@ Tags are open-class and added as needed. Maintain the flat list here when introd
 - `#interrogative` — questions and the polarity particle *ea* (`verbal-system.md` §5.5)
 - `#conditional` — conditional clauses
 - `#existential` — existential / presentational clauses (`language_reference.md` §4)
+- `#speech` — talk / speak verbs and the register contrast (`verbal-system.md` §12.7)
+- `#duration` — durative / "for a long time" adverbials
 
 ---
 
@@ -318,6 +320,38 @@ Tags are open-class and added as needed. Maintain the flat list here when introd
 - **Revised:** —
 - **Notes:** Ported from the inline glossed block in `language_reference.md` §4 (transcluded via token). Etymological line deferred; the existential particle *pons* (< GA *(there is) upon us*) is pending a dictionary entry. The unmarked way to predicate of an inanimate or weather subject.
 
+### E020 {#E020}
+
+- **Conlang:** Beunheun | ospokwþ | o | bäeĩyi.
+- **Etymological:** (I).went.ahead.and | spoke.with | the | manager.
+- **Translation:** "I spoke with the manager."
+- **Tags:** #frame #speech
+- **Cited from:** `drafts/translation_exercise_2/0615_transl_activity.converted.md` (§A.4.b)
+- **Added:** 2026-06-28
+- **Revised:** —
+- **Notes:** **[Provisional — author review pending]** Imported from Translation Exercise #2 (the SAYING round); not yet transcluded anywhere. Demonstrates *ospii* "speak" with the *-wþ* "with" suffix (< GA *with*), which preserves the original *-k* coda as *kw* → *ospokwþ*. Dictionary check: *ospii*, *ospokwþ*, *bäeĩyi* "manager", and the article *o* are all attested. Pairs with the talk/speak register contrast (`verbal-system.md` §12.7, **[Open]**).
+
+### E021 {#E021}
+
+- **Conlang:** Rhii | riauseto | rekriiâ | þri·ei·iiǫ.
+- **Etymological:** we | got.ourselves.to | yakitty-yak | for.a.eon.
+- **Translation:** "We talked for hours."
+- **Tags:** #frame #ideophone #duration
+- **Cited from:** `drafts/translation_exercise_2/0615_transl_activity.converted.md` (§A.4.a)
+- **Added:** 2026-06-28
+- **Revised:** —
+- **Notes:** **[Provisional — author review pending]** Imported from Translation Exercise #2. The ideophone *rekriiâ* "chat / yak" heads the clause under the get-oneself frame (cf. E003), with infinitive-shaped concord reading the chatter as completed. Dictionary check: *rekriiâ* and *þri·ei·iiǫ* "for a long time" are attested. **Reconciled to canon spelling (flag for review):** the draft wrote *Rhi* (1PL) → canon *rhii* (`verbal-system.md` §5.2), and *riaśeto* → *riauseto* (the get-oneself stem is *riause-*).
+
+### E022 {#E022}
+
+- **Conlang:** Nóuśshè | eia | ounoheun | rhikriutt.
+- **Translation:** "Long story short, they're hiring."
+- **Tags:** #matrix-particle
+- **Cited from:** `drafts/translation_exercise_2/0615_transl_activity.converted.md` (§B.8.a)
+- **Added:** 2026-06-28
+- **Revised:** —
+- **Notes:** **[Provisional — author review pending]** Imported from Translation Exercise #2. An **attested** use of the summary particle *nóuśshè* "in short" (< GA *in a nutshell*) — complements E008, whose *nóuśshè* clause was constructed/unconfirmed. Etymological line deferred (the draft gave no word-for-word gloss). **Reconciled to canon (flag for review):** the draft wrote *rhikriitm* → canon *rhikriutt* "hire / recruit" (dictionary), and *ounohen* → canon *ounoheun* (go-ahead imperfect frame). Demonstrates the matrix particle's clause-initial scope over a framed clause.
+
 ---
 
 ## 6. Display conventions
@@ -344,6 +378,10 @@ An inline `§E001` *mention* (as opposed to the transclusion token) resolves to 
 ---
 
 ## Versioning notes
+
+### v0.5, June 2026 — draft-translation import begun (roadmap B2, pilot)
+
+First entries imported from the `/drafts` translation exercises per the locked draft-import bar — **E020–E022**, a pilot batch from Translation Exercise #2 (`drafts/translation_exercise_2/0615_transl_activity.converted.md`): "I spoke with the manager," "We talked for hours," "Long story short, they're hiring." All marked **[Provisional — author review pending]**; each carries a source-draft pointer, a dictionary stub-check, and explicit **conflict flags** where a draft spelling was reconciled to canon (e.g. *Rhi*→*rhii*, *rhikriitm*→*rhikriutt*, *ounohen*→*ounoheun*) — reconciled, not silently overwritten, for the author to confirm. These entries are **corpus-only**: not transcluded into any document until reviewed. Where the draft supplied a brace gloss it became the Etymological line (E020/E021 align 4/4); otherwise it is deferred (E022). Tags `#speech`, `#duration` registered. The remaining ~25 exercise sentences and the other draft sources are pending (multi-session).
 
 ### v0.4, June 2026 — grammar examples tokenized; corpus to E019 (roadmap B1b)
 
