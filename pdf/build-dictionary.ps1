@@ -67,13 +67,27 @@ if (Test-Path $examplesPath) {
 
 # The dictionary always uses the inline style: `*conlang* "translation"`.
 function Expand-Examples([string]$text) {
-    [regex]::Replace($text, '<!--\s*example:\s*(E\d{3})\s*(?:\|\s*([A-Za-z]+)\s*)?-->', {
+    $pattern = '<!--\s*example:\s*(E\d{3})\s*(?:\|\s*([A-Za-z]+)\s*)?-->'
+    $eval = {
         param($mm)
         $eid = $mm.Groups[1].Value
         if (-not $script:examples.ContainsKey($eid)) { return "**[missing example $eid]**" }
         $ex = $script:examples[$eid]
         ('*{0}* "{1}"' -f $ex.conlang, $ex.translation)
-    })
+    }
+    # Skip fenced code blocks and inline code spans (a token can be mentioned in prose).
+    $inFence = $false
+    $lines = $text -split "`n", 0
+    for ($i = 0; $i -lt $lines.Count; $i++) {
+        if ($lines[$i] -match '^\s*```') { $inFence = -not $inFence; continue }
+        if ($inFence) { continue }
+        $parts = [regex]::Split($lines[$i], '(`[^`]*`)')
+        for ($j = 0; $j -lt $parts.Count; $j++) {
+            if (-not $parts[$j].StartsWith('`')) { $parts[$j] = [regex]::Replace($parts[$j], $pattern, $eval) }
+        }
+        $lines[$i] = ($parts -join '')
+    }
+    $lines -join "`n"
 }
 
 $text = [IO.File]::ReadAllText($dictSrc, [Text.Encoding]::UTF8)

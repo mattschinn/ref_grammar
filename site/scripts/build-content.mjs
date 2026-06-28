@@ -139,14 +139,29 @@ function assembleParent(parentBase, parentMd, rawByBase) {
 // (HTML) is a later milestone (roadmap G1); this is the plain transclusion.
 export function expandExamples(body, hostRel, examples) {
   const dictionary = hostRel.replace(/\\/g, '/').startsWith('dictionary/');
-  return body.replace(EXAMPLE_TOKEN_RE, (_m, eid, style) => {
+  const render = (eid, style) => {
     const ex = examples[eid];
     if (!ex) return `**[missing example ${eid}]**`;
     const s = (style || (dictionary ? 'dictionary' : 'grammar')).toLowerCase();
     if (s === 'dictionary') return `*${ex.conlang}* "${ex.translation}"`;
     const etym = ex.segments.map((seg) => seg.etym).join(' ');
     return `\n> *${ex.conlang}*  \n> ${etym}  \n> "${ex.translation}"\n`;
-  });
+  };
+  // Skip fenced code blocks and inline code spans, so prose can mention a token
+  // literally (e.g. in `<!-- example: E001 -->`) without it being expanded.
+  const out = [];
+  let inFence = false;
+  for (const line of body.split('\n')) {
+    if (FENCE_RE.test(line)) { inFence = !inFence; out.push(line); continue; }
+    if (inFence) { out.push(line); continue; }
+    out.push(
+      line
+        .split(/(`[^`]*`)/)
+        .map((part) => (part.startsWith('`') ? part : part.replace(EXAMPLE_TOKEN_RE, (_m, eid, style) => render(eid, style))))
+        .join('')
+    );
+  }
+  return out.join('\n');
 }
 
 function buildFrontmatter(relPath, title) {

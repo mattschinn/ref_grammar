@@ -36,7 +36,7 @@ Maps to the author's original nine items: #1→A1 · #4→A2+G · #2→B1 · #3�
 
 ## Current focus
 
-➡ **A3 — Enforce SSOT.** Rewrite `example-adder` Step 5 to insert `<!-- example: EID -->` tokens instead of hand-copying examples into `dictionary.md`; migrate E001's existing inline copy in the *ŕe* entry to a token. (A1, A2 done.)
+➡ **A4 — Register the change.** Update `CLAUDE.md` (examples.md is backend-only source, not a published sibling) and any affected docs' Versioning Notes. (A1–A3 done — Milestone A core complete.)
 
 ---
 
@@ -46,7 +46,7 @@ Delivers propagation + reuse. Everything below A depends on A1.
 
 - [x] **A1. Data model.** ✓ 2026-06-26. `examples.md` §2/§6 rewritten to the `|`-chunked, open-schema, build-time-source format; `parseExamples` now emits `{conlang, segments[], ipa, translation, tags, slug}` with a loud equal-count guard (verified to throw); E001 re-encoded to 8 aligned segments; `examples.json` shape confirmed.
 - [x] **A2. Plain transclusion.** ✓ 2026-06-26. `<!-- example: EID -->` token (style auto-resolves by host doc, overridable as `| dictionary`) expanded in all three render paths: site (`build-content.mjs` `expandExamples`), grammar PDF (`build.ps1`), dictionary PDF (`build-dictionary.ps1`). Dictionary = inline `*conlang* "translation"`; grammar = stacked blockquote. `examples.md` page removed (compiler `SKIP_PAGE`; 7→6 pages); `§EID` now a hover-card span (`remark-conlang.mjs` `cardSpan`). Site verified by running the compiler; PDF verified at the logic level (parse+expand), not a full pandoc/tectonic run. Known minor edge: the dead `DOC_URL['examples.md']` entry would dead-link if a doc ever cross-refs an `examples.md §<number>` section (none do today).
-- [ ] **A3. Enforce SSOT.** Rewrite the `example-adder` skill (Step 5) to insert tokens instead of hand-copying examples into `dictionary.md`. Migrate E001's existing inline copy in the *ŕe* entry to a token.
+- [x] **A3. Enforce SSOT.** ✓ 2026-06-26. `example-adder` Step 5 (Cases B/C) + Step 4 rewritten to emit `<!-- example: EID -->` tokens, never paste example text. E001's inline copy in the *ŕe* entry migrated to a token; dictionary entry-format note + a changelog entry added. `parseDictionary` now strips the token from the hover-card short-def (verified: *ŕe* → "(adv.) today."). **Also fixed an A2 bug:** all three expanders now skip fenced code + inline code spans, so a token can be documented literally (e.g. the changelog) without expanding — verified bare-expands / code-literal in JS and PowerShell.
 - [ ] **A4. Register the change.** Update `CLAUDE.md` (examples.md is now backend-only source, not a published sibling) and the affected docs' Versioning Notes.
 
 ## Milestone B — Corpus population (needs A1)
@@ -98,4 +98,5 @@ H1, H2                     (future; need A1's open schema)
 
 - 2026-06-26 — Roadmap opened. Decisions locked (centralize; conlang↔etym interactive + free translation; `|` delimiter; backend-only; open schema; draft-import bar). Phase-0 format + `examples.json` shape specced and agreed.
 - 2026-06-26 — **A1 done.** `examples.md` v0.2 (chunk-aligned, open-schema, build-time-source), `parseExamples` rewritten + equal-count guard, E001 re-encoded. Parser verified against the live doc (8 segments) and the guard verified to throw on mismatch. Touched: `docs/reference/examples.md`, `site/scripts/parse.mjs`. Committed (ded5e50). Next: A2.
-- 2026-06-26 — **A2 done.** `<!-- example: EID -->` transclusion live in all three render paths (site + both PDF builds), `examples.md` page removed, `§EID` → hover-card span. Expansion verified in JS and PowerShell; both PDF scripts syntax-checked; site compiler re-run clean (6 pages). Touched: `site/scripts/build-content.mjs`, `site/src/plugins/remark-conlang.mjs`, `pdf/build.ps1`, `pdf/build-dictionary.ps1`. Next: A3 (SSOT flip + migrate E001 to a token).
+- 2026-06-26 — **A2 done.** `<!-- example: EID -->` transclusion live in all three render paths (site + both PDF builds), `examples.md` page removed, `§EID` → hover-card span. Expansion verified in JS and PowerShell; both PDF scripts syntax-checked; site compiler re-run clean (6 pages). Touched: `site/scripts/build-content.mjs`, `site/src/plugins/remark-conlang.mjs`, `pdf/build.ps1`, `pdf/build-dictionary.ps1`. Committed (ce34165). Next: A3.
+- 2026-06-26 — **A3 done.** SSOT enforced: `example-adder` emits tokens; E001's *ŕe* inline copy migrated to a token; `parseDictionary` strips the token from short-defs. Fixed an A2 code-span bug (all three expanders now skip code fences/spans). Verified by rebuild ("chillier" appears once; changelog token stays literal) + PS behavior test. Touched: `site/scripts/parse.mjs`, `site/scripts/build-content.mjs`, `pdf/build.ps1`, `pdf/build-dictionary.ps1`, `docs/dictionary/dictionary.md`, `.claude/skills/example-adder/SKILL.md`. **Milestone A core complete.** Next: A4 (CLAUDE.md + versioning), then Milestones B–F.

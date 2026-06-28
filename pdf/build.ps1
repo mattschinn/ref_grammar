@@ -86,7 +86,8 @@ if (Test-Path $examplesPath) {
 # deterministic monospace-aligned PDF gloss is roadmap G2.)
 function Expand-Examples([string]$text, [bool]$isDict) {
     $script:exIsDict = $isDict
-    [regex]::Replace($text, '<!--\s*example:\s*(E\d{3})\s*(?:\|\s*([A-Za-z]+)\s*)?-->', {
+    $pattern = '<!--\s*example:\s*(E\d{3})\s*(?:\|\s*([A-Za-z]+)\s*)?-->'
+    $eval = {
         param($mm)
         $eid = $mm.Groups[1].Value; $style = $mm.Groups[2].Value
         if (-not $script:examples.ContainsKey($eid)) { return "**[missing example $eid]**" }
@@ -94,7 +95,21 @@ function Expand-Examples([string]$text, [bool]$isDict) {
         if ([string]::IsNullOrEmpty($style)) { $style = if ($script:exIsDict) { 'dictionary' } else { 'grammar' } }
         if ($style.ToLower() -eq 'dictionary') { return ('*{0}* "{1}"' -f $ex.conlang, $ex.translation) }
         return ("`n> *{0}*  `n> {1}  `n> ""{2}""`n" -f $ex.conlang, $ex.etym, $ex.translation)
-    })
+    }
+    # Skip fenced code blocks and inline code spans so a token can be mentioned
+    # literally in prose without expanding.
+    $inFence = $false
+    $lines = $text -split "`n", 0
+    for ($i = 0; $i -lt $lines.Count; $i++) {
+        if ($lines[$i] -match '^\s*```') { $inFence = -not $inFence; continue }
+        if ($inFence) { continue }
+        $parts = [regex]::Split($lines[$i], '(`[^`]*`)')
+        for ($j = 0; $j -lt $parts.Count; $j++) {
+            if (-not $parts[$j].StartsWith('`')) { $parts[$j] = [regex]::Replace($parts[$j], $pattern, $eval) }
+        }
+        $lines[$i] = ($parts -join '')
+    }
+    $lines -join "`n"
 }
 
 $inputs = @()

@@ -20,7 +20,7 @@ Then **Cross-refs** if any: a single parenthetical or line linking related entri
 Then prose sections as needed:
 
 - `#### Definition` — numbered glosses. Senses are grouped by part of speech where they differ (**Verb senses** / **Noun senses**), and verb senses may carry frame or cell tags — `(go-ahead)`, `(get-oneself)`, `(volitive perfect)` — where the meaning is frame-conditioned.
-- Examples appear inline within the definition they illustrate, separated from the definition text by an em dash. Conlang form in italics, followed by the English translation in double quotes. No separate `#### Examples` heading.
+- Examples are **transcluded from `examples.md`**, not written inline. Place a `<!-- example: EXXX -->` token within the definition it illustrates, separated from the definition text by an em dash; the build expands it to the example's conlang form (italics) + English translation (double quotes). `examples.md` is the single source — edit the example there, and every citation updates on the next build. No separate `#### Examples` heading. (Legacy hand-written inline examples are migrated to tokens incrementally.)
 - `#### Morphology` — inflected/derived forms when committed.
 - `#### Notes` — observations genuinely specific to this form: irregular surface properties, optional realizations, notable phonotactic patterns. Not for propagation tickets, pending rule discussions, or paradigm-candidate flags — those go in the session changelog or target document.
 
@@ -2255,7 +2255,7 @@ Cross-refs: *ŕeut* (parallel /ɾ̥/ onset, from M1 metathesis rather than coale
 
 #### Definition
 
-1. *(adv.)* today. — *Ŕeus bémmo oų rĩbii·hii. Oų riis·hii o noê.* "It's a little more chillier today, in a pleasant kind of way."
+1. *(adv.)* today. — <!-- example: E001 -->
 2. *(interj.)* hurry!; right now!; immediately!
 
 #### Notes
@@ -2559,6 +2559,10 @@ Phonological development: *-wise* /waɪz/ → /-wiz/ (/aɪ/→/i/ `ii`; final /z
 ## 5. Changelog
 
 A running record of additions and changes to the dictionary, with dates and any open questions surfaced.
+
+### 2026-06-26
+
+- **Examples now transcluded, not duplicated.** Migrated the *ŕe* entry's inline example to a `<!-- example: E001 -->` token; `examples.md` is the single source and the build expands the token in place (dictionary style: italic conlang + quoted translation). The entry-format note (§ preamble) updated accordingly. Part of the centralized-examples system — see `planning/examples-system-roadmap.md` (A3).
 
 ### 2026-06-23
 
