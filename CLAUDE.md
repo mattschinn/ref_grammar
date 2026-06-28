@@ -10,7 +10,7 @@ A working specification for an a priori conlang derived from General American En
 
 The canonical documents live under `docs/`; everything else is tooling or assets that consume them.
 
-- **`docs/reference/`** — the grammar backbone (`language_reference.md`) and its sibling deep-dives (`phonology.md`, `orthography.md`, `verbal-system.md`, `ideophones.md`, `examples.md`, `terminology-registry.md`).
+- **`docs/reference/`** — the grammar backbone (`language_reference.md`) and its sibling deep-dives (`phonology.md`, `orthography.md`, `verbal-system.md`, `ideophones.md`, `terminology-registry.md`). Also holds **`examples.md`**, the centralized glossed-examples corpus — a **build-time transclusion source**, not a published page or PDF chapter: other docs pull entries in with `<!-- example: EXXX -->` tokens (and `§EXXX` for an inline hover-card mention). See `examples.md` §2/§6 and `planning/examples-system-roadmap.md`.
 - **`docs/dictionary/`** — `dictionary.md` (the lexicon).
 - **`docs/quickref/`** — generated snapshots (`phonology-quickref.md`, `orthography-quickref.md`, `dictionary-index.md`); rebuilt by the quickref-updater skill, never hand-authored.
 - **`data/paradigms/`** — paradigm tables as CSV.
@@ -45,7 +45,7 @@ Procedural workflows the author has formalized live as Claude Code skills under 
 | Skill | What it does |
 |---|---|
 | `dictionary-updater` | Add (or stub) entries in `dictionary.md`, sanity-checked against `phonology.md`/`orthography.md`. Has a stub mode called by `example-adder`. Does not edit the reference docs — gaps are flagged and deferred. |
-| `example-adder` | Add glossed example sentences to `examples.md` and link them into dictionary entries; hands off to `dictionary-updater` stub mode for missing words. |
+| `example-adder` | Add glossed example sentences to `examples.md` and transclude them into dictionary entries via `<!-- example: -->` tokens (examples.md stays the single source); hands off to `dictionary-updater` stub mode for missing words. |
 | `quickref-updater` | Rebuild the three `docs/quickref/` snapshots from the canonical docs. Snapshots, not canon — rebuild when a source changes. |
 | `ref-grammar-section-draft-and-integrate` | Draft and/or integrate sections of the descriptive reference docs. Owns altitude and placement; pairs with `writing-style`. Does not govern `dictionary.md`. |
 | `writing-style` | The prose canon — sentence/paragraph-level discipline for the reference docs. Owns *how sentences read*; flags structural/altitude issues and routes them. |
