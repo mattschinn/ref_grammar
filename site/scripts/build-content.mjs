@@ -51,10 +51,12 @@ function extractTitle(md, fallback) {
 const FENCE_RE = /^\s*```/;
 const ASSEMBLE_RE = /^<!--\s*assemble:\s*([A-Za-z0-9_.-]+)\s*-->\s*$/;
 const HEADING_RE = /^(#{1,6})\s+(.*?)\s*$/;
-// `<!-- example: E001 -->` or `<!-- example: E001 | dictionary -->` — transcludes
-// an examples.md record. Style defaults from the host doc (dictionary vs grammar),
-// overridable after `|`.
-const EXAMPLE_TOKEN_RE = /<!--\s*example:\s*(E\d{3})\s*(?:\|\s*([A-Za-z]+)\s*)?-->/g;
+// `<!-- example: E001 -->` transcludes an examples.md record. An optional `| spec`
+// after the id selects layers: a preset (`dictionary`/`grammar`), a whitelist of
+// layer names (`| conlang leipzig translation`), or a blacklist (`| -ipa`). The
+// spec defaults from the host doc (dictionary vs grammar). The capture grabs
+// everything between `|` and `-->`; `resolveExampleSpec` parses it.
+const EXAMPLE_TOKEN_RE = /<!--\s*example:\s*(E\d{3})\s*(?:\|\s*([^>]*?)\s*)?-->/g;
 
 // Strip the single leading H1 (Starlight renders the frontmatter title as the
 // page heading) and any trailing `{#id}` on remaining heading lines (so anchors
@@ -133,22 +135,91 @@ function assembleParent(parentBase, parentMd, rawByBase) {
   return { body: out.join('\n'), headingStream };
 }
 
-// Expand `<!-- example: EID -->` tokens in a doc body against the examples map.
-// Dictionary host -> inline `*conlang* "translation"`; grammar host -> a simple
-// stacked blockquote (conlang / etym / translation). The rich interactive gloss
-// (HTML) is a later milestone (roadmap G1); this is the plain transclusion.
-export function expandExamples(body, hostRel, examples) {
-  const dictionary = hostRel.replace(/\\/g, '/').startsWith('dictionary/');
-  const render = (eid, style) => {
-    const ex = examples[eid];
-    if (!ex) return `**[missing example ${eid}]**`;
-    const s = (style || (dictionary ? 'dictionary' : 'grammar')).toLowerCase();
-    if (s === 'dictionary') return `*${ex.conlang}* "${ex.translation}"`;
-    const etym = ex.segments.map((seg) => seg.etym).join(' ');
-    return `\n> *${ex.conlang}*  \n> ${etym}  \n> "${ex.translation}"\n`;
+// --- Greedy-but-blockable example rendering (roadmap G0a) -------------------
+// A token renders *whatever layers a record has*: Conlang is the floor (always
+// shown); etym/ipa/leipzig/gesture each render iff present; translation when
+// present. A `| spec` restricts: preset (`dictionary`/`grammar`), whitelist
+// (`conlang leipzig`), or blacklist (`-ipa`). The dictionary's conlang+translation
+// default is just the `dictionary` preset. Display order is fixed below.
+
+const EX_LAYERS = ['conlang', 'etym', 'ipa', 'leipzig', 'gesture', 'translation'];
+const EX_PRESETS = new Set(['dictionary', 'grammar']);
+
+// A field counts as absent if empty, a dash/slash placeholder (`/—/`, `—`), or a
+// "pending …" note — so a not-yet-filled IPA/etym never renders.
+const isPlaceholderVal = (s) => !s || /pending/i.test(s) || /^[\s/—–-]*$/.test(s);
+
+const exEtym = (ex) => (ex.segments || []).map((s) => s.etym).join(' ').trim();
+
+// Layers a record actually has content for, in canonical order.
+function presentLayers(ex) {
+  const has = {
+    conlang: !!(ex.conlang && ex.conlang.trim()),
+    etym: !!exEtym(ex),
+    ipa: !isPlaceholderVal(ex.ipa),
+    leipzig: !!(ex.leipzig && ex.leipzig.trim()),
+    gesture: !!(ex.gesture && ex.gesture.trim()),
+    translation: !!(ex.translation && ex.translation.trim()),
   };
-  // Skip fenced code blocks and inline code spans, so prose can mention a token
-  // literally (e.g. in `<!-- example: E001 -->`) without it being expanded.
+  return EX_LAYERS.filter((l) => has[l]);
+}
+
+// Resolve a token's `| spec` against host + present layers → { layers, inline }.
+export function resolveExampleSpec(spec, host, present) {
+  const tokens = (spec || '').trim().split(/\s+/).filter(Boolean);
+  const presets = tokens.filter((t) => EX_PRESETS.has(t));
+  const bare = tokens.filter((t) => EX_LAYERS.includes(t));
+  const neg = tokens.filter((t) => t.startsWith('-') && EX_LAYERS.includes(t.slice(1))).map((t) => t.slice(1));
+  const preset = presets[0] || (host === 'dictionary' ? 'dictionary' : 'grammar');
+
+  let layers;
+  if (bare.length) {
+    layers = EX_LAYERS.filter((l) => bare.includes(l) && present.includes(l));
+    if (!layers.includes('conlang') && present.includes('conlang')) layers = ['conlang', ...layers];
+  } else if (preset === 'dictionary') {
+    layers = ['conlang', 'translation'].filter((l) => present.includes(l));
+  } else {
+    layers = present.slice();
+  }
+  if (neg.length) layers = layers.filter((l) => l === 'conlang' || !neg.includes(l));
+
+  // Inline form when the dictionary preset is in force, or only conlang/translation survive.
+  const inline = preset === 'dictionary' || layers.every((l) => l === 'conlang' || l === 'translation');
+  return { layers, inline };
+}
+
+function renderExampleLayer(ex, layer) {
+  switch (layer) {
+    case 'conlang': return `*${ex.conlang}*`;
+    case 'etym': return exEtym(ex);
+    case 'ipa': return ex.ipa;
+    case 'leipzig': return ex.leipzig;
+    case 'gesture': return `χ ${ex.gesture}`;
+    case 'translation': return `"${ex.translation}"`;
+    default: return '';
+  }
+}
+
+// Render an example record for transclusion. host = 'dictionary' | 'grammar'.
+// Inline → `*conlang* "translation"` (flows in prose); block → a stacked blockquote.
+export function renderExample(ex, spec, host) {
+  if (!ex) return null;
+  const { layers, inline } = resolveExampleSpec(spec, host, presentLayers(ex));
+  if (!layers.length) return `*${ex.conlang || ''}*`;
+  if (inline) {
+    const out = [];
+    if (layers.includes('conlang')) out.push(`*${ex.conlang}*`);
+    if (layers.includes('translation')) out.push(`"${ex.translation}"`);
+    return out.join(' ');
+  }
+  return `\n${layers.map((l) => `> ${renderExampleLayer(ex, l)}  `).join('\n')}\n`;
+}
+
+// Expand `<!-- example: EID | spec -->` tokens in a doc body against the examples
+// map, skipping fenced code blocks and inline code spans so prose can mention a
+// token literally without it being expanded.
+export function expandExamples(body, hostRel, examples) {
+  const host = hostRel.replace(/\\/g, '/').startsWith('dictionary/') ? 'dictionary' : 'grammar';
   const out = [];
   let inFence = false;
   for (const line of body.split('\n')) {
@@ -157,7 +228,14 @@ export function expandExamples(body, hostRel, examples) {
     out.push(
       line
         .split(/(`[^`]*`)/)
-        .map((part) => (part.startsWith('`') ? part : part.replace(EXAMPLE_TOKEN_RE, (_m, eid, style) => render(eid, style))))
+        .map((part) =>
+          part.startsWith('`')
+            ? part
+            : part.replace(EXAMPLE_TOKEN_RE, (_m, eid, spec) => {
+                const ex = examples[eid];
+                return ex ? renderExample(ex, spec, host) : `**[missing example ${eid}]**`;
+              })
+        )
         .join('')
     );
   }
