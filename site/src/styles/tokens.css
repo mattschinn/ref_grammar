@@ -1,0 +1,93 @@
+/* GENERATED — single source of truth for site design. Edit via site/design/presets
+   + apply-design.mjs, not by hand. (Hand-written once for D1; D4 makes it generated.)
+
+   Every color, font, size, spacing, and feature decision lives here. Other
+   stylesheets consume these --cl-* tokens; none define design values. The bridge
+   block at the bottom maps Starlight's own --sl-* variables onto the tokens so the
+   framework chrome tracks the design too. */
+
+:root {
+  /* — fonts (stacks include self-hosted/system fallbacks) — */
+  --cl-font-body: 'EB Garamond', 'Brill', Georgia, serif;
+  --cl-font-heading: var(--cl-font-body);
+  --cl-font-ui: var(--cl-font-body);            /* nav, sidebar, buttons */
+  --cl-font-code: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas,
+    'DejaVu Sans Mono', 'Brill', monospace;
+  --cl-font-conlang: 'Brill', 'EB Garamond', serif;   /* example conlang line */
+  --cl-font-etym: var(--cl-font-body);
+  --cl-font-ipa: 'Brill', serif;
+  --cl-font-leipzig: var(--cl-font-body);
+  --cl-font-translation: var(--cl-font-body);
+
+  /* — type scale & rhythm — */
+  --cl-size-body: 1.125rem;
+  --cl-leading-body: 1.6;
+  --cl-measure: 72ch;                 /* max text column width; applied in D5a */
+  --cl-scale-conlang: 1.35;           /* multipliers on body size */
+  --cl-scale-etym: 0.9;
+  --cl-scale-ipa: 0.95;
+  --cl-scale-leipzig: 0.8;
+  --cl-scale-translation: 1.0;
+  --cl-heading-weight: 600;
+  --cl-heading-tracking: 0;
+  --cl-heading-variant: normal;        /* e.g. small-caps */
+  --cl-heading-space-above: 2.2em;
+  --cl-heading-space-below: 0.7em;
+  --cl-heading-rule: none;             /* e.g. 1px solid var(--cl-accent-low) */
+
+  /* — example block ("island") — */
+  --cl-example-pad: 0.9em 1.1em;
+  --cl-example-radius: 0.4rem;
+  --cl-example-rule: 3px solid var(--cl-accent);   /* left rule */
+  --cl-chunk-gap: 1.25em;
+
+  /* — columned prose islands — */
+  --cl-cols-count: 2;
+  --cl-cols-gap: 2.5em;
+  --cl-cols-rule: none;
+
+  /* — reserved for figures (D6, gated) — */
+  --cl-figure-border: 1px solid var(--cl-accent-low);
+  --cl-figure-caption-scale: 0.85;
+}
+
+/* — per-theme colors (dark = default, matching Starlight) — */
+:root {
+  --cl-bg: #1a1a1a;          --cl-bg-nav: #242422;      --cl-bg-sidebar: #1f1f1d;
+  --cl-accent: #b85a92;      --cl-accent-high: #ecb6d6;  --cl-accent-low: #3a2630;
+  --cl-conlang-color: var(--cl-accent-high);
+  --cl-example-bg: color-mix(in srgb, var(--cl-accent) 8%, transparent);
+  --cl-highlight-bg: color-mix(in srgb, var(--cl-accent) 22%, transparent);
+  --cl-badge-settled: #4a8f5c; --cl-badge-provisional: #b0802b; --cl-badge-open: #a8555f;
+  --cl-card-bg: var(--cl-bg-nav); --cl-card-border: var(--sl-color-gray-5);
+
+  /* consumed by hovercard.css / diacritic-typer.css (values = current site) */
+  --cl-card-title: var(--sl-color-white);
+  --cl-card-body: var(--sl-color-gray-2);
+  --cl-ref-section-border: var(--sl-color-gray-4);
+  --cl-ui-text: var(--sl-color-text);
+  --cl-ui-text-accent: var(--sl-color-text-accent, var(--cl-accent));
+  --cl-ui-muted: var(--sl-color-gray-3);
+  --cl-code-bg: var(--sl-color-gray-6);
+  --cl-typer-trigger: #d96bb0;
+  --cl-typer-receiver: #8cc0ea;
+}
+:root[data-theme='light'] {
+  --cl-bg: #fafaf8;          --cl-bg-nav: #ffffff;      --cl-bg-sidebar: #f3f1ec;
+  --cl-accent: #a8447e;      --cl-accent-high: #7c3158;  --cl-accent-low: #f6e3ef;
+  --cl-conlang-color: var(--cl-accent);
+  --cl-example-bg: color-mix(in srgb, var(--cl-accent) 5%, transparent);
+  --cl-highlight-bg: color-mix(in srgb, var(--cl-accent) 14%, transparent);
+  --cl-badge-settled: #2e7042; --cl-badge-provisional: #8a6114; --cl-badge-open: #93404a;
+  --cl-card-bg: var(--cl-bg-nav); --cl-card-border: var(--sl-color-gray-5);
+  --cl-typer-trigger: #b14d86;
+  --cl-typer-receiver: #6aa5d9;
+}
+
+/* — bridge: Starlight consumes the tokens — */
+:root {
+  --sl-font: var(--cl-font-body);
+  --sl-font-mono: var(--cl-font-code);
+  --sl-color-bg: var(--cl-bg); --sl-color-bg-nav: var(--cl-bg-nav); --sl-color-bg-sidebar: var(--cl-bg-sidebar);
+  --sl-color-accent: var(--cl-accent); --sl-color-accent-high: var(--cl-accent-high); --sl-color-accent-low: var(--cl-accent-low);
+}

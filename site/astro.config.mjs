@@ -25,24 +25,16 @@ export default defineConfig({
 	integrations: [
 		starlight({
 			title: 'Conlang Reference Grammar',
+			// fonts.css (webfont @import + Brill @font-face) and tokens.css (the design
+			// SSOT) load first so faces are declared and tokens defined before consumers.
 			customCss: [
+				'./src/styles/fonts.css',
+				'./src/styles/tokens.css',
 				'./src/styles/site-theme.css',
 				'./src/styles/hovercard.css',
 				'./src/styles/diacritic-typer.css',
 			],
 			head: [
-				// EB Garamond (body/conlang serif) loaded from Google Fonts, mirroring
-				// the standalone typer tool. Brill (the IPA-glyph fallback) is self-hosted
-				// via @font-face in site-theme.css.
-				{ tag: 'link', attrs: { rel: 'preconnect', href: 'https://fonts.googleapis.com' } },
-				{ tag: 'link', attrs: { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: true } },
-				{
-					tag: 'link',
-					attrs: {
-						rel: 'stylesheet',
-						href: 'https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap',
-					},
-				},
 				{ tag: 'script', content: headJS },
 			],
 			social: [

@@ -1,69 +1,11 @@
-/* Site typography + palette, carrying the standalone diacritic typer's look onto
-   the grammar site: an EB Garamond serif body with Brill as the next font in the
-   stack (Brill carries the IPA/phonetic glyphs EB Garamond may lack — browsers
-   fall back per-glyph), plus the tool's warm paper palette and rose accent.
+/* Site typography + palette application. All design *values* live in tokens.css
+   (the single source of truth) and font loading lives in fonts.css; this file only
+   holds rules that *apply* tokens to the page.
 
-   Brill is self-hosted from /public/fonts/brill/. The path includes the `base`
-   (`/ref_grammar`) because public assets are served under it. */
-
-@font-face {
-  font-family: 'Brill';
-  src: url('/ref_grammar/fonts/brill/Brill-Roman.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Brill';
-  src: url('/ref_grammar/fonts/brill/Brill-Bold.ttf') format('truetype');
-  font-weight: bold;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Brill';
-  src: url('/ref_grammar/fonts/brill/Brill-Italic.ttf') format('truetype');
-  font-weight: normal;
-  font-style: italic;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Brill';
-  src: url('/ref_grammar/fonts/brill/Brill-BoldItalic.ttf') format('truetype');
-  font-weight: bold;
-  font-style: italic;
-  font-display: swap;
-}
-
-:root {
-  /* Body + headings: serif, with Brill as the IPA-capable fallback. */
-  --sl-font: 'EB Garamond', 'Brill', Georgia, serif;
-  /* Keep code monospace, but let Brill catch any IPA that lands in code spans. */
-  --sl-font-mono: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas,
-    'DejaVu Sans Mono', 'Brill', monospace;
-}
-
-/* Dark theme is Starlight's default (applied on :root). */
-:root {
-  --sl-color-bg: #1a1a1a;
-  --sl-color-bg-nav: #242422;
-  --sl-color-bg-sidebar: #1f1f1d;
-  --sl-color-accent-low: #3a2630;
-  --sl-color-accent: #b85a92;
-  --sl-color-accent-high: #ecb6d6;
-}
-
-/* Light theme. */
-:root[data-theme='light'] {
-  --sl-color-bg: #fafaf8;
-  --sl-color-bg-nav: #ffffff;
-  --sl-color-bg-sidebar: #f3f1ec;
-  --sl-color-accent-low: #f6e3ef;
-  --sl-color-accent: #a8447e;
-  --sl-color-accent-high: #7c3158;
-}
+   Fonts and per-theme palette reach Starlight through the bridge block at the
+   bottom of tokens.css (the bridge maps Starlight variables onto tokens). */
 
 /* EB Garamond runs small; nudge base reading size up a touch for comfort. */
 .sl-markdown-content {
-  font-size: var(--sl-text-lg, 1.125rem);
+  font-size: var(--cl-size-body);
 }
