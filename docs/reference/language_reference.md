@@ -1,9 +1,9 @@
 # Language Reference: Working Sketch
 
-**Version:** v3.8 (June 2026)
+**Version:** v3.11 (June 2026)
 **Predecessor:** v2.7 and earlier — see §9 (Versioning Notes).
 
-A starting-point descriptive grammar for the conlang: an a priori conlang derived from General American English (GA) through a designed cascade of regular sound changes and grammaticalizations. Many features are still under analysis; this document captures current commitments and flags open questions. It is the top-level document of a set — see §8 for the full document hierarchy.
+A starting-point descriptive grammar for the conlang, an a priori language derived from General American English (GA) through a designed cascade of regular sound changes and grammaticalizations. Many features are still under analysis; this document captures current commitments and flags open questions. It is the top-level document of a set — see §8 for the full document hierarchy.
 
 ---
 
@@ -89,7 +89,7 @@ Open questions, scoped to the morphology:
 
 #### 3.2.2 Definiteness
 
-The GA definite article *the* has not survived as a definite article, and no general definite article has re-emerged. Instead, definiteness is recapitulated across several smaller systems — syntax and pragmatics doing the work GA morphology did:
+The GA definite article *the* has not survived as such, and no general definite article has re-emerged. Instead, definiteness is recapitulated across several smaller systems — syntax and pragmatics doing the work GA morphology did:
 
 - **The merged article *o*.** GA *the* (in its referential use) and *a* collapsed into a single article *o*, neutral for definiteness: *Ritm o rhémstwè* "(I) got them the book." Its recognitional sibling *þ ~ y* is the other half of the doublet (§3.2.1).
 - **The definite-object suffix *-et*** (from GA *it*), fused onto the verb, presupposing an already-established referent: *beųheun nou·et* "went ahead and committed it to memory." **[Provisional — distribution to be confirmed]** `[Lexicon: -et pending]`
@@ -112,7 +112,7 @@ Adjective forms inherit largely from GA. Comparative and superlative formation i
 
 > **Orientation abstract** — canonical content in `verbal-system.md`. This text is copied from that document's Abstract; edit it there, never here.
 >
-> The verbal system grammaticalizes the subject's relationship to the event: every framed verb commits to either the volitional go-ahead frame (the subject deliberately undertook the event) or the non-volitional get-oneself frame (the subject's relationship to the event is qualified in some other way). The go-ahead side is deliberately compact; the get-oneself side is richer, hosting four readings — happenstance, effortful self-benefit, threshold, and backdrop — selected jointly by frame aspect, concord shape, and the verb's own event structure. The frames do not stand alone: they combine with a pronominal system in which pronouns are aspect carriers, while the language's only tense lives in a small class of matrix particles that scaffold whole clauses with modal meaning. A possession construction derives having, getting, choosing, and giving from frame-plus-nominal combination, with the recognitional-iterative nominal as its deverbal special case; three stative-domain strategies carry the meanings the morphology cannot host. This document is the canonical reference for all of these systems; the verb-lexicon-building methodology lives in its Appendix A.
+> The verbal system grammaticalizes the subject's relationship to the event: every framed verb commits to either the volitional go-ahead frame (the subject deliberately undertook the event) or the non-volitional get-oneself frame (the subject's relationship to the event is qualified in some other way). The go-ahead side is deliberately compact; the get-oneself side is richer, hosting four readings — happenstance, effortful self-benefit, threshold, and backdrop — selected jointly by frame aspect, concord shape, and the verb's own event structure. The frames do not stand alone: they combine with a pronominal system in which pronouns are aspect carriers, while the language's only tense lives in a small class of matrix particles that scaffold whole clauses with modal meaning. A possession construction derives having, getting, choosing, and giving from frame-plus-nominal combination, with the recognitional-iterative nominal as its deverbal special case; three stative-domain strategies carry the meanings the morphology cannot host. This document is the canonical reference for all of these systems; the verb-lexicon-building methodology lives in `language_reference.md` Appendix B.
 
 ### 3.5 Pronouns
 
@@ -267,10 +267,12 @@ Two constructions are settled enough to commit:
 
 **Existential and presentational clauses.** The language has a dedicated **existential particle** *pons* (< GA *(there is) upon us*) for "there is / there are," presenting a referent or asserting existence without an agent — comparable to French *il y a*, Spanish *hay*:
 
-> *pons rheĩ.*
-> /—/ `[Placeholder: IPA pending phonology pass]`
-> EXIST rain
-> "There is rain."
+<!-- example: E019 -->
+<!-- preview E019 · auto-generated from examples.md · do not edit -->
+> *pons rheĩ.*  
+> EXIST rain  
+> "There is rain."  
+<!-- /preview -->
 
 This is the **unmarked** way to predicate of an inanimate or weather subject; casting such a subject as an active framed verb instead is never neutral, coloring the event with inconvenience, fate, or unexpectedness (`verbal-system.md` §4.1). `[Lexicon: pons pending]` `[New rule needed: irregular development of *pons* < *upon us* — grammatical-word quirk, phonology session]`
 
@@ -343,8 +345,6 @@ The project's current document set (the rationale for treating it as a working s
 - **`ideophones.md`** — full reference for the expressive layer: the ideophone word class, its phonotactic marginality, the multimodal gesture convention (χ), and its grammatical interfaces. The youngest sibling.
 - **`terminology-registry.md`** — canonical registry of descriptive terminology: each term's shorthand, gloss tag, plain-language definition, status, and full naming history.
 - **`dictionary.md`** — the lexicon, with per-entry sound-change derivations and a running changelog.
-- **`skills/dictionary-updater.md`** — the procedure for adding dictionary entries. Invoked with "Let's update the dictionary"; see `CLAUDE.md` "Skills."
-- **`skills/reference-grammar-section-drafting-and-integration.md`** — the procedure for drafting and integrating reference-grammar sections, including the house-style canon this document set follows.
 - **`verb-paradigm-verdict.md`** — sibling working note: cell-by-cell predictions and analytical history for the verbal-system paradigm.
 - **`translation-frequency-task.md`** — instrument for gathering usage-weighted data on stative-strategy frequency, reading-inventory unification, and other open questions in `verbal-system.md` §9.
 
@@ -356,7 +356,7 @@ The project's current document set (the rationale for treating it as a working s
 
 ## Appendix A: The Design and Construction of the Conlang
 
-The body of this document and its siblings describes the conlang synchronically, with diachronic development from General American English (GA) supplied in marked *Origin* and *Analytical note* blocks. This appendix collects material of a different kind — the project's design goals, the method by which the language is constructed, its typological models, and its lexicon-design intentions. None of it is needed to use or learn the language; it is design context, gathered here so the descriptive body stays free of it.
+The body of this document and its siblings describes the conlang synchronically, with diachronic development from General American English (GA) supplied in marked *Origin* and *Analytical note* blocks. This appendix collects material of a different kind — the project's design goals, its construction method, its typological models, and its lexicon-design intentions. None of it is needed to use or learn the language; it is design context, gathered here so the descriptive body stays free of it.
 
 ### A.1 Design philosophy and goals
 
@@ -397,7 +397,7 @@ The combination most distinctive to the conlang — Polynesian-style vowel hiatu
 
 **On stability.** Languages with rich post-stress syllabic-consonant tails tend to evolve in one of two directions: further reduction (the appendix nuclei elide or merge into the preceding coda) or secondary-stress development (some appendix nucleus acquires its own foot). Old English's *-ende* participles reduced to modern *-ing*; Latin post-stress material became Spanish secondary stress. The conlang's current state is best read as a **synchronic snapshot of a language mid-restabilization** — captured at a moment after aggressive schwa elision has produced the appendix material, but before the typologically-expected next step has occurred. This framing aligns with the conlang's stated diachronic origin story (regular sound changes from GA producing the surface forms) and gives the description a coherent answer to "is this naturalistic?"
 
-For a conlang fixed at a synchronic stage, this is not a problem. The diachronic story produces exactly the right origin for a system at this stage: regular sound changes from a recognizable source language, stopped before they have run further to completion.
+For a conlang fixed at a synchronic stage, this is no defect: the diachronic story supplies exactly the right origin — regular sound changes from a recognizable source, stopped before they ran to completion.
 
 ### A.4 Lexicon design
 
@@ -406,7 +406,7 @@ For a conlang fixed at a synchronic stage, this is not a problem. The diachronic
 Drift is encouraged where it serves the conlang's identity. Two lexicon-design notes carry the principle (the drift typology itself — narrowing, broadening, grammar-driven specialization, accretion — is §5.3):
 
 - **Productive false friends.** Words that look like their GA cognates but have meaningfully shifted, occasionally in misleading directions. Pedagogically useful: they punish lazy back-translation and reward genuine engagement with the conlang's meanings.
-- A small inventory of **"untranslatable" words** — concepts the conlang lexicalizes that GA does not — is a design priority. These anchor the cultural texture of the conlang's setting and require learners to acquire concepts rather than mappings.
+- **Untranslatable words.** A small inventory of concepts the conlang lexicalizes that GA does not — a design priority. These anchor the cultural texture of the conlang's setting and require learners to acquire concepts rather than mappings.
 
 #### A.4.2 Cultural embedding
 
@@ -619,6 +619,20 @@ This is more apparatus than current dictionary entries carry, and most of it can
 ---
 
 ## 9. Versioning Notes
+
+### v3.11, June 2026 — existential example migrated to the centralized corpus (roadmap B1b)
+
+The §4 existential example *pons rheĩ* "there is rain" was replaced with a `<!-- example: E019 -->` transclusion token, now sourced from `examples.md` and rendered at build time. No content change; the placeholder IPA line drops from display (greedy render). E019 was added to the corpus in the same B1b pass (a first-pass survey had missed it). See `examples.md` v0.4.
+
+### v3.10, June 2026 — §3.4 orientation abstract regenerated; §8 skill bullets removed
+
+**§3.4 orientation abstract** regenerated to match the corrected `verbal-system.md` Abstract (its v2.12): "the verb-lexicon-building methodology lives in its Appendix A" → "...in `language_reference.md` Appendix B." The copy had inherited the sibling Abstract's stale cross-reference.
+
+**§8 "The document set"** — removed the two skill-file bullets (`skills/dictionary-updater.md`, `skills/reference-grammar-section-drafting-and-integration.md`). Those are authoring tooling, not part of the descriptive document set; they are documented in `CLAUDE.md`'s "Skills" section (and now live under `.claude/skills/`). Their paths were also stale post-migration. The manifest now lists only the canonical docs and out-of-tree working notes.
+
+### v3.9, June 2026 — writing-style pass (front matter, §3.2.2, Appendix A)
+
+Line-editing pass applying the writing-style prose canon; no content, claims, or status tags changed, and the orientation abstracts (§2, §3.4, §3.9) were left untouched per their never-hand-edit rule. **Front matter:** "for the conlang: an a priori conlang derived" → "for the conlang, an a priori language derived" (V4 — close *conlang/conlang* echo). **§3.2.2:** "has not survived as a definite article, and no general definite article" → "has not survived as such, and no general definite article" (V4 — *definite article* ×3 in one sentence). **Appendix A:** condensed the redundant second paragraph of the A.3 "On stability" discussion into one sentence (V4 restatement — it re-said the prior paragraph's "right origin / regular sound changes" point); parallelized the A intro's four-item scope list ("the method by which the language is constructed" → "its construction method", V5/V8); and gave the A.4.1 "untranslatable words" bullet a label-first shape matching its sibling bullet (V8). §1, §4–§8, and Appendix B reviewed and found conformant.
 
 ### v3.8, June 2026 — design/process content consolidated into Appendices A and B
 

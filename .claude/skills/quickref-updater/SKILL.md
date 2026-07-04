@@ -1,3 +1,8 @@
+---
+name: quickref-updater
+description: Rebuild the three quick-reference snapshots in docs/quickref/ (phonology rules, orthography tables, dictionary index) from the canonical docs. Use when the user says "let's update the quickrefs," "rebuild the quickrefs," or "refresh the quickrefs."
+---
+
 # Quickref Updater
 
 A procedure for building and rebuilding three companion quick-reference files from the canonical reference documents. These files extract the most frequently-consulted tables into lightweight documents, reducing session-startup overhead when the full reference docs are too large to hold in context.
@@ -20,9 +25,9 @@ These files **do not replace** the canonical documents. When a quickref conflict
 
 Before writing, read the following sections. Skip any that are already in the current session context.
 
-1. `phonology.md` §4.3 (cascade tables) and §4.4 (sound-change inventory).
-2. `orthography.md` §2 (consonants), §3 (vowels), §4 (quick reference table).
-3. `dictionary.md §4` (all entries) — extract headword, IPA, POS, and first-sense gloss from each entry.
+1. `docs/reference/phonology.md` §4.3 (cascade tables) and §4.4 (sound-change inventory).
+2. `docs/reference/orthography.md` §2 (consonants), §3 (vowels), §4 (quick reference table).
+3. `docs/dictionary/dictionary.md §4` (all entries) — extract headword, IPA, POS, and first-sense gloss from each entry.
 
 ---
 
@@ -88,12 +93,12 @@ Before writing, read the following sections. Skip any that are already in the cu
 
 ## Step 4: Write the files
 
-Write all three files to the project root. Do not place them in `drafts/`.
+Write all three files to `docs/quickref/` (their canonical location since the June 2026 reorg). Do not place them in the project root or in `drafts/`.
 
-File names:
-- `phonology-quickref.md`
-- `orthography-quickref.md`
-- `dictionary-index.md`
+File paths:
+- `docs/quickref/phonology-quickref.md`
+- `docs/quickref/orthography-quickref.md`
+- `docs/quickref/dictionary-index.md`
 
 After writing, confirm to the user: entry count in the index and the version tags used.
 

@@ -1,3 +1,8 @@
+---
+name: spell2ipa
+description: Draft a broad phonemic IPA transcription from a dialect-spelled conlang word using the deterministic spell2ipa.py converter. Use when the user asks to convert or transcribe a spelling to IPA. Also invoked from the dictionary-updater workflow.
+---
+
 # Spelling → IPA (first-pass drafter)
 
 **Version:** v0.1 (June 2026)
@@ -115,7 +120,7 @@ Validated against 59 dictionary headwords with non-`[Open]` IPA. After setting a
 
 ## Companion implementation
 
-`spell2ipa.py` (stdlib only). Importable: `from spell2ipa import convert; convert("rhiiynii")` → `/ɻiːni/`. CLI: `python3 spell2ipa.py rhiiynii beussou`. The grapheme tables in the code are the single source of truth and mirror Tables A/B above; if the orthography changes, edit the tables there and re-run validation against the dictionary.
+`spell2ipa.py` (stdlib only), bundled in this skill directory (`.claude/skills/spell2ipa/spell2ipa.py`). Run it with the working interpreter for this machine — system `python`/`python3` are broken Windows stubs, so use Anaconda: `& "C:\Users\schin\anaconda3\python.exe" .claude/skills/spell2ipa/spell2ipa.py rhiiynii beussou`. Importable as `from spell2ipa import convert; convert("rhiiynii")` → `/ɻiːni/` when the skill directory is on `sys.path`. The grapheme tables in the code are the single source of truth and mirror Tables A/B above; if the orthography changes, edit the tables there and re-run validation against the dictionary.
 
 ---
 

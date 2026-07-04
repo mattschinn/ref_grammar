@@ -124,7 +124,14 @@ export function parseDictionary(md) {
       if (foot) cur.foot = stripInline(foot[1]);
     }
     if (!cur.shortDef) {
-      const d = raw.match(/^\s*1\.\s+(.+?)\s*$/);
+      // Drop a transcluded example (token + its rendered preview region, or a bare
+      // token), any stray HTML comment, and the trailing " — " separator, so the
+      // short def is the gloss rather than the example.
+      const line = raw
+        .replace(/<!--\s*example:[^>]*-->(?:[ \t]*\n?<!--\s*preview\b[^>]*-->[\s\S]*?<!--\s*\/preview\s*-->)?/g, '')
+        .replace(/<!--[\s\S]*?-->/g, '')
+        .replace(/\s*—\s*$/, '');
+      const d = line.match(/^\s*1\.\s+(.+?)\s*$/);
       if (d) cur.shortDef = stripInline(d[1]);
     }
   }
@@ -179,16 +186,54 @@ export function parseGlosses(md) {
   return map;
 }
 
-// Example sentences from examples.md: EID -> { conlang, translation, slug }.
+// Example sentences from examples.md: EID -> { conlang, segments, ipa, leipzig,
+// gesture, translation, tags, slug }. The Conlang and Etymological lines are
+// `|`-delimited into aligned chunks: chunk i of one corresponds to chunk i of the
+// other (the unit a renderer highlights or pads into a column). IPA, Leipzig,
+// Gesture, and Translation stay free. The greedy renderer (build-content.mjs,
+// roadmap G0a) shows whichever of these a record has. The record is an open schema
+// — future fields (audio, notes) slot in without changing consumers. Back-compat:
+// the joined `conlang` string + `translation` + `slug` keep the existing hovercard
+// working.
+const exChunks = (s) => s.split('|').map((x) => x.trim()).filter(Boolean);
+const stripQuotes = (s) => s.replace(/^"([\s\S]*)"$/, '$1').trim();
+
 export function parseExamples(md) {
   const slugger = new GithubSlugger();
   const map = {};
   let inCode = false;
   let sawH1 = false;
-  let cur = null; // { id, slug, conlang, translation }
+  let cur = null; // { id, slug, conlangRaw, etymRaw, ipa, translation, tags }
+
   const finalize = () => {
-    if (cur) map[cur.id] = { conlang: cur.conlang, translation: cur.translation, slug: cur.slug };
+    if (!cur) return;
+    const cl = cur.conlangRaw ? exChunks(cur.conlangRaw) : [];
+    const etym = cur.etymRaw ? exChunks(cur.etymRaw) : [];
+    if (cl.length && etym.length && cl.length !== etym.length) {
+      throw new Error(
+        `examples.md ${cur.id}: Conlang splits into ${cl.length} chunks but Etymological into ` +
+          `${etym.length}. The two aligned lines must have equal '|'-chunk counts.`
+      );
+    }
+    const n = Math.max(cl.length, etym.length);
+    const segments = [];
+    for (let i = 0; i < n; i++) segments.push({ cl: cl[i] ?? '', etym: etym[i] ?? '' });
+    map[cur.id] = {
+      conlang: cl.join(' '), // back-compat joined surface form
+      segments,
+      ipa: cur.ipa,
+      leipzig: cur.leipzig,
+      gesture: cur.gesture,
+      translation: cur.translation,
+      tags: cur.tags,
+      slug: cur.slug,
+    };
     cur = null;
+  };
+
+  const fieldVal = (raw, label) => {
+    const m = raw.match(new RegExp(`^- \\*\\*${label}:\\*\\*\\s*(.+?)\\s*$`));
+    return m ? m[1].trim() : null;
   };
 
   for (const raw of md.split(/\r?\n/)) {
@@ -203,15 +248,24 @@ export function parseExamples(md) {
       const slug = slugger.slug(text);
       finalize();
       const eid = text.match(/^(E\d{3})\b/);
-      if (level === 3 && eid) cur = { id: eid[1], slug, conlang: '', translation: '' };
+      if (level === 3 && eid) {
+        cur = { id: eid[1], slug, conlangRaw: '', etymRaw: '', ipa: '', leipzig: '', gesture: '', translation: '', tags: [] };
+      }
       continue;
     }
     if (!cur) continue;
 
-    const c = raw.match(/^- \*\*Conlang:\*\*\s*(.+?)\s*$/);
-    if (c && !cur.conlang) cur.conlang = c[1].trim();
-    const t = raw.match(/^- \*\*Translation:\*\*\s*(.+?)\s*$/);
-    if (t && !cur.translation) cur.translation = t[1].trim();
+    let v;
+    if ((v = fieldVal(raw, 'Conlang')) != null && !cur.conlangRaw) cur.conlangRaw = v;
+    else if ((v = fieldVal(raw, 'Etymological')) != null && !cur.etymRaw) cur.etymRaw = v;
+    else if ((v = fieldVal(raw, 'IPA')) != null && !cur.ipa) cur.ipa = v;
+    else if ((v = fieldVal(raw, 'Leipzig')) != null && !cur.leipzig) cur.leipzig = v;
+    // Gesture field label carries the literal "(χ)", so it needs its own matcher.
+    else if (!cur.gesture && (v = (raw.match(/^- \*\*Gesture \(χ\):\*\*\s*(.+?)\s*$/) || [])[1]) != null) cur.gesture = v.trim();
+    else if ((v = fieldVal(raw, 'Translation')) != null && !cur.translation) cur.translation = stripQuotes(v);
+    else if ((v = fieldVal(raw, 'Tags')) != null && !cur.tags.length) {
+      cur.tags = v.split(/\s+/).map((t) => t.replace(/^#/, '')).filter(Boolean);
+    }
   }
   finalize();
   return map;

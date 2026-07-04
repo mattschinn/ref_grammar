@@ -4,10 +4,10 @@
    via innerHTML and would not receive a scoped-style attribute. */
 
 .dt-typer {
-  --dt-border: var(--sl-color-gray-5);
-  --dt-surface: var(--sl-color-bg-nav, var(--sl-color-bg));
-  --dt-muted: var(--sl-color-gray-3);
-  --dt-code-bg: var(--sl-color-gray-6);
+  --dt-border: var(--cl-card-border);
+  --dt-surface: var(--cl-card-bg);
+  --dt-muted: var(--cl-ui-muted);
+  --dt-code-bg: var(--cl-code-bg);
   margin-top: 1.5rem;
 }
 .dt-typer * {
@@ -68,7 +68,7 @@
   padding: 10px 14px 14px;
   border: none;
   background: transparent;
-  color: var(--sl-color-text);
+  color: var(--cl-ui-text);
   font-size: 16px;
   line-height: 1.4;
   outline: none;
@@ -79,7 +79,7 @@
   word-wrap: break-word;
   overflow-y: auto;
   resize: vertical;
-  caret-color: var(--sl-color-text-accent, var(--sl-color-accent));
+  caret-color: var(--cl-ui-text-accent);
 }
 .dt-input-editable:empty::before {
   content: attr(data-placeholder);
@@ -102,16 +102,10 @@
 }
 
 .dt-trigger {
-  color: #d96bb0;
-}
-:root[data-theme='light'] .dt-trigger {
-  color: #b14d86;
+  color: var(--cl-typer-trigger);
 }
 .dt-receiver {
-  color: #6aa5d9;
-}
-:root:not([data-theme='light']) .dt-receiver {
-  color: #8cc0ea;
+  color: var(--cl-typer-receiver);
 }
 
 .dt-copy-btn {
@@ -139,7 +133,7 @@
   padding: 4px 0;
 }
 .dt-details summary:hover {
-  color: var(--sl-color-text);
+  color: var(--cl-ui-text);
 }
 
 .dt-settings {
@@ -182,13 +176,13 @@
   padding: 6px 10px;
   border: 1px solid var(--dt-border);
   background: var(--dt-surface);
-  color: var(--sl-color-text);
+  color: var(--cl-ui-text);
   border-radius: 4px;
   cursor: pointer;
 }
 .dt-typer select:hover,
 .dt-typer button:hover {
-  border-color: var(--sl-color-text);
+  border-color: var(--cl-ui-text);
 }
 .dt-style-btn {
   width: 28px;
@@ -202,13 +196,13 @@
   font-style: italic;
 }
 .dt-style-btn.active {
-  background: var(--sl-color-text);
-  color: var(--sl-color-bg);
-  border-color: var(--sl-color-text);
+  background: var(--cl-ui-text);
+  color: var(--cl-bg);
+  border-color: var(--cl-ui-text);
 }
 .dt-size-control input[type='range'] {
   width: 110px;
-  accent-color: var(--sl-color-accent);
+  accent-color: var(--cl-accent);
 }
 .dt-size-value {
   font-variant-numeric: tabular-nums;
@@ -288,6 +282,6 @@
   background: var(--dt-code-bg);
 }
 .dt-ipa-key:active {
-  background: var(--sl-color-text);
-  color: var(--sl-color-bg);
+  background: var(--cl-ui-text);
+  color: var(--cl-bg);
 }

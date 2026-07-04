@@ -1,3 +1,8 @@
+---
+name: dictionary-updater
+description: Add or stub entries in the conlang's dictionary.md, sanity-checking forms against phonology.md and orthography.md. Use when the user says "let's update the dictionary," "let's add a word," or "I want to add an entry." Also runs in stub mode when invoked by the example-adder skill.
+---
+
 # Dictionary Updater
 
 A procedure for adding entries to `dictionary.md`. Invoked explicitly by the user with "Let's update the dictionary" (or close paraphrase).
@@ -23,15 +28,17 @@ The user invokes this skill with **"Let's update the dictionary"** or close vari
 
 ## Required Reading Before Acting
 
-Before doing anything else, read these files in the project:
+Before doing anything else, read these files in the project (canonical docs live under `docs/`):
 
-1. `dictionary.md` — to know what's already there, the schema, and the collation order.
-2. `orthography.md` — to sanity-check IPA ↔ orthographic mappings.
-3. `phonology.md` — to sanity-check sound-change derivations, especially §4 (rule inventory) and §5 (cascade).
+1. `docs/dictionary/dictionary.md` — to know what's already there, the schema, and the collation order.
+2. `docs/reference/orthography.md` — to sanity-check IPA ↔ orthographic mappings.
+3. `docs/reference/phonology.md` — to sanity-check sound-change derivations, especially §4 (rule inventory) and §5 (cascade).
+
+For a faster start on derivation/lookup work, the snapshots in `docs/quickref/` (`dictionary-index.md`, `phonology-quickref.md`, `orthography-quickref.md`) often suffice; fall back to the full docs when a detail is missing or the snapshot looks stale.
 
 If any of these files have changed since the last invocation, the changes take precedence over anything in this skill file.
 
-**Available tool — `spell2ipa`.** A deterministic spelling→IPA drafter (`skills/spell2ipa.py`, documented in `spell2ipa-skill.md`, pinned to `orthography.md` v3). Importable: `from spell2ipa import convert; convert("rhiiynii")`. Use it to *accelerate* IPA drafting and as a forward sanity-check in Step 4 — it is a **drafter, not an oracle**. It never consults the lexicon, which is fine: duplication/homophone checks are this skill's own job (Steps 2–3), not the converter's. Treat its output as a draft a human confirms, and discount its documented divergences (Step 4) before flagging a mismatch.
+**Available tool — `spell2ipa`.** A deterministic spelling→IPA drafter (`.claude/skills/spell2ipa/spell2ipa.py`, documented in the `spell2ipa` skill, pinned to `orthography.md` v3). Run it with the working interpreter for this machine (`C:\Users\schin\anaconda3\python.exe`, since system `python`/`python3` are broken Windows stubs): `& "C:\Users\schin\anaconda3\python.exe" .claude/skills/spell2ipa/spell2ipa.py rhiiynii`. Importable as `from spell2ipa import convert; convert("rhiiynii")` when that directory is on the path. Use it to *accelerate* IPA drafting and as a forward sanity-check in Step 4 — it is a **drafter, not an oracle**. It never consults the lexicon, which is fine: duplication/homophone checks are this skill's own job (Steps 2–3), not the converter's. Treat its output as a draft a human confirms, and discount its documented divergences (Step 4) before flagging a mismatch.
 
 ---
 
@@ -134,7 +141,7 @@ Once approved:
    - `æ` slots after the `a`-region; `œ` slots after the `o`-region.
 
 2. **Add a changelog entry** to the `## 5. Changelog` section at the bottom of `dictionary.md` (create the section if it doesn't exist yet — see template below). Each changelog entry has:
-   - Date (use the `user_time_v0` tool to get today's date)
+   - Date (today's date, from the session context)
    - A one-line summary of what was added
    - Any flagged open questions (orthographic, phonological) surfaced during this session
 

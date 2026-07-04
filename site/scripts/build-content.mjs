@@ -5,7 +5,7 @@
 
 import { readFile, writeFile, mkdir, rm, readdir } from 'node:fs/promises';
 import path from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 import {
   parseHeadings,
   parseDictionary,
@@ -14,6 +14,8 @@ import {
   headingKey,
   slugHeadingStream,
 } from './parse.mjs';
+import { stripExamples } from './examples-render.mjs';
+import { syncPreviews } from './sync-previews.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const siteRoot = path.resolve(__dirname, '..');
@@ -33,10 +35,13 @@ const ORDER = {
   'reference/phonology.md': 2,
   'reference/orthography.md': 3,
   'reference/verbal-system.md': 4,
-  'reference/examples.md': 5,
   'reference/terminology-registry.md': 6,
 };
 const LABEL = { 'reference/terminology-registry.md': 'Glossary' };
+
+// Docs parsed for their artifacts (examples.json) but NOT written as pages.
+// examples.md is build-time transclusion source only — never its own page.
+const SKIP_PAGE = new Set(['examples.md']);
 
 const yamlStr = (s) => JSON.stringify(s);
 
@@ -159,6 +164,13 @@ async function run() {
   for (const s of SECTIONS) await rm(path.join(outRoot, s), { recursive: true, force: true });
   await mkdir(genRoot, { recursive: true });
 
+  // Refresh on-disk example previews from examples.md BEFORE reading the docs, so
+  // the canonical sources, the site pages, and the PDF build all see the same
+  // rendered previews (roadmap G0b — auto-regenerate in build). The build then only
+  // strips token+preview markers; the sole renderer is the preview step.
+  const synced = await syncPreviews();
+  if (synced) console.log(`[build-content] refreshed example previews in ${synced} file(s)`);
+
   const headings = {}; // docFilename -> { sectionNumber|EID: slug }
 
   // Pass 1: read every doc, capture title + heading map + raw body.
@@ -174,6 +186,11 @@ async function run() {
       files.push({ rel, base, md, title });
     }
   }
+
+  // Examples corpus (chunk-aligned records), emitted as the examples.json artifact.
+  // Token expansion no longer needs it here: previews were already rendered into the
+  // docs by syncPreviews() above, so Pass 2 just strips the token+preview markers.
+  const examplesMap = parseExamples(rawByBase['examples.md'] || '');
 
   // Identify the assembler parent (the doc carrying `<!-- assemble: -->`
   // directives) and the siblings it inlines. Inlined siblings are NOT written as
@@ -192,7 +209,7 @@ async function run() {
   // docs are stripped as-is; inlined siblings are skipped.
   let pages = 0;
   for (const { rel, base, md, title } of files) {
-    if (inlined.has(base)) continue;
+    if (inlined.has(base) || SKIP_PAGE.has(base)) continue;
 
     let body;
     if (rel === parentRel) {
@@ -212,6 +229,10 @@ async function run() {
       body = stripDoc(md);
     }
 
+    // Previews were rendered into the docs by syncPreviews(); collapse each
+    // token+preview pair to just the rendered content for the page.
+    body = stripExamples(body);
+
     const out = buildFrontmatter(rel, title) + body;
     const destAbs = path.join(outRoot, rel);
     await mkdir(path.dirname(destAbs), { recursive: true });
@@ -222,7 +243,7 @@ async function run() {
   const read = (rel) => readFile(path.join(docsRoot, rel), 'utf8');
   const entries = parseDictionary(await read('dictionary/dictionary.md'));
   const glosses = parseGlosses(await read('reference/terminology-registry.md'));
-  const examples = parseExamples(await read('reference/examples.md'));
+  const examples = examplesMap;
 
   // entries-by-headword for O(1) lookup in the plugin.
   const entryMap = {};
@@ -244,7 +265,10 @@ async function run() {
   );
 }
 
-run().catch((err) => {
-  console.error('[build-content] failed:', err);
-  process.exit(1);
-});
+// Run only when invoked directly (so the module can be imported for unit tests).
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+  run().catch((err) => {
+    console.error('[build-content] failed:', err);
+    process.exit(1);
+  });
+}

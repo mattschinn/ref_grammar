@@ -1,11 +1,9 @@
 # Orthography
 
-**Version:** v3.9 (June 2026)
+**Version:** v3.10 (June 2026)
 **Predecessor:** v2.4 and earlier — see §7 (Versioning Notes).
 
 **Abstract.** The writing system is Latin script with load-bearing diacritics in the manner of Vietnamese: the marks are not decorative, and ignoring them collapses minimal pairs. Diacritics and digraphs encode vowel length, nasalization, consonant devoicing, gemination, pitch, stress, and pitch-stress coincidence. Several conventions deliberately invert what a GA-literate reader expects, including position-dependent letter values and doubled vowels marking hiatus rather than length. This document is the canonical reference for the grapheme inventory, the diacritic placement rules, and the open spelling questions.
-
-A dedicated reference for the conlang's writing system.
 
 Status tags ( **[Settled]** / **[Provisional]** / **[Open]** ) and the reading conventions for forms and IPA are explained in `language_reference.md`, "How to read this document set." Terminology follows `terminology-registry.md`.
 
@@ -387,6 +385,10 @@ The richest minimal-pair territories are:
 ---
 
 ## 7. Versioning Notes
+
+### v3.10, June 2026 — writing-style pass (front matter)
+
+Line-editing pass applying the writing-style prose canon. Removed the redundant standalone line "A dedicated reference for the conlang's writing system" after the Abstract (V4 restatement — the Abstract's closing sentence already states the document's scope). No grapheme, rule, or status-tag content changed; §1–§6 reviewed and found conformant.
 
 ### v3.9, June 2026 — `pp` geminate now unattested (*epplii* → *eplii*)
 

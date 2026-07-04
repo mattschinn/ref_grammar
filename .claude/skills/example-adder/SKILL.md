@@ -1,3 +1,8 @@
+---
+name: example-adder
+description: Add glossed example sentences to examples.md and link them to dictionary entries. Use when the user says "let's add an example," "let's gloss X," "let's add a sentence," or "let's add a gloss."
+---
+
 # Example Adder
 
 A procedure for adding glossed example sentences to `examples.md`. Invoked explicitly by the user with "Let's add an example" or close variants ("let's gloss X," "I want to add a sentence," "let's add a gloss").
@@ -14,10 +19,10 @@ This skill walks through a fixed sequence of steps: confirming the gloss fields,
 
 ## Required Reading Before Acting
 
-Before doing anything else, read:
+Before doing anything else, read (canonical docs live under `docs/`):
 
-1. `examples.md` — to know the current highest E-ID (§5), the entry format (§2), the etymological-gloss conventions (§3), and the tag registry (§4).
-2. `dictionary.md` — to look up content words (§4 Entries) and to know the collation order (§2) for any stub insertions.
+1. `docs/reference/examples.md` — to know the current highest E-ID (§5), the entry format (§2), the etymological-gloss conventions (§3), and the tag registry (§4).
+2. `docs/dictionary/dictionary.md` — to look up content words (§4 Entries) and to know the collation order (§2) for any stub insertions.
 
 ---
 
@@ -68,7 +73,7 @@ For each aligned pair, decide whether to proceed to Step 5:
 **Skip the word if any of the following apply:**
 - The etymological gloss marks it as a function word: preposition, article, particle, conjunction, auxiliary, pronoun, clitic, or bound morpheme. Typical markers: `on.the`, `in.a`, `though`, `the`, `a(n)`.
 - The dictionary entry (if it exists) lists its POS as one of the above.
-- The dictionary entry already has two or more inline examples across its definitions.
+- The dictionary entry already has two or more example tokens across its definitions.
 
 **Proceed to Step 5** for all other content words.
 
@@ -90,18 +95,18 @@ Wait for the user's choice before proceeding to the next word.
 
 ### Case B: Word is in dictionary.md, no existing inline example
 
-Identify the definition the example best illustrates. Add the inline example immediately after that definition line, following the dictionary's inline format:
+Identify the definition the example best illustrates. Insert a **transclusion token** immediately after that definition line, em-dash–separated — the example text itself lives only in `examples.md`:
 
-> *conlang sentence.* "idiomatic English translation."
+> 1. *(pos.)* gloss. — `<!-- example: EXXX -->`
 
-Also update the **Cited from** field in the examples.md entry to include `dictionary.md (headword)`. Add a line to `dictionary.md §5. Changelog` noting the example was added.
+The build expands the token to the dictionary inline form (`*conlang* "translation"`). **Do not paste the example text into `dictionary.md`** — that would re-duplicate what `examples.md` now single-sources. Then update the **Cited from** field in the examples.md entry to include `dictionary.md (headword)`, and add a line to `dictionary.md §5. Changelog` noting the example was linked.
 
-### Case C: Word is in dictionary.md, has an existing inline example
+### Case C: Word is in dictionary.md, has an existing example token
 
-Read the existing example(s). Assess which of the following applies:
+Read the existing example(s) it cites (resolve each `<!-- example: EXXX -->` against `examples.md`). Assess which of the following applies:
 
-- **Different sense or use:** The new sentence illustrates a distinct definition, a different grammatical environment, or a pragmatic/register nuance not shown by the existing example. → Propose appending the new example to the relevant definition.
-- **Better illustration of the same sense:** The new sentence is clearer, more natural, or more representative than the existing one. → Propose replacing the existing example.
+- **Different sense or use:** The new sentence illustrates a distinct definition, a different grammatical environment, or a pragmatic/register nuance not shown by the existing example. → Propose appending a second token (`<!-- example: EYYY -->`) to the relevant definition.
+- **Better illustration of the same sense:** The new sentence is clearer, more natural, or more representative than the existing one. → Propose swapping the existing token's E-ID for the new one (the superseded example stays in `examples.md`; just update its **Cited from**).
 - **Redundant:** The new sentence adds nothing the existing example doesn't already show. → Propose skipping.
 
 Present your assessment and recommendation to the user. Wait for their decision before making any change.

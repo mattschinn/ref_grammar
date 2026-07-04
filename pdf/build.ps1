@@ -62,6 +62,42 @@ New-Item -ItemType Directory -Force -Path (Join-Path $root 'out') | Out-Null
 $mathSubs = @{
     [char]0x2208 = '$\in$'        # element of
 }
+
+# Refresh the on-disk example previews from examples.md before reading the docs
+# (roadmap G0b — auto-regenerate in build). The single renderer is the Node
+# preview-sync step; this build only strips token+preview markers below. examples.md
+# is source only and is never a chapter.
+$syncScript = Join-Path $root '..\site\scripts\sync-previews.mjs'
+if (Get-Command node -ErrorAction SilentlyContinue) {
+    & node $syncScript
+    if ($LASTEXITCODE -ne 0) { throw "sync-previews.mjs failed (exit $LASTEXITCODE)" }
+} else {
+    Write-Warning "node not found; example previews not refreshed (PDF may use stale previews). Run 'npm run content' in site/ first."
+}
+
+# Collapse `<!-- example: EID --> <!-- preview -->…<!-- /preview -->` to just the
+# rendered preview content (what the PDF emits). The preview was rendered into the
+# doc by the Node sync step above, so this side needs no renderer — only marker
+# stripping. Fenced code is skipped so a documented token survives. Mirrors
+# `site/scripts/examples-render.mjs` stripExamples.
+function Strip-Examples([string]$text) {
+    $pattern = '<!--\s*example:[^>]*-->[ \t]*\r?\n?<!--\s*preview\b[^>]*-->([\s\S]*?)<!--\s*/preview\s*-->'
+    $lines = $text -split "`n", 0
+    $result = New-Object System.Collections.Generic.List[string]
+    $buf = New-Object System.Collections.Generic.List[string]
+    $inFence = $false
+    foreach ($line in $lines) {
+        if ($line -match '^\s*```') {
+            if ($buf.Count) { $result.Add([regex]::Replace([string]::Join("`n", $buf), $pattern, '$1')); $buf.Clear() }
+            $result.Add($line); $inFence = -not $inFence; continue
+        }
+        if ($inFence) { $result.Add($line); continue }
+        $buf.Add($line)
+    }
+    if ($buf.Count) { $result.Add([regex]::Replace([string]::Join("`n", $buf), $pattern, '$1')) }
+    [string]::Join("`n", $result)
+}
+
 $inputs = @()
 foreach ($f in $sources) {
     $text = [IO.File]::ReadAllText((Join-Path $docsRoot $f), [Text.Encoding]::UTF8)
@@ -69,6 +105,7 @@ foreach ($f in $sources) {
         $text = $text.Replace([string]$k, $mathSubs[$k])
     }
     $base = Split-Path -Leaf $f
+    $text = Strip-Examples $text
     $dst = Join-Path $tmpDir $base
     [IO.File]::WriteAllText($dst, $text, (New-Object Text.UTF8Encoding $false))
     $inputs += "build_tmp/$base"
