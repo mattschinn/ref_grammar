@@ -1,6 +1,6 @@
 # Orthography
 
-**Version:** v3.10 (June 2026)
+**Version:** v3.12 (August 2026)
 **Predecessor:** v2.4 and earlier — see §7 (Versioning Notes).
 
 **Abstract.** The writing system is Latin script with load-bearing diacritics in the manner of Vietnamese: the marks are not decorative, and ignoring them collapses minimal pairs. Diacritics and digraphs encode vowel length, nasalization, consonant devoicing, gemination, pitch, stress, and pitch-stress coincidence. Several conventions deliberately invert what a GA-literate reader expects, including position-dependent letter values and doubled vowels marking hiatus rather than length. This document is the canonical reference for the grapheme inventory, the diacritic placement rules, and the open spelling questions.
@@ -327,7 +327,11 @@ Examples: in *béntsıìy*, the stress grave lands on the second `i` of `iiy` �
 
 Monosyllables have pitch and stress on the only available vowel — circumflex in formal register, plain acute in casual.
 
-Multisyllables typically dissociate, with pitch on the historical-GA-stress syllable and stress on the new final position. A lexical instance: *nóè* "no way" carries pitch on *no* (acute *ó*, the historical GA stress) and stress on *way* (grave *è*, the new final), against *noê* "in a way," where the two coincide on the final (*ê*). The pair is flagged as a candidate pitch-accent minimal pair (`phonology.md` §5.4).
+Multisyllables typically dissociate, with pitch on the historical-GA-stress syllable and stress on the new final position. The worked instance is *óhò* "hey" (< *OH hey*) against *ohô* "aha" (< *oh I see*): *óhò* carries pitch on the first vowel (acute *ó*, the historical GA stress) and stress on the final (grave *ò*), while in *ohô* the two coincide on the final (*ô*). This pair is **acoustically attested**: across the repetitions that survive content verification, the F0 centroid moves later by 6.0 percentage points from *óhò* to *ohô* — the predicted direction, in 4 of 4 usable blocks. The mean normalised contours carry it more plainly than the summary statistic does: *ohô* rises from 84 Hz to a late peak of 115 Hz and falls back to 80, while *óhò* stays within 84–98 Hz with no comparable excursion. The supporting pair *hóhonìt* / *hohô* moves the same way (+10.0 pp, Cohen's *d* +1.15). (Figures corrected 2026-08-17; the 16.3 / 9.1 Hz decline values previously cited here were measured on a corrupted extraction and are withdrawn — see `planning/audio-pipeline-plan.md` §7. The attestation survives the correction; only the numbers change.)
+
+**Which GA element carried the accent is the load-bearing fact,** and it is the one an etymology line most easily gets wrong. The *noê* entry formerly stood as a *noê* / *nóè* pair on the strength of a **NO** way! reading of its source; the ordinary realization is *no WAY!*, leaving nothing on the first syllable for the conlang to inherit, and the recorded production shows no first-syllable pitch peak. The two headwords were merged (`dictionary.md` §*noê*, August 2026). Where an etymon's GA accent placement is uncertain, say so in the entry rather than inferring it from the conlang spelling — the spelling is the thing being derived.
+
+[Open: whether pitch on the *final* (stressed) vowel is stable. Recorded final-stressed words vary between a low final, retaining the pitch of the originally unstressed GA syllable, and a high final; the words with first-syllable pitch do not vary this way. If the variation is real, the circumflex's "coincidence" reading describes only the high-pitch realization and the low one is unmarked. See `phonology.md` §5.4.]
 
 ---
 
@@ -385,6 +389,24 @@ The richest minimal-pair territories are:
 ---
 
 ## 7. Versioning Notes
+
+### v3.12, August 2026 — §3.7's acoustic figures corrected
+
+The numbers cited in §3.7 for the *óhò* / *ohô* attestation were measured on the wrong audio. The pipeline's segmentation stage assigned every utterance one position early, exporting the spoken English digit slates in place of the words, so the "16.3 Hz against 9.1 Hz" declines describe the numerals *one* and *two*. Fixed at source (`tools/audio-split.py`), with a content gate added (`tools/audio-verify.py`) that rejects any token transcribing as its own item number; see `planning/audio-pipeline-plan.md` §7.
+
+**The attestation survives; only the figures change.** Re-measured on corrected, content-verified audio, the F0 centroid moves later by 6.0 pp from *óhò* to *ohô* in 4 of 4 usable blocks, and the mean contours separate more clearly than before — *ohô* rises to a late peak of 115 Hz where *óhò* has no comparable excursion. The supporting pair *hóhonìt* / *hohô* agrees (+10.0 pp, *d* +1.15). §3.7 now cites these.
+
+The **[Open]** on the circumflex opened in v3.11 is **downgraded to an untested hypothesis**. It rested on a contrast between first-syllable-pitch and final-stressed words that does not survive correction: the reported categorical split (0 of 10 against 8 of 20 rising) becomes 2 of 9 against 4 of 17, with Mann–Whitney *p* = 0.196 and Fisher *p* = 1.000. Final-stressed words do scatter more widely (sd 3.5 st against 1.8 st), but Levene's test gives *p* = 0.484, so even that is unestablished. The circumflex's "coincidence" reading is not currently in question on acoustic grounds — nothing acoustic bears on it yet.
+
+### v3.11, August 2026 — §3.7 worked example replaced; *noê*/*nóè* merged
+
+*(Superseded in part by v3.12: the 16.3 / 9.1 Hz figures below are withdrawn. The merger and the worked-example replacement stand.)*
+
+The §3.7 illustration of pitch/stress dissociation moved from *nóè* / *noê* to *óhò* / *ohô*. The old example was not one: *nóè* had been assigned first-syllable pitch from a **NO** way! reading of its GA source, where the ordinary realization is *no WAY!*, leaving *no* unstressed and the acute without a source. The two headwords are merged into a single polysemous entry (`dictionary.md` §*noê*, changelog 2026-08-12). The replacement pair is the acoustically attested one — pilot 01 measured *óhò* falling 16.3 Hz from an early peak against *ohô*'s 9.1 Hz from a later one, the predicted direction at d ≈ 1.1.
+
+Two additions in the same section. A **practice note**: which GA element carried the accent is the load-bearing fact in these derivations and the one most easily got wrong; where it is uncertain the entry should say so rather than back-infer it from the conlang spelling. And an **[Open]** on the circumflex: recorded final-stressed words vary between a low and a high final pitch while first-syllable-pitch words do not, so "coincidence" may describe only one of two realizations (`phonology.md` §5.4).
+
+The three-diacritic system itself is unchanged, and the dissociation analysis is unaffected — one lexical item was misassigned, not the rule.
 
 ### v3.10, June 2026 — writing-style pass (front matter)
 

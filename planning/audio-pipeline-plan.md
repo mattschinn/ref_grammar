@@ -1,9 +1,19 @@
 # Audio Pipeline — Planning Document
 
-**Status:** [Active] — pilot 01 recorded, split and measured end-to-end (122/125 tokens);
-first acoustic result in hand; publication branch built through polish (25/25 ready to encode)
+**Status:** [Active] — pilot 01 re-split, content-verified and re-measured after the
+2026-08-17 slate/word correction; one surviving acoustic result; publication branch built
+through polish (25/25 verified clean, ready to encode)
 **Opened:** 2026-08-11
-**Last updated:** 2026-08-16
+**Last updated:** 2026-08-17
+
+### Change log
+
+| Date | What changed |
+|---|---|
+| 2026-08-11 | Plan opened. Pilot 01 manifest + teleprompter drafted (M0); session recorded (M1). |
+| 2026-08-12 | Stages 1–3 built (M2, M3, M5, M6). Silence-based segmentation falsified (§3); identity/boundary split adopted (§4). First analysis published (M7). Canon changes propagated: `dictionary.md` *noê* merger, `orthography.md` v3.11, `phonology.md` v4.9. **All of this analysis was later found void — see 2026-08-17.** |
+| 2026-08-16 | ffmpeg 9.0 installed via winget. Stage 4 take selection (`audio-select.py`, M9a) and stage 5 polish (`audio-polish.py`, M9b) built; loudness target calibrated to −24 LUFS. Delivery format revised Opus → MP3 (§6). A/B listening page (`audio-compare.py`). |
+| 2026-08-17 | **Slate/word one-position shift found and fixed.** All 120 prior tokens were measured on spoken English digits. `audio-split.py` corrected; content gate added (`audio-verify.py`, §6a). Stages 2–5 re-run on verified-clean segments; analysis redone (§7). Canon reconciled: `dictionary.md` changelog 2026-08-17, `orthography.md` v3.12, `phonology.md` v4.10. |
 
 > **Reading this cold?** Jump to §2 (Current state) and §8 (Milestones). §1 and §3 are
 > the original design reasoning, retained because parts of it were tested and one
@@ -395,6 +405,36 @@ Three things changed, and they do not all point the same way:
 
 **Statistical honesty, restated.** The Frame B pair is now n=3 paired blocks. Nothing
 about *nóè* / *noê* is establishable from this session in either direction.
+
+**The variable-final-pitch statistics do not survive either (recomputed 2026-08-17).**
+Re-measured on verified-clean tokens, first-syllable-pitch words rise in 2 of 9 and
+final-stressed words in 4 of 17 — Fisher p = 1.000, Mann–Whitney p = 0.196, against the
+0.03 and 0.02 reported on 2026-08-12. The wider scatter of final-stressed words survives
+as a tendency (sd 3.5 st against 1.8 st, range −3.8 to +8.1) but Levene p = 0.484. The
+hypothesis is neither supported nor refuted; it is untested, which is where it stood
+before the pilot. Session 02's focus manipulation is still the only design that can
+settle it.
+
+### Canon reconciliation (2026-08-17)
+
+All three documents that had imported pilot-01 figures are reconciled. **What survives
+the correction and what does not:**
+
+| Claim | Status |
+|---|---|
+| *noê* / *nóè* merger | **Stands** — ruled on the GA premise (*no WAY!*), explicitly recorded at the time as decidable without the recording |
+| Its acoustic corroboration (flat contour, +1.8 Hz) | **Withdrawn** |
+| The 280 ms sense-duration difference | **Withdrawn** — it was *five* against *six* |
+| *óhò* / *ohô* acoustic attestation | **Stands, with new figures** — +6.0 pp centroid, 4/4 blocks; contour 84→115→80 Hz |
+| §5.4 candidate minimal pair withdrawal | **Stands** — did not depend on the audio |
+| Variable-final-pitch statistics | **Withdrawn, not replaced** — item returns to untested hypothesis |
+| §3.4 residue analysis | **Untouched** — nothing in it was ever derived from these measurements |
+
+Documents updated: `dictionary.md` (changelog 2026-08-17; entry Notes rewritten),
+`orthography.md` **v3.12** (§3.7 figures replaced; the v3.11 circumflex **[Open]**
+downgraded to untested), `phonology.md` **v4.10** (§5.4 body claim corrected; statistics
+withdrawn). Historical changelog entries are annotated as superseded rather than edited,
+per the repo's versioning convention.
 
 ### Superseded figures (2026-08-12) — measured on digits, retained for the trail
 

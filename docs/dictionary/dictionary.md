@@ -12,6 +12,7 @@ Each entry is a level-3 heading (`### headword`). Below the heading:
 
 - **`#### Etymology`** — A section opener. The proto-form in italics with asterisk, a dash, then a gloss. Semantic drift, register notes, and source-construction context are folded in as prose. Example: `*pass out* — colloquial "fall asleep" primary; "lose consciousness" secondary (salience inverted from GA).`
 - **Form line:** Labeled fields on one line: `**Part of speech:** abbreviation  **IPA:** /…/  **Foot:** (…).` Example: `**Part of speech:** v.  **IPA:** /ˌbɛːˈsːoː/  **Foot:** (ˌH)(ˈH).`
+- **Domains line:** `**Domains:** food, kitchen.` — one to three lowercase labels from the working domain set (see §5, 2026-07-16), directly after the form line. These are browsing labels, not a semantic-field analysis: they group entries for the site's picture-dictionary wander and for finding related words. New entries take whichever existing labels fit; extend the set deliberately and note additions in the changelog.
 
 Then, if committed, a **Phonological development** line: a compact semicolon-separated list of applied rules with brief labels. This is a derivation record, not a discussion.
 
@@ -79,6 +80,8 @@ A few conventions clarified during early entry-writing, supplementing `orthograp
 
 **Part of speech:** n.  **IPA:** /bɑˈĩ/  **Foot:** [Open].
 
+**Domains:** work, having.
+
 Phonological development: /m/ → /b/ [Open: word-initial /m/→/b/]; /ʌ/ → /ɑ/ `a`; intervocalic /n/ → ∅, leaving anticipatory nasalization on the following vowel; /i/ → nasalized /ĩ/ `ıĩ`.
 
 #### Definition
@@ -93,6 +96,8 @@ Phonological development: /m/ → /b/ [Open: word-initial /m/→/b/]; /ʌ/ → /
 *barnacle* — extended semantically from the marine crustacean's adhesive behavior to any form of persistent clinging or attachment, physical or emotional.
 
 **Part of speech:** v.; also n.  **IPA:** /ˈbɑɾnkw̩/  **Foot:** (ˈH) with syllabic /w̩/ appendix.
+
+**Domains:** feelings, body.
 
 Phonological development: /b/ onset unchanged; /ɑːɹ/ with pre-consonantal /ɹ/ → /ɑɾ/ (tap; no vowel lengthening — the /eː/ lengthening pathway applies to coda /ɹ/, not pre-consonantal) [Open: pre-consonantal /ɹ/→/ɾ/ rule not stated explicitly in §4.4]; /n/ unchanged (onset of unstressed syllable, not subject to E1); /ɪ/ → ∅ (E3: unstressed vowel elision); cluster-internal /k/ stays [Open: cluster-internal /k/ shielded from onset debuccalization? §4.4.1 lists onset /k/→/h/ without cluster conditioning]; /əl/: /ə/ → ∅ (E3), /l/ → /w̩/ (syllabic glide in post-stress appendix position).
 
@@ -120,6 +125,8 @@ Phonological development: /b/ onset unchanged; /ɑːɹ/ with pre-consonantal /ɹ
 
 **Part of speech:** v.  **IPA:** /bɑˈɾ̥ɑmsː/  **Foot:** (L)(ˈH) [Open].
 
+**Domains:** talking.
+
 Phonological development: word-initial /pr/ → /bɑˈɾ̥/ (prep-breaking, §4.4.5): the cluster breaks with an epenthetic /ɑ/ `a`, /p/→/b/, and /r/ → devoiced tap /ɾ̥/ `ŕ`; root /ɑ/ written `au`; /m/ retained; unstressed final /əs/ → geminate /sː/ `ss` (the reduced vowel coalesces into the sibilant, not a syllable-boundary gemination) [Open]. *(Revised from *beŕaumss* — epenthetic /ɛ/ — by B12, 2026-06-23, to follow prep-breaking.)*
 
 #### Definition
@@ -135,6 +142,8 @@ Phonological development: word-initial /pr/ → /bɑˈɾ̥/ (prep-breaking, §4.
 
 **Part of speech:** v.  **IPA:** /bɑˈɾ̥ɑsː/  **Foot:** (L)(ˈH) [Open].
 
+**Domains:** mind.
+
 Phonological development: word-initial /pr/ → /bɑˈɾ̥/ (prep-breaking, §4.4.5): epenthetic /ɑ/ `a`, /p/→/b/, /r/ → /ɾ̥/ `ŕ` (superseding the earlier *baurrâuss* derivation, which used /ɻ/ `rr` + epenthetic /ɑ/); root /ɑ/ written `âu`; final /ɛs/+/s/ → geminate /sː/ `ss` (E3 elision feeding the geminate). [Open: the B12 study writes this headword *baŕâustts* (coda ⟨stts⟩); that coda revision is not derivable from the current rules — only the onset has been standardized to prep-breaking here. Confirm the intended coda.]
 
 #### Definition
@@ -149,6 +158,8 @@ Phonological development: word-initial /pr/ → /bɑˈɾ̥/ (prep-breaking, §4.
 
 **Part of speech:** v.  **IPA:** /bɑˈɾ̥ɛp/  **Foot:** (L)(ˈH) [Open].
 
+**Domains:** kitchen, food.
+
 Phonological development: word-initial /pr/ → /bɑˈɾ̥/ (prep-breaking, §4.4.5): epenthetic /ɑ/ `a`, /p/→/b/, /r/ → /ɾ̥/ `ŕ`; root /ɛ/ retained; final /p/ retained — no word-final voicing needed (the earlier *preb* /ˈprɛb/ analysis posited an unexplained final /p/→/b/; that flag is now moot, since the word simply ends in /p/).
 
 #### Definition
@@ -162,6 +173,8 @@ Phonological development: word-initial /pr/ → /bɑˈɾ̥/ (prep-breaking, §4.
 *parking lot* — the full compound, lexicalized as a single noun.
 
 **Part of speech:** n.  **IPA:** [Open]  **Foot:** [Open].
+
+**Domains:** places, travel.
 
 Phonological development: /p/ → /b/ onset [Open: before /ɑ/, the §4.4.1 refinement nominally blocks /p/→/b/; onset /p/→/b/ before /ɑ/ would extend the rule — new environment]; /ɑːɹk/ with pre-consonantal /ɹ/: /ɹ/→/ɾ/, /ɑ/ stays short (pre-consonantal, not coda) → /ɑɾ/ → `ar`; cluster-internal /k/ stays [Open: see *barnkw*]; /ɪ/ → ∅ or /ɛ/ [Open: unstressed /ɪ/ treatment]; /ŋl/ → /nː/ [Open: the §4.4.1 /nd/→/nː/ rule is regressive assimilation; /ŋl/→/nː/ would require a separate rule or a generalization — /ŋ/→/n/ by place assimilation to following lateral, then /nl/→/nː/ geminate]; *lot* /lɑt/: /l/ onset → [Open: onset /l/ treatment]; /ɑ/ → /o/ [Open: /ɑ/→/o/ not in §4.4.2]; /t/ → /ʔ/ (E2a) → appears to drop in the headword.
 
@@ -178,6 +191,8 @@ Phonological development: /p/ → /b/ onset [Open: before /ɑ/, the §4.4.1 refi
 
 **Part of speech:** v.  **IPA:** /ˈbɑnːw̩/  **Foot:** (ˈH) with syllabic /w̩/ appendix.
 
+**Domains:** mind.
+
 Phonological development: /p/→/b/ [Open: word-initial before /ɑ/ — outside both pass-out environments; see changelog]; /nd/→/nː/ (stand-out leveling); /ər/→/w̩/ (appendix).
 
 #### Definition
@@ -191,6 +206,8 @@ Phonological development: /p/→/b/ [Open: word-initial before /ɑ/ — outside 
 *bridge* — GA /brɪdʒ/.
 
 **Part of speech:** n.  **IPA:** /bɑˈɻɪts/  **Foot:** [Open].
+
+**Domains:** places, travel.
 
 Phonological development: /b/ retained; epenthetic /ɑ/ `au` breaks the cluster (not lengthened) — the **voiced sibling of prep-breaking** (§4.4.5): the same /ɑ/-epenthesis as /pr/, but the rhotic stays voiced /ɻ/ (no devoicing, since the stop is voiced); GA /ɻ/ retained (the *r* of *bridge* — broad GA "r" = /ɻ/), spelled `rr`, the **non-initial spelling of `rh`** [pending `orthography.md` propagation — see changelog]; /ɪ/ retained; /dʒ/ → /ts/ [Open: affricate /dʒ/→/ts/]. Attested in the *reś* example *Nou baurrits…* "(you) know the bridge…".
 
@@ -207,6 +224,8 @@ Phonological development: /b/ retained; epenthetic /ɑ/ `au` breaks the cluster 
 
 **Part of speech:** (1) v., (2) interj.  **IPA:** /bɑɾˈzĩ/  **Foot:** (H)(ˈL) [Open].
 
+**Domains:** travel, home.
+
 Phonological development: /b/ retained; /ɑːr/ → /ɑɾ/ (rhotic kept as tap, `aur`); /dʒ/ → /z/ [Open: affricate /dʒ/→/z/ — not in §4.4]; *in* /ɪn/ → nasalized /ĩ/ `ıĩ` (§3.6). Stress falls on the *in* particle, as is typical for prepositional-verb sources.
 
 #### Definition
@@ -222,6 +241,8 @@ Phonological development: /b/ retained; /ɑːr/ → /ɑɾ/ (rhotic kept as tap, 
 Onomatopoeic — imitates the sound of General American speech; reduplicative.
 
 **Part of speech:** ideophone (IDEO).  **IPA:** /bɑwoːˈwoː/  **Foot:** [Open] (ultimate-syllable stress; reduplication).  **[IPA Provisional — pending phonology pass, `ideophones.md` §2.]**
+
+**Domains:** sounds, talking.
 
 Phonological development: reduplicative onomatopoeia, not a regular derivation [Provisional]. Phonotactically exempt (`ideophones.md` §5).
 
@@ -240,6 +261,8 @@ Phonological development: reduplicative onomatopoeia, not a regular derivation [
 *what-we-call-home* — a descriptive circumlocution as etymon, suggesting this is a grammaticalized compound rather than a phonological borrowing of a GA simple word. The `?` in the headword may represent a phonemicized question or evidential particle built into the compound form.
 
 **Part of speech:** n.  **IPA:** [Open — compound form]  **Foot:** [Open].
+
+**Domains:** home.
 
 Phonological development: [Open — morphological compound; phonology of component parts pending analysis in a dedicated session].
 
@@ -260,6 +283,8 @@ The etymon "what-we-call-home" and the `?` character in the headword both sugges
 
 **Part of speech:** n.  **IPA:** /bɑˈjɑɾɛ̃/  **Foot:** (L)(ˈL) [Open: final syllable may be heavy if /ɛ̃/ is long].
 
+**Domains:** music.
+
 Phonological development: /v/ → /b/ onset [Open: /v/→/b/ environment; see *béntsıìy*, *boëś*]; /aɪ/ → /ɑ/ + glide /j/ retained as a separate segment [Open: expected reflexes of /aɪ/ are /eː/ or short /i/ per §4.4.2; /ɑ/+/j/ outcome is unattested — new conditioning environment or new rule]; /ə/ → ∅ (absorbed, E4); /l/ → /ɾ/ [Open: /l/→/ɾ/ not in §4.4.1; onset /l/ has no stated merger to tap; flag for phonology session]; /ɪn/: /n/ elides intervocalically (E1), nasalization transfers to /ɪ/ (S1) → /ɛ̃/ (lowering of /ɪ/ in this position [Open: /ɪ/→/ɛ/ under nasalization? not stated in §4.4.2]) → `ę`.
 
 #### Definition
@@ -274,6 +299,8 @@ Phonological development: /v/ → /b/ onset [Open: /v/→/b/ environment; see *b
 *manager* — GA /ˈmænɪdʒər/.
 
 **Part of speech:** n.  **IPA:** /bæˈɛ̃ĩj̃ː/  **Foot:** [Open].
+
+**Domains:** people, work.
 
 Phonological development [Open, heavy reduction]: /m/ → /b/ [Open]; /æ/ retained `ä`; the medial /nɪdʒ/ reduces, leaving a nasalized nucleus /ɛ̃ĩ/ `eĩ` [Open]; the final `yi` realizes phonemic /j̃ː/ (phonetically ≈ [jɪ]). (`ä` = /æ/.)
 
@@ -290,6 +317,8 @@ Phonological development [Open, heavy reduction]: /m/ → /b/ [Open]; /æ/ retai
 
 **Part of speech:** n.  **IPA:** /bɑ̃ˈɛ̃ː/  **Foot:** (L)(ˈH).
 
+**Domains:** food, produce.
+
 Phonological development: /bəˈnænə/ — both intervocalic /n/ elide (E1), each transferring nasalization to adjacent vowels (S1); initial /ə/ → /ɑ/ (E5 strengthening) + nasalized by left-flanking residue of first /n/ → /ɑ̃/ → `ą`; /æ/ (V₂) + nasalization from both flanking /n/ elisions → /ɛ̃/ via /æ/-before-nasal pathway (§4.4.2) with duration preserved; final /ə/ (V₃) absorbed into /ɛ̃/ as length suffix → /ɛ̃ː/ → `êų` (circumflex on ê: pitch + stress coincide; ogonek on ų: nasal long vowel).
 
 #### Definition
@@ -304,6 +333,8 @@ Phonological development: /bəˈnænə/ — both intervocalic /n/ elide (E1), ea
 *bicker* — to argue, to squabble.
 
 **Part of speech:** v.  **IPA:** /ˈbɛkw̩/  **Foot:** (ˈL)(L) [Open].
+
+**Domains:** talking, feelings.
 
 Phonological development: /b/ retained; /ɪ/ → /ɛ/ [Open: /ɪ/→/ɛ/ candidate rule — pending phonology session]; /k/ retained; GA *-er* /ər/ → syllabic /w̩/ appendix, written `w` — the etymological /r/ surfaces only in the progressive. Progressive-shaped *bekrrıĩ* [Open: pending §3.22 morphophonology / B12 — the linking-*r* return].
 
@@ -320,6 +351,8 @@ Phonological development: /b/ retained; /ɪ/ → /ɛ/ [Open: /ɪ/→/ɛ/ candida
 
 **Part of speech:** n./interj.  **IPA:** /ˈbɛlkm̩/ (reduplicated *belkmlkm* /ˈbɛlkm̩lkm̩/)  **Foot:** [Open].
 
+**Domains:** talking.
+
 Phonological development: /w/ → /b/ [Open: word-initial /w/→/b/]; /ɛl/ retained; /kəm/ → /km̩/ (schwa syncope, syllabic /m̩/).
 
 #### Definition
@@ -335,6 +368,8 @@ Phonological development: /w/ → /b/ [Open: word-initial /w/→/b/]; /ɛl/ reta
 *remember* — the recall event; the frames distribute GA's *remember/recall/reminisce* space (see *rhemmêś*).
 
 **Part of speech:** v.  **IPA:** /ˈbɛmːw̩/  **Foot:** (ˈH) with syllabic /w̩/ appendix.
+
+**Domains:** mind.
 
 Phonological development: unstressed /rɪ-/ → ∅ [Open: aphesis — §5 backlog]; /m/→/b/ (bat-mat); /mb/→/mː/ [New rule needed: homorganic nasal-stop leveling — stand-out parallel]; /ər/→/w̩/.
 
@@ -354,6 +389,8 @@ Linking *r* before vowel-initial suffixes: *bemmorret*, *bemmorreųt* (`phonolog
 *eventually* — from colloquial GA /vɛnt͡ʃ.li/; the GA reluctant-deferral connotation is not inherited.
 
 **Part of speech:** adv.  **IPA:** /bɛntsˈiː/  **Foot:** (L)(ˈH).
+
+**Domains:** time.
 
 Phonological development: /v/ → /b/ in onset [Open: §4.4.1 gives general /v/ → /r/ via the tap merger; onset /v/ → /b/ is a new environment not yet in §4.4]; /t͡ʃ/ spreads palatalization to adjacent /ɫ/ → /j/; /t͡ʃ/ then depalatalizes to /ts/ (§4.4.1); /ji/ → /iː/ smoothing [Open: §4.4.1 conditions /ɫ/ → /j/ on both flanks being high front vowels; left flank here is palatal consonant /t͡ʃ/ — extended environment or separate rule]; /n/ not intervocalic in /nt/ cluster, so E1 does not fire and /ɛ/ is not nasalized.
 
@@ -376,6 +413,8 @@ Anaphoric — anchors to the contextually available reference time, not necessar
 
 **Part of speech:** n.  **IPA:** /bɛˈniæ/  **Foot:** (L)(ˈH) [Open: whether final /æ/ is a separate light syllable or part of a diphthongal heavy nucleus with /i/].
 
+**Domains:** food, produce.
+
 Phonological development: /v/ → /b/ onset [Open: /v/→/b/ environment; see *béntsıìy*, *boëś*]; initial unstressed /ə/ → /ɛ/ (E5) → `e`; /n/ does not elide [Open: E1 targets intervocalic /n/; in *vanilla* the /n/ is onset of the stressed syllable between two vowels — possible blocking of E1 in stressed-onset position; needs rule statement]; stressed /ɪ/ + /j/ glide (from /ɫ/→/j/ between flanking high front vowels /ɪ/ and /ə/) → /iː/ → `ıî` (circumflex = pitch + stress coincide) [Open: left flank is /ɪ/, right flank /ə/ — §4.4.1 conditions /ɫ/→/j/ on *high front vowel* flanks; /ə/ is not high front]; final /ə/ strengthens to /æ/ [Open: /ə/→/æ/ in word-final position rather than expected /a/ from E5; new conditioning].
 
 #### Definition
@@ -391,6 +430,8 @@ Phonological development: /v/ → /b/ onset [Open: /v/→/b/ environment; see *b
 
 **Part of speech:** n.  **IPA:** /ˈbɛnkwʔ/  **Foot:** (ˈH) with appendix [Open].
 
+**Domains:** food.
+
 Phonological development: the GA input already supplies short raised [ɛ] for pre-/ŋk/ *a* (speaker judgment; conditioning hunch: the syllable-final /k/ — *bank* vs. *bang* length; input-dialect note, not a conlang rule); /ŋk/ → /nk/ (no /ŋ/ phoneme — [ŋ] is the /n/ allophone before /k/; see changelog); /ət/: E3, /t/→/ʔ/ `tt` (§2.7).
 
 #### Definition
@@ -404,6 +445,8 @@ Phonological development: the GA input already supplies short raised [ɛ] for pr
 *minuscule* — the adjective; no semantic shift.
 
 **Part of speech:** adj.  **IPA:** /bɛnˈski/  **Foot:** (H)(ˈL).
+
+**Domains:** qualities.
 
 Phonological development: /m/ → /b/ (§4.4.1 /m,p/→/b/ in onset); /ɪ/ (V₁) → /ɛ/ [Open: /ɪ/→/ɛ/ rule; see *nobêt*]; /n/ does not elide [Open: same stressed-onset blocking question as *benıîä*]; /ɪ/ (V₂) → ∅ (E3: unstressed vowel, cluster-feeding position); /sk/ cluster-internal → both segments stay [Open: onset /s/ debuccalizes to /h/ normally; cluster position may shield it — not stated in §4.4.1]; /j/ (from /kj/) → /j/ → `y`; /uːl/: /uː/ → /ɪ/ (§4.4.2 back-vowel fronting, short reflex), /l/ → ∅ (E2c coda-singleton elision) → /ɪ/ → `i`.
 
@@ -420,6 +463,8 @@ Phonological development: /m/ → /b/ (§4.4.1 /m,p/→/b/ in onset); /ɪ/ (V₁
 
 **Part of speech:** n.  **IPA:** /bɛˈnjõ/ [Open: medial cluster]  **Foot:** [Open].
 
+**Domains:** mind, talking.
+
 Phonological development: initial /ə/ → ∅ [Open: aphesis]; /p/→/b/ (pass-out, medial at the etymon stage); /ɪ/→/ɛ/ [Open: lowering]; /jən/→/jõ/ (§3.6). Pitch: high on *é* (etymon stress); the final *ǫ* carries stress and an implied grave — the pitch mark folds under the ogonek (orthography §3.1 fold hierarchy).
 
 #### Definition
@@ -433,6 +478,8 @@ Phonological development: initial /ə/ → ∅ [Open: aphesis]; /p/→/b/ (pass-
 *mint* — the herb, flavor, and candy type; no semantic shift.
 
 **Part of speech:** n.  **IPA:** /bɛn̥t/  **Foot:** (ˈH) heavy monosyllable.
+
+**Domains:** food, produce.
 
 Phonological development: /m/ → /b/ (§4.4.1); /ɪ/ → /ɛ/ [Open: /ɪ/→/ɛ/ rule]; coda /nt/ cluster: /t/ devoices /n/ → /n̥/ → `ń`; /t/ remains word-final [Open: E2a predicts coda /t/→/ʔ/; retention of surface /t/ here is unexpected — possible blocking in coda-cluster position, or the devoiced /n̥/ feeds a different coda treatment].
 
@@ -449,6 +496,8 @@ Phonological development: /m/ → /b/ (§4.4.1); /ɪ/ → /ɛ/ [Open: /ɪ/→/ɛ
 *bit ago* — the temporal phrase "a little bit before (now)"; narrowed to the short interval just preceding speech time.
 
 **Part of speech:** adv.  **IPA:** /bɛˈoo/  **Foot:** (L)(ˈL)(L) [Open: foot structure of the /oo/ hiatus sequence].
+
+**Domains:** time.
 
 Phonological development: *bit* /bɪt/: /b/→/b/; /ɪ/→/ɛ/ [Open: /ɪ/→/ɛ/ rule]; /t/→/ʔ/ (E2a) → lexical drop [Open: /ʔ/-drop here is not in a grammaticalized particle; if the /ʔ/ is simply silent, or if it merges with the following vowel onset, needs rule statement]; initial /ə/ of *ago* → /o/ [Open: /ə/→/o/ not fully stated in §4.4.2; see *nobêt* for a parallel]; /ɡ/ elides (E1: intervocalic tap-merger consonant) → hiatus; /oʊ/ → /o/; resulting /o.o/ hiatus retained → `o·ò` (interpunct marks hiatus; grave on final `ò` = stress in formal register). Pitch on /bɛ/ (GA primary stress on *bit*); stress on final /o/.
 
@@ -467,6 +516,8 @@ Cross-refs: *rıírǫ* (general "approximately; around"); *récquıìś* (also; 
 
 **Part of speech:** v.  **IPA:** /ˈbɛsːts/  **Foot:** (ˈH) heavy monosyllable.
 
+**Domains:** talking.
+
 Phonological development: /m/ → /b/ (§4.4.1); /æ/ → /ɛ/ (short reflex); /s/: gemination [Open: the /s/→/sː/ gemination rule applies at the syllable boundary preceding stress; in *message* the stressed syllable is the first (/ˈmæs/), so the /s/ is not preceding stress but within the stressed syllable — rule environment unclear for this case]; /ɪ/ → ∅ (E3); /dʒ/ → /ts/ [Open: /dʒ/ is in E1's intervocalic set; in word-final coda position with no following vowel, coda /dʒ/ treatment is unspecified — /dʒ/→/ts/ by partial devoicing is a plausible path but not a stated rule].
 
 #### Definition
@@ -482,6 +533,8 @@ Phonological development: /m/ → /b/ (§4.4.1); /æ/ → /ɛ/ (short reflex); /
 
 **Part of speech:** ideophone (IDEO), onomatopoeia.  **IPA:** /ˈbɛt ˈbæt/  **Foot:** [Open].  **[IPA Provisional.]**
 
+**Domains:** sounds.
+
 Phonological development: *pitter-patter* compressed to two beats *bet bät*; expressive vowel alternation [Provisional]. (`ä` = /æ/.) Phonotactically exempt (`ideophones.md` §5).
 
 #### Definition
@@ -496,6 +549,8 @@ Phonological development: *pitter-patter* compressed to two beats *bet bät*; ex
 *backstory* — from the colloquial GA compound *back* + *story*; all three senses are extensions of "the narrative behind something."
 
 **Part of speech:** n.  **IPA:** /ˈbɛːk.soɛ/  **Foot:** (ˈH)(L) [Open].
+
+**Domains:** mind, talking.
 
 Phonological development: *back* /bæk/: /b/→/b/; /æ/→/ɛː/ (§4.4.2 /æ/→/eː/ pathway) → `éu`; coda /k/ → [Open: coda /k/→∅ per §4.4.1, but headword retains /k/ — possible cluster-shielding if /k/ is reanalyzed as onset of second syllable, but then onset /k/→/h/; /k/ surface retention unexplained]; *story* /ˈstɔːɹi/: /st/→ stays? [Open: /st/→/ts/ applies in onset; here /s/ is onset of the second component → /s/ onset stays as /s/]; /ɔːɹ/ coda → /o/ (§4.4.2 /or/→/oː/ pathway, shortened); final /i/ → [Open: /i/ in final position → syllabic /j/ or stays? headword shows bare `è` = stressed /ɛ/].
 
@@ -513,6 +568,8 @@ Phonological development: *back* /bæk/: /b/→/b/; /æ/→/ɛː/ (§4.4.2 /æ/�
 *where-she-goes-to-school* — a descriptive circumlocution as etymon; a grammaticalized compound form designating the institution.
 
 **Part of speech:** n.  **IPA:** [Open — compound form]  **Foot:** [Open].
+
+**Domains:** places, work.
 
 Phonological development: [Open — morphological compound; phonology of component parts pending analysis in a dedicated session. See *bawiiquoh?*, *bewii·iit*, *bewiipessô* for parallel constructions.]
 
@@ -533,6 +590,8 @@ Like *bawiiquoh?* and the *bewii-* compounds, the etymon is a periphrastic descr
 
 **Part of speech:** adj.  **IPA:** /bɛːsp/  **Foot:** (ˈH) heavy monosyllable.
 
+**Domains:** qualities.
+
 Phonological development: /m/ → /b/ (§4.4.1); /æ/ → /ɛː/ (§4.4.2 /æ/→/eː/) → `eu`; /s/: non-onset /s/ before further consonants [Open: coda /s/ treatment — expected /z/ by non-onset default, but surface /s/ here; devoicing by adjacent voiceless context?]; /ɪ/ → ∅ (E3: unstressed, cluster-feeding); /v/ → /b/? → /p/ [Open: coda /v/ treatment not in §4.4.1; /v/ → /b/ in onset is the flagged-open rule; coda /v/ might devoice to /f/→/θ/ via /f/→/θ/ rule, or → /p/ by labial stop]; the resulting coda cluster `sp` is the final form.
 
 #### Definition
@@ -550,6 +609,8 @@ Cross-refs: *benskyi* (antonym: small, tiny).
 
 **Part of speech:** v.  **IPA:** /ˌbɛːˈsːoː/  **Foot:** (ˌH)(ˈH).
 
+**Domains:** body, home.
+
 Phonological development: /pʰ/ → /b/ before /ɛ, ɛː/ (committed; `phonology.md` §4.4.1); /æ/ → /ɛː/; /s/ geminates to /sː/ at stressed-syllable boundary rather than debuccalizing; /aʊ/ → /oː/; coda /ʔ/ dropped (lexically conditioned in grammaticalized particles; careful-speech variant /ˌbɛːˈsːoːʔ/ exists). Progressive-shaped form *beussno* [Open: pending §3.22 morphophonology / B12].
 
 #### Definition
@@ -566,6 +627,8 @@ Phonological development: /pʰ/ → /b/ before /ɛ, ɛː/ (committed; `phonology
 
 **Part of speech:** n.  **IPA:** /bɛ̃ːtw̩/  **Foot:** (ˈH) with syllabic /w̩/ tail.
 
+**Domains:** food, work.
+
 Phonological development: /b/→/b/; /ɛn/: /n/ elides (E1: treated as intervocalic between the stressed /ɛ/ and following coda cluster) [Open: E1 canonically targets intervocalic consonants between full vowels; here /n/ is in coda before /t/ — whether E1 fires in this environment is unresolved]; nasalization on /ɛ/ (S1) → /ɛ̃/; length of /ɛ̃ː/ [Open: source of length unclear — possible compensatory lengthening after /n/-elision (not a stated rule), or analogical extension of `eu`-digraph for long vowels]; /t/ stays [Open: E2a predicts /t/→/ʔ/; cluster-position blocking?]; /oʊ/ → /oː/ → syllabic /w̩/ in appendix position (§4.3 step 7).
 
 #### Definition
@@ -581,6 +644,8 @@ Phonological development: /b/→/b/; /ɛn/: /n/ elides (E1: treated as intervoca
 
 **Part of speech:** n.  **IPA:** [Open — compound form]  **Foot:** [Open].
 
+**Domains:** kitchen, home.
+
 Phonological development: [Open — morphological compound; pending analysis. See *bawiiquoh?*, *beušiioskô*, *bewiipessô* for parallel constructions.]
 
 #### Definition
@@ -595,6 +660,8 @@ Phonological development: [Open — morphological compound; pending analysis. Se
 *where-we-pass-out* — descriptive circumlocution based on *beussou* (to fall asleep from fatigue); grammaticalized compound.
 
 **Part of speech:** n.  **IPA:** [Open — compound form]  **Foot:** [Open].
+
+**Domains:** home.
 
 Phonological development: [Open — morphological compound; the `bewii-` element likely encodes a locative or directional morpheme; `-pessô` contains *beussou*-stem material. Pending dedicated morphology session.]
 
@@ -613,6 +680,8 @@ Cross-refs: *beussou* (to fall asleep; stem of the `-pessô` component); *bewii�
 
 **Part of speech:** n.  **IPA:** /ˈbɛjkw̩/  *(headword respelled from* beykw *for §3.4 `ei` conformance, v3.1)*  **Foot:** (ˈH) with syllabic /w̩/ tail.
 
+**Domains:** travel.
+
 Phonological development: /v/ → /b/ onset [Open: /v/→/b/ environment; see *béntsıìy*]; /iː/ → /ɛ/ [Open: /iː/→/ɛ/ not in §4.4.2; expected reflex of GA /iː/ is /iː/ or possibly /i/; short /ɛ/ outcome would require a new rule]; /ɪ/ → /j/ (glide formation in hiatus with preceding /ɛ/) → `y` [Open: /ɪ/→/j/ conditioned by hiatus; not the same environment as the /ɫ/→/j/ rule in §4.4.1]; /k/ cluster-internal stays [Open: see *barnkw*]; /l/ → /w̩/ (syllabic glide, E2c + final position) → `w`.
 
 #### Definition
@@ -629,6 +698,8 @@ Phonological development: /v/ → /b/ onset [Open: /v/→/b/ environment; see *b
 
 **Part of speech:** adv.  **IPA:** /beiˈskiː/  **Foot:** [Open].
 
+**Domains:** hedges.
+
 Phonological development [Open]: /b/ retained; /eɪ/→/ei/ `ei`; medial /ɪ/ syncope → /sk/; /li/→/iː/ `iiy`.
 
 #### Definition
@@ -643,6 +714,8 @@ Phonological development [Open]: /b/ retained; /eɪ/→/ei/ `ei`; medial /ɪ/ sy
 *panic* — the verb, with semantic extension to worry and apprehension.
 
 **Part of speech:** v.  **IPA:** /bɛ̃ˈink/  **Foot:** (L)(ˈH) [Open: whether the /ɛ̃/ syllable is light or heavy].
+
+**Domains:** feelings.
 
 Phonological development: /p/ → /b/ (§4.4.1); /æ/ + following /n/ → /ɛ̃/ (/æ/-before-nasal pathway §4.4.2, short reflex) [Open: §4.4.2 predicts /ɛː/ long; short /ɛ̃/ here suggests the length component is blocked when /n/ stays as onset rather than eliding]; /n/ stays as onset of second syllable (E1 blocked — /n/ is onset of unstressed syllable adjacent to a stressed vowel, same blocking environment as *benıîä* and *benskyi*); /ɪ/ → /i/ (tense short) [Open: /ɪ/→/i/ tense promotion not in §4.4.2]; /k/ in coda stays [Open: coda /k/→∅ expected per §4.4.1; retention unexplained].
 
@@ -661,6 +734,8 @@ Phonological development: /p/ → /b/ (§4.4.1); /æ/ + following /n/ → /ɛ̃/
 
 **Part of speech:** n.  **IPA:** /boes/  **Foot:** (ˈH) heavy monosyllable (diphthong nucleus).
 
+**Domains:** sounds, body.
+
 Phonological development: /v/ → /b/ onset [Open: /v/→/b/ environment; same flag as *béntsıìy*; contrast *reųś*, *rékwıì* where /v/ → /r/ — possible conditioning by following vowel quality]; /ɔɪ/ → /oe/ (diphthong; same pathway as *boë* ← *boy*) [Open: orthographic note — established grapheme for /oe/ is the ligature `oë`; `boeś` written without ligature may represent hiatus /bo.ɛs/ rather than the diphthong /boes/ — user confirmation needed]; final /s/ → /s/ (devoiced, written `ś`: GA /s/ was voiceless; non-onset default is /z/, so devoicing mark required to preserve voicelessness).
 
 #### Definition
@@ -677,6 +752,8 @@ Cross-refs: *boë* (same /ɔɪ/→/oe/ derivation from *boy*).
 *boy* — the noun; no semantic shift.
 
 **Part of speech:** n.  **IPA:** /boe/  **Foot:** (ˈH) heavy monosyllable (diphthong nucleus).
+
+**Domains:** people.
 
 Phonological development: /b/→/b/; /ɔɪ/→/oe/ (diphthong → `oë`) [Open: /ɔɪ/→/oe/ not explicitly stated in §4.4.2, which lists /ai/→/eː/~/i/ but not /ɔɪ/; this is a likely new rule or sub-case needed]; no coda consonant.
 
@@ -695,6 +772,8 @@ Cross-refs: *boëś* (same /ɔɪ/→/oe/ derivation from *voice*).
 
 **Part of speech:** n.  **IPA:** [Open: ≈ /bõˈɛiio/; compound vowel sequence unsettled]  **Foot:** [Open].
 
+**Domains:** drink, kitchen.
+
 Phonological development [Open, compound]: *morning* → *bǫ* /bõ/ (/m/ → /b/; heavy reduction with nasalization) [Open]; *joe* → *ëiio* [Open: diphthong/hiatus shape].
 
 #### Definition
@@ -709,6 +788,8 @@ Phonological development [Open, compound]: *morning* → *bǫ* /bõ/ (/m/ → /b
 *this* — the onomatopoeia-object marker (clitic): introduces a sound-word as the thing perceived (`ideophones.md` §4).
 
 **Part of speech:** clitic (onomatopoeia-object marker).  **IPA:** /-ðs/  **Foot:** —.
+
+**Domains:** little-words, sounds.
 
 Phonological development: *this* /ðɪs/ → /-ðs/ (vowel syncope; /ð/ + /s/).
 
@@ -725,6 +806,8 @@ Phonological development: *this* /ðɪs/ → /-ðs/ (vowel syncope; /ð/ + /s/).
 
 **Part of speech:** n.  **IPA:** /ɛ/  **Foot:** (ˈL) light monosyllable.
 
+**Domains:** food, kitchen.
+
 Phonological development: /ɛ/ → /ɛ/ (unchanged); coda /g/ → ∅ [Open: §4.4.1 specifies coda /k/→∅; coda /g/ (voiced counterpart) is not listed — analogous loss assumed; or /g/ elides via E1 if treated as being between a vowel and silence, but that environment is non-standard]. Pitch and stress coincide on the only vowel; casual orthography = bare `e`; formal = `ê`.
 
 #### Definition
@@ -739,6 +822,8 @@ Phonological development: /ɛ/ → /ɛ/ (unchanged); coda /g/ → ∅ [Open: §4
 *A.M.* — the initialism (morning).
 
 **Part of speech:** n.  **IPA:** /ˈeiɛm/  **Foot:** [Open].
+
+**Domains:** time.
 
 Phonological development: spelled-out initialism — letter-names *A* /eɪ/ + *M* /ɛm/ → /ˈeiɛm/, stress on the first letter-name (parallel to *piiem*).
 
@@ -755,6 +840,8 @@ Phonological development: spelled-out initialism — letter-names *A* /eɪ/ + *M
 
 **Part of speech:** adv. (interrogative).  **IPA:** /ɛmːˈɑwːɛ/  **Foot:** [Open].
 
+**Domains:** little-words.
+
 Phonological development: [Open — the reduction of a three-word phrase /ɪn.wʌt.weɪ/ to a single phonological word involves several steps not individually attested: initial /ɪn/ + adjacent /w/ of *what* → /m/ (possible labial assimilation of /n/ before /w/) → /mː/ (gemination of boundary /m/); /wʌt/: /ʌ/→/ɑ/ (§4.4.2 /u,ʊ,ʌ/→/ɨ/ pathway; short /ɑ/ reflex), /t/→/ʔ/→drops; /weɪ/: /w/→/wː/ (gemination at boundary?) → /wː/ → `ww`; /eɪ/→/ɛ/ → `è`. Most steps are unattested; this entry records the headword as given with the full derivation flagged for a dedicated session.]
 
 #### Definition
@@ -770,6 +857,8 @@ Adverb "inside; internally." [Etymon [Open].]
 
 **Part of speech:** adv.  **IPA:** /ɛˈn̥hi/  **Foot:** [Open].
 
+**Domains:** places, home.
+
 Phonological development [Open: etymon/derivation pending]; `ń` = devoiced /n̥/; `h` = breathy.
 
 #### Definition
@@ -784,6 +873,8 @@ Phonological development [Open: etymon/derivation pending]; `ń` = devoiced /n̥
 *to apply* — GA /əˈplaɪ/, a plain /pl/ onset cluster (no gemination — reanalyzed 2026-06-23, B12 corrections; the earlier *epplii* analysis posited a spurious ambisyllabic /pp/).
 
 **Part of speech:** v.  **IPA:** /ˈɛpli/  **Foot:** [Open].
+
+**Domains:** home.
 
 Phonological development: initial unstressed /ə/ → /ɛ/ (the apply onset, E5; committed, `phonology.md` §4.4.9); /pl/ onset cluster retained (no geminate); /aɪ/ → short /i/ (the price splinter) [Open: conditioning — see `phonology.md` §5.1 data-gathering bucket].
 
@@ -804,6 +895,8 @@ Cross-refs: *rhiiy* (morpheme entry for the `rhiiy-` prefix); *rhiiysseunnou*, *
 
 **Part of speech:** n.  **IPA:** /ɛːˈskɾi/  **Foot:** (H)(ˈL).
 
+**Domains:** food.
+
 Phonological development: *ice* /aɪs/: /aɪ/ → /ɛː/ (§4.4.2 /ai/→/eː/ pathway) → `éu`; pitch stays on this syllable (GA primary stress on *ice*). At the *ice-cream* juncture, the /s/ of *ice* meets the /kr/ onset of *cream* → resulting cluster /skɾ/ [Open: onset /k/ normally debuccalizes to /h/; in the cluster /sk/, the /k/ is shielded — or /kr/→/ɾ̥/ (§4.4.1) collapses the cluster differently; exact path unclear]. *cream* /kriːm/: /r/ → /ɾ/ (tap); /iː/ → /i/ short (secondary stress, final vocalic position in conlang) → `ıì` (dotless `ı` = first element of `ii` with following diacritic; grave `ì` = stress); /m/ in coda → ∅ [Open: coda /m/ treatment not in §4.4].
 
 #### Definition
@@ -818,6 +911,8 @@ Phonological development: *ice* /aɪs/: /aɪ/ → /ɛː/ (§4.4.2 /ai/→/eː/ p
 *any* — NPI determiner/pronoun "any whatsoever," GA /eni/. Inherited as a strict negative-polarity item, narrowed to the concord reinforcer of the go-ahead negative marker *skwkw*.
 
 **Part of speech:** aux. (VOL.NEG concord reinforcer; doubly restricted NPI).  **IPA:** /ɛ̃j̃/  **Foot:** [Open].
+
+**Domains:** little-words.
 
 Phonological development: intervocalic /n/ elides, leaving nasalization on the flanking vowels (E1, S1); smooths to a single nasalized /ej/ diphthong [Open: smoothing conditioned by function-word status — a lexical word such as *penny* would remain disyllabic; conditioning rule not yet in §4]. Glide nasalization predictable from the nasalized vowel; left unmarked (headword *ęy*, not *ęỹ*).
 
@@ -844,6 +939,8 @@ In nested negation, *ęy* sits locally with the lexical verb (post-*skwkw*), whi
 
 **Part of speech:** n.  **IPA:** /ˈhitsn̩/  **Foot:** (ˈL) with syllabic /n̩/ appendix [Open].
 
+**Domains:** kitchen, home.
+
 Phonological development: /k/→/h/ (k-breathing); /ɪ/→/i/ [Open: tensing]; /tʃ/→/ts/ (ch-funnelling); /ən/→/n̩/ (E3 + syllabic promotion).
 
 #### Definition
@@ -857,6 +954,8 @@ Phonological development: /k/→/h/ (k-breathing); /ɪ/→/i/ [Open: tensing]; /
 *how so* — a rhetorical question reduced to a fixed interrogative particle. The GA rhetorical "how so?" (requesting explanation or justification) has lexicalized as a general why-question word.
 
 **Part of speech:** interrogative particle.  **IPA:** /hoˈho/  **Foot:** (L)(ˈL).
+
+**Domains:** little-words.
 
 Phonological development: *how* /haʊ/: onset /h/→/h/; /aʊ/→/o/ (§4.4.2); *so* /soʊ/: onset /s/→/h/ (debuccalization); /oʊ/→/o/; circumflex on final `ô` = pitch + stress coincide (GA stress and conlang final stress both on the second syllable). The internal `h` (written between the two `o` vowels) marks the boundary; if read as a hiatus-delimiter it is silent; if phonologically active it marks breathy voice on the adjacent vowel (see `orthography.md` §1).
 
@@ -873,6 +972,8 @@ Phonological development: *how* /haʊ/: onset /h/→/h/; /aʊ/→/o/ (§4.4.2); 
 
 **Part of speech:** n.  **IPA:** /ˈhoiõ/  **Foot:** [Open].
 
+**Domains:** kitchen, food.
+
 Phonological development: /s/ → /h/ (debuccalization); intervocalic /d/ elided (E1); /oʊ/ → /o/; final /-iəm/: labial /m/ colors the schwa, deviating from the expected /ɛ/ outcome → /o/ rather than /iɛm/ or /iɛ̃b/; /m/ then elides, leaving nasalization on the vowel → /-iõ/ (written *iiǫ*). [Open: labial-coloring-of-schwa + /m/-elision-with-nasalization proposed as a productive rule for all *-ium* endings — attested or predictable in *podium*, *Colosseum*, *Liam*; to be formalized in `phonology.md` in a dedicated session.]
 
 #### Definition
@@ -887,6 +988,8 @@ Phonological development: /s/ → /h/ (debuccalization); intervocalic /d/ elided
 *countenance* — narrowed to the concrete body-part term; facial expression, demeanor, and composure senses not inherited.
 
 **Part of speech:** n.  **IPA:** /ˈhoʔn̩ʔn̩ts/  **Foot:** (ˈH) with multiple syllabic-C nuclei.
+
+**Domains:** body.
 
 Phonological development: onset /k/ → /h/; /aʊ/ → /o/; E3 schwa elision in unstressed positions; /n/ → syllabic /n̩/; /st/ → /ts/; coda /ʔ/ preserved.
 
@@ -907,6 +1010,8 @@ A showcase for syllabic-consonant phonology: three nuclei follow the stressed vo
 
 **Part of speech:** n.  **IPA:** /ˈhohoˌnɪt/  **Foot:** (ˈH)(L)(L) [Open: foot structure of three-syllable output].
 
+**Domains:** food, produce.
+
 Phonological development: onset /k/→/h/ twice (§4.4.1, both syllables); /oʊ/→/o/ (§4.4.2) for both /koʊ/ syllables; medial /ə/ → /o/ [Open: E3 predicts /ə/→∅, which would give cluster /hn/; the surface /o/ between the second /h/ and /n/ requires /ə/→/o/ rather than elision — same open rule as *nobêt* but without the /n/-conditioning; possibly a more general /ə/→/o/ rule in unstressed open-syllable position before a nasal]; /n/ stays (onset of the secondary-stressed syllable, same stress-onset blocking environment as *benıîä* etc.); /ʌ/→/ɪ/ (§4.4.2); /t/ stays [Open: E2a predicts /t/→/ʔ/].
 
 #### Definition
@@ -922,6 +1027,8 @@ Phonological development: onset /k/→/h/ twice (§4.4.1, both syllables); /oʊ/
 
 **Part of speech:** n. (two-word headword).  **IPA:** /hoe ˈhos/  **Foot:** (ˈH)(ˈH) [two phonological words].
 
+**Domains:** kitchen, food.
+
 Phonological development: *soy* /sɔɪ/: onset /s/→/h/ (debuccalization); /ɔɪ/→/oe/ (diphthong; same pathway as *boë* ← *boy*) → `hoë`; *sauce* /sɔːs/: onset /s/→/h/ (debuccalization); /ɔː/→/o/ (§4.4.2 /au,or/→/o/); coda /s/: GA source was voiceless /s/ → non-onset default is /z/, so devoiced mark required → `ś`; circumflex on `ô`... actually the headword is `hoś` (no circumflex): the formal-register circumflex is absent in the casual form; stress falls on the second phonological word (`hoś`).
 
 #### Definition
@@ -936,6 +1043,8 @@ Phonological development: *soy* /sɔɪ/: onset /s/→/h/ (debuccalization); /ɔ�
 *click* — the impersonal idiom *it clicked*.
 
 **Part of speech:** v. (impersonal)  **IPA:** /ˈkli/  **Foot:** (ˈL) — light monosyllable, licensed (`phonology.md` §8.1).
+
+**Domains:** mind.
 
 Phonological development: /kl/ onset shielded; coda /k/ → ∅ (coda k-loss).
 
@@ -954,6 +1063,8 @@ Perfect *klikt* (< *clicked*): the etymological /k/ resurfaces before the suffix
 
 **Part of speech:** conj.  **IPA:** /ˈkji/  **Foot:** [Open].
 
+**Domains:** little-words.
+
 Phonological development: *cue* /kjuː/ → /kji/ (`ky` /kj/; /uː/→/i/ `ii`).
 
 #### Definition
@@ -968,6 +1079,8 @@ Phonological development: *cue* /kjuː/ → /kji/ (`ky` /kj/; /uː/→/i/ `ii`).
 *make it* — the fused phrase; senses split on subject animacy.
 
 **Part of speech:** v.  **IPA:** /ˈmeikʔ/  **Foot:** (ˈH) with /kʔ/ appendix.
+
+**Domains:** travel, time.
 
 Phonological development: /eɪ/→`ei`; /k/ cluster-internal; *it*: E3, /t/→/ʔ/ `tt` (§2.7).
 
@@ -986,6 +1099,8 @@ Irregular concord *meirtt* /ˈmeiɾʔ/ — the preserved GA past *made it*, /d/�
 
 **Part of speech:** interj.  **IPA:** /meiˈɾei/  **Foot:** [Open].
 
+**Domains:** talking, travel.
+
 Phonological development [Open]: from Fr. *m'aidez* /mɛˈde/; /m/ retained; vowels → `ei` /ei/; /d/→/ɾ/ (tap) `r`.
 
 #### Definition
@@ -1001,6 +1116,8 @@ Phonological development [Open]: from Fr. *m'aidez* /mɛˈde/; /m/ retained; vow
 
 **Part of speech:** n.; v.  **IPA:** /ˈm̥iː/  **Foot:** (ˈH).
 
+**Domains:** feelings, body.
+
 Phonological development: /sm/→/m̥/ (s-breathing collapsing into nasal devoicing, §2.3); /aɪ/→/iː/ (price splinter, long reflex; offglide → `iiy`); coda /l/ → ∅.
 
 #### Definition
@@ -1014,6 +1131,8 @@ Phonological development: /sm/→/m̥/ (s-breathing collapsing into nasal devoic
 *(i)n a bit* — from colloquial GA /nəbɪt/ (initial /ɪ/ of "in" already elided in GA liaison).
 
 **Part of speech:** adv.  **IPA:** /noˈbɛʔ/  **Foot:** (L)(ˈL) [Open: depends on whether coda /ʔ/ contributes weight].
+
+**Domains:** time.
 
 Phonological development: /ɪ/ of "in" elided at GA stage (colloquial liaison; not a conlang rule); /ə/ of "a" → /o/ in nasal environment [Open: /ə/ → /o/ rounding after /n/ not in §4.4.2; new rule needed]; /ɪ/ of "bit" → /ɛ/ after /b/ [Open: this lowering not in §4.4.2; new rule needed]; /t/ → /ʔ/ (E2a).
 
@@ -1036,6 +1155,8 @@ Deictic — anchored to speech time (t₀); prospective, denoting a short interv
 
 **Part of speech:** n.  **IPA:** /noˈblɛ̃/  **Foot:** [Open].
 
+**Domains:** mind, talking.
+
 Phonological development [Open, irregular]: *the* → /no/ [Open]; *blank* /blæŋk/ → /blɛ̃/ `blę` (/bl/ retained; /æ/ → nasalized /ɛ̃/ from the following /ŋk/; coda /ŋk/ → ∅ leaving nasalization).
 
 #### Definition
@@ -1050,6 +1171,8 @@ Phonological development [Open, irregular]: *the* → /no/ [Open]; *blank* /blæ
 *not quite* — adverbial phrase "approximately; falling short of," colloquial GA /nɑʔ kwaɪʔ/ (from /nɑt kwaɪt/ with coda glottalization). Lexicalized as a single unit before grammaticalizing as the get-oneself negative marker. The approximative-from-below semantics is inherited and underlies both the high-scope frustrative reading and the low-scope attenuative reading. Also productive as a derivational element forming "a small lack" compounds (see Morphology).
 
 **Part of speech:** aux. (LVC.NVOL.NEG); also adv. (temporal proximative, substitutional apologetic); also deriv. prefix.  **IPA:** /noˈkʷːi/  **Foot:** [Open].
+
+**Domains:** little-words.
 
 Phonological development: /ɑ/ → /o/ (raising-and-rounding, word-initially and after /n/) [Open: new rule, not in §4]; /aɪ/ → /i/; /ʔk/ → geminate /kʷː/ (coda glottal of *not* assimilates to and geminates the following /k/, which labializes from the /w/ of *quite*) [Open: /ʔk/-gemination rule not in §4]; final coda /ʔ/ (from *quite*'s /t/) drops [Open: coda /ʔ/ drop condition at compound junctions]; the final /i/ from /aɪ/ carries stress and pitch (circumflex in headword). Spelling: `cqu` for /kʷː/ — now recorded in `orthography.md` §2.4; standardization (`cqu` vs. `kkw`) remains [Open] there (§6).
 
@@ -1090,6 +1213,8 @@ Has both high scope (sense 1) and low scope (sense 2), in contrast to *skwkw* (h
 
 **Part of speech:** n.  **IPA:** [Open].  **Foot:** [Open].
 
+**Domains:** drink.
+
 Phonological development: *nocquii-* + vowel-initial base. [Open: the *nocquıî* Morphology section specifies a linker *-e-* before vowel- or rhotic-initial bases, predicting *nocquiieayo*; headword *nocquiiayo* has no linker — reconcile combining-form rule.]
 
 Cross-refs: *nocquıî* (deriving prefix); *ayo* "joe; coffee" (base, not yet an entry); *nocquiie-ŕóųzǫ*, *nocquiissprıĩ* (parallel *nocquii-* compounds).
@@ -1106,6 +1231,8 @@ Cross-refs: *nocquıî* (deriving prefix); *ayo* "joe; coffee" (base, not yet an
 *nocquii-* "a small lack" + *ŕóųzǫ* "chromosome" (base not yet an entry; GA source and derivation [Open]). Named for the chromosomal difference characteristic of the condition.
 
 **Part of speech:** n.  **IPA:** [Open].  **Foot:** [Open].
+
+**Domains:** people, health.
 
 Phonological development: *nocquii-* + rhotic-initial base takes the linker *-e-* (see *nocquıî* Morphology). Base derivation [Open].
 
@@ -1124,6 +1251,8 @@ Cross-refs: *nocquıî* (deriving prefix); *nocquiiayo*, *nocquiissprıĩ* (para
 
 **Part of speech:** n.  **IPA:** [Open].  **Foot:** [Open].
 
+**Domains:** weather, time.
+
 Phonological development: at the *nocquii-* + *spr-* junction, the dropped coda /ʔ/ geminates the following /s/ → /sː/ (spelled *ss*); final nasalization from *spring*'s /ŋ/ transferred to vowel. Base derivation [Open].
 
 Cross-refs: *nocquıî* (deriving prefix); *nocquiiayo*, *nocquiie-ŕóųzǫ* (parallel *nocquii-* compounds).
@@ -1137,34 +1266,57 @@ Cross-refs: *nocquıî* (deriving prefix); *nocquiiayo*, *nocquiie-ŕóųzǫ* (p
 ### noê
 
 #### Etymology
-*in a way* — GA /ɪn ə ˈweɪ/, pragmatic hedge phrase grammaticalized as a clause-final modal adverb.
 
-**Part of speech:** adv.  **IPA:** /noˈɛ/  **Foot:** (L)(ˈL).
+Two GA phrases that fell together. Both are accented on their **second** element — *in a
+WAY* and *no, WAY!* — so both place stress on the final vowel, and neither retains
+prominence on *no-*. The outcome is one form with two unrelated sources:
 
-Phonological development: /ɪ/→/o/ [Open: /ɪ/→/o/ after initial /n/ — rule not in §4; flagged in pending phonology session]; coda /n/→∅ (E1) + S1 nasalizes — nasalization lost or absorbed [Open]; /ə/→∅ (E4); /w/→/ɻ/ (§4.4.1); intervocalic /ɻ/ + no prior /h/ → M1 plain onset → R-Assim → /ɾ/ → E1 elides; /eɪ/→/ɛ/ [Open: /eɪ/→/ɛ/ shortening path].
+1. *in a way* — GA /ɪn ə ˈweɪ/, a pragmatic hedge grammaticalized as a clause-final modal adverb.
+2. *no way* — GA /noʊ ˈweɪ/, emphatic refusal or disbelief.
+
+**Part of speech:** adv./interj.  **IPA:** /noˈɛ/  **Foot:** (L)(ˈL).
+
+**Domains:** hedges, talking.
+
+Phonological development (sense 1, < *in a way*): /ɪ/→/o/ [Open: /ɪ/→/o/ after initial /n/ — rule not in §4; flagged in pending phonology session]; coda /n/→∅ (E1) + S1 nasalizes — nasalization lost or absorbed [Open]; /ə/→∅ (E4); /w/→/ɻ/ (§4.4.1); intervocalic /ɻ/ + no prior /h/ → M1 plain onset → R-Assim → /ɾ/ → E1 elides; /eɪ/→/ɛ/ [Open: /eɪ/→/ɛ/ shortening path].
+
+Phonological development (senses 2–3, < *no way*): /noʊ/→/no/; /w/→/ɻ/→M1→/ɾ/→E1 elides; /eɪ/→/ɛ/ [Open] (parallel to sense 1).
 
 #### Definition
 
 1. *(adv.)* in a way; sort of; somewhat. Clause-final position.
+2. *(interj.)* no way!; absolutely not.
+3. *(adv.)* by no means.
 
-Cross-refs: *nóè* "no way" (pitch-accent minimal pair — residual high pitch on "no" vs. on "way"; the contrast is carried by spelling and pitch, not the broad IPA).
+Position and turn shape disambiguate: sense 1 is clause-final and phrase-internal; senses 2–3 stand alone or open a turn.
 
----
+#### Notes
 
-### nóè
+**Merged from a former pair (August 2026).** This entry previously stood as two headwords,
+*noê* "in a way" and *nóè* "no way," described as a pitch-accent minimal pair in which
+*nóè* kept "a residual high pitch on *no* (GA primary stress)." That derivation rested on a
+**NO** way! reading of the GA source. The ordinary realization is *no WAY!*, which leaves
+*no* unstressed — so there was never a first-syllable prominence for the conlang to inherit,
+and the two words are homophonous. Author ruling, 2026-08-12.
 
-#### Etymology
-*no way* — GA /noʊ ˈweɪ/; emphatic refusal/disbelief. Pitch-accent minimal pair with *noê* "in a way": *nóè* keeps a residual high pitch on "no" (GA primary stress) while primary stress sits on "way"; *noê* has both on "way." The contrast is carried by spelling and pitch, not the broad IPA.
+**The ruling stands; its original acoustic citation does not (2026-08-17).** The measurement
+first offered in support — "no V₁ pitch peak, mean contour flat, +1.8 Hz early-to-late" — was
+taken from a corrupted extraction that measured the spoken English slate numbers rather than
+the words, and is withdrawn. The merger never depended on it: it rests on the GA claim about
+*no WAY!*, which is decidable without any recording. Re-measured on corrected, content-verified
+audio, the two former headwords have near-identical mean F0 contours and a centroid difference
+of −0.7 pp — consistent with homophony, though at three usable repetitions it establishes
+nothing on its own. See `planning/audio-pipeline-plan.md` §7.
 
-**Part of speech:** interj./adv.  **IPA:** /noˈɛ/  **Foot:** (L)(ˈL).
+A durational difference between the two senses was previously reported here (sense 2 running
+280 ms longer in 5 of 5 blocks) and is **withdrawn** — it was the difference between the
+spoken numerals *five* and *six*, which recurred in every block because the slate is the item
+number and does not rotate with reading order. On corrected audio the difference is −37 ms
+with a standard deviation of 150 ms. Nothing was encoded on it, so nothing here changes.
 
-Phonological development: /noʊ/→/no/; /w/→/ɻ/→M1→/ɾ/→E1 elides; /eɪ/→/ɛ/ [Open] (parallel to *noê*).
-
-#### Definition
-
-1. (interj.) no way!; absolutely not. 2. (adv.) by no means.
-
-Cross-refs: *noê* "in a way" (pitch-accent minimal pair).
+[Open: whether the final syllable's pitch is variable in this and other final-stressed
+words — see `phonology.md` §5.4 and `orthography.md` §3.7. If it is, the circumflex's
+"coincidence" reading holds only for the high-pitch realization.]
 
 ---
 
@@ -1174,6 +1326,8 @@ Cross-refs: *noê* "in a way" (pitch-accent minimal pair).
 *no idea* — GA /noʊ aɪˈdiə/, colloquial response particle reduced to a single phonological word.
 
 **Part of speech:** interj.  **IPA:** /noɛˈiɛ/  **Foot:** [Open].
+
+**Domains:** talking, mind.
 
 Phonological development: /n/→/n/; /oʊ/→/o/; /aɪ/→/ɛ/ [Open: /aɪ/→/ɛ/ short reflex — distinct from established /eː/ and /i/ pathways; conditioning unresolved]; /d/→/ɾ/ (tap merger, §4.4.1) → intervocalic → E1 elides; /ɪ/→/i/ [Open: tense promotion]; /ə/→/ɛ/ [Open: E5 normally gives /a/; /ɛ/ here possibly front-vowel assimilation].
 
@@ -1189,6 +1343,8 @@ Phonological development: /n/→/n/; /oʊ/→/o/; /aɪ/→/ɛ/ [Open: /aɪ/→/�
 *annoy* — GA /əˈnɔɪ/.
 
 **Part of speech:** v.  **IPA:** /noe/  **Foot:** (ˈH) [Open: diphthong weight].
+
+**Domains:** feelings.
 
 Phonological development: initial /ə/→∅ (E3); /n/→/n/; /ɔɪ/→/oe/ (choice smoothing, `phonology.md` §4.4.8).
 
@@ -1207,6 +1363,8 @@ Cross-refs: *boë* (parallel /ɔɪ/→/oe/).
 
 **Part of speech:** n.  **IPA:** /ˈnoez/  **Foot:** (ˈH) [Open: tied to the `oë` mora question].
 
+**Domains:** sounds.
+
 Phonological development: /ɔɪ/→/oe/ (choice smoothing); final /z/ — non-onset `s` = /z/.
 
 Cross-refs: *noë* "to annoy" — near-homophone pair (/noe/ ~ /noez/).
@@ -1223,6 +1381,8 @@ Cross-refs: *noë* "to annoy" — near-homophone pair (/noe/ ~ /noez/).
 
 **Part of speech:** aux./adv.  **IPA:** /noˈkw̩/  **Foot:** [Open].
 
+**Domains:** little-words.
+
 Phonological development [Open]: reduction of *nocquii* /nokʷːi/ → /nokw̩/ (final vowel → syllabic /w̩/; degemination).
 
 #### Definition
@@ -1237,6 +1397,8 @@ Phonological development [Open]: reduction of *nocquii* /nokʷːi/ → /nokw̩/ 
 *note* — convergent pair with *nouś* (< *notice*): two etyma converged in form and territory while remaining distinct lexemes (`terminology-registry.md`).
 
 **Part of speech:** v.  **IPA:** /ˈnoʔ/  **Foot:** (ˈL) [Open].
+
+**Domains:** mind.
 
 Phonological development: /oʊ/→/o/ (short reduction — content-verb attestation for §5.2); /t/→/ʔ/ (coda glottaling) `tt` (§2.7).
 
@@ -1257,6 +1419,8 @@ Concord *nounet* (progressive-shaped); *nouret* (past-derived, < *noted*, the *m
 
 **Part of speech:** v.  **IPA:** /ˈnoːs/  **Foot:** (ˈH).
 
+**Domains:** mind.
+
 Phonological development: /oʊ/→/oː/ (regular long reflex — the pair diverges precisely here: *nott* took the short reduction); medial /t/ → ∅ [Open: flap elision]; /ɪs/→`ś`.
 
 Cross-refs: *nott*; *ouś* (August) is unrelated. Connective offspring *nousso* ×2 (`language_reference.md` §3.8).
@@ -1273,6 +1437,8 @@ Cross-refs: *nott*; *ouś* (August) is unrelated. Connective offspring *nousso* 
 
 **Part of speech:** aux. (matrix particle, MP.SUMM).  **IPA:** /noːsˈʃɛ/  **Foot:** [Open].  **[IPA Open.]**
 
+**Domains:** little-words, talking.
+
 Phonological development [Open]: *in a nutshell* heavily reduced; `óu` /oː/ (pitch unmarked in IPA); `ś` /s/; `sh` /ʃ/; `è` /ɛ/ (stress).
 
 #### Definition
@@ -1288,6 +1454,8 @@ Phonological development [Open]: *in a nutshell* heavily reduced; `óu` /oː/ (p
 
 **Part of speech:** interj./part.  **IPA:** /ˈo/  **Foot:** (ˈL) [Open].
 
+**Domains:** talking, little-words.
+
 Phonological development: *oh* /oʊ/ → /o/.
 
 #### Definition
@@ -1302,6 +1470,8 @@ Phonological development: *oh* /oʊ/ → /o/.
 *go* — the quotative "say" use of GA *go* ("and I go, 'no way'"), narrowed to a dedicated speech-report verb. Intransitive; obligatorily takes an ideophone complement.
 
 **Part of speech:** v. (quotative).  **IPA:** /ˈo/  **Foot:** (ˈL) light monosyllable [Open].
+
+**Domains:** talking.
 
 Phonological development: onset /ɡ/ → ∅ [Open: word-initial /ɡ/-drop — not in §4.4; cf. soft-six tapping, which targets *intervocalic* /ɡ/]; /oʊ/ → /o/ (monophthongization). Suppletive perfect *rhentt* < *went* /wɛnt/: /w/ → /ɻ/ (§4.4.1); /ɛ/ retained; coda /nt/ → /n/ + glottal /ʔ/, spelled *tt* (`orthography.md` §2.7) → /ˈɻɛnʔ/.
 
@@ -1320,6 +1490,8 @@ Cross-refs: the three homophonous *o* lemmas are disambiguated by a parenthetica
 
 **Part of speech:** part.  **IPA:** /oˈhei/  **Foot:** [Open].
 
+**Domains:** little-words, talking.
+
 Phonological development: *oh* /o/ + *hey* /hei/ `ei`.
 
 #### Definition
@@ -1334,6 +1506,8 @@ Phonological development: *oh* /o/ + *hey* /hei/ `ei`.
 *oh I see* — GA /oʊ aɪ siː/, colloquial acknowledgment phrase. Grammaticalized as a realization interjection.
 
 **Part of speech:** interj.  **IPA:** /oˈho/  **Foot:** (L)(ˈL).
+
+**Domains:** talking.
 
 Phonological development: /oʊ/→/o/; /aɪ/→∅ [Open: absorbed]; /s/→/h/ (§4.4.1 debuccalization); /iː/→/o/ [Open: /iː/→/o/ pathway not in §4.4.2]. Circumflex on `ô` = pitch+stress coincide.
 
@@ -1350,6 +1524,8 @@ Phonological development: /oʊ/→/o/; /aɪ/→∅ [Open: absorbed]; /s/→/h/ (
 
 **Part of speech:** interj.  **IPA:** /ˈoho/  **Foot:** (ˈL)(L).
 
+**Domains:** talking.
+
 Phonological development: [Open: full derivation unclear — /h/ retention in onset; /oʊ/→/o/; /eɪ/→/o/ [Open: /eɪ/→/o/ not in §4.4.2]].
 
 #### Definition
@@ -1364,6 +1540,8 @@ Phonological development: [Open: full derivation unclear — /h/ retention in on
 *speak* — with prothetic /o/. In the combining form with *-wþ* (< *with*), the etymological /k/ is rescued: *ospokwþ* "speak with."
 
 **Part of speech:** v.  **IPA:** /oˈspi/  **Foot:** (ˈL)(L) [Open].
+
+**Domains:** talking.
 
 Phonological development: prothetic /o/ before the /sp/ cluster [Open: epenthetic-/o/ prothesis]; /sp/ retained (s cluster-protection, §4.4.1); /i/ retained; coda /k/ → ∅ (coda purge, Stratum 5) — it returns under inflection (the fossil resurrection, §4.4.14). Combining form *ospokwþ*: coda /k/ + /w/ of *with* → /kʷ/ (labial rescue, §4.4.11 morphophonological extension [Settled] — the velar special case of the fossil resurrection); /θ/ `þ` from *with*; nucleus /i/ → /o/ [Open: vowel alternation in the combining form]. (Progressive *ospiihıĩ*: with no /w/-suffix the same /k/ instead breathes to /h/, §4.4.14.)
 
@@ -1381,6 +1559,8 @@ Phonological development: prothetic /o/ before the /sp/ cluster [Open: epentheti
 
 **Part of speech:** adj.  **IPA:** /oskwiˈhiː/  **Foot:** [Open].
 
+**Domains:** qualities, home.
+
 Phonological development: prothetic /o/ (squeaky prothesis); /skw/ intact; medial /k/→/h/ (k-breathing — the `-hii` is etymological, not the predicative element); final /i/→/iː/ under stress.
 
 #### Definition
@@ -1395,6 +1575,8 @@ Phonological development: prothetic /o/ (squeaky prothesis); /skw/ intact; media
 
 **Part of speech:** n.  **IPA:** /oˈsːiː/  **Foot:** (L)(ˈH) [Open].
 
+**Domains:** places, nature.
+
 Phonological development: /aʊ/→/o/ (mouth merger); /ts/ → /sː/ at the seam [New rule needed: /ts/-cluster coalescence to /sː/]; /aɪ/→/iː/ (price splinter); coda /d/ → ∅.
 
 #### Definition
@@ -1408,6 +1590,8 @@ Phonological development: /aʊ/→/o/ (mouth merger); /ts/ → /sː/ at the seam
 *over there* — distal locative deictic "there."
 
 **Part of speech:** adv.  **IPA:** /oːˈðɛː/  **Foot:** [Open].
+
+**Domains:** places, little-words.
 
 Phonological development: *over* → `ou` /oː/ (/v/→∅; /ər/ smoothed); *there* → `ðeu` /ðɛː/ (/ð/ retained; /ɛr/→/ɛː/ `eu`).
 
@@ -1424,6 +1608,8 @@ Phonological development: *over* → `ou` /oː/ (/v/→∅; /ər/ smoothed); *th
 
 **Part of speech:** proper n.  **IPA:** /ˈoːs/  **Foot:** (ˈH).
 
+**Domains:** time.
+
 Phonological development: /ɔː/→/oː/ (back long vowel; written `ou`); /ɡ/→/ɾ/ (tap merger, §4.4.1) → intervocalic → E1 elides; /ə/→∅ (E3); coda /st/→/ts/ (§4.4.1) → /t/→/ʔ/ (E2a) → drops [Open: /ʔ/-drop condition here]; /s/ in coda position → non-onset → /z/ → devoiced → `ś`.
 
 #### Definition
@@ -1438,6 +1624,8 @@ Phonological development: /ɔː/→/oː/ (back long vowel; written `ou`); /ɡ/�
 *own* — survives for neutral mere-having beside the possession construction.
 
 **Part of speech:** v.  **IPA:** /ˈõ/  **Foot:** (ˈL) [Open].
+
+**Domains:** having.
 
 Phonological development: /oʊn/ → coda /n/ collapses into nasalization (§3.6) → /õ/.
 
@@ -1456,6 +1644,8 @@ Imperfect *ǫıĩ* /õĩː/ "owning": the GA *-ing* surfaces as nasalized /ĩː/
 
 **Part of speech:** v.  **IPA:** /pɑˈjiz/  **Foot:** (H)(ˈL) [Open].
 
+**Domains:** talking, feelings.
+
 Phonological development: heavy reduction of /əˈpɑːlədʒaɪz/. Initial /ə/ → /ɑ/ `au` (or lost) [Open]; /p/ retained; intervocalic /l/ → /j/ (dark-l vocalization adjacent to a vowel, §4.4.4); medial /ədʒ/ syncopated [Open: medial-syllable loss]; /aɪ/ → /i/ (short /aɪ/ reflex, §4.4.2 candidate); final /z/ (non-onset `s` = /z/, `orthography.md` §2.2). Preterite/perfect *pauyiist* [Open: pending §3.22 morphophonology / B12].
 
 #### Definition
@@ -1470,6 +1660,8 @@ Phonological development: heavy reduction of /əˈpɑːlədʒaɪz/. Initial /ə/
 *apologies* — the interjection "(my) apologies." Cf. the verb *pauyiis* "to apologize."
 
 **Part of speech:** interj.  **IPA:** /pɑˈjis/  **Foot:** [Open].
+
+**Domains:** talking.
 
 Phonological development: as *pauyiis* (< *apologize*), with final `ś` /s/ for the interjection *apologies*.
 
@@ -1486,6 +1678,8 @@ Phonological development: as *pauyiis* (< *apologize*), with final `ś` /s/ for 
 
 **Part of speech:** n.  **IPA:** /ˈpiɛm/  **Foot:** [Open].
 
+**Domains:** time.
+
 Phonological development: spelled-out initialism — letter-names *P* /piː/ + *M* /ɛm/ → /ˈpiɛm/, stress on the first letter-name. Cf. *nopiiem* "(in the) evening" (< *on the P.M.*) (propagated 2026-06-22, `verbal-system.md` §12 / `ideophones.md`).
 
 #### Definition
@@ -1501,6 +1695,8 @@ Phonological development: spelled-out initialism — letter-names *P* /piː/ + *
 
 **Part of speech:** v.  **IPA:** /piˈkʷoæ/  **Foot:** (L)(ˈH) [Open].
 
+**Domains:** mind, body.
+
 Phonological development: /p/→/p/ (blocked before /i/, §4.4.1 /p/→/b/ rule); /iː/→/i/ [Open: /iː/ shortening]; coda /k/ of *peek* labializes absorbing onset /w/ of *over* → /kʷ/ [Open: /k/ labialization mechanism]; /oʊ/→/o/; /v/→∅ or /ɾ/ → elides [Open]; /ər/→∅ (E3+E1); /æ/→/æ/ (residual, final).
 
 #### Definition
@@ -1515,6 +1711,8 @@ Phonological development: /p/→/p/ (blocked before /i/, §4.4.1 /p/→/b/ rule)
 *pick up* — fused phrase; inherits GA *pick up*'s polysemy.
 
 **Part of speech:** v.  **IPA:** /ˈpikːp/  **Foot:** (ˈH) with /p/ appendix [Open].
+
+**Domains:** having, home.
 
 Phonological development: word-initial /p/ resists voicing; /ɪ/→/i/ [Open: tensing]; *up*: /ʌ/→/ɨ/→∅ in appendix [Open: appendix /ɨ/-deletion — the *skwkw* parallel]; /k…p/ → /kːp/ [Open: fusion-boundary geminate].
 
@@ -1533,6 +1731,8 @@ Compound-incorporating forms *pikborrô*, *piknib·orrô* (with *-orrô*; `verba
 
 **Part of speech:** v.  **IPA:** /pɪˈkʷoː/  **Foot:** (L)(ˈH).
 
+**Domains:** having.
+
 Phonological development: /p/→/p/ (blocked before /ɪ/); /ɪ/→/ɪ/; coda /k/ labializes absorbing *out*'s /aʊ/ → /kʷ/ [Open: same mechanism as *piiquóä*]; /aʊ/→/oː/; coda /t/→/ʔ/ (E2a) → drops (grammaticalized *out* /ʔ/-drop, §4.4.3 E2d). Circumflex on `ô` = pitch+stress coincide.
 
 Cross-refs: *rhiiysseunnou* (parallel grammaticalized *out* /ʔ/-drop).
@@ -1550,6 +1750,8 @@ Cross-refs: *rhiiysseunnou* (parallel grammaticalized *out* /ʔ/-drop).
 
 **Part of speech:** part.  **IPA:** /ˈpons/  **Foot:** [Open].
 
+**Domains:** little-words.
+
 Phonological development: *upon us* /əˌpɑn ˈʌs/ → /pons/ (initial /ə/ lost; /ʌs/ → coda /s/; final /s/ voiceless, written `ś`).
 
 #### Definition
@@ -1564,6 +1766,8 @@ Phonological development: *upon us* /əˌpɑn ˈʌs/ → /pons/ (initial /ə/ lo
 *pout* — GA /paʊt/.
 
 **Part of speech:** v.  **IPA:** /pot/  **Foot:** (ˈH).
+
+**Domains:** feelings, body.
 
 Phonological development: /p/→/p/; /aʊ/→/o/ (§4.4.2 /au, or/→/o/); coda /t/ retained [Open: E2a predicts /t/→/ʔ/; retention here unexplained — possibly analogy or high-frequency blocking].
 
@@ -1581,6 +1785,8 @@ Phonological development: /p/→/p/; /aʊ/→/o/ (§4.4.2 /au, or/→/o/); coda 
 
 **Part of speech:** part.  **IPA:** /ˈkʷo/  **Foot:** [Open].
 
+**Domains:** little-words, talking.
+
 Phonological development: *quote* /kwoʊt/ → /kʷo/ (`qu` /kʷ/; /oʊ/→/o/; coda /t/→∅).
 
 #### Definition
@@ -1595,6 +1801,8 @@ Phonological development: *quote* /kwoʊt/ → /kʷo/ (`qu` /kʷ/; /oʊ/→/o/; 
 *likewise* — GA /ˈlaɪkˌwaɪz/.
 
 **Part of speech:** adv.  **IPA:** /ˈɾɛkʷːis/  **Foot:** (ˈH)(L).
+
+**Domains:** hedges.
 
 Phonological development: /l/→/ɻ/ [Open: /ɫ/→/ɻ/ candidate rule — dark-l vocalization; see pending phonology session]; /aɪ/→/ɛ/ [Open: /aɪ/→/ɛ/ short reflex]; coda /k/ + *wise* onset /w/ → geminate /kʷː/ [Open: labialization and gemination mechanism]; /aɪ/ of *wise* → /ɪ/ [Open]; coda /z/→/s/ — **lexical** devoicing idiosyncratic to this item, *not* the general word-final rule (which retains /z/; `orthography.md` §2.2), hence spelled `ś`.
 
@@ -1611,6 +1819,8 @@ Phonological development: /l/→/ɻ/ [Open: /ɫ/→/ɻ/ candidate rule — dark-
 
 **Part of speech:** n.  **IPA:** /ɾɛˈi/  **Foot:** (L)(ˈL).
 
+**Domains:** food.
+
 Phonological development: /d/→/ɾ/ (tap merger, §4.4.1); /eɪ/→/ɛ/ [Open: /eɪ/→/ɛ/ shortening — distinct from established /eɪ/→/eː/]; medial /ɹ/→/ɻ/ → M1 (no /h/ onset) → plain /ɻ/ onset → R-Assim → /ɾ/ → E1 (intervocalic) elides; /i/→/i/ retained.
 
 #### Definition
@@ -1626,6 +1836,8 @@ Phonological development: /d/→/ɾ/ (tap merger, §4.4.1); /eɪ/→/ɛ/ [Open: 
 *yakitty-yak* — GA /ˈjækɪtiˌjæk/, expressive reduplication for idle/dialect chatter; the GA exonym *Rickety Yak* is this word. Supersedes the earlier headword *rékriiyä* in form (§2.6 of `phase4-triage-saying-2026-06.md`).
 
 **Part of speech:** ideophone (IDEO); verbalizes with concord — *rekriiâkm* "chatting" (v.).  **IPA:** /ɾɛkɾiˈɑ́/ (verbalized *rekriiâkm* /ɾɛkɾiˈɑ́km/)  **Foot:** [Open] (ultimate-syllable stress — an ideophone-class licence, `ideophones.md`).
+
+**Domains:** sounds, talking.
 
 Phonological development: first /j/ → /ɻ/ (§4.4.1) → R-Assim → /ɾ/, written `r`; /æ/ → /ɛ/ [Open: /æ/→/ɛ/ without preceding nasal — distinct from the established nasal pathway] `e`; /k/ retained in cluster; /ɪ/ → ∅ (E3); /t/ → /ɾ/ (tap merger), written `r`; /i/ → `ii`; the second-foot /jæk/ reduces to a final /ɑ/ `â` — second /j/ → ∅, /æ/ → /ɑ/, coda /k/ → ∅ (coda purge) — the word carrying ideophone ultimate stress + pitch (circumflex `â`).
 
@@ -1646,6 +1858,8 @@ Conventionally co-produced with a **wrist-rotation gesture** glossable as "and s
 
 **Part of speech:** n.  **IPA:** /ɾɛˈkʷi/  **Foot:** (L)(ˈL) [Open: /kʷ/ onset weight].
 
+**Domains:** play, feelings.
+
 Phonological development: /v/→/ɾ/ [Open: /v/ before front vowel /ɪ/ → tap merger rather than /b/; see /v/ conditioning open question]; /ɪ/→/ɛ/ [Open: /ɪ/→/ɛ/ after onset — rule not in §4]; /kt/ cluster → /kʷ/ [Open: /k/+/t/ → labialized /kʷ/ mechanism]; /ə/→∅ (E3); final /i/ retained.
 
 #### Definition
@@ -1660,6 +1874,8 @@ Phonological development: /v/→/ɾ/ [Open: /v/ before front vowel /ɪ/ → tap 
 *narrate* — GA /nəˈɹeɪt/.
 
 **Part of speech:** v.  **IPA:** /ɾɛˈɾɛjt/  **Foot:** (L)(ˈH).
+
+**Domains:** talking.
 
 Phonological development: /n/→/ɾ/ (tap merger, §4.4.1); /ə/→/ɛ/ (initial unstressed /ə/→/ɛ/, §4.4.2); /ɹ/→/ɻ/→R-Assim→/ɾ/ (since /ɾ/ from /n/ present); /eɪ/→/ɛj/ [Open: /eɪ/→/ɛj/ near-preservation, not full /ɛː/ shift]; coda /t/ retained [Open: E2a predicts /t/→/ʔ/].
 
@@ -1676,6 +1892,8 @@ Phonological development: /n/→/ɾ/ (tap merger, §4.4.1); /ə/→/ɛ/ (initial
 
 **Part of speech:** n.  **IPA:** /ˈɾɛnw̩/  **Foot:** (ˈL) with syllabic /w̩/ appendix [Open].
 
+**Domains:** food.
+
 Phonological development: /d/→/ɾ/ (soft six); /ɪ/→/ɛ/ [Open: lowering, with *bényǫ*]; /ər/→/w̩/.
 
 #### Definition
@@ -1689,6 +1907,8 @@ Phonological development: /d/→/ɾ/ (soft six); /ɪ/→/ɛ/ [Open: lowering, wi
 *I guess* — grammaticalized as the general indirect-evidential matrix particle (MP.GUESS); **supersedes *piies***. Tense-invariant (GA *I guess* / *I guessed* converge).
 
 **Part of speech:** aux. (matrix particle, MP.GUESS).  **IPA:** /ˈɾɛs/  **Foot:** (ˈL) [Open].
+
+**Domains:** little-words, hedges.
 
 Phonological development: *I guess* /aɪ ɡɛs/ → /ɾɛs/ (/aɪ/ reduced/lost; /ɡ/→/ɾ/ tap onset; /ɛ/ retained; final /s/ `ś`).
 
@@ -1705,6 +1925,8 @@ Phonological development: *I guess* /aɪ ɡɛs/ → /ɾɛs/ (/aɪ/ reduced/lost;
 
 **Part of speech:** v.  **IPA:** /ˈɾɛːt/ (extended *reuto* /ɾɛːˈto/)  **Foot:** (ˈH) / (H)(ˈL) [Open].
 
+**Domains:** having, travel.
+
 Phonological development: /ɡ/ → /ɾ/ (soft-six tapping → onset; written `r`); /ɛ/ → /ɛː/ `eu` [Open: lengthening]; coda /t/ retained (no glottalization here — cf. the unexpected /t/-retention in *pot*, *rérèyt*) [Open]; in *reuto*, the *it* object surfaces as a final /o/ [Open: object incorporation].
 
 #### Definition
@@ -1719,6 +1941,8 @@ Phonological development: /ɡ/ → /ɾ/ (soft-six tapping → onset; written `r`
 *Venus* — GA /ˈviːnəs/, proper noun.
 
 **Part of speech:** proper n.  **IPA:** /ˈɾɛ̃ːs/  **Foot:** (ˈH).
+
+**Domains:** nature.
 
 Phonological development: /v/→/ɾ/ [Open: /v/ before front vowel /iː/ → tap merger; see /v/ conditioning]; /iː/→/ɛː/ [Open: /iː/→/ɛː/ pathway not in §4.4.2]; /n/→∅ (E1) + S1 nasalizes adjacent vowel → /ɛ̃ː/ (written `eų`); /ə/→∅ (E4); coda /s/→/z/ (non-onset) → devoiced → `ś`.
 
@@ -1735,6 +1959,8 @@ Phonological development: /v/→/ɾ/ [Open: /v/ before front vowel /iː/ → tap
 
 **Part of speech:** n.  **IPA:** /ˈɾẽim/  **Foot:** (ˈH) [Open].
 
+**Domains:** people, play.
+
 Phonological development: /n/, /g/ → /ɾ/ (soft-six tapping — the merger mechanism); /eɪ/ → /ẽi/ `ęi` by anticipatory nasalization from the **retained** coda /m/ [Open: §3.6 covers nasalization with coda loss; retained-coda case needs a statement].
 
 #### Definition
@@ -1748,6 +1974,8 @@ Phonological development: /n/, /g/ → /ɾ/ (soft-six tapping — the merger mec
 *give* — survives for explicitly volitional transfer beside the possession construction's give-extension.
 
 **Part of speech:** v.  **IPA:** /ˈɾɪb/  **Foot:** (ˈL) [Open].
+
+**Domains:** having.
 
 Phonological development: /g/→/ɾ/ (soft six); /v/→/b/ (labial funnel) — fully regular.
 
@@ -1766,6 +1994,8 @@ Past stem *reib* /ˈɾeib/ < *gave* — the strong verb survives, regular from i
 
 **Part of speech:** adv./prep.  **IPA:** /ɾiˈɾõ/  **Foot:** (L)(ˈH) [Open: nasal vowel weight].
 
+**Domains:** hedges, places.
+
 Phonological development: /ɹ/→/ɻ/→R-Assim→/ɾ/ (two rhotics present); /aɪ/→/i/ [Open: /aɪ/→/i/ short reflex — third candidate alongside /eː/ and /ɛ/; conditioning unresolved]; coda /t/→/ʔ/ (E2a) → drops in this grammaticalized phrase [Open: /ʔ/-drop condition]; /ə/→∅ (E4); second /ɹ/→/ɻ/→/ɾ/ (R-Assim); /aʊ/→/o/ (§4.4.2); /n/→∅ (E1) + S1 nasalizes → /õ/ (written `ǫ`); /d/→∅ (E2b).
 
 #### Definition
@@ -1782,6 +2012,8 @@ Phonological development: /ɹ/→/ɻ/→R-Assim→/ɾ/ (two rhotics present); /a
 
 **Part of speech:** ideophone (IDEO).  **IPA:** /ɻɪʔˈm̩ːʔm̩/  **Foot:** [Open] (stress on the geminate syllabic *m̩ː*).  **[IPA Provisional.]**
 
+**Domains:** sounds, talking.
+
 Phonological development: the *t*'s surface as glottal stops /ʔ/, and stress falls on a geminate syllabic /m̩ː/ — both phonotactic-class licences (`ideophones.md` §5; `phonology.md` exemption flag). Expressive, not a regular derivation [Provisional].
 
 #### Definition
@@ -1796,6 +2028,8 @@ Phonological development: the *t*'s surface as glottal stops /ʔ/, and stress fa
 *Rochester* — toponym.
 
 **Part of speech:** proper n.  **IPA:** /ˈɹɪtsstw̩/  **Foot:** (ˈH) with appendix /w̩/ tail.
+
+**Domains:** places.
 
 Phonological development: /tʃ/ → /ts/; E3 schwa elision; /ɻ/ → syllabic /w̩/ in final position.
 
@@ -1813,6 +2047,8 @@ Phonological development: /tʃ/ → /ts/; E3 schwa elision; /ɻ/ → syllabic /w
 
 **Part of speech:** ideophone (IDEO), onomatopoeia.  **IPA:** /ˈɾɪpɾpɾp/  **Foot:** [Open].  **[IPA Provisional.]**
 
+**Domains:** sounds.
+
 Phonological development: *drip* → /ɾɪp/ reduplicated to /pɾpɾp/ — clusters the core lexicon does not permit (phonotactic licence, `ideophones.md` §5) [Provisional].
 
 #### Definition
@@ -1827,6 +2063,8 @@ Phonological development: *drip* → /ɾɪp/ reduplicated to /pɾpɾp/ — clust
 *juice* — literal, plus the energy idiom.
 
 **Part of speech:** n.  **IPA:** /ˈɾɪːs/  **Foot:** (ˈH) [Open].
+
+**Domains:** drink.
 
 Phonological development: /dʒ/→/ɾ/ (soft six); /uː/→/ɪː/ `iu` (the long-GOOSE reflex; Vu digraph) [New rule needed: long /uː/→/ɪː/ beside the short goose-foot-strut /ɨ/ merger — length-conditioned split]; final `ś`.
 
@@ -1843,6 +2081,8 @@ Cross-refs: *riųś* "news" (nasalized minimal pair).
 *news* — GA /nuːz/. Nasalized counterpart of *riuś* "juice"; the two form a minimal pair distinguished only by nasalization (`orthography.md` §3.6). The spelling *rıĩs* is a **misspelling**, not a variant.
 
 **Part of speech:** n.  **IPA:** /ˈɾɪ̃ːs/  **Foot:** (ˈH) [Open].
+
+**Domains:** talking.
 
 Phonological development: onset /n/ → /ɾ/ (soft-six tapping → onset — the tap being the dialect's phonemicized rhotic), leaving anticipatory nasalization on the vowel; /uː/ → /ɪː/ `iu`, nasalized → /ɪ̃ː/ `ių`; final /z/ → /s/ (devoiced), written `ś`.
 
@@ -1861,6 +2101,8 @@ Cross-refs: *riuś* "juice" (oral minimal pair).
 
 **Part of speech:** adv.  **IPA:** /ɻeiɪˈɛm/  **Foot:** [Open].
 
+**Domains:** places, little-words.
+
 Phonological development [Open]: *where* → `rhei` (/w/→/ɻ/ `rh`; /ɛr/→/ei/); *I am* → `iem` /ɪɛm/.
 
 #### Definition
@@ -1876,6 +2118,8 @@ Phonological development [Open]: *where* → `rhei` (/w/→/ɻ/ `rh`; /ɛr/→/e
 
 **Part of speech:** n.  **IPA:** /ˈɻɛĩ/  **Foot:** [Open].
 
+**Domains:** weather, nature.
+
 Phonological development: GA rhotic /ɻ/ retained (broad GA "r" = /ɻ/ — no change; written `rh`); /eɪ/ → /ɛĩ/ `eĩ` (nasalized in anticipation of the coda /n/); coda /n/ → ∅ leaving nasalization. Progressive-shaped *rheinn* /ˈɻeinː/ "(it's) raining" **[Open: pending §3.22 / B12]**.
 
 #### Definition
@@ -1890,6 +2134,8 @@ Phonological development: GA rhotic /ɻ/ retained (broad GA "r" = /ɻ/ — no ch
 *boom boom boom* — onomatopoeic; a fully reduplicated three-beat form.
 
 **Part of speech:** ideophone (IDEO).  **IPA:** /ɻɛmːɛmːˈɛm/  **Foot:** [Open] (ultimate-syllable stress — ideophone-class licence).  **[IPA Provisional — pending phonology pass, `ideophones.md` §2.]**
+
+**Domains:** sounds, talking.
 
 Phonological development: expressive/onomatopoeic, not a regular derivation; three reduplicated /ɛm/ beats with geminate /mː/ at the beat junctions [Provisional]. Phonotactically exempt (`ideophones.md` §5). Supersedes the earlier spellings *rhémmen·bèm* ~ *rhémm·bèm* (and the brief intermediate *rhémmemmèm*); the beats are marked by gemination, not an interpunct — the interpunct has no beat-defining function, only syllable-division disambiguation (`orthography.md` §3.5). Hub synced 2026-06-22 (`ideophones.md` v1.1).
 
@@ -1909,6 +2155,8 @@ Phonological development: expressive/onomatopoeic, not a regular derivation; thr
 
 **Part of speech:** v.  **IPA:** /ɻɛˈmːɛs/ [Open: geminate straddle]  **Foot:** [Open].
 
+**Domains:** mind, feelings.
+
 Phonological development: GA rhotic /ɻ/ retained `rh`; medial /m/ geminated (ambisyllabic phonologization); /nɪs/→/ɛs/ [Open: medial /n/ loss]; final `ś`.
 
 Cross-refs: *bemmw*.
@@ -1924,6 +2172,8 @@ Cross-refs: *bemmw*.
 *wild guess* — GA /waɪld ɡɛs/, idiomatic: a total shot in the dark.
 
 **Part of speech:** interj.  **IPA:** /ɻɛːlˈjɛs/  **Foot:** [Open].
+
+**Domains:** talking, hedges.
 
 Phonological development: /w/→/ɻ/ (§4.4.1); /aɪ/→/ɛː/ (§4.4.2 /ai/→/eː/; written `eu`); /l/ in coda of *wild* retained in cluster /ld/ [Open: E2c targets singleton /l/ only; cluster /l/ exempt — cf. *rhilþ*]; /d/→∅ (E2b); /ɡ/→/ɾ/ (tap merger) → intervocalic → E1 elides; /ɛ/→/ɛ/ (stressed); /s/ falls to coda after /ɡ/-elision → non-onset /s/→/z/→devoiced → `ś`.
 
@@ -1941,6 +2191,8 @@ Phonological development: /w/→/ɻ/ (§4.4.1); /aɪ/→/ɛː/ (§4.4.2 /ai/→/
 
 **Part of speech:** n.  **IPA:** /ɻiˈboet/  **Foot:** (L)(ˈH) [Open].
 
+**Domains:** work, talking.
+
 Phonological development: GA rhotic /ɻ/ retained `rh`; /p/→/b/ (pass-out voicing, word-medial — the v4.1 restatement's anchor); /ɔr/→/oe/ (report gliding — the rule's namesake) `oë`; coda /t/ retained [Open: coda-/t/ conditioning — see changelog].
 
 #### Definition
@@ -1955,6 +2207,8 @@ Phonological development: GA rhotic /ɻ/ retained `rh`; /p/→/b/ (pass-out voic
 
 **Part of speech:** v.  **IPA:** /ˈɻib/  **Foot:** (ˈH) heavy monosyllable [Open].
 
+**Domains:** travel.
+
 Phonological development: /dr/ → /ɻ/ `rh` [Open: /dr/→/ɻ/ cluster reduction]; /aɪ/ → /i/ `ii` (short /aɪ/ reflex, §4.4.2 candidate); word-final /v/ → /b/ [Open: /v/→/b/ at coda — the /v/-conditioning candidate, pending phonology session]. Progressive-shaped *rhiimm* (the /v/ returning as /mː/) [Open: pending §3.22 morphophonology / B12].
 
 #### Definition
@@ -1968,6 +2222,8 @@ Phonological development: /dr/ → /ɻ/ `rh` [Open: /dr/→/ɻ/ cluster reductio
 A polyfunctional morpheme from GA *really*, spanning intensifier prefix → bleached lexical prefix → get-oneself negative reinforcer → general negator. The bound-prefix uses appear inside *rhiiynii*, *rhiiysseunnou*, and *rhiiyeplii* (under *eplii* sense 2); the free-word uses (reinforcer, general negator) are described here. Consolidated as a single lemma (same form /ɻiː/, same primary source).
 
 **Part of speech:** aux. (general negation); also aux. (NVOL.NEG concord reinforcer); also deriv./intensifier prefix `rhiiy-`.  **IPA:** /ɻiː/  **Foot:** [Open].
+
+**Domains:** little-words.
 
 Phonological development: GA /ˈɹɪl.i/ → /ɻiː/: dark velarized /ɫ/, sandwiched between front vowels, becomes /j/ (§4.4.1) and then elides, leaving a lengthened /iː/; onset /ɹ/ → /ɻ/ (§4.4.1). (Same derivation as the `rhiiy-` prefix attested in *rhiiynii*, *rhiiysseunnou*, *rhiiyeplii* — this entry consolidates that morpheme.)
 
@@ -2003,6 +2259,8 @@ Does not enter the LVC as a polarity marker (only as the sense-2 reinforcer); ve
 
 **Part of speech:** part. (softener).  **IPA:** /ɻɪlˈkʷɪ/  **Foot:** [Open].
 
+**Domains:** hedges, talking.
+
 Phonological development: *real* → `rhil` (/ɻ/ `rh`; /iəl/→/ɪl/); *quick* → `qui` /kʷɪ/ (`qu` /kʷ/; coda /k/→∅).
 
 #### Definition
@@ -2018,6 +2276,8 @@ Phonological development: *real* → `rhil` (/ɻ/ `rh`; /iəl/→/ɪl/); *quick*
 
 **Part of speech:** n.  **IPA:** /ˈɻɪlθ/  **Foot:** [Open: depends on whether coda consonants contribute weight].
 
+**Domains:** nature.
+
 Phonological development: /w/ → /ɻ/ (§4.4.1 /w, j/ → /ɻ/); /ʊ/ → /ɪ/ (§4.4.2 back-vowel fronting); /f/ → /θ/ (§4.4.1); coda /l/ preserved in cluster /lθ/ (E2c targets singleton /l/; cluster environment exempt).
 
 #### Definition
@@ -2032,6 +2292,8 @@ Phonological development: /w/ → /ɻ/ (§4.4.1 /w, j/ → /ɻ/); /ʊ/ → /ɪ/ 
 *reach out* — initiating contact, medium-neutral.
 
 **Part of speech:** v.  **IPA:** /ɻiːˈtso/  **Foot:** (H)(ˈL) [Open].
+
+**Domains:** talking.
 
 Phonological development: /riː/→`rhii`; /tʃ/→/ts/ (ch-funnelling — evaluated against the derived stress) [Open: fork ordering vs. stress shift — see changelog]; /aʊ/→/o/; final /t/ → ∅ (out-drop).
 
@@ -2051,6 +2313,8 @@ Concord *rhiitsto* (the circumflex belongs to the citation form's final vowel; t
 *really need* — *really* bleached and lexicalized as the `rhiiy-` prefix; stem from *need*. The need/want polysemy collapses two GA concepts onto a single axis.
 
 **Part of speech:** v.  **IPA:** /ɻiːni/  **Foot:** [Open].
+
+**Domains:** having, feelings.
 
 Phonological development: /ɫ/ → /j/ between high front vowels; /ɪji/ → /iː/; coda /d/ → ∅ (E2, no compensatory lengthening).
 
@@ -2074,6 +2338,8 @@ The prefix /ɻiː-/ (`rhiiy`) surfaces as long /iː/ from /ɪji/-smoothing; the 
 
 **Part of speech:** v.  **IPA:** /ɻiːˈʃɛːʃ/ [Open]  **Foot:** [Open].
 
+**Domains:** feelings.
+
 Phonological development: *really* → /ɻiː/ (really glide); intensive-internal onset surfaces as /ʃ/, not the tap [Open: neither fork branch fits the unstressed internal position]; spelling `sh` (/ʃ/ = `sh`, orthography §2.1, v3.3).
 
 #### Definition
@@ -2087,6 +2353,8 @@ Phonological development: *really* → /ɻiː/ (really glide); intensive-interna
 *really stand out* — *really* bleached and lexicalized as the `rhiiy-` prefix; *stand out* also lexicalized as a phrasal verb in GA. Treated as a single verb in the conlang.
 
 **Part of speech:** v.  **IPA:** /ɻiːsːɛːnːoː/  **Foot:** [Open].
+
+**Domains:** qualities.
 
 Phonological development: /æ/-tense (pre-nasal in GA, with preserved duration) → /ɛː/ via length reanalysis; /ɫ/ → /j/ between high front vowels; /ɪji/ → /iː/; /st/ → /sː/ at stressed-syllable boundary; /nd/ → /nː/ in coda (regressive assimilation; committed, `phonology.md` §4.4.1); /aʊ/ → /oː/; /t/ → /ʔ/ in coda; coda /ʔ/ dropped (lexically conditioned in grammaticalized *out*).
 
@@ -2112,6 +2380,8 @@ The `eu` digraph unifies two diachronic sources: (1) the smoothed-schwa pathway 
 
 **Part of speech:** v.  **IPA:** /ɻɪˈkɾɪːʔ/  **Foot:** (L)(ˈH) [Open].
 
+**Domains:** work.
+
 Phonological development: GA rhotic /ɻ/ retained `rh`; /ɪ/ retained; /kr/ retained as /kɾ/; /uː/ → /ɪː/ `iu`; coda /t/ → /ʔ/ (coda glottaling, §4.4.11), written `tt` — anchored, not elided (B12 elicitation, 2026-06-23). Under inflection the etymological /t/ re-exposes (the fossil resurrection, §4.4.14): progressive *rhikriuıĩ* (the /t/ taps and elides before /‑ıĩ/), preterite *rhikriuri* (the /t/ surfaces as the intervocalic tap of /‑ɾi/).
 
 #### Definition
@@ -2126,6 +2396,8 @@ Phonological development: GA rhotic /ɻ/ retained `rh`; /ɪ/ retained; /kr/ reta
 *you could say* — discourse adverbial/hedge.
 
 **Part of speech:** adv.  **IPA:** /ɻɪkˈsːɛ/  **Foot:** [Open].
+
+**Domains:** hedges.
 
 Phonological development [Open]: heavy reduction of *you could say*; `ss` /sː/ geminate; final /ɛ/.
 
@@ -2142,6 +2414,8 @@ Phonological development [Open]: heavy reduction of *you could say*; `ss` /sː/ 
 
 **Part of speech:** n.  **IPA:** /ˈɻɪnk/  **Foot:** (ˈH) [Open].
 
+**Domains:** drink.
+
 Phonological development: /dɻ/→/ɻ/ [Open: /d/-loss in the cluster — rhotic-instability datum]; /ŋk/ → /nk/ (no /ŋ/ phoneme; [ŋ] allophonic before /k/).
 
 #### Definition
@@ -2155,6 +2429,8 @@ Phonological development: /dɻ/→/ɻ/ [Open: /d/-loss in the cluster — rhotic
 *wonder* — a **frame-split** verb: in the get-oneself frame it reads "ask, inquire"; in the go-ahead frame, "doubt, question" (`verbal-system.md` §4.2 frames).
 
 **Part of speech:** v.  **IPA:** /ˈɻɪnːw̩/  **Foot:** (ˈL)(L) [Open] (stress on the initial syllable).
+
+**Domains:** talking, mind.
 
 Phonological development: /w/ → /ɻ/ `rh` (§4.4.1); /ʌ/ → /ɪ/ [Open: /ʌ/→/ɪ/ — not in §4.4]; /nd/ → geminate /nː/ [Open: /nd/→/nː/]; GA *-er* /ər/ → syllabic /w̩/ (the GA *-er* → syllabic-*w* appendix, written `w`).
 
@@ -2172,6 +2448,8 @@ Phonological development: /w/ → /ɻ/ `rh` (§4.4.1); /ʌ/ → /ɪ/ [Open: /ʌ/
 
 **Part of speech:** conj.  **IPA:** /ɻɪʃɪzˈbɛn/  **Foot:** [Open].  **[IPA Prov.]**
 
+**Domains:** little-words.
+
 Phonological development [Open]: convergence/merger of *which is when* and *which has been*; `sh` /ʃ/; non-onset `s` /z/; `b` /b/; `en` /ɛn/.
 
 #### Definition
@@ -2186,6 +2464,8 @@ Phonological development [Open]: convergence/merger of *which is when* and *whic
 *without a peep* — adverb "without a peep; silently."
 
 **Part of speech:** adv.  **IPA:** /ɻɪθoːˈpi/  **Foot:** [Open].
+
+**Domains:** sounds, hedges.
 
 Phonological development [Open]: *without* → `rhiþou` (/w/→/ɻ/ `rh`; /ð/→/θ/ `þ`; /aʊt/→`ou` /oː/); *a peep* → `pii` /pi/.
 
@@ -2202,6 +2482,8 @@ Phonological development [Open]: *without* → `rhiþou` (/w/→/ɻ/ `rh`; /ð/�
 
 **Part of speech:** v.  **IPA:** /ɻɨːʃp/  **Foot:** (ˈH) [Open].
 
+**Domains:** feelings.
+
 Phonological development: /w/→/ɻ/ (§4.4.1); /ɜːr/ (rhotacized mid vowel) → /ɨː/ [Open: /ɜːr/→/ɨː/ unrounding pathway not in §4.4.2]; R-Assim not triggered [Open: rhotacized vowel vocalized rather than producing a separate /ɾ/]; /ʃ/→/ʃ/ retained [Open: confirm /ʃ/ exempt from debuccalization]; /ɪ/→∅ (E3); coda /p/ retained [Open: /p/ not in E2 elision set].
 
 #### Definition
@@ -2216,6 +2498,8 @@ Phonological development: /w/→/ɻ/ (§4.4.1); /ɜːr/ (rhotacized mid vowel) �
 *rewind* — GA /ˌriːˈwaɪnd/. Two POS consolidated: interjection and adverb/temporal.
 
 **Part of speech:** interj.; also adv./temporal.  **IPA:** /ɻɪˈwĩ/  **Foot:** (L)(ˈH) [Open: nasal vowel weight].
+
+**Domains:** talking, time.
 
 Phonological development: /ɹ/→/ɻ/ (§4.4.1); /iː/→/ɪ/ [Open: /iː/→/ɪ/ shortening/laxing]; /w/→/w/ retained as plain onset; /aɪ/→/i/ [Open: /aɪ/→/i/ short reflex]; /n/→∅ (E1) + S1 nasalizes → /ĩ/ (written `ıĩ` per ii-diacritic rule — tilde on second element makes first dotless `ı`); /d/→∅ (E2b).
 
@@ -2233,6 +2517,8 @@ Phonological development: /ɹ/→/ɻ/ (§4.4.1); /iː/→/ɪ/ [Open: /iː/→/ɪ
 
 **Part of speech:** v.; n.  **IPA:** /ˈɻĩː/  **Foot:** (ˈH) [Open].
 
+**Domains:** talking.
+
 Phonological development: GA rhotic /ɻ/ retained `rh`; word-final /ɪŋ/ → /ĩː/ — coda /ŋ/ nasalizes the vowel and elides (`ıĩ` = `ii` + tilde, dotless-`ı` convention; the word-final half of the /ŋ/ resolution — see changelog).
 
 Cross-refs: *rhiitsô*.
@@ -2249,13 +2535,15 @@ Cross-refs: *rhiitsô*.
 
 **Part of speech:** (1) adv., (2) interj.  **IPA:** /ˈɾ̥ɛ/  **Foot:** (ˈL) light monosyllable.
 
+**Domains:** time.
+
 Phonological development: /h/ + tap coalescence → /ɾ̥/ (M1 devoicing mechanism generalized to onset, without metathesis); two irregular shifts specific to this high-frequency colloquial form: /t/ → /h/ in onset cluster (not a regular rule); /eɪ/ → short /ɛ/ (clipping, not a regular rule).
 
 Cross-refs: *ŕeut* (parallel /ɾ̥/ onset, from M1 metathesis rather than coalescence).
 
 #### Definition
 
-1. *(adv.)* today. — <!-- example: E001 --><!-- preview E001 · auto-generated from examples.md · do not edit -->*Ŕeus bémmo oų rĩbii·hii. Oų riis·hii o noê.* "It's a little more chillier today, in a pleasant kind of way."<!-- /preview -->
+1. *(adv.)* today. — <!-- example: E001 --><!-- preview E001 · auto-generated from examples.md · do not edit -->*Bémmo oų rĩbii·hii ŕe. Oų riis·hii o noê.* "It's a little more chillier today, in a pleasant kind of way."<!-- /preview -->
 2. *(interj.)* hurry!; right now!; immediately!
 
 #### Notes
@@ -2271,6 +2559,8 @@ The two irregular shifts — /t/ → /h/ and /eɪ/ → short /ɛ/ — are one-of
 
 **Part of speech:** v.  **IPA:** /ɾ̥ɛˈkwoθw̩/ [Open]  **Foot:** [Open].
 
+**Domains:** work.
+
 Phonological development: /tʃ/→/ɾ̥/ (cherish tapping, at the GA stress stage) [Open: fork ordering — see changelog]; /k/ → `qu` before the rounded vowel [Open: `qu` distribution]; *off* → /oθw̩/ — fin-thin + labial rescue (the satellite *oþw*'s derivation, free-standing).
 
 #### Definition
@@ -2284,6 +2574,8 @@ Phonological development: /tʃ/→/ɾ̥/ (cherish tapping, at the GA stress stag
 *cherish*.
 
 **Part of speech:** v.  **IPA:** /ˈɾ̥ɛːʃ/  **Foot:** (ˈH) [Open].
+
+**Domains:** feelings.
 
 Phonological development: /tʃ/→/ɾ̥/ (cherish tapping — the namesake); medial /r/ → ∅ (tap–rhotic dissimilation); /ɛ…ɪ/ → /ɛː/ `eu`; final /ʃ/ `sh` (orthography §2.1, v3.3).
 
@@ -2301,6 +2593,8 @@ Intensive *rhiiyshêush*.
 *carrot*.
 
 **Part of speech:** n.  **IPA:** /ˈɾ̥eːʔ/  **Foot:** (ˈH) heavy monosyllable.
+
+**Domains:** food, produce.
 
 Phonological development: onset /k/ → /h/; coda /t/ → /ʔ/; M1 (rhotic metathesis: intervocalic /ɻ/ → onset, /h/ reanalyzed as devoicing feature → /ɾ̥/); smoothing of /æ + ə/ → /eː/.
 
@@ -2322,6 +2616,8 @@ The canonical illustration of M1: GA onset /k/ debuccalizes to /h/, which become
 *skip* — GA /skɪp/, "decline; pass over." Lexicalized as the go-ahead negative marker. The deliberate-declination semantics is inherited and sharpened to active counter-volition (going out of one's way to not-do, not merely the absence of volition).
 
 **Part of speech:** aux. (LVC.VOL.NEG); also adv./substitutional; also interj. (prohibitive).  **IPA:** /skʷkʷ/ (first /kʷ/ syllabic).  **Foot:** [omitted].
+
+**Domains:** little-words.
 
 Phonological development: irregular, peculiar to this high-frequency form. Coda /p/ delabializes — but only after labializing the /k/ (the labial feature transfers from /p/ to /k/ before /p/ is lost). The vowel /ɪ/, squeezed between two /kʷ/ sequences, elides entirely, leaving a vowelless /skʷkʷ/ with the first /kʷ/ as syllable nucleus. [Open: irregular; not a proposed regular rule.]
 
@@ -2354,6 +2650,8 @@ Layers with the positive get-oneself frame (GET-ONESELF) productively but narrow
 
 **Part of speech:** v.  **IPA:** /ˈsplɪt/  **Foot:** (ˈL) [Open].
 
+**Domains:** travel.
+
 Phonological development: /spl/ shielded; coda /t/ retained [Open: coda-/t/ conditioning — see changelog].
 
 #### Definition
@@ -2371,6 +2669,8 @@ Phonological development: /spl/ shielded; coda /t/ retained [Open: coda-/t/ cond
 
 **Part of speech:** v.  **IPA:** /spjɪ/  **Foot:** (ˈH) [Open: cluster onset weight].
 
+**Domains:** body, feelings.
+
 Phonological development: /s/ in cluster /sp/ retained (not debuccalized) [Open: §4.4.1 debuccalization of /s/ blocked in /sp/ cluster? Rule not in §4]; /p/→/p/; /j/ retained in cluster; /uː/→/ɨː/→/ɪ/ [Open: /uː/→/ɪ/ via /ɨ/ unrounding then shortening].
 
 #### Definition
@@ -2386,6 +2686,8 @@ Phonological development: /s/ in cluster /sp/ retained (not debuccalized) [Open:
 
 **Part of speech:** n.  **IPA:** /tʰɪ̃ː/  **Foot:** (ˈH) [Open].
 
+**Domains:** music, sounds.
+
 Phonological development: onset /tʰ/ written `th` (orthography §2.1 note, v3.2 — graphic contrast with `t`, `tt`); /(j)uː/→/ɪː/ `iu`; coda /n/ → nasalization `ų`.
 
 #### Definition
@@ -2399,6 +2701,8 @@ Phonological development: onset /tʰ/ written `th` (orthography §2.1 note, v3.2
 *toast* — GA /toʊst/.
 
 **Part of speech:** n.  **IPA:** /ˈtos/  **Foot:** (ˈH).
+
+**Domains:** food, kitchen.
 
 Phonological development: /t/→/t/; /oʊ/→/o/ [Open: /oʊ/→/o/ short reduction rather than /oː/ — possibly high-frequency]; coda /st/→/ts/ (§4.4.1) → /t/→/ʔ/ (E2a) → drops [Open: /ʔ/-drop condition]; /s/ in coda (non-onset) → /z/→devoiced → `ś`.
 
@@ -2414,6 +2718,8 @@ Phonological development: /t/→/t/; /oʊ/→/o/ [Open: /oʊ/→/o/ short reduct
 *to total to* — the GA tallying phrase ("the bill totals to forty dollars") lexicalized as a single verb.
 
 **Part of speech:** v.  **IPA:** /ˈtoːtw̩/  **Foot:** (ˈH) with appendix /w̩/ tail.
+
+**Domains:** work, having.
 
 Phonological development: /oʊ/ → /oː/; intervocalic tap /ɾ/ elided (E1); coda /ɫ/ → ∅ (E2c; rule stated in `phonology.md` §4.4.3, full path conditions [Open] there); smoothing of /oː + ə/ → /oː/; final unstressed /u/ → syllabic /w̩/ (phonology §4.3 step 7).
 
@@ -2437,6 +2743,8 @@ Initial /t/ is aspirated [tʰ] in stressed onset — allophonic, not marked orth
 
 **Part of speech:** n.  **IPA:** /ˈtwiːto/ [Open: pitch realization, í…ò as spelled]  **Foot:** [Open].
 
+**Domains:** nature.
+
 Phonological development: not derived (nonce source); /tw/ onset and the dotless-`ı` spelling (`ii` + acute on the second element) are inventory-regular.
 
 #### Definition
@@ -2450,6 +2758,8 @@ Phonological development: not derived (nonce source); /tw/ onset and the dotless
 *finally* — interjection "finally!; at last."
 
 **Part of speech:** interj.  **IPA:** /θi.aˈi/  **Foot:** [Open].  **[IPA Prov.]**
+
+**Domains:** talking, feelings.
 
 Phonological development [Open]: heavy reduction of *finally* /ˈfaɪnəli/; /f/→/θ/ `þ`; vowel sequence `iiaii`.
 
@@ -2465,6 +2775,8 @@ Phonological development [Open]: heavy reduction of *finally* /ˈfaɪnəli/; /f/
 *fill in* — "tell, inform" (fill someone in). Also "replace / substitute" (fill in for) and an intransitive "read the room" sense (with *niblę*).
 
 **Part of speech:** v.  **IPA:** /θɪlˈnː/  **Foot:** [Open] (stress on the syllabic geminate *nn*).
+
+**Domains:** talking.
 
 Phonological development: /f/ → /θ/ `þ` [Open: /f/→/θ/ not in §4.4]; /ɪl/ retained (coda dark *l* in cluster context — cf. the cluster exemption, §4.4.4); *in* /ɪn/ → stressed syllabic geminate /nː/ [Open: syllabic-nasal gemination + stress assignment].
 
@@ -2486,6 +2798,8 @@ Direct object infixed; indirect object suffixed. [Open: infix/suffix templates �
 
 **Part of speech:** n.  **IPA:** /ˈθlɪː/  **Foot:** (ˈH).
 
+**Domains:** health, body.
+
 Phonological development: /f/→/θ/ (fin-thin; companion *rhilþ*); /l/ in cluster (where /l/ lives); /uː/→/ɪː/ `iu` (long-GOOSE reflex — the regular path the *do* → *o* irregularity excepts; `phonology.md` §5.2).
 
 #### Definition
@@ -2499,6 +2813,8 @@ Phonological development: /f/→/θ/ (fin-thin; companion *rhilþ*); /l/ in clus
 *focus* — concentrated attention; supplies the think-cluster's most agentive member.
 
 **Part of speech:** v.  **IPA:** /ˈθoksː/ [Open: final cluster]  **Foot:** (ˈH) [Open].
+
+**Domains:** mind, work.
 
 Phonological development: /f/→/θ/ (fin-thin); /oʊ/→/o/ (short reduction — with *nott*, content-verb data for §5.2); /kəs/: E3 → /ksː/ [Open: final `ss` value].
 
@@ -2516,6 +2832,8 @@ Cross-refs: *þott* (its suppletive deverbal).
 
 **Part of speech:** n.  **IPA:** /ˈθoʔ/  **Foot:** (ˈL) with /ʔ/ appendix [Open].
 
+**Domains:** mind.
+
 Phonological development: native /θ/ `þ`; vowel by analogy to *þokss* (not sound change); /t/→/ʔ/ `tt` (§2.7). The sound-change path alone gives *þautt* (/ɔː/→/ɑ/, glottaling).
 
 Cross-refs: *þokss*.
@@ -2532,6 +2850,8 @@ Cross-refs: *þokss*.
 
 **Part of speech:** adv.  **IPA:** /θɾi.ei.ˈiõ/  **Foot:** [Open].  **[IPA Prov.]**
 
+**Domains:** time.
+
 Phonological development [Open]: *for* → `þr` (/f/→/θ/ `þ`; /ɔr/→/ɾ/ `r`); *a eon* → `ei·iiǫ` (hiatus). The interpuncts mark syllable division (formal register).
 
 #### Definition
@@ -2547,6 +2867,8 @@ Phonological development [Open]: *for* → `þr` (/f/→/θ/ `þ`; /ɔr/→/ɾ/ 
 
 **Part of speech:** suffix.  **IPA:** /-wiz/  **Foot:** —.
 
+**Domains:** little-words.
+
 Phonological development: *-wise* /waɪz/ → /-wiz/ (/aɪ/→/i/ `ii`; final /z/, non-onset `s`).
 
 #### Definition
@@ -2559,6 +2881,28 @@ Phonological development: *-wise* /waɪz/ → /-wiz/ (/aɪ/→/i/ `ii`; final /z
 ## 5. Changelog
 
 A running record of additions and changes to the dictionary, with dates and any open questions surfaced.
+
+### 2026-08-17
+
+- **Acoustic citations withdrawn from the *noê* entry; the merger itself stands.** The recorded-production evidence entered on 2026-08-12 was measured on the wrong audio. Stage 2 of the audio pipeline assigned every utterance one position early, so the exported "words" were the spoken English digit slates; all 120 tokens in that analysis are numerals. The error was invisible to every check in place — utterance counts, anchor spacing, parameter-grid stability and manifest coverage are all preserved by a uniform shift — and surfaced only when the author played the audio and heard "one, two, three." Fixed in `tools/audio-split.py`; a content gate (`tools/audio-verify.py`) now rejects any token that transcribes as its own item number.
+- **What this changes here.** The merger is unaffected: it was ruled on the GA premise (*no WAY!*, not **NO** way!), which the 2026-08-12 note already recorded as "decidable without" the recording. Two figures are withdrawn — the "flat contour, +1.8 Hz" trigger and the 280 ms durational difference between senses. The latter was *five* against *six*; because the slate is the item number it did not rotate with block order, which is exactly why it appeared in 5 of 5 blocks. **A perfectly consistent effect on the one pair documented as a pitch contrast should have been read as a warning rather than as the strongest result in the set.**
+- **Re-measured, on corrected and content-verified audio.** The two former headwords have near-identical mean F0 contours and a centroid difference of −0.7 pp; the duration difference is −37 ms (sd 150). Both are consistent with homophony and neither establishes it — only three repetitions of *nóè* survive verification, below the bar the analysis plan sets for a sign test. No entry text is derived from these numbers.
+- **Practice note, reinforced.** The 2026-08-12 entry below closes with "do not back-infer the GA accent from the conlang spelling." The parallel rule for acoustics: **do not accept a measurement into an entry without a content check on what was measured.** Structural validation cannot tell you that you measured the right sound.
+
+### 2026-08-12
+
+*(Superseded in part by 2026-08-17: every acoustic figure in this entry is withdrawn — the measurements were taken on the recording's English digit slates, not the words. The merger itself stands; it was ruled on the GA premise, not on the audio.)*
+
+- **\*noê\* and \*nóè\* merged into one entry (net −1 headword).** They were listed as a pitch-accent minimal pair, *nóè* "no way" keeping "a residual high pitch on *no*" against *noê* "in a way." The premise was a **NO** way! reading of the GA source; the ordinary realization is *no WAY!*, which leaves *no* unstressed, so the two words are homophones and the acute had nothing to mark. Author ruling 2026-08-12. The merged entry carries **both etymologies** and three senses; position and turn shape disambiguate. Cross-refs to the former pair are removed.
+- **First entry corrected from recorded production.** The trigger was acoustic: across five repetitions *nóè* showed no first-syllable pitch peak (mean contour flat, +1.8 Hz early-to-late, versus 9–16 Hz declines on words that do carry an early accent). The recording pointed at the entry; the correction rests on the GA claim, which is decidable without it. See `planning/audio-pipeline-plan.md` §7.
+- **A measured difference deliberately *not* encoded.** Sense 2 (< *no way*) ran 280 ms longer than sense 1 in 5 of 5 blocks. Emphatic interjection versus hedging adverb is an unresolved confound, so this is recorded in the entry's Notes as a flagged observation only, pending a frame-controlled recording.
+- **Propagated:** `orthography.md` v3.11 (§3.7 worked example moved to *óhò* / *ohô*, which the same recording supports), `phonology.md` v4.9 (§5.4 candidate pair withdrawn; variable final pitch opened as a data-gathering item). `docs/quickref/dictionary-index.md` merged by hand (two rows → one); a full quickref rebuild will confirm. `examples.md` E009 and E060 respelled, and E039's "draft *noê* vs canon *nóè*" review flag resolved in favour of the draft. Previews regenerated via `site/scripts/sync-previews.mjs`; an orphaned duplicate E009 preview block in `verbal-system.md` §12 — unreachable by the sync script because it had no token of its own, and therefore silently stale — was removed.
+- **Practice note for future entries.** Which element of the GA etymon carried the accent is load-bearing for pitch placement and is the field most easily got wrong. State it in the Etymology line when it is not obvious, and do not back-infer it from the conlang spelling.
+
+### 2026-07-16
+
+- **Domains field added to every entry.** New schema line (§1): `**Domains:** …` directly after the form line — one to three lowercase browsing labels per entry, powering the site's picture-dictionary wander ("explore other food") and related-word navigation. All 151 entries tagged. These are navigation labels, not a semantic-field analysis; retag freely.
+- **Working domain set (24):** body, drink, feelings, food, having, health, hedges, home, kitchen, little-words, mind, music, nature, people, places, play, produce, qualities, sounds, talking, time, travel, weather, work. Extend deliberately; note additions here.
 
 ### 2026-06-26
 
