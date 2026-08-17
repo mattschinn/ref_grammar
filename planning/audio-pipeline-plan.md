@@ -1,9 +1,9 @@
 # Audio Pipeline — Planning Document
 
 **Status:** [Active] — pilot 01 recorded, split and measured end-to-end (122/125 tokens);
-first acoustic result in hand
+first acoustic result in hand; publication branch built through polish (25/25 ready to encode)
 **Opened:** 2026-08-11
-**Last updated:** 2026-08-12
+**Last updated:** 2026-08-16
 
 > **Reading this cold?** Jump to §2 (Current state) and §8 (Milestones). §1 and §3 are
 > the original design reasoning, retained because parts of it were tested and one
@@ -83,6 +83,11 @@ the more cautious line the plan carried through the pilot, and it is the author'
 | `tools/audio-split.py` | Stage 2: utterance clustering + anchor-driven word boundaries |
 | `tools/audio-contour.py` | Stage 3: per-token measurement, contours, paired contrasts |
 | `tools/audio-readout.py` | Builds `contours.html` from `contours.json`; the published readout's source |
+| `tools/audio-select.py` | Stage 4: one publishable take per item — technical gate, then medoid |
+| `tools/audio-polish.py` | Stage 5: publication conditioning (HPF → trim → loudness). **Never measure its output** |
+| `audio/work/session-01-picks.csv` | Stage-4 output: the chosen take per headword, 25/25 |
+| `audio/work/session-01-polish.csv` | Stage-5 per-file report (gain applied, method, ceiling hits) |
+| `audio/work/polished/` | 25 polished WAVs, publication branch only |
 
 ### Pilot 01 measured results
 
@@ -256,7 +261,22 @@ Supersedes the original protocol. Changes are driven by §3.
   `audiolib.refine_bounds` were calibrated to minimise it: **−0.31 → −0.05**. The endpoint
   walk must bridge dips of ~0.15 s or it halts at the first internal /h/, /ʔ/ or geminate
   closure and returns one syllable of a disyllable.
-- Dual encode: Opus ~56 kbps for the site, WAV master archived
+- Dual encode: **MP3 96–128 kbps mono** for the site, WAV master archived. *(Revised
+  2026-08-16 from "Opus ~56 kbps". Three reasons: `site/src/lib/explore.ts` and
+  `lessons.ts` already resolve `.mp3`; Safari only gained native Opus-in-ogg in 17.5;
+  and at this corpus size the byte saving does not pay for the compatibility tail.
+  The floor of 96 kbps is not negotiable downward — lossy codecs discard
+  perceptually-masked high-frequency low-energy content first, which here means /h/,
+  /θ/, /sː/ aspiration and the /ʔ/ and geminate-release transients.)*
+
+### The corpus forks at stage 5
+
+**Analysis reads stage-2 per-item WAVs. Publication reads stage-5 polished WAVs. The
+two must never cross.** Loudness normalisation deliberately destroys cross-item
+amplitude relationships — that is the whole point of it — and the V₁
+length-and-amplitude prediction (`phonology.md` §3.4) is tested on amplitude. Measuring
+polished audio would answer that question with an artefact of `audio-polish.py`. The
+same applies to any future voice-conversion stage, more so.
 
 Toolchain: numpy + scipy (present in the anaconda env), torch + transformers for stage 1.
 ffmpeg/SoX not currently installed. praat-parselmouth would be convenient for F0 but is
@@ -489,7 +509,39 @@ output be written into `phonology.md` as confirmation.**
       Keep everything that worked: English digit slates, blocked rotation, five reps.
       Per-syllable duration still needs phone boundaries (MFA, §9) — worth resolving before
       recording, since it decides whether the length half of the hypothesis is testable at all.
-- [ ] **M9** — Site integration: Opus encode + per-word audio on `/explore/`
+- [x] **M9a** — Stage 4 take selection (`tools/audio-select.py`). 25/25 items resolved,
+      0 forced past the technical gate, 2 flagged thin (*rhiitsô* 2 usable, *pot* 1).
+      **Selection is by medoid, not by quality score** — ranking on SNR or peak would
+      systematically publish the loudest, most emphatic reading of every word, which is
+      the same citation-form emphasis that confounds the *noê* duration result (§7).
+      The gate is disqualifying-only; the medoid decides among survivors.
+- [x] **M9b** — Stage 5 polish (`tools/audio-polish.py`). 60 Hz zero-phase high-pass →
+      trim with 150 ms padding → loudness normalisation. All 25 land at **−24.0 LUFS
+      with 0.00 dB spread**, peaks −6.9…−1.4 dBFS, none ceiling-limited.
+      Two calibration findings:
+      - **Target is −24 LUFS, derived not chosen.** Citation words have a 17.1–22.6 dB
+        peak-to-loudness ratio; at the initial −20 LUFS, 12 of 25 files hit the peak
+        ceiling and landed short of target, defeating the uniformity the stage exists
+        for. −24 is the first whole dB at which all 25 reach target.
+      - **BS.1770 gating is meaningless at this token length.** A 0.4 s block with 75%
+        overlap yields ~2 blocks on a 0.6 s word. Below `--gate-min-blocks` the tool
+        falls back to ungated K-weighted RMS over the trimmed token and reports the
+        fallback per file rather than applying it silently. All 25 used the fallback.
+      - Noise reduction is implemented but **off by default** (§9 open question; median
+        SNR 45 dB, and spectral gating eats fricative energy).
+- [ ] **M9c** — Site integration: MP3 encode + per-word audio on `/explore/`.
+      ffmpeg 9.0 installed 2026-08-16 (winget `Gyan.FFmpeg`, not conda — mixing
+      conda-forge into the `defaults` base env risks collateral downgrades to the
+      torch/numpy stack). Encode path verified end-to-end on a pilot token.
+      **Open detail:** `explore.ts` expects `public/audio/words/<slug>.mp3`, and
+      github-slugger leaves the headword's diacritics intact, so the slug is literally
+      `óhò`. That means Unicode filenames and percent-encoded URLs. The author's
+      proposal is to reuse the diacritic typer's postfix trigger codes
+      (`site/src/scripts/diacritics.js`: `1` acute, `2` nasal, `3` ligature, `4` grave,
+      `5` háček, `9` thorn/eth, `c` circumflex, `d` diaeresis) as a reversible
+      ASCII-safe filename encoding — *óhò* → `o1ho4`. Unresolved: the typer's rule set
+      has no code for dotless `ı` (*ossıî*, *rékwıì*), which is needed before this can
+      be adopted. Decide before encoding, since the mapping must match on both sides.
 - [ ] **M10** — Fold a skill doc (`audio-pipeline`) once the workflow stabilises. The
       procedure comes from this file; the judgement comes from
       `planning/audio-pipeline-learnings.md` §5, which sketches the skill's steps.
