@@ -1,0 +1,924 @@
+<meta charset="utf-8">
+<title>Rickety Yak — Design Sandbox</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--
+  DESIGN SANDBOX (D2 of planning/site-design-system-plan.md)
+  Standalone, no build, no server. Double-click to open from file://.
+  The only network use is Google Fonts (loaded lazily on selection).
+
+  The RIGHT pane is a mock grammar page governed entirely by the --cl-* design
+  tokens (same names as site/src/styles/tokens.css). The LEFT panel live-edits
+  those tokens, applies curated presets, saves named configs to localStorage, and
+  exports/imports the preset JSON that site/scripts/apply-design.mjs (D4) consumes.
+
+  The control panel has its own neutral styling and never reads --cl-* tokens, so
+  it can't contaminate a design judgment.
+
+  NOTE: the PRESETS array below is copied verbatim from site/design/presets/
+  (five curated + the two "neutral" author looks). If those JSON files change,
+  refresh the copies here (and vice-versa).
+-->
+<style>
+/* ============================================================= PANEL (neutral) */
+:root {
+  --pnl-bg: #f4f4f5; --pnl-fg: #1c1c1e; --pnl-mut: #6b6b70; --pnl-line: #d9d9de;
+  --pnl-field: #ffffff; --pnl-accent: #3b6db5;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --pnl-bg:#202024; --pnl-fg:#e9e9ec; --pnl-mut:#9a9aa0; --pnl-line:#37373d;
+          --pnl-field:#2a2a30; --pnl-accent:#6ea0e0; }
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; }
+body {
+  font: 13px/1.45 system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  display: grid; grid-template-columns: 320px 1fr; height: 100vh; overflow: hidden;
+}
+.panel {
+  background: var(--pnl-bg); color: var(--pnl-fg); border-right: 1px solid var(--pnl-line);
+  overflow-y: auto; padding: 12px 14px 60px;
+}
+.panel h1 { font-size: 14px; margin: 4px 0 2px; letter-spacing: .01em; }
+.panel .sub { color: var(--pnl-mut); font-size: 11px; margin-bottom: 12px; }
+.panel details { border: 1px solid var(--pnl-line); border-radius: 7px; margin-bottom: 8px; background: var(--pnl-field); }
+.panel summary { cursor: pointer; padding: 8px 10px; font-weight: 600; font-size: 12px; user-select: none; }
+.panel details[open] summary { border-bottom: 1px solid var(--pnl-line); }
+.panel .grp { padding: 8px 10px; display: flex; flex-direction: column; gap: 9px; }
+.row { display: grid; grid-template-columns: 96px 1fr; align-items: center; gap: 8px; }
+.row > label { color: var(--pnl-mut); font-size: 11px; }
+.row.wide { grid-template-columns: 1fr; }
+.row .val { color: var(--pnl-mut); font-variant-numeric: tabular-nums; font-size: 10px; text-align: right; }
+.rng { display: grid; grid-template-columns: 1fr 40px; align-items: center; gap: 6px; }
+select, input[type=text], input[type=number] {
+  width: 100%; font: inherit; font-size: 12px; padding: 4px 6px; border: 1px solid var(--pnl-line);
+  border-radius: 5px; background: var(--pnl-field); color: var(--pnl-fg);
+}
+input[type=range] { width: 100%; accent-color: var(--pnl-accent); }
+input[type=color] { width: 100%; height: 26px; padding: 0; border: 1px solid var(--pnl-line); border-radius: 5px; background: var(--pnl-field); }
+input[type=checkbox] { accent-color: var(--pnl-accent); }
+button {
+  font: inherit; font-size: 12px; padding: 5px 9px; border: 1px solid var(--pnl-line);
+  border-radius: 5px; background: var(--pnl-field); color: var(--pnl-fg); cursor: pointer;
+}
+button:hover { border-color: var(--pnl-accent); }
+button.primary { background: var(--pnl-accent); color: #fff; border-color: var(--pnl-accent); }
+.btnrow { display: flex; gap: 6px; flex-wrap: wrap; }
+.chk { display: flex; align-items: center; gap: 7px; font-size: 12px; }
+.saved-item { display: flex; align-items: center; gap: 6px; justify-content: space-between; }
+.saved-item span { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.saved-item button { padding: 2px 6px; font-size: 11px; }
+.theme-pill { display: inline-flex; gap: 4px; }
+.theme-pill button.active { background: var(--pnl-accent); color: #fff; border-color: var(--pnl-accent); }
+.note { color: var(--pnl-mut); font-size: 10.5px; line-height: 1.4; }
+
+/* ============================================================= STAGE + MOCK */
+.stage { overflow-y: auto; background: #8a8a8e; }
+@media (prefers-color-scheme: dark) { .stage { background: #47474b; } }
+
+/* The mock is a self-contained themed surface; every rule below reads --cl-* tokens
+   set inline on #mock by the script. Defaults here are only a safety net. */
+.mock {
+  --cl-font-body: Georgia, serif; --cl-font-heading: var(--cl-font-body);
+  --cl-font-ui: var(--cl-font-body); --cl-font-conlang: var(--cl-font-body);
+  --cl-font-etym: var(--cl-font-body); --cl-font-ipa: var(--cl-font-body);
+  --cl-font-leipzig: var(--cl-font-body); --cl-font-translation: var(--cl-font-body);
+  --cl-font-code: monospace;
+  --cl-size-body: 1.125rem; --cl-leading-body: 1.6; --cl-measure: 72ch;
+  --cl-scale-conlang: 1.35; --cl-scale-etym: .9; --cl-scale-ipa: .95;
+  --cl-scale-leipzig: .8; --cl-scale-translation: 1;
+  --cl-heading-weight: 600; --cl-heading-tracking: 0; --cl-heading-variant: normal;
+  --cl-heading-space-above: 2.2em; --cl-heading-space-below: .7em; --cl-heading-rule: none;
+  --cl-example-pad: .9em 1.1em; --cl-example-radius: .4rem;
+  --cl-example-rule: 3px solid var(--cl-accent); --cl-chunk-gap: 1.25em;
+  --cl-cols-count: 2; --cl-cols-gap: 2.5em; --cl-cols-rule: none;
+  --cl-bg: #1a1a1a; --cl-bg-nav: #242422; --cl-bg-sidebar: #1f1f1d;
+  --cl-accent: #b85a92; --cl-accent-high: #ecb6d6; --cl-accent-low: #3a2630;
+  --cl-conlang-color: var(--cl-accent-high);
+  --cl-example-bg: color-mix(in srgb, var(--cl-accent) 8%, transparent);
+  --cl-highlight-bg: color-mix(in srgb, var(--cl-accent) 22%, transparent);
+  --cl-badge-settled: #4a8f5c; --cl-badge-provisional: #b0802b; --cl-badge-open: #a8555f;
+  --cl-text: #e8e8e6; --cl-text-mut: #b7b7b3;
+  min-height: 100%; background: var(--cl-bg); color: var(--cl-text);
+  font-family: var(--cl-font-body); font-size: var(--cl-size-body); line-height: var(--cl-leading-body);
+}
+.mock[data-theme='light'] { --cl-text: #26262b; --cl-text-mut: #5a5a63; }
+
+/* fake chrome */
+.mock-nav {
+  background: var(--cl-bg-nav); border-bottom: 1px solid var(--cl-accent-low);
+  padding: 10px 20px; display: flex; align-items: center; gap: 14px;
+  font-family: var(--cl-font-ui); font-size: .82rem; position: sticky; top: 0; z-index: 5;
+}
+.mock-nav .brand { font-weight: 700; color: var(--cl-accent); }
+.mock-nav .sp { flex: 1; }
+.mock-nav .lk { color: var(--cl-text-mut); }
+.mock-shell { display: grid; grid-template-columns: 200px 1fr; }
+.mock-sidebar {
+  background: var(--cl-bg-sidebar); border-right: 1px solid var(--cl-accent-low);
+  padding: 18px 16px; font-family: var(--cl-font-ui); font-size: .8rem; min-height: 80vh;
+}
+.mock-sidebar .sg { color: var(--cl-text-mut); text-transform: uppercase; letter-spacing: .08em; font-size: .68rem; margin: 14px 0 6px; }
+.mock-sidebar a { display: block; padding: 3px 0; color: var(--cl-text-mut); text-decoration: none; }
+.mock-sidebar a.cur { color: var(--cl-accent); font-weight: 600; }
+.mock-content { padding: 30px 40px 120px; max-width: var(--cl-measure); }
+
+/* headings */
+.mock-content h1 { font-family: var(--cl-font-heading); font-weight: var(--cl-heading-weight);
+  font-size: calc(2.1rem * var(--cl-heading-scale, 1)); margin: .2em 0 .5em;
+  text-transform: var(--cl-heading-transform, none); }
+.mock-content h2, .mock-content h3 {
+  font-family: var(--cl-font-heading); font-weight: var(--cl-heading-weight);
+  letter-spacing: var(--cl-heading-tracking); font-variant: var(--cl-heading-variant);
+  text-transform: var(--cl-heading-transform, none);
+  margin-top: var(--cl-heading-space-above); margin-bottom: var(--cl-heading-space-below);
+  line-height: 1.2;
+}
+.mock-content h2 { font-size: calc(1.55rem * var(--cl-heading-scale, 1)); }
+.mock-content h3 { font-size: calc(1.2rem * var(--cl-heading-scale, 1)); }
+.mock.rules .mock-content h2, .mock.rules .mock-content h3 {
+  border-bottom: var(--cl-heading-rule); padding-bottom: .25em;
+}
+.mock-content h2 .sec, .mock-content h3 .sec { color: var(--cl-accent); font-weight: 400; margin-right: .5em; }
+.mock-content p { margin: 0 0 1em; }
+
+/* status badges */
+.cl-badge { font-size: .82em; font-variant: small-caps; letter-spacing: .02em; padding: .05em .5em;
+  border-radius: 1em; border: 1px solid transparent; white-space: nowrap; }
+.cl-badge--settled { color: var(--cl-badge-settled); border-color: var(--cl-badge-settled); }
+.cl-badge--provisional { color: var(--cl-badge-provisional); border-color: var(--cl-badge-provisional); }
+.cl-badge--open { color: var(--cl-badge-open); border-color: var(--cl-badge-open); }
+.mock.no-badges .cl-badge { border-color: transparent !important; color: inherit !important;
+  font-variant: normal; padding: 0; border-radius: 0; }
+
+/* gloss tag (leipzig) inline hover-ish */
+.cl-gloss { border-bottom: 1px dotted var(--cl-accent); cursor: help; }
+
+/* ---- interlinear example (normative D2c markup) ---- */
+.cl-example {
+  margin: 1.6em 0; padding: var(--cl-example-pad); border-radius: var(--cl-example-radius);
+  background: var(--cl-example-bg); border-left: var(--cl-example-rule);
+}
+.mock.no-island .cl-example { background: none; border-left: none; padding-left: 0; border-radius: 0; }
+.cl-ex-grid { display: flex; flex-wrap: wrap; column-gap: var(--cl-chunk-gap); row-gap: .6em; margin-bottom: .5em; }
+.cl-ex-chunk { display: flex; flex-direction: column; border-radius: .25em; padding: .1em .25em; margin: -.1em -.05em; }
+.mock.hoverhl .cl-ex-chunk:hover, .mock.hoverhl .cl-ex-chunk:focus-within { background: var(--cl-highlight-bg); }
+.cl-ex-conlang { font-family: var(--cl-font-conlang); font-size: calc(1em * var(--cl-scale-conlang));
+  color: var(--cl-conlang-color); font-style: italic; line-height: 1.25; }
+.cl-ex-etym { font-family: var(--cl-font-etym); font-size: calc(1em * var(--cl-scale-etym));
+  color: var(--cl-text-mut); line-height: 1.3; }
+.cl-ex-free { margin-top: .15em; }
+.cl-ex-ipa { font-family: var(--cl-font-ipa); font-size: calc(1em * var(--cl-scale-ipa)); color: var(--cl-text-mut); }
+.cl-ex-leipzig { font-family: var(--cl-font-leipzig); font-size: calc(1em * var(--cl-scale-leipzig));
+  color: var(--cl-text-mut); letter-spacing: .01em; }
+.cl-ex-gesture { font-family: var(--cl-font-ui); font-size: .85em; color: var(--cl-accent); font-style: italic; }
+.cl-ex-gesture::before { content: 'χ '; font-style: normal; }
+.cl-ex-translation { font-family: var(--cl-font-translation); font-size: calc(1em * var(--cl-scale-translation)); }
+.cl-ex-dormant { opacity: .6; }
+.cl-ex-dormant-tag { font-size: .62em; font-variant: small-caps; color: var(--cl-text-mut); margin-left: .5em; letter-spacing: .04em; }
+
+/* plain-blockquote fallback rendering (interlinearGrid off) */
+.cl-example.plain .cl-ex-grid { display: block; }
+.cl-example.plain .cl-ex-chunk { display: inline; margin: 0; padding: 0; }
+.cl-example.plain .cl-ex-chunk .cl-ex-etym { display: none; }
+.cl-example.plain .cl-ex-conlang { font-size: 1em; }
+.cl-example.plain .cl-ex-conlang::after { content: ' '; }
+
+/* columned prose islands */
+.cl-prose-run.cl-cols { column-count: var(--cl-cols-count); column-gap: var(--cl-cols-gap); column-rule: var(--cl-cols-rule); }
+@media (max-width: 60rem) { .cl-prose-run.cl-cols { column-count: 1; } }
+
+/* glyph gauntlet */
+.gauntlet { border: 1px dashed var(--cl-accent-low); border-radius: .4rem; padding: 12px 14px; margin: 0 0 26px; }
+.gauntlet .lab { font-family: var(--cl-font-ui); font-size: .66rem; text-transform: uppercase; letter-spacing: .09em; color: var(--cl-text-mut); margin-bottom: 4px; }
+.gauntlet .strip { line-height: 1.7; word-spacing: .12em; margin-bottom: 10px; }
+.gauntlet .g-orth { font-family: var(--cl-font-conlang); font-size: 1.35rem; }
+.gauntlet .g-ipa { font-family: var(--cl-font-ipa); font-size: 1.35rem; }
+.gauntlet .cap { font-family: var(--cl-font-ui); font-size: .68rem; color: var(--cl-text-mut); font-style: italic; }
+</style>
+
+<aside class="panel">
+  <h1>Rickety Yak — Design Sandbox</h1>
+  <div class="sub">Live-edit the site's design tokens on real content. D2 of the design-system plan.</div>
+
+  <details open>
+    <summary>Presets &amp; saves</summary>
+    <div class="grp">
+      <div class="row"><label>Preset</label><select id="preset-sel"></select></div>
+      <div class="row wide"><div class="btnrow">
+        <button id="save-btn" class="primary">Save as…</button>
+        <button id="export-btn">Export JSON</button>
+        <button id="import-btn">Import JSON</button>
+      </div></div>
+      <input type="file" id="import-file" accept="application/json" hidden>
+      <div class="row wide"><div id="saved-list" class="grp" style="padding:0;gap:5px"></div></div>
+    </div>
+  </details>
+
+  <details open>
+    <summary>Theme (edit + preview)</summary>
+    <div class="grp">
+      <div class="row"><label>Editing</label>
+        <div class="theme-pill">
+          <button data-theme="dark" class="active">Dark</button>
+          <button data-theme="light">Light</button>
+        </div>
+      </div>
+      <div class="note">The mock and the color pickers below both follow this switch.</div>
+    </div>
+  </details>
+
+  <details>
+    <summary>Fonts</summary>
+    <div class="grp" id="fonts-grp"><!-- rows injected --></div>
+    <div class="grp"><div class="note">Selecting a Google font loads it lazily. “Brill” and “Iosevka” are self-host-only — they’ll fall back in this standalone file (informative for the gauntlet).</div></div>
+  </details>
+
+  <details>
+    <summary>Type scale &amp; rhythm</summary>
+    <div class="grp" id="type-grp"><!-- rows injected --></div>
+  </details>
+
+  <details>
+    <summary>Headings</summary>
+    <div class="grp" id="head-grp"><!-- rows injected --></div>
+  </details>
+
+  <details>
+    <summary>Example block</summary>
+    <div class="grp" id="ex-grp"><!-- rows injected --></div>
+  </details>
+
+  <details>
+    <summary>Colors <span class="note" id="col-theme-lbl"></span></summary>
+    <div class="grp" id="col-grp"><!-- rows injected --></div>
+  </details>
+
+  <details open>
+    <summary>Features</summary>
+    <div class="grp" id="feat-grp"><!-- rows injected --></div>
+  </details>
+</aside>
+
+<main class="stage">
+  <div class="mock" id="mock" data-theme="dark">
+    <div class="mock-nav">
+      <span class="brand">Rickety Yak</span>
+      <span class="lk">Reference</span><span class="lk">Dictionary</span><span class="lk">Quick reference</span>
+      <span class="sp"></span><span class="lk">Search</span>
+    </div>
+    <div class="mock-shell">
+      <nav class="mock-sidebar">
+        <div class="sg">Reference</div>
+        <a href="#">Language reference</a>
+        <a href="#" class="cur">Verbal system</a>
+        <a href="#">Phonology</a>
+        <a href="#">Orthography</a>
+        <div class="sg">Dictionary</div>
+        <a href="#">Lexicon</a>
+        <div class="sg">Quick reference</div>
+        <a href="#">Phonology quickref</a>
+        <a href="#">Orthography quickref</a>
+      </nav>
+      <div class="mock-content" id="content"><!-- injected --></div>
+    </div>
+  </div>
+</main>
+
+<script>
+"use strict";
+
+/* ===================================================== FONT CATALOG */
+const FONT_CATALOG = {
+  // serif
+  "EB Garamond":"google","Literata":"google","Source Serif 4":"google","Alegreya":"google",
+  "Vollkorn":"google","Crimson Pro":"google","Gentium Book Plus":"google","Charis SIL":"google",
+  "IBM Plex Serif":"google","Brill":"self",
+  // sans
+  "Inter":"google","Source Sans 3":"google","IBM Plex Sans":"google","Andika":"google",
+  "DM Sans":"google","Work Sans":"google","Public Sans":"google","Manrope":"google",
+  "Space Grotesk":"google","Outfit":"google","Sora":"google","Archivo":"google",
+  // mono
+  "Inconsolata":"google","JetBrains Mono":"google","IBM Plex Mono":"google","Fira Code":"google","Iosevka":"self",
+  // display
+  "Fraunces":"google","Archivo Black":"google",
+  // system
+  "Georgia":"system","serif":"system","sans-serif":"system","monospace":"system","ui-monospace":"system"
+};
+const FONT_OPTIONS = Object.keys(FONT_CATALOG);
+
+// Google css2 rejects the whole request if any family/variant pair doesn't exist,
+// so families whose weight/italic coverage differs from the default axis need
+// their own string here. Keep in sync with apply-design.mjs's FONT_AXES.
+const DEFAULT_AXIS = "ital,wght@0,400;0,600;0,700;1,400;1,600";
+const FONT_AXES = {
+  "DM Sans":"ital,wght@0,400;0,600;0,700;0,800;0,900;1,400;1,700",
+  "Work Sans":"ital,wght@0,400;0,600;0,700;0,800;0,900;1,400;1,600",
+  "Public Sans":"ital,wght@0,400;0,600;0,700;0,800;0,900;1,400;1,600",
+  "Archivo":"ital,wght@0,400;0,600;0,700;0,800;0,900;1,400;1,600",
+  "Manrope":"wght@400;600;700;800",
+  "Space Grotesk":"wght@400;600;700",
+  "Outfit":"wght@400;600;700;800;900",
+  "Sora":"wght@400;600;700;800",
+  "Archivo Black":"wght@400"
+};
+
+const loadedFonts = new Set();
+function ensureFont(family){
+  if(!family) return;
+  if(FONT_CATALOG[family] !== "google") return;     // self/system don't inject
+  if(loadedFonts.has(family)) return;
+  loadedFonts.add(family);
+  const l = document.createElement("link");
+  l.rel = "stylesheet";
+  l.href = "https://fonts.googleapis.com/css2?family=" + family.replace(/ /g,"+") +
+           ":" + (FONT_AXES[family] || DEFAULT_AXIS) + "&display=swap";
+  document.head.appendChild(l);
+}
+
+/* ===================================================== BAKED CONTENT (D2a) */
+// Real prose from docs/reference/verbal-system.md §4.2 (previews inlined, markers stripped).
+// Real examples hand-built from docs/reference/examples.md (E001 fixed 8-chunk, E003 gesture, E026 long).
+const EXAMPLES = {
+  E001: {
+    id:"E001",
+    seg:[["Bémmo","(a)bit-more"],["oų","on-the"],["rĩbii·hii","nippy-side"],["ŕe.","today."],
+         ["Oų","On-the"],["riis·hii","nice-side"],["o","though"],["noê.","(i)n-a-way."]],
+    ipa:"/bɛm:o õ: ɾɪbihi ɾ̥ɛ. õ: ɾis:i o no'ɛ/",
+    leipzig:"today\\COP bit-CMPR on-DEF nippy-NMLZ ‖ on-DEF nice-NMLZ though in-DEF-way",
+    gesture:"",
+    translation:"It's a little more chillier today, in a pleasant kind of way."
+  },
+  E003: {
+    id:"E003",
+    seg:[["Rhii","We"],["riauśels","got-our-selves"],["rekriiâhii","yicketty-yacking"],["nopiiem.","in-the-P.M."]],
+    ipa:"", leipzig:"1PL get.oneself.IPFV chat.IDEO-CONCORD evening",
+    gesture:'wrist rotation, "and so on"',
+    translation:"We were chatting in the evening."
+  },
+  E026: {
+    id:"E026",
+    seg:[["Rimmaśe","Got-myself"],["oę","going"],["rhemmemmêm,","boom, boom, boom,"],
+         ["rhishisben","which-is-when"],["ei","they"],["retmseto","got-themself-to"],["baurzıĩ.","barge-in."]],
+    ipa:"", leipzig:"1SG.LVC.NVOL do.CONCORD IDEO CLR 3 get.oneself.INF barge.in",
+    gesture:"",
+    translation:"I was saying it when she walked in."
+  }
+};
+
+// Prose runs, tagged short/long for the columned-island trial (D2g).
+const PROSE = [
+  { run:"short", html:
+    `<h2><span class="sec">§4.2</span>Concord</h2>
+     <p>The main verb carries the lexical content and takes a <em>concord affix</em> — an
+     ending showing concordance with the frame. Two shapes exist: infinitive-shaped and
+     progressive-shaped. In the get-oneself paradigm the choice of shape selects the reading,
+     and this is the most semantically loaded work concord does in the system.
+     <span class="cl-badge cl-badge--open">[Open]</span></p>
+     <p>A third shape is attested: the <em>passive-shaped concord</em>, patterned on the GA
+     passive participle.</p>` },
+  { example:"E001" },
+  { run:"long", html:
+    `<p><strong>Readings are compositional.</strong> The reading a clause receives is not a
+     property of a paradigm cell alone: it is the joint product of frame aspect × concord shape
+     × the stem's own event structure, with the matrix particles available as a further
+     scaffolding layer when the bare frame under-delivers. Three regularities recur.</p>
+     <p>The threshold reading tracks prospectivity, surfacing wherever the infinitive shape
+     meets an effortful stem — including past cells. Beginning-readings (“first noticing,”
+     onsets) are intrinsically imperfect: available only where the frame aspect supplies ongoing
+     time, never from a perfective cell. And stems whose GA source is lexically volitional resist
+     the happenstance reading bare, taking the get-oneself frame only with scaffolding.</p>
+     <p>This is direct evidence on the concord term's standing question: the stem's event
+     structure does grammatical work alongside the shape contrast. The term remains
+     <span class="cl-badge cl-badge--provisional">[Provisional]</span> on exactly this point.
+     The surface shapes themselves are <span class="cl-badge cl-badge--settled">[Settled]</span>
+     (§4.2.2); it is the feature content that is not.</p>
+     <h3><span class="sec">§4.2.3</span>Ideophones as predicates</h3>
+     <p>An ideophone is not confined to following the quotative verb — it can serve as the main
+     predicate itself, taking a frame and concord exactly as a verb stem does. The dialect-speech
+     ideophone <em>rekriiâ</em> verbalizes with concord <em>-km</em>, as in the multimodal record
+     below, whose <span class="cl-gloss">χ</span>-gesture rides the clause:</p>` },
+  { example:"E003" },
+  { run:"short", html:
+    `<p>The compositional picture repeats across the corpus. A longer clause chains a framed
+     speech act to a background event through the linker <em>rhishisben</em> (“which is when”),
+     the non-volitional frame on the intruding verb coloring the interruption as mildly
+     unwelcome:</p>` },
+  { example:"E026" },
+  { run:"short", html:
+    `<p>Everything tabulated in the coda-class paradigm is
+     <span class="cl-badge cl-badge--settled">[Settled]</span>; the open edges — <em>Db</em>
+     beyond labials, the <em>‑le</em> subclass, sibilant PROG conditioning — remain
+     <span class="cl-badge cl-badge--open">[Open]</span> pending more data.</p>` }
+];
+
+// Glyph gauntlets (D2e) — full inventories from the quickrefs, no fallback font appended.
+const GAUNTLET_ORTH = "a b t k l h n m p s r w y e i o u  þ ð ä  ń ḿ ŕ ś š  á à â é è ê í ì î ó ò ô ú  ĩ ỹ w̃ ą ę ǫ  aų eų ių oų  au eu iu ou iiy ei oë  ı  ·  ss nn tt rr rh th sh";
+const GAUNTLET_IPA = "b t k p l h n m s z ʃ θ ð ɾ ɻ ɾ̥ r̥ n̥ m̥ w j ʔ dʒ g v ŋ w̩ j̃ w̃  ɪ i ɛ ɑ o æ ɨ ə  eː ɛː oː ɑː ɨː  ĩ ɑ̃ ɛ̃ õ  ɑ̃ː ɛ̃ː ɨ̃ː õː  ˈ ˌ ː ‖ | .";
+
+/* ===================================================== PRESETS (D3 — verbatim copies) */
+// source ∈ google | self | system. Empty font-role objects ({}) inherit body.
+function T(bg,bgNav,bgSidebar,accent,accentHigh,accentLow,conlangColor,bS,bP,bO){
+  return {bg,bgNav,bgSidebar,accent,accentHigh,accentLow,conlangColor,
+          badgeSettled:bS,badgeProvisional:bP,badgeOpen:bO};
+}
+const BASE_TYPE = { sizeBody:"1.125rem", leadingBody:1.6, measure:"72ch",
+  scaleConlang:1.35, scaleEtym:0.9, scaleIpa:0.95, scaleLeipzig:0.8, scaleTranslation:1.0,
+  headingWeight:600, headingTracking:"0", headingVariant:"normal",
+  headingScale:1, headingTransform:"none",
+  headingSpaceAbove:"2.2em", headingSpaceBelow:"0.7em", headingRule:"1px solid var(--cl-accent-low)" };
+const BASE_EX = { pad:"0.9em 1.1em", radius:"0.4rem", rule:"3px solid var(--cl-accent)", chunkGap:"1.25em" };
+const BASE_COLS = { count:2, gap:"2.5em", rule:"none" };
+const BASE_FEAT = { exampleIsland:true, interlinearGrid:true, hoverHighlight:true, colsIslands:false, badges:true, headingRules:false };
+
+function preset(o){ return Object.assign({
+  type:JSON.parse(JSON.stringify(BASE_TYPE)),
+  example:JSON.parse(JSON.stringify(BASE_EX)),
+  cols:JSON.parse(JSON.stringify(BASE_COLS)),
+  features:JSON.parse(JSON.stringify(BASE_FEAT))
+}, o); }
+
+// The two "neutral" entries are the author's saved look (260715) and the applied
+// site look derived from it (260716 — DM Sans headings, scale 1.15). Keep both in
+// sync with site/design/presets/.
+const NEUTRAL_TYPE = { sizeBody:"1.28rem", leadingBody:1.49, measure:"72ch",
+  scaleConlang:1.5, scaleEtym:0.73, scaleIpa:0.89, scaleLeipzig:0.8, scaleTranslation:0.98,
+  headingWeight:800, headingTracking:"0", headingVariant:"normal",
+  headingScale:1, headingTransform:"none",
+  headingSpaceAbove:"3em", headingSpaceBelow:"0.7em", headingRule:"none" };
+const NEUTRAL_THEMES = {
+  dark: T("#292932","#242422","#1f1f1d","#91846a","#cecab9","#524b30","var(--cl-accent-high)","#4a8f5c","#b0802b","#a8555f"),
+  light:T("#eceae1","#ffffff","#f3f1ec","#434b61","#363c5c","#f6e3ef","var(--cl-accent)","#2e7042","#8a6114","#93404a") };
+const NEUTRAL_FONTS = { body:{family:"EB Garamond",source:"google",fallbacks:["Brill","Georgia","serif"]},
+  conlang:{family:"EB Garamond",source:"google",fallbacks:["serif"]},
+  ipa:{family:"Brill",source:"self",fallbacks:["serif"]},
+  translation:{family:"EB Garamond",source:"google",fallbacks:["serif"]},
+  etym:{}, leipzig:{}, ui:{}, code:{family:"ui-monospace",source:"system",fallbacks:["Consolas","monospace"]} };
+
+const PRESETS = [
+  preset({
+    name:"neutral-260716",
+    description:"The applied look: neutral-260715 with DM Sans display headings, sized up (scale 1.15); IBM Plex Mono for code/credits.",
+    fonts:Object.assign(JSON.parse(JSON.stringify(NEUTRAL_FONTS)),
+      { heading:{family:"DM Sans",source:"google",fallbacks:["IBM Plex Sans","sans-serif"]},
+        code:{family:"IBM Plex Mono",source:"google",fallbacks:["ui-monospace","Consolas","monospace"]} }),
+    type:Object.assign(JSON.parse(JSON.stringify(NEUTRAL_TYPE)),{ headingScale:1.15 }),
+    example:{ pad:"0.9em 1.1em", radius:"0.4rem", rule:"3px solid var(--cl-accent)", chunkGap:"1.25em" },
+    cols:{ count:2, gap:"2.5em", rule:"none" },
+    features:{ exampleIsland:true, interlinearGrid:true, hoverHighlight:true, colsIslands:false, badges:true, headingRules:false },
+    themes:JSON.parse(JSON.stringify(NEUTRAL_THEMES))
+  }),
+  preset({
+    name:"neutral-260715",
+    description:"Author-saved 2026-07-15: bookish base pulled toward neutral, toned-down colors; IBM Plex Sans 800 headings.",
+    fonts:Object.assign(JSON.parse(JSON.stringify(NEUTRAL_FONTS)),
+      { heading:{family:"IBM Plex Sans",source:"google",fallbacks:["sans-serif"]} }),
+    type:JSON.parse(JSON.stringify(NEUTRAL_TYPE)),
+    example:{ pad:"0.9em 1.1em", radius:"0.4rem", rule:"3px solid var(--cl-accent)", chunkGap:"1.25em" },
+    cols:{ count:2, gap:"2.5em", rule:"none" },
+    features:{ exampleIsland:true, interlinearGrid:true, hoverHighlight:true, colsIslands:false, badges:true, headingRules:false },
+    themes:JSON.parse(JSON.stringify(NEUTRAL_THEMES))
+  }),
+  preset({
+    name:"bookish",
+    description:"The current site, refined. EB Garamond throughout, small-caps headings with accent §-numbers, Brill conlang line in rose. Warm paper / soft charcoal.",
+    fonts:{ body:{family:"EB Garamond",source:"google",fallbacks:["Brill","Georgia","serif"]},
+      heading:{family:"EB Garamond",source:"google",fallbacks:["serif"]},
+      conlang:{family:"Brill",source:"self",fallbacks:["EB Garamond","serif"]},
+      ipa:{family:"Brill",source:"self",fallbacks:["serif"]},
+      etym:{}, leipzig:{}, translation:{}, ui:{}, code:{family:"ui-monospace",source:"system",fallbacks:["Consolas","monospace"]} },
+    type:Object.assign(JSON.parse(JSON.stringify(BASE_TYPE)),{ headingVariant:"small-caps", headingRule:"none" }),
+    themes:{
+      dark: T("#1a1a1a","#242422","#1f1f1d","#b85a92","#ecb6d6","#3a2630","var(--cl-accent-high)","#4a8f5c","#b0802b","#a8555f"),
+      light:T("#fafaf8","#ffffff","#f3f1ec","#a8447e","#7c3158","#f6e3ef","var(--cl-accent)","#2e7042","#8a6114","#93404a") }
+  }),
+  preset({
+    name:"field-notes",
+    description:"SIL linguistics-monograph voice. Gentium Book Plus body (near-complete IPA — serves conlang + ipa), Inter headings, Inconsolata gloss. Olive/ochre.",
+    fonts:{ body:{family:"Gentium Book Plus",source:"google",fallbacks:["Charis SIL","serif"]},
+      heading:{family:"Inter",source:"google",fallbacks:["sans-serif"]},
+      conlang:{family:"Gentium Book Plus",source:"google",fallbacks:["serif"]},
+      ipa:{family:"Gentium Book Plus",source:"google",fallbacks:["serif"]},
+      leipzig:{family:"Inconsolata",source:"google",fallbacks:["monospace"]},
+      etym:{}, translation:{}, ui:{family:"Inter",source:"google",fallbacks:["sans-serif"]}, code:{family:"Inconsolata",source:"google",fallbacks:["monospace"]} },
+    themes:{
+      dark: T("#20221c","#2a2c24","#25271f","#a8bf6a","#cbdd97","#363a29","var(--cl-accent-high)","#7fae5c","#c0a02b","#b8756a"),
+      light:T("#faf9f4","#ffffff","#f1efe6","#6b7f3a","#4f5f27","#e8ecd6","var(--cl-accent)","#4a7042","#8a6114","#93404a") }
+  }),
+  preset({
+    name:"studio",
+    description:"Figure-ground inversion: Inter sans body makes serif examples pop. Conlang line EB Garamond italic ×1.45, Literata translation, Inconsolata gloss. Cool gray / slate-blue.",
+    fonts:{ body:{family:"Inter",source:"google",fallbacks:["sans-serif"]},
+      heading:{family:"Inter",source:"google",fallbacks:["sans-serif"]},
+      ui:{family:"Inter",source:"google",fallbacks:["sans-serif"]},
+      conlang:{family:"EB Garamond",source:"google",fallbacks:["Brill","serif"]},
+      ipa:{family:"Brill",source:"self",fallbacks:["EB Garamond","serif"]},
+      translation:{family:"Literata",source:"google",fallbacks:["serif"]},
+      leipzig:{family:"Inconsolata",source:"google",fallbacks:["monospace"]},
+      etym:{}, code:{family:"Inconsolata",source:"google",fallbacks:["monospace"]} },
+    type:Object.assign(JSON.parse(JSON.stringify(BASE_TYPE)),{ scaleConlang:1.45 }),
+    themes:{
+      dark: T("#191b1e","#222529","#1d2023","#8ab4e8","#b6d2f4","#2a3340","var(--cl-accent-high)","#6fae8a","#c09a3e","#c07a72"),
+      light:T("#f7f8fa","#ffffff","#eef0f4","#4a6fa5","#2f4d78","#dde5f0","var(--cl-accent)","#2e7042","#8a6114","#93404a") }
+  }),
+  preset({
+    name:"plex",
+    description:"One superfamily, three coordinated voices: IBM Plex Serif body, Plex Sans headings/ui, Plex Mono gloss + code. Neutral, Plex-blue accent.",
+    fonts:{ body:{family:"IBM Plex Serif",source:"google",fallbacks:["Georgia","serif"]},
+      heading:{family:"IBM Plex Sans",source:"google",fallbacks:["sans-serif"]},
+      ui:{family:"IBM Plex Sans",source:"google",fallbacks:["sans-serif"]},
+      conlang:{family:"IBM Plex Serif",source:"google",fallbacks:["serif"]},
+      ipa:{family:"Brill",source:"self",fallbacks:["IBM Plex Serif","serif"]},
+      leipzig:{family:"IBM Plex Mono",source:"google",fallbacks:["monospace"]},
+      code:{family:"IBM Plex Mono",source:"google",fallbacks:["monospace"]},
+      etym:{}, translation:{} },
+    themes:{
+      dark: T("#161616","#1f1f1f","#1a1a1a","#78a9ff","#a6c8ff","#0a2d5c","var(--cl-accent-high)","#5aa06a","#c0972b","#c06a72"),
+      light:T("#f6f6f6","#ffffff","#eeeeee","#0f62fe","#0043ce","#d0e2ff","var(--cl-accent)","#2e7042","#8a6114","#93404a") }
+  }),
+  preset({
+    name:"concordance",
+    description:"The corpus-tool voice. Source Serif 4 body, Source Sans 3 headings, entire gloss block in JetBrains Mono. Prominent hover, amber accent. (Iosevka vendored only if this becomes the finalist.)",
+    fonts:{ body:{family:"Source Serif 4",source:"google",fallbacks:["Georgia","serif"]},
+      heading:{family:"Source Sans 3",source:"google",fallbacks:["sans-serif"]},
+      ui:{family:"Source Sans 3",source:"google",fallbacks:["sans-serif"]},
+      conlang:{family:"Source Serif 4",source:"google",fallbacks:["serif"]},
+      ipa:{family:"Brill",source:"self",fallbacks:["Source Serif 4","serif"]},
+      leipzig:{family:"JetBrains Mono",source:"google",fallbacks:["monospace"]},
+      etym:{family:"JetBrains Mono",source:"google",fallbacks:["monospace"]},
+      code:{family:"JetBrains Mono",source:"google",fallbacks:["monospace"]},
+      translation:{} },
+    type:Object.assign(JSON.parse(JSON.stringify(BASE_TYPE)),{ scaleEtym:0.82 }),
+    themes:{
+      dark: T("#1c1a15","#26231c","#201d17","#e0a84f","#f2c983","#3a2f18","var(--cl-accent-high)","#7fae5c","#c0972b","#c07a72"),
+      light:T("#faf8f3","#ffffff","#f2eee4","#8a6114","#5f420a","#f0e4c8","var(--cl-accent)","#2e7042","#8a6114","#93404a") }
+  })
+];
+
+/* ===================================================== STATE + APPLY */
+const FONT_ROLES = ["body","heading","ui","code","conlang","etym","ipa","leipzig","translation"];
+const TYPE_SLIDERS = [
+  ["sizeBody","Body size","rem",0.9,1.4,0.005],
+  ["leadingBody","Line height","",1.2,2.0,0.01],
+  ["measure","Measure","ch",50,90,1],
+  ["scaleConlang","Conlang ×","",1.0,1.8,0.01],
+  ["scaleEtym","Etym ×","",0.6,1.1,0.01],
+  ["scaleIpa","IPA ×","",0.7,1.2,0.01],
+  ["scaleLeipzig","Leipzig ×","",0.6,1.1,0.01],
+  ["scaleTranslation","Transl ×","",0.8,1.3,0.01]
+];
+const COLOR_KEYS = [
+  ["bg","Background"],["bgNav","Nav bar"],["bgSidebar","Sidebar"],
+  ["accent","Accent"],["accentHigh","Accent high"],["accentLow","Accent low"],
+  ["badgeSettled","Settled"],["badgeProvisional","Provisional"],["badgeOpen","Open"]
+];
+const FEATURES = [
+  ["exampleIsland","Example island (bg + rule)"],
+  ["interlinearGrid","Interlinear chunk-grid (vs plain blockquote)"],
+  ["hoverHighlight","Chunk hover-highlight"],
+  ["colsIslands","Columned prose islands"],
+  ["badges","Status badges"],
+  ["headingRules","Heading underline rules"]
+];
+
+let config = clone(PRESETS[0]);
+let activeTheme = "dark";
+const mock = document.getElementById("mock");
+
+function clone(o){ return JSON.parse(JSON.stringify(o)); }
+function num(v){ return typeof v === "number" ? v : parseFloat(v); }
+
+const GENERICS = new Set(["serif","sans-serif","monospace","cursive","fantasy","system-ui",
+  "ui-serif","ui-sans-serif","ui-monospace","ui-rounded","math","emoji","fangsong"]);
+function fontName(name){
+  if(/^var\(/.test(name)) return name;
+  if(GENERICS.has(name.toLowerCase())) return name;
+  return /\s/.test(name) ? `'${name}'` : name;
+}
+function fontStack(role){
+  const f = config.fonts[role] || {};
+  if(!f.family) return "var(--cl-font-body)";
+  ensureFont(f.family);
+  return [f.family, ...(f.fallbacks||[])].map(fontName).join(", ");
+}
+
+function applyConfig(){
+  const s = mock.style;
+  // fonts
+  FONT_ROLES.forEach(r => s.setProperty(`--cl-font-${cssName(r)}`, fontStack(r)));
+  // type
+  const t = config.type;
+  s.setProperty("--cl-size-body", asRem(t.sizeBody));
+  s.setProperty("--cl-leading-body", t.leadingBody);
+  s.setProperty("--cl-measure", asCh(t.measure));
+  s.setProperty("--cl-scale-conlang", t.scaleConlang);
+  s.setProperty("--cl-scale-etym", t.scaleEtym);
+  s.setProperty("--cl-scale-ipa", t.scaleIpa);
+  s.setProperty("--cl-scale-leipzig", t.scaleLeipzig);
+  s.setProperty("--cl-scale-translation", t.scaleTranslation);
+  s.setProperty("--cl-heading-weight", t.headingWeight);
+  s.setProperty("--cl-heading-tracking", t.headingTracking);
+  s.setProperty("--cl-heading-variant", t.headingVariant);
+  s.setProperty("--cl-heading-scale", t.headingScale == null ? 1 : t.headingScale);
+  s.setProperty("--cl-heading-transform", t.headingTransform || "none");
+  s.setProperty("--cl-heading-space-above", t.headingSpaceAbove);
+  s.setProperty("--cl-heading-space-below", t.headingSpaceBelow);
+  s.setProperty("--cl-heading-rule", t.headingRule);
+  // example
+  const e = config.example;
+  s.setProperty("--cl-example-pad", e.pad);
+  s.setProperty("--cl-example-radius", e.radius);
+  s.setProperty("--cl-example-rule", e.rule);
+  s.setProperty("--cl-chunk-gap", e.chunkGap);
+  // cols
+  s.setProperty("--cl-cols-count", config.cols.count);
+  s.setProperty("--cl-cols-gap", config.cols.gap);
+  s.setProperty("--cl-cols-rule", config.cols.rule);
+  // colors (active theme) + derived mixes
+  const c = config.themes[activeTheme];
+  s.setProperty("--cl-bg", c.bg); s.setProperty("--cl-bg-nav", c.bgNav); s.setProperty("--cl-bg-sidebar", c.bgSidebar);
+  s.setProperty("--cl-accent", c.accent); s.setProperty("--cl-accent-high", c.accentHigh); s.setProperty("--cl-accent-low", c.accentLow);
+  s.setProperty("--cl-conlang-color", c.conlangColor);
+  s.setProperty("--cl-badge-settled", c.badgeSettled);
+  s.setProperty("--cl-badge-provisional", c.badgeProvisional);
+  s.setProperty("--cl-badge-open", c.badgeOpen);
+  const exPct = activeTheme==="dark"?8:5, hiPct = activeTheme==="dark"?22:14;
+  s.setProperty("--cl-example-bg", `color-mix(in srgb, var(--cl-accent) ${exPct}%, transparent)`);
+  s.setProperty("--cl-highlight-bg", `color-mix(in srgb, var(--cl-accent) ${hiPct}%, transparent)`);
+  // feature classes
+  const f = config.features;
+  mock.classList.toggle("no-island", !f.exampleIsland);
+  mock.classList.toggle("hoverhl", !!f.hoverHighlight);
+  mock.classList.toggle("no-badges", !f.badges);
+  mock.classList.toggle("rules", !!f.headingRules);
+  mock.dataset.theme = activeTheme;
+  renderContent();      // interlinearGrid + colsIslands affect markup
+}
+function cssName(r){ return r; }
+function asRem(v){ return typeof v==="string" ? v : v+"rem"; }
+function asCh(v){ return typeof v==="string" ? v : v+"ch"; }
+
+/* ===================================================== CONTENT RENDER (D2c) */
+function esc(x){ return x.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+
+function exampleHtml(ex){
+  const grid = config.features.interlinearGrid;
+  const chunks = ex.seg.map(([cl,etym]) =>
+    `<div class="cl-ex-chunk" tabindex="0"><span class="cl-ex-conlang">${esc(cl)}</span>` +
+    `<span class="cl-ex-etym">${esc(etym)}</span></div>`).join("");
+  let free = "";
+  if(ex.ipa) free += `<div class="cl-ex-free cl-ex-ipa">${esc(ex.ipa)}</div>`;
+  if(ex.leipzig) free += `<div class="cl-ex-free cl-ex-leipzig cl-ex-dormant">${esc(ex.leipzig)}` +
+    `<span class="cl-ex-dormant-tag">leipzig — dormant on site</span></div>`;
+  if(ex.gesture) free += `<div class="cl-ex-free cl-ex-gesture">${esc(ex.gesture)}</div>`;
+  free += `<div class="cl-ex-free cl-ex-translation">“${esc(ex.translation)}”</div>`;
+  return `<figure class="cl-example ${grid?"":"plain"}" id="${ex.id}">` +
+         `<div class="cl-ex-grid">${chunks}</div>${free}</figure>`;
+}
+
+function renderContent(){
+  const cols = config.features.colsIslands;
+  let html = `<div class="gauntlet">
+      <div class="lab">Glyph gauntlet — orthography (in the conlang font, no fallback)</div>
+      <div class="strip g-orth">${esc(GAUNTLET_ORTH)}</div>
+      <div class="lab">Glyph gauntlet — IPA (in the IPA font, no fallback)</div>
+      <div class="strip g-ipa">${esc(GAUNTLET_IPA)}</div>
+      <div class="cap">Tofu (□) here = the role font lacks that glyph. Such a font can still serve prose, but not the conlang/IPA roles. Brill is self-hosted on the real site, so its rows fall back here.</div>
+    </div>`;
+  for(const block of PROSE){
+    if(block.example){ html += exampleHtml(EXAMPLES[block.example]); continue; }
+    const colClass = (cols && block.run==="long") ? " cl-cols" : "";
+    html += `<div class="cl-prose-run${colClass}">${block.html}</div>`;
+  }
+  document.getElementById("content").innerHTML = html;
+}
+
+/* ===================================================== CONTROL PANEL BUILD (D2d) */
+function el(tag, attrs, kids){
+  const n = document.createElement(tag);
+  if(attrs) for(const k in attrs){ if(k==="class") n.className=attrs[k]; else n.setAttribute(k,attrs[k]); }
+  (kids||[]).forEach(k=> n.appendChild(typeof k==="string"?document.createTextNode(k):k));
+  return n;
+}
+function rowEl(labelText, control){ return el("div",{class:"row"},[el("label",null,[labelText]),control]); }
+
+function buildFonts(){
+  const grp = document.getElementById("fonts-grp"); grp.innerHTML="";
+  FONT_ROLES.forEach(role=>{
+    const sel = el("select");
+    const cur = (config.fonts[role]&&config.fonts[role].family)||"";
+    const opts = ["(inherit body)"].concat(FONT_OPTIONS);
+    opts.forEach(o=>{
+      const v = o==="(inherit body)"?"":o;
+      const opt = el("option",{value:v},[o + (FONT_CATALOG[v]==="self"?"  ⚠self":"")]);
+      if(v===cur) opt.selected=true; sel.appendChild(opt);
+    });
+    sel.onchange = ()=>{
+      const v = sel.value;
+      if(!v){ config.fonts[role] = {}; }
+      else { const src=FONT_CATALOG[v]||"google"; config.fonts[role]={family:v,source:src,fallbacks:defaultFallbacks(v)}; ensureFont(v); }
+      applyConfig();
+    };
+    grp.appendChild(rowEl(role, sel));
+  });
+}
+function defaultFallbacks(f){
+  const s = FONT_CATALOG[f];
+  if(f==="Brill"||f==="EB Garamond"||f==="Gentium Book Plus") return ["serif"];
+  if(/Mono|Inconsolata|Iosevka|Fira Code/.test(f)) return ["monospace"];
+  if(/Inter|Sans|Andika/.test(f)) return ["sans-serif"];
+  return ["serif"];
+}
+
+function buildType(){
+  const grp = document.getElementById("type-grp"); grp.innerHTML="";
+  TYPE_SLIDERS.forEach(([key,label,unit,min,max,step])=>{
+    const rng = el("input",{type:"range",min,max,step});
+    const val = el("span",{class:"val"});
+    rng.value = num(config.type[key]);
+    const show = ()=> val.textContent = rng.value + unit;
+    show();
+    rng.oninput = ()=>{
+      const v = parseFloat(rng.value);
+      if(key==="sizeBody") config.type[key]= v+"rem";
+      else if(key==="measure") config.type[key]= v+"ch";
+      else config.type[key]= v;
+      show(); applyConfig();
+    };
+    grp.appendChild(el("div",{class:"row"},[el("label",null,[label]),el("div",{class:"rng"},[rng,val])]));
+  });
+}
+
+function buildHead(){
+  const grp = document.getElementById("head-grp"); grp.innerHTML="";
+  // weight
+  const w = el("input",{type:"number",min:300,max:900,step:50}); w.value=config.type.headingWeight;
+  w.oninput=()=>{ config.type.headingWeight=parseInt(w.value||"600",10); applyConfig(); };
+  grp.appendChild(rowEl("Weight", w));
+  // size scale
+  const sc = el("input",{type:"range",min:0.85,max:1.6,step:0.01}); sc.value=config.type.headingScale==null?1:config.type.headingScale;
+  const scv = el("span",{class:"val"}); const showSc=()=> scv.textContent="×"+sc.value; showSc();
+  sc.oninput=()=>{ config.type.headingScale=parseFloat(sc.value); showSc(); applyConfig(); };
+  grp.appendChild(el("div",{class:"row"},[el("label",null,["Size scale"]),el("div",{class:"rng"},[sc,scv])]));
+  // variant
+  const vsel = el("select");
+  ["normal","small-caps","all-small-caps"].forEach(o=>{ const op=el("option",{value:o},[o]); if(o===config.type.headingVariant)op.selected=true; vsel.appendChild(op); });
+  vsel.onchange=()=>{ config.type.headingVariant=vsel.value; applyConfig(); };
+  grp.appendChild(rowEl("Variant", vsel));
+  // transform (blocker/display headings)
+  const tsel = el("select");
+  ["none","uppercase"].forEach(o=>{ const op=el("option",{value:o},[o==="uppercase"?"uppercase (blocker)":o]); if(o===(config.type.headingTransform||"none"))op.selected=true; tsel.appendChild(op); });
+  tsel.onchange=()=>{ config.type.headingTransform=tsel.value; applyConfig(); };
+  grp.appendChild(rowEl("Transform", tsel));
+  // tracking
+  const tr = el("input",{type:"text"}); tr.value=config.type.headingTracking;
+  tr.oninput=()=>{ config.type.headingTracking=tr.value; applyConfig(); };
+  grp.appendChild(rowEl("Tracking", tr));
+  // spacing above/below
+  const sa = el("input",{type:"text"}); sa.value=config.type.headingSpaceAbove;
+  sa.oninput=()=>{ config.type.headingSpaceAbove=sa.value; applyConfig(); };
+  grp.appendChild(rowEl("Space above", sa));
+  const sb = el("input",{type:"text"}); sb.value=config.type.headingSpaceBelow;
+  sb.oninput=()=>{ config.type.headingSpaceBelow=sb.value; applyConfig(); };
+  grp.appendChild(rowEl("Space below", sb));
+  // rule
+  const ru = el("input",{type:"text"}); ru.value=config.type.headingRule;
+  ru.oninput=()=>{ config.type.headingRule=ru.value; applyConfig(); };
+  grp.appendChild(rowEl("Rule (CSS)", ru));
+  grp.appendChild(el("div",{class:"note"},["“Heading underline rules” feature must be on to see the Rule value."]));
+}
+
+function buildEx(){
+  const grp = document.getElementById("ex-grp"); grp.innerHTML="";
+  [["pad","Padding"],["radius","Radius"],["rule","Left rule"],["chunkGap","Chunk gap"]].forEach(([k,l])=>{
+    const inp = el("input",{type:"text"}); inp.value=config.example[k];
+    inp.oninput=()=>{ config.example[k]=inp.value; applyConfig(); };
+    grp.appendChild(rowEl(l, inp));
+  });
+  // cols
+  const cc = el("input",{type:"number",min:2,max:3,step:1}); cc.value=config.cols.count;
+  cc.oninput=()=>{ config.cols.count=parseInt(cc.value||"2",10); applyConfig(); };
+  grp.appendChild(rowEl("Cols count", cc));
+  const cg = el("input",{type:"text"}); cg.value=config.cols.gap;
+  cg.oninput=()=>{ config.cols.gap=cg.value; applyConfig(); };
+  grp.appendChild(rowEl("Cols gap", cg));
+  const cr = el("input",{type:"text"}); cr.value=config.cols.rule;
+  cr.oninput=()=>{ config.cols.rule=cr.value; applyConfig(); };
+  grp.appendChild(rowEl("Cols rule", cr));
+}
+
+function buildColors(){
+  const grp = document.getElementById("col-grp"); grp.innerHTML="";
+  document.getElementById("col-theme-lbl").textContent = "· editing " + activeTheme;
+  const c = config.themes[activeTheme];
+  COLOR_KEYS.forEach(([k,l])=>{
+    let v = c[k];
+    const isVar = /^var\(/.test(v);
+    if(isVar){ // conlangColor may be a var() — show a text field instead of color picker
+      const inp = el("input",{type:"text"}); inp.value=v;
+      inp.oninput=()=>{ c[k]=inp.value; applyConfig(); };
+      grp.appendChild(rowEl(l, inp));
+    } else {
+      const inp = el("input",{type:"color"}); inp.value=toHex(v);
+      inp.oninput=()=>{ c[k]=inp.value; applyConfig(); };
+      grp.appendChild(rowEl(l, inp));
+    }
+  });
+  // conlang color as its own text row
+  const cc = el("input",{type:"text"}); cc.value=c.conlangColor;
+  cc.oninput=()=>{ c.conlangColor=cc.value; applyConfig(); };
+  grp.appendChild(rowEl("Conlang color", cc));
+}
+function toHex(v){ return /^#([0-9a-f]{6})$/i.test(v)?v: (/^#([0-9a-f]{3})$/i.test(v)? "#"+v.slice(1).split("").map(x=>x+x).join(""):"#888888"); }
+
+function buildFeatures(){
+  const grp = document.getElementById("feat-grp"); grp.innerHTML="";
+  FEATURES.forEach(([k,l])=>{
+    const cb = el("input",{type:"checkbox"}); cb.checked=!!config.features[k];
+    cb.onchange=()=>{ config.features[k]=cb.checked; applyConfig(); };
+    grp.appendChild(el("label",{class:"chk"},[cb, l]));
+  });
+}
+
+function rebuildAllControls(){ buildFonts(); buildType(); buildHead(); buildEx(); buildColors(); buildFeatures(); }
+
+/* ===================================================== PRESETS UI + SAVES (D2f) */
+const preSel = document.getElementById("preset-sel");
+function fillPresetSelect(){
+  preSel.innerHTML="";
+  preSel.appendChild(el("option",{value:""},["— choose preset —"]));
+  PRESETS.forEach((p,i)=> preSel.appendChild(el("option",{value:"p:"+i},[p.name+" — "+p.description.slice(0,40)+"…"])));
+}
+preSel.onchange = ()=>{
+  const v = preSel.value; if(!v) return;
+  if(v.startsWith("p:")) config = clone(PRESETS[parseInt(v.slice(2),10)]);
+  else if(v.startsWith("s:")) config = clone(loadSaved()[v.slice(2)]);
+  // preload google fonts of the config
+  FONT_ROLES.forEach(r=>{ const f=config.fonts[r]; if(f&&f.family) ensureFont(f.family); });
+  rebuildAllControls(); applyConfig();
+};
+
+const LS_KEY = "ry-design-saves";
+function loadSaved(){ try{ return JSON.parse(localStorage.getItem(LS_KEY)||"{}"); }catch(e){ return {}; } }
+function storeSaved(o){ localStorage.setItem(LS_KEY, JSON.stringify(o)); }
+function refreshSavedList(){
+  const wrap = document.getElementById("saved-list"); wrap.innerHTML="";
+  const saved = loadSaved(); const names = Object.keys(saved);
+  // rebuild preset select with saved group
+  fillPresetSelect();
+  if(names.length){
+    const og = el("optgroup",{label:"Saved"});
+    names.forEach(n=> og.appendChild(el("option",{value:"s:"+n},[n])));
+    preSel.appendChild(og);
+  }
+  names.forEach(n=>{
+    const load = el("button",null,["Load"]); load.onclick=()=>{ config=clone(saved[n]); FONT_ROLES.forEach(r=>{const f=config.fonts[r];if(f&&f.family)ensureFont(f.family);}); rebuildAllControls(); applyConfig(); };
+    const del = el("button",null,["✕"]); del.onclick=()=>{ const s=loadSaved(); delete s[n]; storeSaved(s); refreshSavedList(); };
+    wrap.appendChild(el("div",{class:"saved-item"},[el("span",null,[n]),load,del]));
+  });
+}
+document.getElementById("save-btn").onclick=()=>{
+  const name = prompt("Save current config as:", config.name || "my-config");
+  if(!name) return;
+  const s = loadSaved(); const cfg = clone(config); cfg.name=name; s[name]=cfg; storeSaved(s); refreshSavedList();
+};
+document.getElementById("export-btn").onclick=()=>{
+  const cfg = clone(config);
+  const blob = new Blob([JSON.stringify(cfg,null,2)],{type:"application/json"});
+  const a = el("a",{href:URL.createObjectURL(blob),download:(cfg.name||"preset")+".json"}); document.body.appendChild(a); a.click(); a.remove();
+};
+document.getElementById("import-btn").onclick=()=> document.getElementById("import-file").click();
+document.getElementById("import-file").onchange=(ev)=>{
+  const file = ev.target.files[0]; if(!file) return;
+  const rd = new FileReader();
+  rd.onload=()=>{ try{ config = normalize(JSON.parse(rd.result)); FONT_ROLES.forEach(r=>{const f=config.fonts[r];if(f&&f.family)ensureFont(f.family);}); rebuildAllControls(); applyConfig(); }
+    catch(e){ alert("Import failed: "+e.message); } };
+  rd.readAsText(file);
+};
+// tolerate partial imports by filling from bookish defaults
+function normalize(o){
+  const base = clone(PRESETS[0]);
+  return Object.assign(base, o, {
+    fonts:Object.assign(base.fonts, o.fonts||{}),
+    type:Object.assign(base.type, o.type||{}),
+    example:Object.assign(base.example, o.example||{}),
+    cols:Object.assign(base.cols, o.cols||{}),
+    themes:{ dark:Object.assign(base.themes.dark, (o.themes||{}).dark||{}),
+             light:Object.assign(base.themes.light, (o.themes||{}).light||{}) },
+    features:Object.assign(base.features, o.features||{})
+  });
+}
+
+/* ===================================================== THEME TOGGLE */
+document.querySelectorAll(".theme-pill button").forEach(b=>{
+  b.onclick=()=>{
+    document.querySelectorAll(".theme-pill button").forEach(x=>x.classList.remove("active"));
+    b.classList.add("active"); activeTheme=b.dataset.theme; buildColors(); applyConfig();
+  };
+});
+
+/* ===================================================== BOOT */
+FONT_ROLES.forEach(r=>{ const f=config.fonts[r]; if(f&&f.family) ensureFont(f.family); });
+rebuildAllControls();
+refreshSavedList();
+applyConfig();
+</script>

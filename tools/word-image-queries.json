@@ -1,0 +1,219 @@
+{
+  "_comment": "Search queries for tools/fetch-word-images.ps1. Key = dictionary headword (exact); file = ascii basename for site/public/img/words/<file>.jpg; q = Openverse search query. Add a line + rerun the script (already-fetched words are skipped).",
+  "bąêų": {
+    "file": "banana",
+    "q": "yellow bananas bunch"
+  },
+  "hóhonìt": {
+    "file": "coconut",
+    "q": "coconut halved"
+  },
+  "ŕeut": {
+    "file": "carrot",
+    "q": "carrots bunch"
+  },
+  "beńt": {
+    "file": "mint",
+    "q": "fresh mint plant herb"
+  },
+  "benıîä": {
+    "file": "vanilla",
+    "q": "vanilla pods"
+  },
+  "e": {
+    "file": "egg",
+    "q": "eggs basket"
+  },
+  "toś": {
+    "file": "toast",
+    "q": "toast breakfast"
+  },
+  "éuskrıì": {
+    "file": "ice-cream",
+    "q": "ice cream cone"
+  },
+  "bǫëiio": {
+    "file": "coffee",
+    "q": "morning coffee cup"
+  },
+  "riuś": {
+    "file": "juice",
+    "q": "orange juice glass"
+  },
+  "rhink": {
+    "file": "drink",
+    "q": "lemonade glass"
+  },
+  "renw": {
+    "file": "dinner",
+    "q": "dinner table food"
+  },
+  "benkwtt": {
+    "file": "feast",
+    "q": "feast table spread"
+  },
+  "beųtw": {
+    "file": "lunchbox",
+    "q": "lunch box"
+  },
+  "réıì": {
+    "file": "dairy",
+    "q": "milk bottle glass"
+  },
+  "hoiiǫ": {
+    "file": "salt",
+    "q": "salt shaker"
+  },
+  "hoë hoś": {
+    "file": "soy-sauce",
+    "q": "soy sauce bowl"
+  },
+  "hitsn": {
+    "file": "kitchen",
+    "q": "kitchen interior"
+  },
+  "bewii·iit": {
+    "file": "dining-table",
+    "q": "wooden dining table"
+  },
+  "bewiipessô": {
+    "file": "bed",
+    "q": "bed pillows duvet bedroom"
+  },
+  "bawiiquoh?": {
+    "file": "home",
+    "q": "cottage house"
+  },
+  "beikw": {
+    "file": "car",
+    "q": "vintage car"
+  },
+  "baurrits": {
+    "file": "bridge",
+    "q": "stone bridge river"
+  },
+  "bárkennò": {
+    "file": "parking-lot",
+    "q": "parking lot"
+  },
+  "beušiioskô": {
+    "file": "school",
+    "q": "school building"
+  },
+  "bayarę": {
+    "file": "violin",
+    "q": "violin"
+  },
+  "twıítò": {
+    "file": "bird",
+    "q": "small bird branch"
+  },
+  "rhilþ": {
+    "file": "wolf",
+    "q": "gray wolf"
+  },
+  "rheĩ": {
+    "file": "rain",
+    "q": "rain drops window"
+  },
+  "nocquiissprıĩ": {
+    "file": "early-spring",
+    "q": "bare trees gray fog"
+  },
+  "baıĩ": {
+    "file": "money",
+    "q": "coins"
+  },
+  "ręim": {
+    "file": "board-game",
+    "q": "board game"
+  },
+  "reųś": {
+    "file": "venus",
+    "q": "venus planet space probe"
+  },
+  "rhitsstw": {
+    "file": "rochester",
+    "q": "rochester new york"
+  },
+  "eiem": {
+    "file": "morning",
+    "q": "sunrise morning sky"
+  },
+  "piiem": {
+    "file": "evening",
+    "q": "sunset dusk horizon silhouette"
+  },
+  "baŕep": {
+    "file": "cooking",
+    "q": "cooking pan stove"
+  },
+  "rhiib": {
+    "file": "driving",
+    "q": "country road"
+  },
+  "baurzıĩ": {
+    "file": "door",
+    "q": "open front door"
+  },
+  "barnkw": {
+    "file": "hug",
+    "q": "koala hugging tree"
+  },
+  "bęiink": {
+    "file": "scared-cat",
+    "q": "surprised cat"
+  },
+  "beussou": {
+    "file": "sleeping-cat",
+    "q": "sleeping cat"
+  },
+  "benskyi": {
+    "file": "ladybug",
+    "q": "ladybug leaf macro"
+  },
+  "beusp": {
+    "file": "elephant",
+    "q": "elephant"
+  },
+  "kli": {
+    "file": "lightbulb",
+    "q": "light bulb"
+  },
+  "rhemmêś": {
+    "file": "old-photos",
+    "q": "old photographs box"
+  },
+  "ḿiiy": {
+    "file": "smiling-dog",
+    "q": "smiling dog"
+  },
+  "hoʔnʔnts": {
+    "file": "statue-face",
+    "q": "marble statue face"
+  },
+  "ossıî": {
+    "file": "meadow",
+    "q": "green meadow"
+  },
+  "nocquiiayo": {
+    "file": "decaf-coffee",
+    "q": "decaf coffee cup"
+  },
+  "toutw": {
+    "file": "price-tag",
+    "q": "price tag sale"
+  },
+  "rhikriutt": {
+    "file": "hiring-sign",
+    "q": "hiring now sign window"
+  },
+  "meiktt": {
+    "file": "arrivals-board",
+    "q": "flight arrivals departures board terminal"
+  },
+  "ŕequôþw": {
+    "file": "checklist",
+    "q": "checklist clipboard pen"
+  }
+}

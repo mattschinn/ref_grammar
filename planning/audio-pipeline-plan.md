@@ -269,6 +269,24 @@ Supersedes the original protocol. Changes are driven by §3.
   perceptually-masked high-frequency low-energy content first, which here means /h/,
   /θ/, /sː/ aspiration and the /ʔ/ and geminate-release transients.)*
 
+### §6a — The content gate (`tools/audio-verify.py`)
+
+**Structure is not identity.** Every check this pipeline had before 2026-08-17 was
+structural, and a one-position shift satisfies all of them. The gate asks the one
+question the recogniser is reliable on — *is this token an English digit?* — and treats
+a hit as disqualifying. It never asks whether a token sounds like its headword; Whisper
+has no model for Rickett Yack and its conlang output is noise, which is the same reason
+stage 1 trusts it only for digits. Confident nonsense ("Bonilla" for *benıîä*) is what a
+**correct** extraction looks like.
+
+Run it after every stage-2 change. A few leaks are bad rows; a systematic rate is a bad
+rule, and the tool fails the run above 10%.
+
+Post-fix on pilot 01: **103 ok (85.1%), 11 slate-leak (9.1%), 7 digit-present (5.8%)**.
+The residue is per-row, not systematic. Only *rhiitsô* drops below 3 clean tokens.
+Analysis runs on `session-01-segments-verified.csv`; all 25 publication picks are
+verified clean.
+
 ### The corpus forks at stage 5
 
 **Analysis reads stage-2 per-item WAVs. Publication reads stage-5 polished WAVs. The
@@ -326,7 +344,59 @@ no acoustic seam. Whole-word contours only, until MFA or equivalent exists.
 moving between syllables is unmissable. It will *not* resolve "V₁ is 8% longer." Report
 effect sizes and within-item variance; refuse conclusions the reps cannot carry.
 
-### First results (pilot 01, 2026-08-12)
+### ⚠ VOID — the 2026-08-12 results below were measured on English digits
+
+**Everything in "First results (pilot 01, 2026-08-12)" is withdrawn.** Stage 2 assigned
+every utterance one position early, so `word_t0/word_t1` held the *slate digit* and the
+conlang word was never extracted. All 120 tokens were measured on spoken numerals. The
+figures are retained below only for the supersession trail; **do not cite them.**
+
+Root cause: §4's claim that "the anchor sits within its slate utterance … while the word
+follows 1.3-1.8 s later" mislabelled a correctly-measured offset. The thing 1.3-1.8 s
+after the anchor is the **digit**. Measured across all 113 anchored rows, the digit onset
+follows the anchor by +0.22 to +2.67 s (median +1.38) and never precedes it. Corrected in
+`audio-split.py` 2026-08-17.
+
+Why nothing caught it: a uniform one-position shift preserves utterance counts, anchor
+spacing, grid stability and manifest coverage — every check that existed. Only content
+identity exposes it, and neither the author (122 files) nor an LLM (cannot hear) will
+find it by listening. `tools/audio-verify.py` now closes that hole; see §6a.
+
+### Corrected results (2026-08-17, verified-clean tokens only)
+
+103 of 125 segments pass the content gate and carry the analysis. Paired within block, as
+before.
+
+| Contrast | Measure | 2026-08-12 (digits, void) | 2026-08-17 (real words) |
+|---|---|---|---|
+| *óhò* → *ohô* | F0 centroid | +10.2 pp, d +1.11, 4/5 | **+6.0 pp, d +0.61, 4/4 same-sign** |
+| *hóhonìt* → *hohô* | F0 centroid | +7.7 pp, d +0.65, 3/5 | **+10.0 pp, d +1.15, 4/5** |
+| *nóè* → *noê* | F0 centroid | +4.3 pp, d +0.30, 3/5 | **−0.7 pp, d −0.13, 2/3 — opposite sign** |
+| *nóè* → *noê* | duration | **−280 ms, 5/5** | **−36.7 ms, sd 150, 2/3 — gone** |
+
+Three things changed, and they do not all point the same way:
+
+- **The 280 ms duration effect was entirely an artefact, and it was the one result the
+  old analysis called solid.** It was "five" against "six" — and because the slate is the
+  item number, it does not rotate with block order, so the same two numerals recurred in
+  every block. That is precisely why it came out 5/5. *A perfectly consistent effect on
+  the one pair whose contrast is documented as pitch should have been read as a warning,
+  not as the strongest finding in the set.*
+- **Pitch placement survives, and looks better on real words than it did on digits.**
+  *óhò* → *ohô* now moves in the predicted direction in **4 of 4** usable blocks. The
+  mean normalised contour is the clearest evidence: *ohô* rises 84→**115** Hz and falls
+  back to 80, a genuine late peak, while *óhò* stays within 84–98 with no comparable
+  excursion. *hóhonìt* falls from an early peak (97→81) as predicted.
+- **The *nóè* / *noê* pair shows no contrast at all** — centroid −0.7 pp, and their mean
+  contours are near-identical (93 91 90 88 85 85 85 86 85 84 80 80 versus
+  94 91 89 86 85 84 85 86 86 84 83 81). This is *consistent with* the merger ruling but
+  cannot establish it: only 3 blocks survive verification for *nóè*, below the 5/5 bar
+  §7 itself sets for a sign test to mean anything.
+
+**Statistical honesty, restated.** The Frame B pair is now n=3 paired blocks. Nothing
+about *nóè* / *noê* is establishable from this session in either direction.
+
+### Superseded figures (2026-08-12) — measured on digits, retained for the trail
 
 Published readout: <https://claude.ai/code/artifact/a23235c7-efac-433e-b460-69e51e2cb8ef>
 

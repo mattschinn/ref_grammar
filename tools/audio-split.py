@@ -18,11 +18,26 @@ weaker question, and it is stable: the group count moves only 303->327 across th
 parameter grid, a genuine plateau.
 
 Utterances alone still cannot say which is a slate and which is a word. The anchors do
-that. Measured on pilot 01, a Whisper anchor lands *inside* its digit utterance or within
-~0.5 s after it — never on the word, which follows 1.3-1.8 s later. So:
+that. Measured on pilot 01 across all 113 rows carrying a real anchor, the digit onset
+follows the anchor by +0.22 to +2.67 s (median +1.38, p95 +2.67) and **never precedes
+it**. So:
 
-    digit = the last utterance starting at or before the anchor
+    digit = the first utterance starting at or after the anchor
     word  = the next utterance after it
+
+CORRECTED 2026-08-17 — this rule previously read "the last utterance starting at or
+BEFORE the anchor", on the strength of a claim in plan section 4 that the anchor lands
+inside its digit while "the word follows 1.3-1.8 s later". The 1.3-1.8 s offset was
+measured correctly and labelled wrong: the thing 1.3-1.8 s after the anchor is the
+DIGIT, not the word. Taking the last utterance before the anchor therefore grabbed the
+PREVIOUS item's word, and everything shifted one position — `slate_t0/t1` held the
+previous word, `word_t0/t1` held the slate digit, and the actual word was never
+extracted at all. 120 tokens were measured on spoken English numerals before a human
+listened to the output and heard "one, two, three".
+
+The shift was invisible to every check that ran, because a uniform shift preserves
+utterance counts, anchor spacing and grid stability. Only content identity exposes it,
+which is why `--verify` now exists (see audio-verify.py).
 
 Every item is then two utterances, and unanchored items (Whisper missed 11 of 125 slates)
 are filled in by consuming utterance pairs between one anchor's word and the next anchor's
@@ -54,8 +69,12 @@ SEP_S = 0.30          # utterance separator: above internal closures (50-150 ms)
                       # below the measured 1.3-1.8 s slate-to-word pause
 PEAK_DB = 26.0        # an utterance sits 30-59 dB above the session floor; breath and
                       # mouth noise sit at 13-24 dB and must not be clustered as speech
-ANCHOR_SLACK = 0.25   # an anchor may land just before its digit's detected onset
-ANCHOR_LAG_MAX = 2.0  # ...but never this far after the digit ends
+ANCHOR_SLACK = 0.25   # an anchor may land just AFTER its digit's detected onset
+ANCHOR_LEAD_MAX = 3.0 # ...but the digit must start within this long after the anchor.
+                      # Measured on pilot 01: anchor->digit onset is +0.22 to +2.67 s
+                      # over p95 (median +1.38), and negative on 0 of 113 rows. 3.0 s
+                      # admits p95 with margin; the 6 rows beyond it are demoted, not
+                      # dropped, and pass 2 recovers them from the reading order.
 D2W_MAX = 5.0         # slate-to-word gap ceiling. The typical gap is 1.3-1.8 s, but the
                       # author does occasionally pause for 4 s, and per the revised
                       # protocol that is allowed. A generous ceiling is safe because the
@@ -188,14 +207,17 @@ def main():
             continue
         nxt = next((rows[q]["t"] for q in range(idx + 1, len(rows)) if rows[q]["t"]), None)
         why, w, di, ds, de = None, None, None, None, None
-        cand = [i for i, u in enumerate(utts) if u[0] <= r["t"] + ANCHOR_SLACK]
+        # The digit is the FIRST utterance starting at or after the anchor. See the
+        # module docstring: taking the last one BEFORE the anchor is what produced the
+        # one-position shift, because the anchor sits ~1.4 s ahead of its own digit.
+        cand = [i for i, u in enumerate(utts) if u[0] >= r["t"] - ANCHOR_SLACK]
         if not cand:
-            why = "no utterance before anchor"
+            why = "no utterance after anchor"
         else:
-            di = cand[-1]
+            di = cand[0]
             ds, de = utts[di][0], utts[di][1]
-            if r["t"] - de > ANCHOR_LAG_MAX:
-                why = f"anchor {r['t']-de:.1f}s past nearest utterance"
+            if ds - r["t"] > ANCHOR_LEAD_MAX:
+                why = f"digit {ds-r['t']:.1f}s past anchor"
             elif di in used_digit:
                 other = rows[used_digit[di]]
                 why = f"slate collides with block {other['block']} item {other['item']}"
