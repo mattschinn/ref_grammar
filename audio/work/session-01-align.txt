@@ -1,0 +1,145 @@
+# Slate alignment - audio/masters/session-01.wav
+  source 44100 Hz -> 16000 Hz, 652.4 s
+  expected: 5 blocks x 25 = 125 slates
+
+Detecting digits (Whisper as anchor finder; conlang output discarded)...
+
+  raw digit detections: 187
+  aligned to expected sequence: 114 / 125 (91% recall)
+
+## Anchors by block
+  block 1: 24/25 anchors      6.3-  153.6s   missing items: [24]
+  block 2: 23/25 anchors    160.6-  278.6s   missing items: [20, 7]
+  block 3: 22/25 anchors    303.0-  415.1s   missing items: [3, 10, 24]
+  block 4: 23/25 anchors    422.5-  539.9s   missing items: [21, 5]
+  block 5: 22/25 anchors    546.2-  644.7s   missing items: [24, 6, 25]
+
+## Interpolation check
+  A missing slate between two correct anchors is still unambiguous:
+  its position in the known order fixes its identity.
+  items recoverable (anchored or bracketed): 125/125 (100%)
+
+## Spacing anomalies (median anchor spacing 4.2 s)
+    116.3-  140.8s   24.5s for 2 item(s)  <- inspect: retake / break / commentary
+    278.6-  303.0s   24.4s for 3 item(s)  <- inspect: retake / break / commentary
+    365.9-  384.6s   18.7s for 1 item(s)  <- inspect: retake / break / commentary
+
+## Anchor table (item_id, time)
+  block 1 pos  1  item  1  t=    6.26s
+  block 1 pos  2  item  7  t=   20.00s
+  block 1 pos  3  item  5  t=   24.82s
+  block 1 pos  4  item 16  t=   28.70s
+  block 1 pos  5  item  4  t=   33.30s
+  block 1 pos  6  item 22  t=   37.86s
+  block 1 pos  7  item  2  t=   44.34s
+  block 1 pos  8  item  8  t=   48.94s
+  block 1 pos  9  item 11  t=   54.46s
+  block 1 pos 10  item 17  t=   59.44s
+  block 1 pos 11  item  6  t=   66.26s
+  block 1 pos 12  item 21  t=   67.96s
+  block 1 pos 13  item  9  t=   72.26s
+  block 1 pos 14  item  3  t=   84.08s
+  block 1 pos 15  item 18  t=   88.90s
+  block 1 pos 16  item 13  t=   93.32s
+  block 1 pos 17  item 23  t=   97.60s
+  block 1 pos 18  item 15  t=  101.98s
+  block 1 pos 19  item 14  t=  107.26s
+  block 1 pos 20  item 19  t=  112.12s
+  block 1 pos 21  item 10  t=  116.34s
+  block 1 pos 23  item 12  t=  140.84s
+  block 1 pos 24  item 20  t=  148.30s
+  block 1 pos 25  item 25  t=  153.56s
+  block 2 pos  1  item 16  t=  160.60s
+  block 2 pos  2  item  2  t=  165.72s
+  block 2 pos  3  item 17  t=  170.34s
+  block 2 pos  4  item  9  t=  174.46s
+  block 2 pos  5  item 13  t=  178.72s
+  block 2 pos  6  item 14  t=  182.30s
+  block 2 pos  7  item 24  t=  186.32s
+  block 2 pos  8  item 25  t=  191.14s
+  block 2 pos  9  item  5  t=  194.54s
+  block 2 pos 10  item 22  t=  203.30s
+  block 2 pos 11  item 11  t=  207.70s
+  block 2 pos 12  item 21  t=  211.32s
+  block 2 pos 13  item 18  t=  214.72s
+  block 2 pos 14  item 15  t=  218.38s
+  block 2 pos 15  item 10  t=  220.00s
+  block 2 pos 18  item  4  t=  242.68s
+  block 2 pos 19  item  8  t=  244.86s
+  block 2 pos 20  item  6  t=  250.34s
+  block 2 pos 21  item  3  t=  257.12s
+  block 2 pos 22  item 23  t=  260.28s
+  block 2 pos 23  item 19  t=  264.48s
+  block 2 pos 24  item 12  t=  268.12s
+  block 2 pos 25  item  1  t=  278.56s
+  block 3 pos  3  item  5  t=  303.00s
+  block 3 pos  4  item 17  t=  306.04s
+  block 3 pos  5  item 23  t=  310.08s
+  block 3 pos  6  item 20  t=  313.36s
+  block 3 pos  7  item 22  t=  316.94s
+  block 3 pos  8  item  9  t=  320.22s
+  block 3 pos  9  item 19  t=  329.48s
+  block 3 pos 10  item  7  t=  334.24s
+  block 3 pos 11  item 11  t=  337.94s
+  block 3 pos 12  item 13  t=  342.60s
+  block 3 pos 13  item 12  t=  345.24s
+  block 3 pos 14  item  4  t=  354.64s
+  block 3 pos 15  item 21  t=  358.94s
+  block 3 pos 16  item 14  t=  362.06s
+  block 3 pos 17  item  1  t=  365.90s
+  block 3 pos 18  item  8  t=  384.60s
+  block 3 pos 19  item 18  t=  393.88s
+  block 3 pos 21  item 16  t=  401.32s
+  block 3 pos 22  item  6  t=  405.08s
+  block 3 pos 23  item 15  t=  408.12s
+  block 3 pos 24  item 25  t=  411.50s
+  block 3 pos 25  item  2  t=  415.08s
+  block 4 pos  1  item  7  t=  422.46s
+  block 4 pos  2  item  9  t=  425.48s
+  block 4 pos  3  item 20  t=  435.94s
+  block 4 pos  4  item 17  t=  440.00s
+  block 4 pos  5  item 10  t=  443.28s
+  block 4 pos  6  item  2  t=  446.86s
+  block 4 pos  7  item 15  t=  450.24s
+  block 4 pos  8  item 16  t=  453.92s
+  block 4 pos  9  item 18  t=  457.56s
+  block 4 pos 10  item  1  t=  461.34s
+  block 4 pos 12  item 12  t=  474.46s
+  block 4 pos 13  item 11  t=  480.00s
+  block 4 pos 14  item 19  t=  482.98s
+  block 4 pos 15  item 22  t=  486.90s
+  block 4 pos 16  item 23  t=  490.42s
+  block 4 pos 18  item  3  t=  496.18s
+  block 4 pos 19  item 25  t=  500.00s
+  block 4 pos 20  item  6  t=  503.20s
+  block 4 pos 21  item 24  t=  513.86s
+  block 4 pos 22  item  8  t=  519.66s
+  block 4 pos 23  item 14  t=  532.66s
+  block 4 pos 24  item  4  t=  537.08s
+  block 4 pos 25  item 13  t=  539.92s
+  block 5 pos  1  item  5  t=  546.20s
+  block 5 pos  2  item 23  t=  550.80s
+  block 5 pos  3  item 22  t=  553.94s
+  block 5 pos  4  item 19  t=  557.16s
+  block 5 pos  5  item 11  t=  559.66s
+  block 5 pos  6  item 12  t=  563.40s
+  block 5 pos  7  item 21  t=  566.66s
+  block 5 pos  8  item  1  t=  569.42s
+  block 5 pos  9  item 18  t=  577.70s
+  block 5 pos 10  item 16  t=  580.98s
+  block 5 pos 11  item 15  t=  584.36s
+  block 5 pos 12  item  2  t=  587.54s
+  block 5 pos 13  item 10  t=  593.30s
+  block 5 pos 14  item 17  t=  597.36s
+  block 5 pos 15  item 20  t=  600.00s
+  block 5 pos 16  item  9  t=  603.38s
+  block 5 pos 17  item  7  t=  607.32s
+  block 5 pos 18  item 13  t=  611.58s
+  block 5 pos 19  item  4  t=  615.00s
+  block 5 pos 20  item 14  t=  618.58s
+  block 5 pos 21  item  8  t=  622.16s
+  block 5 pos 25  item  3  t=  644.68s
+
+wrote anchors -> audio/work/session-01-anchors.csv
+  Rows with anchored=0 are identity-known but time-unknown; stage 2
+  resolves them by local search between the surrounding anchors.

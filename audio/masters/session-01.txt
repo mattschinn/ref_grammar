@@ -1,0 +1,30 @@
+session_id:       01
+date:             2026-08-12 (recorded ~midnight)
+mic:              ZealSound (variant:  ????  USB / 3.5mm )   <- TODO
+host:             laptop, Audacity, Windows WASAPI
+mouth_to_mic_cm:  ????                                       <- TODO
+mic_position:     ????  (stand / desk / boom; describe)      <- TODO
+room:             ????  (furnishings, hard surfaces)         <- TODO
+input_gain:       ????  (slider position / dial mark)        <- TODO
+
+# --- as recorded (measured from the file, 2026-08-12) ---
+# These three lines previously carried the values from the pre-recording checklist
+# (48000 / 32-bit float). The file does not match it. Measured values below are canon;
+# the mismatch is a defect, logged in planning/audio-pipeline-plan.md section 2.
+audacity_rate:     44100          # protocol asked for 48000
+audacity_format:   16-bit PCM     # protocol asked for 32-bit float
+audacity_channels: mono
+duration_s:        652.36
+noise_floor_dbfs:  -58.1
+snr_db:            ~29
+mains_hum:         none detected (50/60/100/120 Hz bands empty)
+clipping:          9795 samples across ~17 utterances
+level_spread_db:   25 (peak, across the corpus)
+
+windows_enhancements_disabled:  yes
+time_of_day: midnight
+notes: Turned off OS-level audio enhancements. "HOST" in Audacity set to Windows WASAPI.
+  Capture path judged good and closed as a question - do not re-litigate the mic.
+  Session yielded 122/125 usable word segments; see audio/work/session-01-segments.csv.
+  Session 02, if recorded: drop input gain ~10 dB and record 32-bit float so overshoots
+  stay recoverable.

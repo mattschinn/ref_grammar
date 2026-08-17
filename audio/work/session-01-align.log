@@ -1,0 +1,43 @@
+Loading weights:   0%|          | 0/245 [00:00<?, ?it/s]Loading weights:  90%|########9 | 220/245 [00:00<00:00, 2105.55it/s]Loading weights: 100%|##########| 245/245 [00:00<00:00, 2157.51it/s]
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Using custom `forced_decoder_ids` from the (generation) config. This is deprecated in favor of the `task` and `language` flags/config options.
+A custom logits processor of type <class 'transformers.generation.logits_process.SuppressTokensLogitsProcessor'> has been passed to `.generate()`, but it was also created in `.generate()`, given its parameterization. The custom <class 'transformers.generation.logits_process.SuppressTokensLogitsProcessor'> will take precedence. Please check the docstring of <class 'transformers.generation.logits_process.SuppressTokensLogitsProcessor'> to see related `.generate()` flags.
+A custom logits processor of type <class 'transformers.generation.logits_process.SuppressTokensAtBeginLogitsProcessor'> has been passed to `.generate()`, but it was also created in `.generate()`, given its parameterization. The custom <class 'transformers.generation.logits_process.SuppressTokensAtBeginLogitsProcessor'> will take precedence. Please check the docstring of <class 'transformers.generation.logits_process.SuppressTokensAtBeginLogitsProcessor'> to see related `.generate()` flags.
+  window 1/33  t=   0.0s  digits so far: 6
+  window 2/33  t=  20.0s  digits so far: 12
+  window 3/33  t=  40.0s  digits so far: 17
+  window 4/33  t=  60.0s  digits so far: 22
+  window 5/33  t=  80.0s  digits so far: 28
+  window 6/33  t= 100.0s  digits so far: 34
+  window 7/33  t= 120.0s  digits so far: 39
+  window 8/33  t= 140.0s  digits so far: 44
+  window 9/33  t= 160.0s  digits so far: 51
+  window 10/33  t= 180.0s  digits so far: 57
+  window 11/33  t= 200.0s  digits so far: 64
+Whisper did not predict an ending timestamp, which can happen if audio is cut off in the middle of a word. Also make sure WhisperTimeStampLogitsProcessor was used during generation.
+  window 12/33  t= 220.0s  digits so far: 287
+  window 13/33  t= 240.0s  digits so far: 292
+  window 14/33  t= 260.0s  digits so far: 297
+Whisper did not predict an ending timestamp, which can happen if audio is cut off in the middle of a word. Also make sure WhisperTimeStampLogitsProcessor was used during generation.
+  window 15/33  t= 280.0s  digits so far: 298
+  window 16/33  t= 300.0s  digits so far: 305
+  window 17/33  t= 320.0s  digits so far: 312
+  window 18/33  t= 340.0s  digits so far: 318
+  window 19/33  t= 360.0s  digits so far: 325
+  window 20/33  t= 380.0s  digits so far: 332
+  window 21/33  t= 400.0s  digits so far: 339
+  window 22/33  t= 420.0s  digits so far: 346
+  window 23/33  t= 440.0s  digits so far: 356
+  window 24/33  t= 460.0s  digits so far: 362
+  window 25/33  t= 480.0s  digits so far: 370
+  window 26/33  t= 500.0s  digits so far: 375
+  window 27/33  t= 520.0s  digits so far: 380
+  window 28/33  t= 540.0s  digits so far: 388
+  window 29/33  t= 560.0s  digits so far: 395
+Whisper did not predict an ending timestamp, which can happen if audio is cut off in the middle of a word. Also make sure WhisperTimeStampLogitsProcessor was used during generation.
+  window 30/33  t= 580.0s  digits so far: 402
+Whisper did not predict an ending timestamp, which can happen if audio is cut off in the middle of a word. Also make sure WhisperTimeStampLogitsProcessor was used during generation.
+  window 31/33  t= 600.0s  digits so far: 496
+Whisper did not predict an ending timestamp, which can happen if audio is cut off in the middle of a word. Also make sure WhisperTimeStampLogitsProcessor was used during generation.
+  window 32/33  t= 620.0s  digits so far: 719
+  window 33/33  t= 640.0s  digits so far: 719

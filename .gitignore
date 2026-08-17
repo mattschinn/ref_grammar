@@ -17,6 +17,18 @@ site/src/generated/
 # Writing-style exemplar PDFs (local reference only; copyrighted third-party papers)
 data/writing-style-references/
 
+# Audio masters and derived WAVs (large binaries; masters are append-only and held
+# outside git — see planning/audio-pipeline-plan.md §10). The small CSV/JSON outputs
+# of the pipeline ARE tracked: they are cheap in size, expensive to regenerate
+# (stage 1 is ~12 min of Whisper), and without the master in git they are the only
+# in-repo record of the analysis.
+audio/masters/*.wav
+audio/work/items/
+
+# Python scratch
+__pycache__/
+*.pyc
+
 # OS / editor cruft
 Thumbs.db
 .DS_Store
